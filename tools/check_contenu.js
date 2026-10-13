@@ -6,9 +6,9 @@ import { fileURLToPath } from 'node:url';
 const RESERVEES = [/2023-2024/];
 const MAX_ENONCE = 400;
 const MAX_CHOIX = 120;
-const FICHIERS = ['cours.md', 'condense.md', 'quiz.json', 'support.pdf'];
+const FICHIERS = ['cours.md', 'condense.md', 'quiz.json'];
 
-export function verifierContenu(racine) {
+export function verifierContenu(racine, avertissements = []) {
     const erreurs = [];
     let index;
     try { index = JSON.parse(fs.readFileSync(path.join(racine, 'index.json'), 'utf8')); }
@@ -22,10 +22,12 @@ export function verifierContenu(racine) {
             for (const f of FICHIERS) {
                 if (!fs.existsSync(path.join(dossier, f))) erreurs.push(`${ou} : fichier manquant ${f}`);
             }
+            if (!fs.existsSync(path.join(dossier, 'support.pdf'))) avertissements.push(`avertissement : ${ou} : support.pdf absent (non versionné)`);
             for (const f of ['cours.md', 'condense.md']) {
                 const p = path.join(dossier, f);
                 if (!fs.existsSync(p)) continue;
                 const txt = fs.readFileSync(p, 'utf8');
+                if (RESERVEES.some(r => r.test(txt))) erreurs.push(`${ou}/${f} : mention d'une annale réservée`);
                 if (/\[\[[^\]]+\]\]/.test(txt)) erreurs.push(`${ou}/${f} : wikilink [[…]] interdit`);
                 if (/^>\s*\[!/m.test(txt)) erreurs.push(`${ou}/${f} : callout Obsidian interdit`);
                 for (const mm of txt.matchAll(/\]\((img\/[^)\s]+)\)/g)) {
@@ -63,7 +65,9 @@ export function verifierContenu(racine) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-    const erreurs = verifierContenu(process.argv[2] || 'contenu');
+    const avertissements = [];
+    const erreurs = verifierContenu(process.argv[2] || 'contenu', avertissements);
+    if (avertissements.length) console.error(avertissements.join('\n'));
     if (erreurs.length) { console.error(erreurs.join('\n')); process.exit(1); }
     console.log('contenu OK');
 }

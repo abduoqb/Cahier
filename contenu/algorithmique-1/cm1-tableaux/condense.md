@@ -3,7 +3,7 @@
 **Définitions**
 - Coût = nombre d'opérations qu'on a choisi de compter (accès, comparaisons), en fonction de n. Toujours dire ce qu'on compte.
 - Parcours complet (`pour`) : coût toujours n. Parcours avec arrêt (`tant que`) : entre 1 et n, donc meilleur cas et pire cas.
-- Tri à bulles : on compare les voisins ; à chaque passage le plus grand reste va en place. Arrêt si aucun échange.
+- Tri à bulles : on compare les voisins ; à chaque passage le plus grand restant va en place. Arrêt si aucun échange.
 - Dichotomie (tableau trié) : au plus log2(n+1) cases examinées pour n = 2^k - 1.
 
 **Patrons à retenir**

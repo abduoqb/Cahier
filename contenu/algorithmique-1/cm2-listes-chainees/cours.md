@@ -1,7 +1,7 @@
 # CM 2 — Pointeurs, structures récursives et listes chaînées
 
-> **Info :** Poids à l'examen : ~6 pts / 20 (exercice « Listes chaînées » à chaque session)
-> Toujours : **redéfinir `structure noeud` + `type liste`** (0,5 pt gratuit), puis parcours, insertion en fin, suppression en tête, **construction d'une nouvelle liste filtrée en récursif ET en itératif**.
+> **Info :** Annale 2024-2025 : 6 pts (listes chaînées)
+> Redéfinir `structure noeud` + `type liste`, parcours, coût, **construction d'une nouvelle liste filtrée en récursif ET en itératif** (patron tête/queue).
 
 ## À savoir faire
 - Définir une Structure (enregistrement) et utiliser la notation pointée.

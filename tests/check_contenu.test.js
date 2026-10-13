@@ -58,3 +58,20 @@ test('image manquante et wikilink', () => {
     const e = verifierContenu(racine);
     assert.ok(e.some(m => m.includes('absente.svg')) && e.some(m => m.includes('wikilink')), e.join('\n'));
 });
+
+test('annale réservée citée dans cours.md ou condense.md', () => {
+    for (const f of ['cours.md', 'condense.md']) {
+        const racine = fixture();
+        fs.writeFileSync(path.join(racine, 'algo', 'cm1', f), 'Annale 2023-2024 : 4 pts\n');
+        const e = verifierContenu(racine);
+        assert.ok(e.some(m => m.includes(`algo/cm1/${f} : mention d'une annale réservée`)), e.join('\n'));
+    }
+});
+
+test('support.pdf absent : avertissement, pas d\'erreur', () => {
+    const racine = fixture();
+    fs.rmSync(path.join(racine, 'algo', 'cm1', 'support.pdf'));
+    const avertissements = [];
+    assert.deepEqual(verifierContenu(racine, avertissements), []);
+    assert.ok(avertissements.some(m => m.includes('support.pdf')), avertissements.join('\n'));
+});

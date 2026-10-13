@@ -1,7 +1,7 @@
 # CM 3 — Listes à deux pointeurs, doublement chaînées et circulaires
 
-> **Info :** Rôle pour l'examen
-> Pas d'exercice dédié dans les annales, mais c'est **la justification des coûts** des piles et files (CM4) : « pourquoi une file en O(1) ? → liste à deux pointeurs ou circulaire ».
+> **Info :** Rôle dans le cours
+> Pas d'exercice dédié dans l'annale 2024-2025, mais c'est **la justification des coûts** des piles et files (CM4) : « pourquoi une file en O(1) ? → liste à deux pointeurs ou circulaire ».
 
 ## À savoir faire
 - Citer les limites de la liste simple : un seul sens, **insertion/suppression en fin en O(n)**.

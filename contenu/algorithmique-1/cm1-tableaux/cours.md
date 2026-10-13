@@ -1,7 +1,7 @@
 # CM 1 — Langage algorithmique et tableaux
 
-> **Info :** Poids à l'examen : ~5 pts / 20 (exercice « Tableaux » à chaque session)
-> Annale 2024-2025 : `echange` + **trace d'un tri à bulles** + **coût meilleur/pire des cas**.
+> **Info :** Annale 2024-2025 : 5,5 pts (tableaux)
+> `echange` + **trace d'un tri à bulles** + **coût meilleur/pire des cas**.
 
 ## À savoir faire
 - Écrire une procédure propre en Langage algorithmique (signature typée, indentation, `retourner`).

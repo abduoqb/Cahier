@@ -1,6 +1,6 @@
 # CM 4 — Piles et files
 
-> **Info :** Poids à l'examen
+> **Info :** À retenir
 > Utiliser une pile ou une file uniquement par son interface (`fileVide`, `tete`, `defiler`, `enfiler`).
 > Les piles servent aussi à **dérécursiver** (lien avec les arbres des CM suivants).
 

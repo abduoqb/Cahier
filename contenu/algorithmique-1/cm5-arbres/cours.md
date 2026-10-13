@@ -1,7 +1,7 @@
 # CM 5 — Structures arborescentes
 
-> **Info :** Poids à l'examen : ~3–4 pts arbres binaires **+ 5–6 pts forêts** = le plus gros bloc
-> Arbres binaires : redéfinir `noeud`/`arbreBinaire`, écrire des parcours récursifs, compter les nœuds vérifiant une condition, **coût en fonction de n ou de h**.
+> **Info :** Annale 2024-2025 : 3 pts arbres binaires (comptage récursif, coût n) + 6 pts forêts (accumulateur sur une branche)
+> Arbres binaires : redéfinir `noeud`/`arbreBinaire`, écrire des parcours récursifs, compter les nœuds vérifiant une condition, **coût en fonction de n**.
 > Forêts (représentation premier enfant / fratrie, vue aux CM suivants) : parcourir les branches avec un accumulateur.
 
 ## À savoir faire
