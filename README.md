@@ -120,3 +120,12 @@ Les tests roulent sur des clés séparées (`_test_*`) — tes données réelles
 ## Licence
 
 Usage personnel. Projet étudiant en développement.
+
+## Lancer le site (séances et quiz)
+
+Le contenu de `contenu/` est lu par `fetch`, donc le site doit être servi en HTTP :
+
+    python -m http.server 8000
+
+puis ouvrir http://localhost:8000. Vérifier le contenu : `node tools/check_contenu.js contenu`. Tests : `node --test tests/*.test.js`.
+Les PDF des profs (`contenu/**/support.pdf`) ne sont pas versionnés.
