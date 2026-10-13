@@ -22,7 +22,7 @@ export async function renderTodayCard(element) {
     try { await chargerIndex(); } catch { return; }
     const dues = progress.notionsDues();
     const texte = dues.length
-        ? `${dues.length} notion${dues.length > 1 ? 's' : ''} à revoir aujourd'hui.`
+        ? `${dues.length} notion${dues.length > 1 ? 's' : ''} à revoir ou à consolider aujourd'hui.`
         : 'Rien à rattraper : on peut attaquer une séance ou s\'entraîner sur les annales.';
     element.innerHTML = `
         <section class="today-card">

@@ -80,6 +80,7 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
         for (const [id, rec] of Object.entries(load().notions)) {
             const etat = etatDe(rec, now);
             if (etat !== 'a-revoir' && etat !== 'en-cours') continue;
+            if (etat === 'en-cours' && rec.lastSuccess !== null && now - rec.lastSuccess < DAY) continue;
             const i = id.indexOf('/');
             out.push({ seanceId: id.slice(0, i), notion: id.slice(i + 1), etat, last: rec.last });
         }

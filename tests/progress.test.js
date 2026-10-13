@@ -73,6 +73,14 @@ test('notionsDues : à revoir avant en cours', () => {
     assert.deepEqual(dues.map(d => [d.notion, d.etat]), [['b', 'a-revoir'], ['a', 'en-cours']]);
 });
 
+test('notionsDues : en cours réussie il y a moins de 24 h exclue, échec conservé', () => {
+    const p = createProgress(mem());
+    p.recordAnswer('cm2', { notion: 'recent' }, true, T0);
+    p.recordAnswer('cm2', { notion: 'echec' }, false, T0);
+    assert.deepEqual(p.notionsDues(T0 + 1000).map(d => d.notion), ['echec']);
+    assert.deepEqual(p.notionsDues(T0 + DAY).map(d => d.notion).sort(), ['echec', 'recent']);
+});
+
 test('etatSeance', () => {
     const p = createProgress(mem());
     assert.equal(p.etatSeance('cm2', ['a', 'b'], T0), 'pas-commencee');
