@@ -1,0 +1,170 @@
+{
+  "seance": "cm4-piles-files",
+  "questions": [
+    {
+      "id": "q-cm4-piles-files-001",
+      "notion": "pile",
+      "type": "qcm",
+      "enonce": "Pile implémentée par une liste simple (sommet = premier nœud) : quel est le coût de empiler et de depiler ?",
+      "choix": [
+        "empiler en O(1), depiler en O(n)",
+        "Les deux en O(1)",
+        "Les deux en O(n)",
+        "empiler en O(n), depiler en O(1)"
+      ],
+      "bonne": 1,
+      "explication": "Empiler et dépiler se font au début de la liste, en un nombre constant d'opérations.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts"
+    },
+    {
+      "id": "q-cm4-piles-files-002",
+      "notion": "pile",
+      "type": "qcm",
+      "enonce": "Dans depiler (pile par liste chaînée), pourquoi lire tmp = P->suivant avant désallouer(P) ?",
+      "choix": [
+        "Parce que désallouer retourne le suivant",
+        "Pour éviter une division par zéro",
+        "Après la désallocation, P->suivant n'est plus lisible",
+        "Pour tester si la pile est vide"
+      ],
+      "bonne": 2,
+      "explication": "On ne peut pas retourner P->suivant après avoir désalloué le nœud P.",
+      "source": "CM4 chapitre, section Pile avec une liste chaînée"
+    },
+    {
+      "id": "q-cm4-piles-files-003",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "File implémentée par un tableau (T[0] = nombre d'éléments) : quelle opération est coûteuse ?",
+      "choix": [
+        "Aucune, tout est en O(1)",
+        "defiler, en O(n) à cause du décalage à gauche",
+        "tete, en O(n)",
+        "enfiler, en O(n)"
+      ],
+      "bonne": 1,
+      "explication": "Retirer le premier élément oblige à décaler tous les autres vers la gauche.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts"
+    },
+    {
+      "id": "q-cm4-piles-files-004",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "Pourquoi la liste simple (pointeur sur le premier nœud) est-elle mal adaptée à une file ?",
+      "choix": [
+        "enfiler (insertion en fin) y coûte O(n)",
+        "Elle est limitée par une capacité maximale",
+        "defiler y coûte O(n)",
+        "On ne peut pas y lire la tête"
+      ],
+      "bonne": 0,
+      "explication": "Trouver le dernier nœud demande de parcourir la liste ; la liste à deux pointeurs ou circulaire règle cela.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts ; TD4 ex. 3 Q1-Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-005",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "File par liste circulaire (pointeur sur le dernier) : que retourne enfiler(F, x) ?",
+      "choix": [
+        "Le premier nœud, F->suivant",
+        "L'ancien F, inchangé",
+        "None",
+        "Le nouveau nœud tmp, qui devient le dernier"
+      ],
+      "bonne": 3,
+      "explication": "Retourner F au lieu de tmp laisse l'ancien dernier : l'ordre de la file devient faux.",
+      "source": "TD4 ex. 3 Q3 et section Erreurs fréquentes"
+    },
+    {
+      "id": "q-cm4-piles-files-006",
+      "notion": "bon-parenthesage",
+      "type": "qcm",
+      "enonce": "Pourquoi un simple compteur ne suffit-il plus avec deux types de parenthèses, par exemple « ( { ) } » ?",
+      "choix": [
+        "Il faut mémoriser le type de la dernière ouvrante, d'où une pile",
+        "Un compteur ne sait pas compter jusqu'à deux",
+        "Les accolades ne peuvent pas être comptées",
+        "Ce texte est en fait bien parenthésé"
+      ],
+      "bonne": 0,
+      "explication": "Le compteur voit 2 ouvrantes et 2 fermantes, mais la parenthèse ) ferme un { donc le texte est mal parenthésé.",
+      "source": "TD4 ex. 1 Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-007",
+      "notion": "bon-parenthesage",
+      "type": "qcm",
+      "enonce": "bienParenthese (une pile, un seul type de parenthèse) : que retourne-t-on après la boucle ?",
+      "choix": [
+        "Vrai",
+        "Faux",
+        "non pileVide(P)",
+        "pileVide(P)"
+      ],
+      "bonne": 3,
+      "explication": "Une pile non vide signifie qu'il reste des ouvrantes sans fermante ; l'autre erreur (fermante en trop) est détectée dans la boucle.",
+      "source": "CM4 chapitre, section Deux applications de cours"
+    },
+    {
+      "id": "q-cm4-piles-files-008",
+      "notion": "pile-appels",
+      "type": "qcm",
+      "enonce": "affichageInverseRec appelée sur la liste 1 -> 2 -> 3 : que s'affiche-t-il ?",
+      "choix": [
+        "1",
+        "3 2 1",
+        "3",
+        "1 2 3"
+      ],
+      "bonne": 1,
+      "explication": "L'affichage a lieu au retour des appels : les contextes sont dépilés dans l'ordre inverse.",
+      "source": "TD4 ex. 2 Q1-Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-009",
+      "notion": "pile-appels",
+      "type": "qcm",
+      "enonce": "Version itérative de affichageInverseIt : quelle est la structure de l'algorithme avec une pile ?",
+      "choix": [
+        "Dépiler d'abord, puis empiler la liste",
+        "Une seule boucle qui n'empile rien",
+        "Afficher chaque valeur puis l'empiler",
+        "Empiler toutes les valeurs, puis dépiler en affichant"
+      ],
+      "bonne": 3,
+      "explication": "La phase de descente empile les valeurs, la phase de retour affiche sommet(P) puis dépile.",
+      "source": "TD4 ex. 2 Q3"
+    },
+    {
+      "id": "q-cm4-piles-files-010",
+      "notion": "tours-de-hanoi",
+      "type": "qcm",
+      "enonce": "Combien de déplacements au minimum pour 4 disques aux Tours de Hanoï ?",
+      "choix": [
+        "16",
+        "31",
+        "15",
+        "8"
+      ],
+      "bonne": 2,
+      "explication": "Le minimum est 2^n - 1, soit 2^4 - 1 = 15.",
+      "source": "CM4 chapitre, section Deux applications de cours ; notion Tours de Hanoï"
+    },
+    {
+      "id": "q-cm4-piles-files-011",
+      "notion": "tours-de-hanoi",
+      "type": "qcm",
+      "enonce": "Quelle est l'idée récursive de la résolution des Tours de Hanoï ?",
+      "choix": [
+        "Le grand disque d'abord sur la tour auxiliaire",
+        "Trier les disques avant de les déplacer",
+        "Déplacer tous les disques un par un sans règle",
+        "n-1 disques sur la tour auxiliaire, le grand sur la cible, puis les n-1 par-dessus"
+      ],
+      "bonne": 3,
+      "explication": "Cela donne T(n) = 2T(n-1) + 1, soit 2^n - 1 déplacements.",
+      "source": "notion Tours de Hanoï"
+    }
+  ]
+}

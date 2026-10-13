@@ -1,0 +1,185 @@
+{
+  "seance": "cm2-listes-chainees",
+  "questions": [
+    {
+      "id": "q-cm2-listes-chainees-001",
+      "notion": "pointeur",
+      "type": "qcm",
+      "enonce": "A = Nouveau(entier) ; A-> = 12 ; B = A ; C = Nouveau(entier) ; C-> = A-> ; A-> = 5. Que donne afficher A->, B->, C-> ?",
+      "choix": [
+        "5 5 12",
+        "5 12 12",
+        "12 12 12",
+        "5 5 5"
+      ],
+      "bonne": 0,
+      "explication": "B = A copie l'adresse (même objet) alors que C-> = A-> copie la valeur dans un objet distinct.",
+      "source": "CM2 chapitre, section Copie d'adresse ≠ copie de valeur"
+    },
+    {
+      "id": "q-cm2-listes-chainees-002",
+      "notion": "pointeur",
+      "type": "qcm",
+      "enonce": "Liste L = 1,2,3,4,5 ; on exécute P = L puis P->suivant->valeur = 8. Quel est l'effet sur L ?",
+      "choix": [
+        "Erreur : on ne peut pas écrire via P",
+        "L est inchangée car P est une copie de L",
+        "L est modifiée : son 2e nœud vaut 8",
+        "Seul le premier nœud de L passe à 8"
+      ],
+      "bonne": 2,
+      "explication": "P = L copie l'adresse, pas la liste : P et L désignent les mêmes nœuds.",
+      "source": "TD2 Q3"
+    },
+    {
+      "id": "q-cm2-listes-chainees-003",
+      "notion": "liste-chainee",
+      "type": "qcm",
+      "enonce": "Pour obtenir la liste 5 -> 7 -> 9 en n'utilisant que insertionDebut, dans quel ordre insérer les valeurs ?",
+      "choix": [
+        "L'ordre n'a pas d'importance",
+        "7, puis 5, puis 9",
+        "9, puis 7, puis 5",
+        "5, puis 7, puis 9"
+      ],
+      "bonne": 2,
+      "explication": "L'insertion en début inverse l'ordre : la dernière valeur insérée devient la première.",
+      "source": "CM2 chapitre, section Insertion en début ; TD2 Q2"
+    },
+    {
+      "id": "q-cm2-listes-chainees-004",
+      "notion": "liste-chainee",
+      "type": "qcm",
+      "enonce": "Pour supprimer le dernier nœud d'une liste d'au moins 2 nœuds, sur quel nœud faut-il arrêter le parcours ?",
+      "choix": [
+        "Sur le dernier, qu'on désalloue directement",
+        "Sur l'avant-dernier, pour mettre son suivant à None",
+        "Sur le dernier, puis on met L = None",
+        "Sur le premier nœud de la liste"
+      ],
+      "bonne": 1,
+      "explication": "Sans mettre le suivant de l'avant-dernier à None, il pointerait vers un nœud désalloué.",
+      "source": "CM2 chapitre, section Suppression du dernier nœud"
+    },
+    {
+      "id": "q-cm2-listes-chainees-005",
+      "notion": "parcours-liste",
+      "type": "qcm",
+      "enonce": "Dans affichage_deplacement, quelle instruction met correctement à jour l'abscisse x ?",
+      "choix": [
+        "x = x + dx",
+        "x = L->dx",
+        "x = x + L->suivant->dx",
+        "x = x + L->dx"
+      ],
+      "bonne": 3,
+      "explication": "dx est un champ du nœud : il faut écrire L->dx (le corrigé officiel oublie L->).",
+      "source": "annale 2024-2025 ex. 2 Q1 (adapté en QCM, erreur du corrigé officiel en distracteur)"
+    },
+    {
+      "id": "q-cm2-listes-chainees-006",
+      "notion": "parcours-liste",
+      "type": "qcm",
+      "enonce": "retour_point_depart sur une liste de n nœuds : quel est le coût maximal (nœuds visités), et pour quel exemple ?",
+      "choix": [
+        "n, par exemple si tous les nœuds sont (1,0)",
+        "2, quel que soit le cas",
+        "1, quel que soit le cas",
+        "n-1, par exemple si tous les nœuds sont (1,0)"
+      ],
+      "bonne": 0,
+      "explication": "Si l'on ne revient jamais en (0,0), ou seulement au dernier nœud, on visite les n nœuds.",
+      "source": "annale 2024-2025 ex. 2 Q3 (adapté en QCM)"
+    },
+    {
+      "id": "q-cm2-listes-chainees-007",
+      "notion": "parcours-liste",
+      "type": "qcm",
+      "enonce": "Pour ajouter en fin d'une liste non vide en itératif, quelle condition de boucle s'arrête sur le dernier nœud ?",
+      "choix": [
+        "tant que tmp->valeur <> None",
+        "tant que tmp->suivant->suivant <> None",
+        "tant que tmp <> None",
+        "tant que tmp->suivant <> None"
+      ],
+      "bonne": 3,
+      "explication": "Avec tmp <> None, tmp sortirait de la liste et on ne pourrait plus accrocher le nouveau nœud.",
+      "source": "TD2 Q8 et section Erreurs fréquentes"
+    },
+    {
+      "id": "q-cm2-listes-chainees-008",
+      "notion": "construire-liste",
+      "type": "qcm",
+      "enonce": "Version récursive de « garder les nœuds où dx <> 0 » : que fait-on si L->dx = 0 ?",
+      "choix": [
+        "On met L->dx à 1 puis on le copie",
+        "On retourne None",
+        "On copie quand même le nœud courant",
+        "On retourne l'appel sur L->suivant, sans copier le nœud"
+      ],
+      "bonne": 3,
+      "explication": "Le nœud est sauté : le résultat est celui de l'appel récursif sur le reste de la liste.",
+      "source": "annale 2024-2025 ex. 2 Q4 (adapté en QCM)"
+    },
+    {
+      "id": "q-cm2-listes-chainees-009",
+      "notion": "construire-liste",
+      "type": "qcm",
+      "enonce": "En copiant un nœud dans deplacement_abscisse_rec, quelle instruction est correcte pour recopier dy ?",
+      "choix": [
+        "L2->dy = L->suivant->dy",
+        "L2->dy = L->dy",
+        "L2->dy = L2->dy",
+        "L->dy = L2->dy"
+      ],
+      "bonne": 1,
+      "explication": "On recopie le champ du nœud source L ; L2->dy = L2->dy est une erreur du corrigé officiel.",
+      "source": "annale 2024-2025 ex. 2 Q4 (adapté en QCM, erreur du corrigé officiel en distracteur)"
+    },
+    {
+      "id": "q-cm2-listes-chainees-010",
+      "notion": "construire-liste",
+      "type": "qcm",
+      "enonce": "Dans la version itérative (patron tête/queue), quelle instruction faut-il après avoir accroché le nouveau nœud nv ?",
+      "choix": [
+        "queue = tete",
+        "tete = nv",
+        "L = nv",
+        "queue = nv"
+      ],
+      "bonne": 3,
+      "explication": "queue doit toujours désigner le dernier nœud construit pour accrocher le suivant au bon endroit.",
+      "source": "annale 2024-2025 ex. 2 Q5 (adapté en QCM) ; CM2 chapitre, copieListeIt"
+    },
+    {
+      "id": "q-cm2-listes-chainees-011",
+      "notion": "recursivite",
+      "type": "qcm",
+      "enonce": "affichePairsInverseRec (affichage après l'appel récursif) sur 1 -> 2 -> 3 -> 4 : que s'affiche-t-il ?",
+      "choix": [
+        "1 3",
+        "2 4",
+        "4 2",
+        "4 3 2 1"
+      ],
+      "bonne": 2,
+      "explication": "Le traitement est fait après l'appel récursif : les valeurs paires sont affichées dans l'ordre inverse.",
+      "source": "TD2 Q5-Q7"
+    },
+    {
+      "id": "q-cm2-listes-chainees-012",
+      "notion": "recursivite",
+      "type": "qcm",
+      "enonce": "copiePairs (cas None, cas impair, cas pair) appliquée à 3 -> 4 -> 7 -> 8 retourne quelle liste ?",
+      "choix": [
+        "Une nouvelle liste 4 -> 8",
+        "La liste d'origine inchangée",
+        "Une nouvelle liste 8 -> 4",
+        "Une nouvelle liste 3 -> 7"
+      ],
+      "bonne": 0,
+      "explication": "Les nœuds impairs sont sautés, les nœuds pairs sont recopiés dans l'ordre.",
+      "source": "TD2 Q10"
+    }
+  ]
+}

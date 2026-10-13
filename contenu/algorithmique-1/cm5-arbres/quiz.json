@@ -1,0 +1,170 @@
+{
+  "seance": "cm5-arbres",
+  "questions": [
+    {
+      "id": "q-cm5-arbres-001",
+      "notion": "arbre-binaire",
+      "type": "qcm",
+      "enonce": "Compter les nœuds de valeur entre 0 et 100 ou savoir s'il en existe un : quelle est la différence de coût ?",
+      "choix": [
+        "Chercher visite toujours plus de nœuds que compter",
+        "Compter s'arrête dès le premier nœud trouvé",
+        "Les deux visitent toujours exactement n nœuds",
+        "Compter visite tous les nœuds (n) ; chercher peut s'arrêter dès qu'on en trouve un"
+      ],
+      "bonne": 3,
+      "explication": "Pour compter il faut tout visiter ; pour tester l'existence, le « ou » paresseux s'arrête dès Vrai.",
+      "source": "annale 2024-2025 ex. 3 Q2 (adapté en QCM)"
+    },
+    {
+      "id": "q-cm5-arbres-002",
+      "notion": "arbre-binaire",
+      "type": "qcm",
+      "enonce": "nombre_noeuds(A) pour un nœud non vide dont la valeur est entre 0 et 100 : que retourne-t-il ?",
+      "choix": [
+        "nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",
+        "1 + nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",
+        "0",
+        "1, sans descendre dans les sous-arbres"
+      ],
+      "bonne": 1,
+      "explication": "On compte le nœud courant, puis on ajoute ceux des deux sous-arbres.",
+      "source": "annale 2024-2025 ex. 3 Q1 (adapté en QCM)"
+    },
+    {
+      "id": "q-cm5-arbres-003",
+      "notion": "arbre-binaire",
+      "type": "qcm",
+      "enonce": "Comment teste-t-on qu'un nœud A d'un arbre binaire est une feuille ?",
+      "choix": [
+        "A->gauche = None ou A->droit = None",
+        "A->valeur = 0",
+        "A->gauche = None et A->droit = None",
+        "A = None"
+      ],
+      "bonne": 2,
+      "explication": "Une feuille n'a aucun enfant ; avec un seul enfant vide, le nœud est interne.",
+      "source": "CM5 chapitre, procédure nombreFeuilles"
+    },
+    {
+      "id": "q-cm5-arbres-004",
+      "notion": "profondeur-hauteur",
+      "type": "qcm",
+      "enonce": "Quelle est la hauteur de l'arbre réduit à sa seule racine, et celle de l'arbre vide ?",
+      "choix": [
+        "0 pour les deux",
+        "1 pour la racine seule, -1 pour l'arbre vide",
+        "0 pour la racine seule, -1 pour l'arbre vide",
+        "1 pour la racine seule, 0 pour l'arbre vide"
+      ],
+      "bonne": 2,
+      "explication": "Convention du cours : h(vide) = -1, h(racine seule) = 0 et h(A) = 1 + max(h(Ag), h(Ad)).",
+      "source": "CM5 chapitre, Questions de vérification 1 ; notion Profondeur et hauteur"
+    },
+    {
+      "id": "q-cm5-arbres-005",
+      "notion": "profondeur-hauteur",
+      "type": "qcm",
+      "enonce": "Un algorithme ne suit qu'une seule branche d'un arbre de hauteur h : combien de nœuds visite-t-il au plus ?",
+      "choix": [
+        "n, le nombre total de nœuds",
+        "h au carré",
+        "h + 1",
+        "2h + 1"
+      ],
+      "bonne": 2,
+      "explication": "On descend d'un niveau par étape, du niveau 0 au niveau h, soit au plus h + 1 nœuds.",
+      "source": "CM5 chapitre, section Coût : n ou h ?"
+    },
+    {
+      "id": "q-cm5-arbres-006",
+      "notion": "longueur-cheminement",
+      "type": "qcm",
+      "enonce": "Arbre du cours à 9 nœuds : 1 de profondeur 0, 2 de profondeur 1, 3 de profondeur 2, 3 de profondeur 3. Que vaut la longueur de cheminement LC ?",
+      "choix": [
+        "12",
+        "9",
+        "11",
+        "17"
+      ],
+      "bonne": 3,
+      "explication": "LC est la somme des profondeurs de tous les nœuds : 0 + 2x1 + 3x2 + 3x3 = 17.",
+      "source": "CM5 chapitre, tableau de l'arbre exemple ; notion Longueur de cheminement"
+    },
+    {
+      "id": "q-cm5-arbres-007",
+      "notion": "longueur-cheminement",
+      "type": "qcm",
+      "enonce": "Même arbre : les 4 feuilles sont à profondeurs 2, 3, 3 et 3. Que vaut la longueur de cheminement externe LCE ?",
+      "choix": [
+        "4",
+        "8",
+        "11",
+        "17"
+      ],
+      "bonne": 2,
+      "explication": "LCE est la somme des profondeurs des feuilles seulement : 2 + 3 + 3 + 3 = 11.",
+      "source": "CM5 chapitre, tableau de l'arbre exemple ; notion Longueur de cheminement"
+    },
+    {
+      "id": "q-cm5-arbres-008",
+      "notion": "parcours-profondeur",
+      "type": "qcm",
+      "enonce": "Arbre : racine 7 (gauche 4, droit 2) ; 4 a pour enfants 12 (g) et 9 (d) ; 9 a 1 à gauche ; 2 a 20 à gauche ; 20 a 5 (g) et 11 (d). Quel est son parcours infixe ?",
+      "choix": [
+        "12 4 1 9 7 5 20 11 2",
+        "7 4 12 9 1 2 20 5 11",
+        "7 4 2 12 9 20 1 5 11",
+        "12 1 9 4 5 11 20 2 7"
+      ],
+      "bonne": 0,
+      "explication": "L'infixe note chaque nœud à sa 2e rencontre (entre le sous-arbre gauche et le droit) ; les autres choix sont préfixe, suffixe et largeur.",
+      "source": "CM5 chapitre, tableau de l'arbre exemple ; notion Parcours en profondeur"
+    },
+    {
+      "id": "q-cm5-arbres-009",
+      "notion": "parcours-profondeur",
+      "type": "qcm",
+      "enonce": "Dans la méthode des trois visites, à quelle rencontre du nœud le note-t-on pour obtenir l'ordre suffixe ?",
+      "choix": [
+        "À la dernière feuille seulement",
+        "À la 1re (avant le sous-arbre gauche)",
+        "À la 2e (entre gauche et droit)",
+        "À la 3e (après le sous-arbre droit)"
+      ],
+      "bonne": 3,
+      "explication": "Préfixe = 1re visite, infixe = 2e, suffixe = 3e ; dans le code, c'est la place du afficher.",
+      "source": "CM5 chapitre, méthode « trois visites » ; notion Parcours en profondeur"
+    },
+    {
+      "id": "q-cm5-arbres-010",
+      "notion": "parcours-largeur",
+      "type": "qcm",
+      "enonce": "Quel est le parcours en largeur de l'arbre du cours (niveaux : 7 | 4 2 | 12 9 20 | 1 5 11) ?",
+      "choix": [
+        "7 4 12 9 1 2 20 5 11",
+        "12 4 1 9 7 5 20 11 2",
+        "11 5 1 20 9 12 2 4 7",
+        "7 4 2 12 9 20 1 5 11"
+      ],
+      "bonne": 3,
+      "explication": "La largeur visite niveau par niveau, chaque niveau de gauche à droite.",
+      "source": "CM5 chapitre, tableau de l'arbre exemple ; notion Parcours en largeur"
+    },
+    {
+      "id": "q-cm5-arbres-011",
+      "notion": "parcours-largeur",
+      "type": "qcm",
+      "enonce": "Quelle structure utilise-t-on pour un parcours en largeur itératif d'un arbre ?",
+      "choix": [
+        "Une file : on défile un nœud et on enfile ses enfants",
+        "Aucune structure n'est nécessaire",
+        "Une pile : on dépile un nœud et on empile ses enfants",
+        "Un tableau trié"
+      ],
+      "bonne": 0,
+      "explication": "La file garde l'ordre d'arrivée, ce qui donne le parcours niveau par niveau ; la pile correspond à la profondeur.",
+      "source": "notion Parcours en largeur ; CM1 chapitre, section Récursif ↔ itératif"
+    }
+  ]
+}

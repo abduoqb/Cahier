@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 370" width="780" height="370" role="img" aria-label="Pile (LIFO) et file (FIFO)">
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+<marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="780" height="370" fill="#fff"/>
+<text x="130" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#2563eb" text-anchor="middle" font-weight="bold" >PILE (LIFO)</text>
+<rect x="80" y="90" width="100" height="46" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="130" y="120" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >10</text>
+<rect x="80" y="136" width="100" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="130" y="166" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >7</text>
+<rect x="80" y="182" width="100" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="130" y="212" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >3</text>
+<rect x="80" y="228" width="100" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="130" y="258" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >20</text>
+<rect x="80" y="274" width="100" height="46" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="130" y="304" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >6</text>
+<text x="130" y="348" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle" font-weight="normal" >6 est entré le premier</text>
+<line x1="130" y1="62" x2="130" y2="86" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#o)"/>
+<text x="130" y="56" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#92400e" text-anchor="middle" font-weight="bold" >empiler / dépiler</text>
+<text x="196" y="118" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e" text-anchor="start" font-weight="bold" >← sommet</text>
+<line x1="70" y1="324" x2="190" y2="324" stroke="#475569" stroke-width="4"/>
+<text x="520" y="28" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#2563eb" text-anchor="middle" font-weight="bold" >FILE (FIFO)</text>
+<rect x="330" y="120" width="70" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<text x="365" y="152" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >6</text>
+<rect x="400" y="120" width="70" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="435" y="152" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >20</text>
+<rect x="470" y="120" width="70" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="505" y="152" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >3</text>
+<rect x="540" y="120" width="70" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="575" y="152" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >7</text>
+<rect x="610" y="120" width="70" height="50" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="645" y="152" font-family="Segoe UI, Arial, sans-serif" font-size="19" fill="#1e293b" text-anchor="middle" font-weight="bold" >10</text>
+<line x1="328" y1="145" x2="262" y2="145" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#o)"/>
+<text x="268" y="172" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#92400e" text-anchor="middle" font-weight="bold" >defiler</text>
+<text x="365" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e" text-anchor="middle" font-weight="bold" >tête</text>
+<text x="645" y="108" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e" text-anchor="middle" font-weight="bold" >fin</text>
+<line x1="750" y1="145" x2="686" y2="145" stroke="#2563eb" stroke-width="2.5" marker-end="url(#b)"/>
+<text x="718" y="134" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#1e40af" text-anchor="middle" font-weight="bold" >enfiler</text>
+<text x="512" y="215" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#475569" text-anchor="middle" font-weight="normal" >6 est entré le premier : il sort le premier</text>
+
+</svg>

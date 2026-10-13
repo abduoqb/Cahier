@@ -1,0 +1,20 @@
+{
+  "matieres": [
+    {
+      "id": "algorithmique-1",
+      "nom": "Algorithmique 1",
+      "seances": [
+        { "id": "cm1-tableaux", "type": "CM", "titre": "Tableaux", "dossier": "algorithmique-1/cm1-tableaux",
+          "notions": ["tri-a-bulles", "complexite", "recherche-sequentielle", "recherche-dichotomique", "partition-avec-pivot"] },
+        { "id": "cm2-listes-chainees", "type": "CM", "titre": "Listes chaînées", "dossier": "algorithmique-1/cm2-listes-chainees",
+          "notions": ["pointeur", "liste-chainee", "parcours-liste", "construire-liste", "recursivite"] },
+        { "id": "cm3-listes-deux-pointeurs", "type": "CM", "titre": "Listes à deux pointeurs, doublement chaînées et circulaires", "dossier": "algorithmique-1/cm3-listes-deux-pointeurs",
+          "notions": ["liste-deux-pointeurs", "liste-doublement-chainee", "liste-circulaire", "fusion-listes-triees"] },
+        { "id": "cm4-piles-files", "type": "CM", "titre": "Piles et files", "dossier": "algorithmique-1/cm4-piles-files",
+          "notions": ["pile", "file", "bon-parenthesage", "pile-appels", "tours-de-hanoi"] },
+        { "id": "cm5-arbres", "type": "CM", "titre": "Arbres", "dossier": "algorithmique-1/cm5-arbres",
+          "notions": ["arbre-binaire", "profondeur-hauteur", "longueur-cheminement", "parcours-profondeur", "parcours-largeur"] }
+      ]
+    }
+  ]
+}

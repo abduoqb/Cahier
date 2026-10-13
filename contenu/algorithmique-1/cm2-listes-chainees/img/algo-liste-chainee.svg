@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 726 150" width="726" height="150" role="img" aria-label="Liste chaînée : L pointe sur le premier noeud, le dernier pointe sur None">
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+<marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="726" height="150" fill="#fff"/>
+<rect x="24" y="75" width="64" height="34" rx="17" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="56.0" y="97.5" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#92400e" text-anchor="middle" font-weight="bold" >L</text>
+<line x1="88" y1="92" x2="128" y2="92" stroke="#f59e0b" stroke-width="2" marker-end="url(#o)"/>
+<rect x="130" y="70" width="104" height="44" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<line x1="194" y1="70" x2="194" y2="114" stroke="#2563eb" stroke-width="2"/>
+<text x="162.0" y="98.0" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#1e293b" text-anchor="middle" font-weight="bold" >5</text>
+<circle cx="214.0" cy="92.0" r="4.5" fill="#475569"/>
+<line x1="214.0" y1="92.0" x2="292" y2="92.0" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="294" y="70" width="104" height="44" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<line x1="358" y1="70" x2="358" y2="114" stroke="#2563eb" stroke-width="2"/>
+<text x="326.0" y="98.0" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#1e293b" text-anchor="middle" font-weight="bold" >7</text>
+<circle cx="378.0" cy="92.0" r="4.5" fill="#475569"/>
+<line x1="378.0" y1="92.0" x2="456" y2="92.0" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="458" y="70" width="104" height="44" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<line x1="522" y1="70" x2="522" y2="114" stroke="#2563eb" stroke-width="2"/>
+<text x="490.0" y="98.0" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#1e293b" text-anchor="middle" font-weight="bold" >9</text>
+<circle cx="542.0" cy="92.0" r="4.5" fill="#475569"/>
+<line x1="542.0" y1="92.0" x2="598.0" y2="92.0" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+<rect x="600.0" y="75" width="64" height="34" rx="6" fill="#f1f5f9" stroke="#475569" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="632.0" y="97.5" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569" text-anchor="middle" font-weight="normal" >None</text>
+<text x="130" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#475569" text-anchor="start" font-weight="normal" >valeur</text>
+<text x="194" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#475569" text-anchor="start" font-weight="normal" >suivant</text>
+
+</svg>
