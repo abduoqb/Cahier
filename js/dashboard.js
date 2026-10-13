@@ -83,6 +83,16 @@ export function renderDashboard() {
                     </div>
                 </section>
 
+                <section class="calendar-section" aria-labelledby="calendar-title">
+                    <div class="panel-heading">
+                        <div class="panel-heading-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+                        </div>
+                        <div><h2 id="calendar-title">Calendrier</h2></div>
+                    </div>
+                    <div id="calendar" class="calendar"></div>
+                </section>
+
                 ${upcomingExams.length > 0 ? `
                     <section class="exams-upcoming" aria-labelledby="upcoming-title">
                         <div class="panel-heading">
@@ -152,6 +162,8 @@ export function renderDashboard() {
         </div>
     `;
 
+    renderCalendar(subjects);
+
     // Events
     app.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -167,6 +179,50 @@ export function renderDashboard() {
     app.querySelectorAll('#add-subject-card, #add-subject-top').forEach(button => {
         button.addEventListener('click', showAddSubjectModal);
     });
+}
+
+// Calendrier FullCalendar : un événement par examen, coloré selon la matière.
+function renderCalendar(subjects) {
+    const el = document.getElementById('calendar');
+    if (!el || typeof FullCalendar === 'undefined') {
+        if (el) el.innerHTML = '<p class="calendar-empty">Le calendrier n\'a pas pu se charger (connexion ?).</p>';
+        return;
+    }
+
+    const events = [];
+    subjects.forEach((s, i) => {
+        const colors = SUBJECT_COLORS[i % SUBJECT_COLORS.length];
+        (s.exams || []).forEach(exam => {
+            if (!exam.date) return;
+            events.push({
+                id: exam.id,
+                title: `${s.name} · ${exam.name}`,
+                start: exam.date,
+                allDay: true,
+                url: `#/subject/${s.id}`,
+                backgroundColor: colors.tint,
+                borderColor: colors.color,
+                textColor: colors.color,
+            });
+        });
+    });
+
+    const calendar = new FullCalendar.Calendar(el, {
+        locale: 'fr',
+        initialView: 'dayGridMonth',
+        firstDay: 1,
+        height: 'auto',
+        fixedWeekCount: false,
+        dayMaxEvents: 2,
+        events,
+        headerToolbar: { left: 'title', right: 'today prev,next' },
+        buttonText: { today: "Aujourd'hui" },
+        eventClick(info) {
+            info.jsEvent.preventDefault();
+            location.hash = info.event.url.replace(/^.*#/, '#');
+        },
+    });
+    calendar.render();
 }
 
 function renderCard(subject, index) {
