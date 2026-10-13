@@ -2,6 +2,7 @@ import { Store } from './store.js';
 import { renderDashboard } from './dashboard.js?v=15';
 import { renderSubject } from './subject.js?v=6';
 import { toast } from './utils.js?v=6';
+import { renderSeance } from './seance.js';
 
 // ===== UI Helpers =====
 
@@ -36,6 +37,10 @@ function route() {
     } else if (hash.startsWith('#/subject/')) {
         const id = hash.split('/')[2];
         if (id) renderSubject(id);
+        else renderDashboard();
+    } else if (hash.startsWith('#/seance/')) {
+        const [, , matiere, seance] = hash.split('/');
+        if (matiere && seance) renderSeance(decodeURIComponent(matiere), decodeURIComponent(seance));
         else renderDashboard();
     } else {
         renderDashboard();
