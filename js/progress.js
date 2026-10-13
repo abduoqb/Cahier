@@ -14,10 +14,22 @@ function defaultStorage() {
 }
 
 export function createProgress(storage = defaultStorage(), key = KEY) {
+    function valide(r) {
+        if (!r || typeof r !== 'object' || Array.isArray(r)) return false;
+        const num = v => typeof v === 'number' && Number.isFinite(v);
+        return num(r.n) && num(r.last)
+            && (r.lastSuccess === null || num(r.lastSuccess))
+            && (r.acquiseLe === null || num(r.acquiseLe))
+            && Number.isInteger(r.palier) && r.palier >= 0 && r.palier < INTERVALLES.length
+            && typeof r.revoir === 'boolean';
+    }
     function load() {
         try {
             const d = JSON.parse(storage.getItem(key));
-            return d && typeof d === 'object' && d.notions && typeof d.notions === 'object' ? d : { notions: {} };
+            if (!d || typeof d !== 'object' || !d.notions || typeof d.notions !== 'object') return { notions: {} };
+            const notions = {};
+            for (const [id, rec] of Object.entries(d.notions)) if (valide(rec)) notions[id] = rec;
+            return { notions };
         } catch { return { notions: {} }; }
     }
     function save(d) {

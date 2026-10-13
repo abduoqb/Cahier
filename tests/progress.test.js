@@ -90,3 +90,25 @@ test('stockage corrompu ou en erreur : état vide, pas d\'exception', () => {
     assert.doesNotThrow(() => p.recordAnswer('cm2', { notion: 'x' }, true, T0));
     assert.deepEqual(p.notionsDues(T0), []);
 });
+
+const stockageBrut = brut => ({ getItem: () => brut, setItem: () => {} });
+
+test('enregistrement non objet : ignoré, pas d\'exception', () => {
+    const p = createProgress(stockageBrut('{"notions":{"cm2/x":5}}'));
+    assert.equal(p.getNotion('cm2', 'x', T0).etat, 'pas-commencee');
+    assert.doesNotThrow(() => p.recordAnswer('cm2', { notion: 'x' }, true, T0));
+});
+
+test('enregistrement avec palier invalide : ignoré', () => {
+    const rec = { n: 2, lastSuccess: T0, last: T0, acquiseLe: T0, palier: 'zzz', revoir: false };
+    const p = createProgress(stockageBrut(JSON.stringify({ notions: { 'cm2/x': rec } })));
+    assert.equal(p.getNotion('cm2', 'x', T0).etat, 'pas-commencee');
+});
+
+test('stockage JSON sans objet notions (null, tableau, chaîne) : état vide', () => {
+    for (const brut of ['null', '[]', '"str"']) {
+        const p = createProgress(stockageBrut(brut));
+        assert.equal(p.getNotion('cm2', 'x', T0).etat, 'pas-commencee');
+        assert.deepEqual(p.notionsDues(T0), []);
+    }
+});
