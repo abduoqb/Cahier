@@ -572,7 +572,46 @@ a { color: inherit; }
     border-radius: var(--radius-lg);
     background: var(--surface);
 }
+.calendar-hint { margin: 2px 0 0; color: var(--muted); font-size: 12px; }
+.calendar-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.btn-sm { min-height: 32px; padding: 4px 12px; font-size: 12px; cursor: pointer; }
+.calendar-toggle svg { transition: transform 300ms ease; }
+.calendar-section.is-collapsed .calendar-toggle svg { transform: rotate(180deg); }
+.calendar-body {
+    position: relative;
+    overflow: hidden;
+    transition: max-height 380ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Agenda réduit : on ne garde que le haut, de plus en plus flou vers le bas */
+.calendar-body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--surface) 70%, transparent) 100%);
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+    transition: opacity 380ms ease, backdrop-filter 380ms ease, -webkit-backdrop-filter 380ms ease;
+}
+.calendar-section.is-collapsed .calendar-body::after {
+    opacity: 1;
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+}
+.calendar-section.is-collapsed .calendar-body { pointer-events: none; }
 .calendar { padding: 0 26px 24px; }
+.calendar .fc-timegrid-slot { height: 2.2em; }
+.calendar .fc-timegrid-slot-label-cushion, .calendar .fc-timegrid-axis-cushion { color: var(--muted); font-size: 11px; }
+.calendar .fc-timegrid-now-indicator-line { border-color: var(--accent); }
+.calendar .fc-timegrid-now-indicator-arrow { border-color: var(--accent); border-top-color: transparent; border-bottom-color: transparent; }
+.calendar .fc-timegrid-event .fc-event-main { padding: 2px 4px; }
+.calendar .fc-timegrid-event, .calendar .fc-timegrid-event.fc-event { box-shadow: none; }
+.calendar .fc-col-header-cell.fc-day-today .fc-col-header-cell-cushion { color: var(--accent); }
+.calendar .fc-day-today { background: color-mix(in srgb, var(--accent-soft) 45%, transparent) !important; }
 .calendar-empty { margin: 0; color: var(--muted); font-size: 13px; }
 .calendar .fc {
     --fc-border-color: var(--line);
