@@ -59,7 +59,7 @@ export async function renderSeance(matiereId, seanceId) {
         app.querySelectorAll('.seance-onglet').forEach(btn => btn.addEventListener('click', () => {
             app.querySelectorAll('.seance-onglet').forEach(b => b.classList.toggle('is-actif', b === btn));
             app.querySelectorAll('.seance-panneau').forEach(p => { p.hidden = p.dataset.panneau !== btn.dataset.tab; });
-            if (btn.dataset.tab === 'entrainement') demarrerQuiz();
+            if (btn.dataset.tab === 'entrainement' && !app.querySelector('#seance-quiz').innerHTML.trim()) demarrerQuiz();
         }));
     } catch (e) {
         app.innerHTML = `<div class="seance"><a class="back-link" href="#/">← Accueil</a><p class="seance-erreur">${escapeHtml(messageErreur(e))}</p></div>`;
