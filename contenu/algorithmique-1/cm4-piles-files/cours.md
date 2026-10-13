@@ -1,7 +1,7 @@
 # CM 4 — Piles et files
 
 > **Info :** Poids à l'examen
-> À l'examen : reconnaître qu'un paquet de cartes est une **file**, réécrire les opérations avec l'interface (`fileVide`, `tete`, `defiler`, `enfiler`), puis **simuler** un jeu.
+> Utiliser une pile ou une file uniquement par son interface (`fileVide`, `tete`, `defiler`, `enfiler`).
 > Les piles servent aussi à **dérécursiver** (lien avec les arbres des CM suivants).
 
 ## À savoir faire
@@ -87,4 +87,4 @@ bienParenthese(C : chaîne de caractères) : booléen
 2. Pourquoi une pile peut-elle être implémentée efficacement par une liste simple mais pas une file ?
 3. Avec un tableau, pourquoi la pile contient au plus `maxPile − 1` éléments ?
 4. Pourquoi un compteur suffit avec un seul type de parenthèse, mais pas avec deux ?
-5. Un paquet de cartes où l'on retire au début et ajoute à la fin : pile ou file ?
+5. Pour « revenir en arrière » et pour « traiter dans l'ordre d'arrivée », quelle structure choisir ?

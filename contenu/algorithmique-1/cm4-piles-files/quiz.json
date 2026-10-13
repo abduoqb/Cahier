@@ -22,10 +22,10 @@
       "type": "qcm",
       "enonce": "Dans depiler (pile par liste chaînée), pourquoi lire tmp = P->suivant avant désallouer(P) ?",
       "choix": [
-        "Parce que désallouer retourne le suivant",
-        "Pour éviter une division par zéro",
-        "Après la désallocation, P->suivant n'est plus lisible",
-        "Pour tester si la pile est vide"
+        "Parce que désallouer retourne le suivant du nœud",
+        "Pour éviter une division par zéro lors du dépilage",
+        "P->suivant n'est plus lisible après désallouer",
+        "Pour tester si la pile est vide avant de dépiler"
       ],
       "bonne": 2,
       "explication": "On ne peut pas retourner P->suivant après avoir désalloué le nœud P.",
@@ -37,10 +37,10 @@
       "type": "qcm",
       "enonce": "File implémentée par un tableau (T[0] = nombre d'éléments) : quelle opération est coûteuse ?",
       "choix": [
-        "Aucune, tout est en O(1)",
-        "defiler, en O(n) à cause du décalage à gauche",
-        "tete, en O(n)",
-        "enfiler, en O(n)"
+        "Aucune, tout est en O(1) grâce à l'indexation",
+        "defiler, en O(n) par décalage à gauche",
+        "tete, en O(n) car il faut chercher le premier",
+        "enfiler, en O(n) à cause d'un parcours jusqu'à la fin"
       ],
       "bonne": 1,
       "explication": "Retirer le premier élément oblige à décaler tous les autres vers la gauche.",
@@ -67,10 +67,10 @@
       "type": "qcm",
       "enonce": "File par liste circulaire (pointeur sur le dernier) : que retourne enfiler(F, x) ?",
       "choix": [
-        "Le premier nœud, F->suivant",
-        "L'ancien F, inchangé",
-        "None",
-        "Le nouveau nœud tmp, qui devient le dernier"
+        "Le premier nœud, F->suivant, après l'ajout",
+        "L'ancien F, resté pointeur sur le dernier",
+        "None, puisque la file est vide après",
+        "Le nouveau nœud tmp, le nouveau dernier"
       ],
       "bonne": 3,
       "explication": "Retourner F au lieu de tmp laisse l'ancien dernier : l'ordre de la file devient faux.",
@@ -83,9 +83,9 @@
       "enonce": "Pourquoi un simple compteur ne suffit-il plus avec deux types de parenthèses, par exemple « ( { ) } » ?",
       "choix": [
         "Il faut mémoriser le type de la dernière ouvrante, d'où une pile",
-        "Un compteur ne sait pas compter jusqu'à deux",
-        "Les accolades ne peuvent pas être comptées",
-        "Ce texte est en fait bien parenthésé"
+        "Un compteur ne peut pas dépasser la valeur 2 sans déborder",
+        "Les accolades ne peuvent pas être comptées par un compteur entier",
+        "Ce texte est en fait bien parenthésé, 2 ouvrantes et 2 fermantes"
       ],
       "bonne": 0,
       "explication": "Le compteur voit 2 ouvrantes et 2 fermantes, mais la parenthèse ) ferme un { donc le texte est mal parenthésé.",
@@ -127,9 +127,9 @@
       "type": "qcm",
       "enonce": "Version itérative de affichageInverseIt : quelle est la structure de l'algorithme avec une pile ?",
       "choix": [
-        "Dépiler d'abord, puis empiler la liste",
-        "Une seule boucle qui n'empile rien",
-        "Afficher chaque valeur puis l'empiler",
+        "Dépiler d'abord la pile, puis empiler la liste entière",
+        "Une seule boucle qui affiche sans empiler",
+        "Afficher chaque valeur en l'empilant, puis dépiler pour finir",
         "Empiler toutes les valeurs, puis dépiler en affichant"
       ],
       "bonne": 3,
@@ -157,10 +157,10 @@
       "type": "qcm",
       "enonce": "Quelle est l'idée récursive de la résolution des Tours de Hanoï ?",
       "choix": [
-        "Le grand disque d'abord sur la tour auxiliaire",
-        "Trier les disques avant de les déplacer",
-        "Déplacer tous les disques un par un sans règle",
-        "n-1 disques sur la tour auxiliaire, le grand sur la cible, puis les n-1 par-dessus"
+        "Le grand disque d'abord sur la tour auxiliaire, puis les autres sur la cible",
+        "Trier les disques par taille avant de les déplacer sur la cible",
+        "Déplacer les disques un par un, dans n'importe quel ordre, sur la cible",
+        "n-1 disques sur l'auxiliaire, le grand sur la cible, puis les n-1 dessus"
       ],
       "bonne": 3,
       "explication": "Cela donne T(n) = 2T(n-1) + 1, soit 2^n - 1 déplacements.",

@@ -40,7 +40,7 @@
         "Il vaut aussi n(n-1)/2 comparaisons",
         "L'algorithme ne trie plus",
         "Il devient n comparaisons",
-        "Il reste n-1 comparaisons"
+        "Il reste n-1 comparaisons car le tableau est déjà trié"
       ],
       "bonne": 0,
       "explication": "Sans le booléen d'arrêt, tous les passages sont faits même sur un tableau déjà trié.",
@@ -70,7 +70,7 @@
         "Le tableau 3 2 5 4 1 seulement",
         "Le tableau en ordre décroissant, 5 4 3 2 1",
         "Tout tableau contenant un doublon",
-        "Le tableau déjà trié, 1 2 3 4 5"
+        "Le tableau déjà trié, 1 2 3 4 5 (un seul passage)"
       ],
       "bonne": 1,
       "explication": "Tous les passages sont nécessaires : (n-1) + (n-2) + ... + 1 = n(n-1)/2.",
@@ -83,8 +83,8 @@
       "enonce": "Dans « tant que i < taille et tab[i] <> x », pourquoi tester i < taille avant tab[i] <> x ?",
       "choix": [
         "Pour compter le nombre d'éléments lus",
-        "Pour que la boucle s'exécute plus vite",
-        "Pour ne pas lire tab[taille], hors du tableau (et paresseux)",
+        "Pour que la boucle s'exécute plus vite sur de grands tableaux",
+        "Pour ne pas lire tab[taille], hors du tableau",
         "Parce que l'ordre des conditions est sans importance"
       ],
       "bonne": 2,
@@ -113,7 +113,7 @@
       "enonce": "Tableau trié de 15 cases tab = 1 3 5 ... 29 : combien de cases la dichotomie examine-t-elle pour trouver 23 ?",
       "choix": [
         "12",
-        "2 (indices 7 puis 11)",
+        "2",
         "1",
         "4"
       ],
@@ -130,7 +130,7 @@
         "3",
         "15",
         "8",
-        "4, c'est log2(n+1)"
+        "4"
       ],
       "bonne": 3,
       "explication": "Chaque étape laisse une moitié de taille 2^(k-1) - 1, d'où au plus k = log2(n+1) = 4 examens.",
@@ -157,10 +157,10 @@
       "type": "qcm",
       "enonce": "Combien de tours de boucle fait la procédure partition sur un tableau de n éléments ?",
       "choix": [
-        "n(n-1)/2 au pire",
-        "Entre 1 et n-1 selon le tableau",
-        "log2(n)",
-        "n-1 tours, quel que soit le tableau"
+        "n(n-1)/2 tours dans le pire cas",
+        "Entre 1 et n-1 tours selon le tableau",
+        "log2(n) tours",
+        "Toujours n-1 tours"
       ],
       "bonne": 3,
       "explication": "À chaque tour f - p diminue d'exactement 1 : le coût ne dépend que de n.",

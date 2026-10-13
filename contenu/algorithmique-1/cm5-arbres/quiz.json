@@ -7,10 +7,10 @@
       "type": "qcm",
       "enonce": "Compter les nœuds de valeur entre 0 et 100 ou savoir s'il en existe un : quelle est la différence de coût ?",
       "choix": [
-        "Chercher visite toujours plus de nœuds que compter",
-        "Compter s'arrête dès le premier nœud trouvé",
-        "Les deux visitent toujours exactement n nœuds",
-        "Compter visite tous les nœuds (n) ; chercher peut s'arrêter dès qu'on en trouve un"
+        "Chercher visite toujours plus de nœuds que compter (au moins n)",
+        "Compter s'arrête dès le premier nœud trouvé dans l'intervalle",
+        "Les deux visitent toujours exactement n nœuds, sans arrêt possible",
+        "Compter visite tout (n) ; chercher peut s'arrêter dès un trouvé"
       ],
       "bonne": 3,
       "explication": "Pour compter il faut tout visiter ; pour tester l'existence, le « ou » paresseux s'arrête dès Vrai.",
@@ -24,8 +24,8 @@
       "choix": [
         "nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",
         "1 + nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",
-        "0",
-        "1, sans descendre dans les sous-arbres"
+        "0 + nombre_noeuds(A->droit), sans descendre à gauche",
+        "1 + nombre_noeuds(A->gauche), sans descendre à droite"
       ],
       "bonne": 1,
       "explication": "On compte le nœud courant, puis on ajoute ceux des deux sous-arbres.",

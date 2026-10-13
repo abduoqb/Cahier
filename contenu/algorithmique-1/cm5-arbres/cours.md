@@ -1,8 +1,8 @@
 # CM 5 — Structures arborescentes
 
 > **Info :** Poids à l'examen : ~3–4 pts arbres binaires **+ 5–6 pts forêts** = le plus gros bloc
-> Arbres binaires : redéfinir `noeud`/`arbreBinaire`, **parcours modifié** (ordre selon la valeur), compter les nœuds vérifiant une condition, **coût en fonction de n ou de h**.
-> Forêts (représentation premier enfant / fratrie, vue aux CM suivants) : compter les feuilles, parcourir les branches avec un accumulateur.
+> Arbres binaires : redéfinir `noeud`/`arbreBinaire`, écrire des parcours récursifs, compter les nœuds vérifiant une condition, **coût en fonction de n ou de h**.
+> Forêts (représentation premier enfant / fratrie, vue aux CM suivants) : parcourir les branches avec un accumulateur.
 
 ## À savoir faire
 - Donner les définitions inductives d'un Arbre général et d'un Arbre binaire.

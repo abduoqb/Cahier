@@ -53,7 +53,7 @@
       "enonce": "Pour supprimer le dernier nœud d'une liste d'au moins 2 nœuds, sur quel nœud faut-il arrêter le parcours ?",
       "choix": [
         "Sur le dernier, qu'on désalloue directement",
-        "Sur l'avant-dernier, pour mettre son suivant à None",
+        "Sur l'avant-dernier nœud",
         "Sur le dernier, puis on met L = None",
         "Sur le premier nœud de la liste"
       ],
@@ -115,7 +115,7 @@
         "On met L->dx à 1 puis on le copie",
         "On retourne None",
         "On copie quand même le nœud courant",
-        "On retourne l'appel sur L->suivant, sans copier le nœud"
+        "On retourne l'appel sur L->suivant"
       ],
       "bonne": 3,
       "explication": "Le nœud est sauté : le résultat est celui de l'appel récursif sur le reste de la liste.",
