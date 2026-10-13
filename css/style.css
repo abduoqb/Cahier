@@ -788,3 +788,13 @@ a { color: inherit; }
 .quiz-verdict.ko { color: var(--accent, #c0492a); font-weight: 600; }
 .quiz-source { color: var(--muted, #877c6d); font-size: 12.5px; }
 .quiz-actions { display: flex; gap: 10px; }
+.seances-section { margin: 0 0 28px; }
+.seances-titre { margin: 0 0 12px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; font-size: 22px; }
+.seances-liste { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.seance-ligne { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: inherit; text-decoration: none; border: 1px solid var(--line, #ebe1cf); border-radius: 12px; background: var(--surface, #fbf7ec); }
+.seance-ligne:hover { border-color: var(--accent, #c0492a); }
+.seance-type { min-width: 34px; color: var(--accent, #c0492a); font-weight: 700; font-size: 13px; }
+.seance-nom { flex: 1; font-weight: 500; }
+.seance-etat { padding: 2px 10px; border-radius: 100px; background: var(--paper-shade, #efe7d3); color: var(--ink-soft, #4c4239); font-size: 12px; }
+.seance-etat.etat-acquise { background: #e5f1e6; color: #3a7d44; }
+.seance-etat.etat-a-revoir { background: #f6e1da; color: var(--accent, #c0492a); }

@@ -1,5 +1,6 @@
 import { Store } from './store.js';
 import { calcProgress, progressClass, uuid, toast, escapeHtml, examInfo } from './utils.js?v=6';
+import { renderSeancesSection } from './seances-list.js';
 
 export function renderSubject(subjectId) {
     const app = document.getElementById('app');
@@ -62,6 +63,8 @@ export function renderSubject(subjectId) {
                 <span class="subject-progress-percent">${progress}<small>%</small></span>
             </section>
 
+            <section class="seances-section" id="seances-section"></section>
+
             ${examsHtml ? `
                 <section class="subject-exams" aria-labelledby="subject-exams-title">
                     <div class="section-heading">
@@ -93,6 +96,8 @@ export function renderSubject(subjectId) {
             </section>
         </div>
     `;
+
+    renderSeancesSection(subject, document.getElementById('seances-section'));
 
     bindEvents(subjectId);
 }
