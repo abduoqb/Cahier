@@ -1,4 +1,5 @@
 import { Store } from './store.js';
+import { renderTodayCard } from './today.js';
 import { calcProgress, progressClass, escapeHtml, examInfo } from './utils.js?v=6';
 
 // Palette de tons terre pour distinguer les matières sans sortir de la palette générale.
@@ -107,6 +108,8 @@ export function renderDashboard() {
                     </div>
                 </section>
 
+                <div id="today-slot"></div>
+
                 ${calendarHtml}
 
                 ${upcomingExams.length > 0 ? `
@@ -175,6 +178,8 @@ export function renderDashboard() {
                     </button>
                 </section>
 
+                <div id="today-slot"></div>
+
                 ${calendarHtml}
             `}
         </div>
@@ -182,6 +187,7 @@ export function renderDashboard() {
 
     renderCalendar(subjects);
     setupCalendarControls();
+    renderTodayCard(document.getElementById('today-slot'));
 
     // Events
     app.querySelectorAll('.delete-btn').forEach(btn => {
