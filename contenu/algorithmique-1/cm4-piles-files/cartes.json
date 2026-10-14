@@ -18,7 +18,7 @@
     {
       "id": "c-cm4-piles-files-003",
       "notion": "pile",
-      "recto": "pileVide (vrai si la pile n'a aucun élément) : pourquoi la tester avant sommet ou depiler ?",
+      "recto": "Pourquoi tester pileVide (vrai si la pile est vide) avant sommet (lit l'élément du haut sans le retirer) ou depiler (retire l'élément du haut) ?",
       "verso": "Ces fonctions supposent une pile non vide.",
       "source": "CM4 chapitre, encadré Pile vs file ; TD4 Méthode rapide"
     },

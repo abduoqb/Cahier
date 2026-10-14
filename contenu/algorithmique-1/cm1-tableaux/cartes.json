@@ -61,7 +61,7 @@
       "id": "c-cm1-tableaux-009",
       "notion": "recherche-dichotomique",
       "recto": "Dichotomie : quelle erreur sur la mise à jour de g ou d provoque une boucle infinie ?",
-      "verso": "Oublier d'exclure m : g = m + 1 ou d = m - 1.",
+      "verso": "Oublier d'exclure m : g devient m + 1 ou d devient m - 1.",
       "source": "TD1 erreurs fréquentes (dichotomie)"
     },
     {

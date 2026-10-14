@@ -33,7 +33,7 @@
       "id": "c-cm3-listes-deux-pointeurs-005",
       "notion": "liste-doublement-chainee",
       "recto": "Insertion en tête d'une liste doublement chaînée : quel test évite une erreur sur l'ancienne tête ?",
-      "verso": "Tester L ≠ None avant de faire L->precedent = tmp.",
+      "verso": "Vérifier que la liste n'est pas vide avant de relier l'ancienne tête au nouveau nœud.",
       "source": "CM3 chapitre, section Liste doublement chaînée"
     },
     {

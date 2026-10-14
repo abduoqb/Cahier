@@ -817,3 +817,5 @@ a { color: inherit; }
     .carte { padding: 18px; }
     .carte-recto { font-size: 18px; }
 }
+
+.carte-actions [hidden] { display: none; }

@@ -18,7 +18,7 @@
     {
       "id": "c-cm2-listes-chainees-003",
       "notion": "pointeur",
-      "recto": "Pourquoi écrire R-> = 3.21 sans avoir fait Nouveau est-il une erreur ?",
+      "recto": "Pourquoi écrire dans le champ réel de R sans avoir fait Nouveau est-il une erreur ?",
       "verso": "R ne désigne aucun objet alloué.",
       "source": "CM2 chapitre, questions de vérification (Q2)"
     },
@@ -33,7 +33,7 @@
       "id": "c-cm2-listes-chainees-005",
       "notion": "parcours-liste",
       "recto": "Pourquoi une fonction qui peut changer le premier nœud doit-elle retourner la liste ?",
-      "verso": "L'appelant doit récupérer la nouvelle tête : L = f(L, x).",
+      "verso": "L'appelant doit récupérer la nouvelle tête et la réaffecter à sa liste.",
       "source": "TD2, méthode rapide et erreurs fréquentes"
     },
     {
