@@ -76,14 +76,14 @@
       ]
     },
     {
-      "id": "bases-de-donnees-1",
-      "nom": "Bases de données 1",
+      "id": "bases-de-donnees",
+      "nom": "Bases de données",
       "seances": [
         {
           "id": "cm1-introduction",
           "type": "CM",
           "titre": "Introduction aux bases de données",
-          "dossier": "bases-de-donnees-1/cm1-introduction",
+          "dossier": "bases-de-donnees/cm1-introduction",
           "cartes": true,
           "notions": [
             "gestion-par-fichiers",
@@ -97,7 +97,7 @@
           "id": "cm2-modele-relationnel",
           "type": "CM",
           "titre": "Modèle relationnel et algèbre relationnelle",
-          "dossier": "bases-de-donnees-1/cm2-modele-relationnel",
+          "dossier": "bases-de-donnees/cm2-modele-relationnel",
           "cartes": true,
           "notions": [
             "relation-schema-extension",
@@ -112,7 +112,7 @@
           "id": "cm3-sql-requetes",
           "type": "CM",
           "titre": "SQL : langage de requêtes",
-          "dossier": "bases-de-donnees-1/cm3-sql-requetes",
+          "dossier": "bases-de-donnees/cm3-sql-requetes",
           "cartes": true,
           "notions": [
             "select-jointure",
@@ -127,7 +127,7 @@
           "id": "cm4-sql-suite",
           "type": "CM",
           "titre": "SQL : agrégats, sous-requêtes, jointures externes",
-          "dossier": "bases-de-donnees-1/cm4-sql-suite",
+          "dossier": "bases-de-donnees/cm4-sql-suite",
           "cartes": true,
           "notions": [
             "agregats-group-by-having",
