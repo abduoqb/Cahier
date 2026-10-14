@@ -1,0 +1,82 @@
+{
+  "seance": "cm5-arbres",
+  "cartes": [
+    {
+      "id": "c-cm5-arbres-001",
+      "notion": "arbre-binaire",
+      "recto": "nombre_noeuds (compte les nœuds dont la valeur est entre 0 et 100) : que retourne-t-elle pour l'arbre vide ?",
+      "verso": "0 : cas de base, aucun nœud à compter.",
+      "source": "annale 2024-2025 ex. 3 Q1"
+    },
+    {
+      "id": "c-cm5-arbres-002",
+      "notion": "arbre-binaire",
+      "recto": "moins_cent (dit s'il existe un nœud de valeur entre 0 et 100) : que retourne-t-elle pour l'arbre vide ?",
+      "verso": "Faux : il n'y a aucun nœud à examiner.",
+      "source": "annale 2024-2025 ex. 3 Q2"
+    },
+    {
+      "id": "c-cm5-arbres-003",
+      "notion": "arbre-binaire",
+      "recto": "Quelle relation lie le nombre de nœuds N, d'internes N_i et de feuilles N_f ?",
+      "verso": "N = N_i + N_f",
+      "source": "CM5 chapitre, arbre exemple ; notion Nœud interne et feuille"
+    },
+    {
+      "id": "c-cm5-arbres-004",
+      "notion": "arbre-binaire",
+      "recto": "Dans un arbre, que vaut le nombre de branches par rapport aux autres éléments ?",
+      "verso": "Autant de branches que de feuilles.",
+      "source": "CM5 chapitre, Questions de vérification 2 et section Anki"
+    },
+    {
+      "id": "c-cm5-arbres-005",
+      "notion": "arbre-binaire",
+      "recto": "Pourquoi tester « gauche = None ou droit = None » ne détecte-t-il pas une feuille ?",
+      "verso": "Un seul enfant vide suffit : le nœud est interne. Il faut « et ».",
+      "source": "CM5 chapitre, procédure nombreFeuilles"
+    },
+    {
+      "id": "c-cm5-arbres-006",
+      "notion": "profondeur-hauteur",
+      "recto": "Quelle est la définition inductive de la hauteur d'un arbre non vide A ?",
+      "verso": "h(A) = 1 + max(h(Ag), h(Ad))",
+      "source": "CM5 chapitre, section Des définitions inductives aux procédures"
+    },
+    {
+      "id": "c-cm5-arbres-007",
+      "notion": "arbre-binaire",
+      "recto": "Un parcours s'arrête dès qu'il trouve un nœud voulu. Son coût dans le pire cas ?",
+      "verso": "n : le nœud cherché peut être le dernier visité.",
+      "source": "annale 2024-2025 ex. 3 Q2 ; condensé"
+    },
+    {
+      "id": "c-cm5-arbres-008",
+      "notion": "longueur-cheminement",
+      "recto": "Quelle différence entre LC et LCE ?",
+      "verso": "LC : profondeurs de tous les nœuds ; LCE : des feuilles seulement.",
+      "source": "notion Longueur de cheminement"
+    },
+    {
+      "id": "c-cm5-arbres-009",
+      "notion": "parcours-profondeur",
+      "recto": "Dans l'affichage infixe, où place-t-on l'affichage de la valeur du nœud ?",
+      "verso": "Entre l'appel sur le sous-arbre gauche et celui sur le droit.",
+      "source": "CM5 chapitre, méthode « trois visites »"
+    },
+    {
+      "id": "c-cm5-arbres-010",
+      "notion": "parcours-profondeur",
+      "recto": "Quelle structure de données sert au parcours en profondeur itératif ?",
+      "verso": "Une pile (la file sert à la largeur).",
+      "source": "notion Parcours en profondeur ; condensé"
+    },
+    {
+      "id": "c-cm5-arbres-011",
+      "notion": "parcours-largeur",
+      "recto": "Dans quel ordre le parcours en largeur visite-t-il les nœuds ?",
+      "verso": "Niveau par niveau, chaque niveau de gauche à droite.",
+      "source": "notion Parcours en largeur"
+    }
+  ]
+}

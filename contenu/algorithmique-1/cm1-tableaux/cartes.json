@@ -1,0 +1,75 @@
+{
+  "seance": "cm1-tableaux",
+  "cartes": [
+    {
+      "id": "c-cm1-tableaux-001",
+      "notion": "tri-a-bulles",
+      "recto": "Tri à bulles (compare les voisins et les échange si besoin) : quel élément est en place après chaque passage ?",
+      "verso": "Le plus grand des éléments restants, en position fin + 1.",
+      "source": "annale 2024-2025 ex. 1 Q2"
+    },
+    {
+      "id": "c-cm1-tableaux-002",
+      "notion": "tri-a-bulles",
+      "recto": "Tri à bulles : à quelle condition peut-on s'arrêter avant d'avoir fait tous les passages ?",
+      "verso": "Quand un passage entier n'a fait aucun échange.",
+      "source": "annale 2024-2025 ex. 1 (énoncé de mystere)"
+    },
+    {
+      "id": "c-cm1-tableaux-003",
+      "notion": "complexite",
+      "recto": "Tri à bulles sur un tableau de n éléments : coût du meilleur cas en comparaisons, et quel tableau l'atteint ?",
+      "verso": "n - 1 : tableau déjà trié (un seul passage, sans échange).",
+      "source": "annale 2024-2025 ex. 1 Q3-Q5"
+    },
+    {
+      "id": "c-cm1-tableaux-004",
+      "notion": "complexite",
+      "recto": "Tri à bulles sur n éléments : coût du pire cas en comparaisons, et quel tableau l'atteint ?",
+      "verso": "n(n-1)/2 : tableau en ordre décroissant (ex. 5 4 3 2 1).",
+      "source": "annale 2024-2025 ex. 1 Q3-Q5"
+    },
+    {
+      "id": "c-cm1-tableaux-005",
+      "notion": "complexite",
+      "recto": "Avant de donner la formule d'un coût, que faut-il toujours préciser ?",
+      "verso": "Ce qu'on compte (accès aux cases, comparaisons...).",
+      "source": "TD1, méthode rapide et erreurs fréquentes"
+    },
+    {
+      "id": "c-cm1-tableaux-006",
+      "notion": "recherche-sequentielle",
+      "recto": "rechercheElement (cherche x dans un tableau en le parcourant case par case) : coût maximal, atteint dans quels cas ?",
+      "verso": "taille : x absent ou en dernière position.",
+      "source": "TD1 ex. 3 Q1-Q2"
+    },
+    {
+      "id": "c-cm1-tableaux-007",
+      "notion": "recherche-sequentielle",
+      "recto": "rechercheElement (cherche x dans un tableau en le parcourant case par case) : que retourne-t-elle si x est absent ?",
+      "verso": "-1 (on sort de la boucle avec i = taille).",
+      "source": "TD1 ex. 3 Q1-Q2"
+    },
+    {
+      "id": "c-cm1-tableaux-008",
+      "notion": "recherche-dichotomique",
+      "recto": "Quelle condition doit remplir le tableau pour qu'on puisse y chercher par dichotomie ?",
+      "verso": "Il doit être trié.",
+      "source": "CM1 chapitre, carte du chapitre (Dichotomie : tableau trié)"
+    },
+    {
+      "id": "c-cm1-tableaux-009",
+      "notion": "recherche-dichotomique",
+      "recto": "Dichotomie : quelle erreur sur la mise à jour de g ou d provoque une boucle infinie ?",
+      "verso": "Oublier d'exclure m : g = m + 1 ou d = m - 1.",
+      "source": "TD1 erreurs fréquentes (dichotomie)"
+    },
+    {
+      "id": "c-cm1-tableaux-010",
+      "notion": "partition-avec-pivot",
+      "recto": "partition (range un tableau autour d'un pivot) : combien de tours de boucle sur n éléments, selon le contenu ?",
+      "verso": "n - 1 tours, quel que soit le tableau.",
+      "source": "TD1 ex. 4 Q2-Q3"
+    }
+  ]
+}

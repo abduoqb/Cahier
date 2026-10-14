@@ -1,0 +1,75 @@
+{
+  "seance": "cm3-listes-deux-pointeurs",
+  "cartes": [
+    {
+      "id": "c-cm3-listes-deux-pointeurs-001",
+      "notion": "liste-deux-pointeurs",
+      "recto": "Quels sont les deux champs de la structure liste2 ?",
+      "verso": "premier et dernier : deux pointeurs sur nœud.",
+      "source": "CM3 chapitre, section Liste à deux pointeurs"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-002",
+      "notion": "liste-deux-pointeurs",
+      "recto": "Liste à deux pointeurs : coût de l'insertion en fin, et de la suppression en fin ?",
+      "verso": "Insertion O(1) ; suppression O(n).",
+      "source": "CM3 chapitre, tableau des coûts"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-003",
+      "notion": "liste-deux-pointeurs",
+      "recto": "Quel cas oublie-t-on souvent lorsqu'on supprime le seul nœud d'une liste à deux pointeurs ?",
+      "verso": "Remettre aussi dernier à jour (None).",
+      "source": "CM3 chapitre, section Liste à deux pointeurs (avertissement) ; condense.md, tableau des pièges"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-004",
+      "notion": "liste-doublement-chainee",
+      "recto": "Quels sont les trois champs d'un nœud d'une liste doublement chaînée ?",
+      "verso": "precedent, valeur, suivant.",
+      "source": "CM3 chapitre, section Liste doublement chaînée"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-005",
+      "notion": "liste-doublement-chainee",
+      "recto": "Insertion en tête d'une liste doublement chaînée : quel test évite une erreur sur l'ancienne tête ?",
+      "verso": "Tester L ≠ None avant de faire L->precedent = tmp.",
+      "source": "CM3 chapitre, section Liste doublement chaînée"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-006",
+      "notion": "liste-doublement-chainee",
+      "recto": "Liste doublement chaînée sans pointeur dernier : coût de l'insertion en fin ?",
+      "verso": "O(n) ; O(1) si l'on garde un pointeur sur le dernier.",
+      "source": "CM3 chapitre, tableau des coûts (note *)"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-007",
+      "notion": "liste-circulaire",
+      "recto": "Dans une liste circulaire, sur quel nœud pointe L, et où se trouve le premier ?",
+      "verso": "L pointe sur le dernier ; le premier est L->suivant.",
+      "source": "CM3 chapitre, section Liste circulaire"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-008",
+      "notion": "liste-circulaire",
+      "recto": "Liste circulaire : quelle opération reste en O(n) parmi début/fin, insertion/suppression ?",
+      "verso": "La suppression en fin (trouver l'avant-dernier).",
+      "source": "CM3 chapitre, tableau des coûts"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-009",
+      "notion": "fusion-listes-triees",
+      "recto": "Fusion de deux listes triées : que compare-t-on à chaque étape, et que fait-on des doublons ?",
+      "verso": "Les deux têtes ; on recopie la plus petite, doublons conservés.",
+      "source": "Notion Fusion de listes triées ; TD3 ex. 2"
+    },
+    {
+      "id": "c-cm3-listes-deux-pointeurs-010",
+      "notion": "fusion-listes-triees",
+      "recto": "Quel est le coût de la fusion de deux listes triées de n1 et n2 nœuds ?",
+      "verso": "Linéaire : O(n1 + n2).",
+      "source": "Notion Fusion de listes triées ; TD3 ex. 2 Q1"
+    }
+  ]
+}

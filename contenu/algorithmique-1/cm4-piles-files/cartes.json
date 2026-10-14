@@ -1,0 +1,75 @@
+{
+  "seance": "cm4-piles-files",
+  "cartes": [
+    {
+      "id": "c-cm4-piles-files-001",
+      "notion": "pile",
+      "recto": "Quel élément ressort en premier d'une pile ?",
+      "verso": "Le dernier empilé (LIFO).",
+      "source": "CM4 chapitre, section Pile vs file"
+    },
+    {
+      "id": "c-cm4-piles-files-002",
+      "notion": "file",
+      "recto": "Traiter des éléments dans leur ordre d'arrivée : pile ou file ?",
+      "verso": "Une file (FIFO).",
+      "source": "TD4 méthode rapide"
+    },
+    {
+      "id": "c-cm4-piles-files-003",
+      "notion": "pile",
+      "recto": "pileVide (vrai si la pile n'a aucun élément) : pourquoi la tester avant sommet ou depiler ?",
+      "verso": "Ces fonctions supposent une pile non vide.",
+      "source": "CM4 chapitre, encadré Pile vs file ; TD4 Méthode rapide"
+    },
+    {
+      "id": "c-cm4-piles-files-004",
+      "notion": "pile",
+      "recto": "Pile par tableau avec P[0] = nombre d'éléments : à quel indice se lit le sommet ?",
+      "verso": "En P[P[0]].",
+      "source": "CM4 chapitre, section Pile avec un tableau"
+    },
+    {
+      "id": "c-cm4-piles-files-005",
+      "notion": "pile",
+      "recto": "Pile par tableau : pourquoi au plus maxPile - 1 éléments, et non maxPile ?",
+      "verso": "La case P[0] sert de compteur.",
+      "source": "CM4 chapitre, section Pile avec un tableau, Q3 de vérification"
+    },
+    {
+      "id": "c-cm4-piles-files-006",
+      "notion": "file",
+      "recto": "File par liste circulaire : pourquoi pointer sur le dernier nœud plutôt que sur le premier ?",
+      "verso": "Premier = F->suivant, et on insère après le dernier : O(1).",
+      "source": "TD4 ex. 3 Q1-Q2"
+    },
+    {
+      "id": "c-cm4-piles-files-007",
+      "notion": "file",
+      "recto": "Liste à deux pointeurs : quelle opération reste en O(n), et pourquoi ne gêne-t-elle pas une file ?",
+      "verso": "Suppression en fin ; une file n'en a pas besoin.",
+      "source": "TD4 ex. 4 Q1-Q4"
+    },
+    {
+      "id": "c-cm4-piles-files-008",
+      "notion": "bon-parenthesage",
+      "recto": "Texte à un seul type de parenthèse, avec une pile : quels sont les deux cas d'échec ?",
+      "verso": "Fermante sur pile vide ; pile non vide à la fin.",
+      "source": "CM4 chapitre, section Deux applications de cours"
+    },
+    {
+      "id": "c-cm4-piles-files-009",
+      "notion": "pile-appels",
+      "recto": "Afficher une liste à l'envers avec une pile : que fait-on à l'aller, puis au retour ?",
+      "verso": "Aller : on empile ; retour : on affiche le sommet et on dépile.",
+      "source": "TD4 ex. 2 Q3"
+    },
+    {
+      "id": "c-cm4-piles-files-010",
+      "notion": "tours-de-hanoi",
+      "recto": "Tours de Hanoï à n disques : nombre minimal de déplacements ?",
+      "verso": "2^n - 1.",
+      "source": "CM4 chapitre, section Deux applications de cours"
+    }
+  ]
+}

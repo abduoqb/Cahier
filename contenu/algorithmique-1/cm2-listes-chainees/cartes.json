@@ -1,0 +1,75 @@
+{
+  "seance": "cm2-listes-chainees",
+  "cartes": [
+    {
+      "id": "c-cm2-listes-chainees-001",
+      "notion": "liste-chainee",
+      "recto": "Comment représente-t-on la liste vide, et que vaut suivant du dernier nœud ?",
+      "verso": "None dans les deux cas.",
+      "source": "CM2 chapitre, section 1 (définition)"
+    },
+    {
+      "id": "c-cm2-listes-chainees-002",
+      "notion": "pointeur",
+      "recto": "A pointe sur un objet. Après B = A, B désigne quoi ?",
+      "verso": "Le même objet que A : copie d'adresse, pas de valeur.",
+      "source": "CM2 chapitre, section 2 (copie d'adresse ≠ copie de valeur)"
+    },
+    {
+      "id": "c-cm2-listes-chainees-003",
+      "notion": "pointeur",
+      "recto": "Pourquoi écrire R-> = 3.21 sans avoir fait Nouveau est-il une erreur ?",
+      "verso": "R ne désigne aucun objet alloué.",
+      "source": "CM2 chapitre, questions de vérification (Q2)"
+    },
+    {
+      "id": "c-cm2-listes-chainees-004",
+      "notion": "liste-chainee",
+      "recto": "Coût de l'insertion d'une valeur en début de liste ? Et de la suppression du dernier nœud ?",
+      "verso": "Début : O(1). Suppression du dernier : O(n).",
+      "source": "CM2 chapitre, section 3 (opérations de base)"
+    },
+    {
+      "id": "c-cm2-listes-chainees-005",
+      "notion": "parcours-liste",
+      "recto": "Pourquoi une fonction qui peut changer le premier nœud doit-elle retourner la liste ?",
+      "verso": "L'appelant doit récupérer la nouvelle tête : L = f(L, x).",
+      "source": "TD2, méthode rapide et erreurs fréquentes"
+    },
+    {
+      "id": "c-cm2-listes-chainees-006",
+      "notion": "parcours-liste",
+      "recto": "retour_point_depart (Vrai dès qu'on repasse par (0,0) en suivant les déplacements) : coût minimal ?",
+      "verso": "2 nœuds visités : il faut au moins deux déplacements.",
+      "source": "annale 2024-2025 ex. 2 Q3"
+    },
+    {
+      "id": "c-cm2-listes-chainees-007",
+      "notion": "construire-liste",
+      "recto": "Construction itérative d'une liste en sortie : à quel moment le nouveau nœud devient-il la tête ?",
+      "verso": "Quand la liste est vide (premier nœud gardé) ; sinon on l'accroche après la queue.",
+      "source": "annale 2024-2025 ex. 2 Q5 ; TD2 méthode rapide"
+    },
+    {
+      "id": "c-cm2-listes-chainees-008",
+      "notion": "construire-liste",
+      "recto": "Comment obtenir une copie à l'envers d'une liste ?",
+      "verso": "Insérer ses valeurs en début, une à une.",
+      "source": "CM2 chapitre, section 3 (inversion)"
+    },
+    {
+      "id": "c-cm2-listes-chainees-009",
+      "notion": "recursivite",
+      "recto": "Quel est le test du cas de base dans un traitement récursif de liste ?",
+      "verso": "L = None.",
+      "source": "TD2, méthode rapide"
+    },
+    {
+      "id": "c-cm2-listes-chainees-010",
+      "notion": "recursivite",
+      "recto": "copiePairs (copie dans une nouvelle liste les valeurs paires) : pourquoi tester mod 2 = 0 plutôt que mod 2 = 1 ?",
+      "verso": "Pour un négatif, x mod 2 peut valoir -1 selon la convention.",
+      "source": "TD2 Q10 (remarque)"
+    }
+  ]
+}
