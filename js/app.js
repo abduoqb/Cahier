@@ -2,7 +2,7 @@ import { Store } from './store.js';
 import { renderDashboard } from './dashboard.js?v=16';
 import { renderSubject } from './subject.js?v=7';
 import { toast } from './utils.js?v=6';
-import { renderSeance } from './seance.js';
+import { renderSeance } from './seance.js?v=2';
 import { renderAujourdhui } from './today.js';
 
 // ===== UI Helpers =====

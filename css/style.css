@@ -803,3 +803,17 @@ a { color: inherit; }
 .today-titre { margin: 0 0 4px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; font-size: 22px; }
 .today-card p, .today-intro { margin: 0; color: var(--ink-soft, #4c4239); }
 .today-intro { margin-bottom: 14px; }
+
+/* Cartes (flashcards) */
+.carte { padding: 22px 26px; border: 1px solid var(--line, #ebe1cf); border-radius: 18px; background: var(--surface, #fbf7ec); }
+.carte-seance { margin: 12px 0 0; color: var(--muted, #877c6d); font-size: 13px; }
+.carte-recto { margin: 18px 0; font-family: var(--font-display, Georgia, serif); font-size: 21px; line-height: 1.4; color: var(--ink, #1c1815); }
+.carte-verso { margin: 0 0 18px; padding: 14px 18px; border-left: 3px solid var(--accent, #c0492a); border-radius: 10px; background: var(--paper-shade, #efe7d3); }
+.carte-reponse { margin: 0 0 6px; font-weight: 600; }
+.carte-actions, .today-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.carte kbd { margin-left: 6px; padding: 0 5px; border: 1px solid currentColor; border-radius: 4px; font-size: 11px; font-family: inherit; opacity: .7; }
+@media (max-width: 560px) {
+    .today-card { flex-direction: column; align-items: stretch; }
+    .carte { padding: 18px; }
+    .carte-recto { font-size: 18px; }
+}
