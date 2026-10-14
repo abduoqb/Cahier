@@ -120,3 +120,14 @@ Les tests roulent sur des clés séparées (`_test_*`) — tes données réelles
 ## Licence
 
 Usage personnel. Projet étudiant en développement.
+
+## Lancer le site (séances et quiz)
+
+Le contenu de `contenu/` est lu par `fetch`, donc le site doit être servi en HTTP :
+
+    python -m http.server 8000
+
+puis ouvrir http://localhost:8000. Vérifier le contenu : `node tools/check_contenu.js contenu`. Tests : `node --test tests/*.test.js`.
+Les PDF des profs (`contenu/**/support.pdf`) ne sont pas versionnés.
+La progression des quiz (clé `cahier.progress.v1`) reste dans le navigateur et n'est pas incluse dans l'export ZIP.
+La liste des séances apparaît sous une matière dont le nom, mis en minuscules sans accents ni espaces, correspond à l'id de `contenu/index.json` (ex. « Algorithmique 1 » -> `algorithmique-1`).

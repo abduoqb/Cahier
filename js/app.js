@@ -1,7 +1,9 @@
 import { Store } from './store.js';
-import { renderDashboard } from './dashboard.js?v=15';
-import { renderSubject } from './subject.js?v=6';
+import { renderDashboard } from './dashboard.js?v=16';
+import { renderSubject } from './subject.js?v=7';
 import { toast } from './utils.js?v=6';
+import { renderSeance } from './seance.js';
+import { renderAujourdhui } from './today.js';
 
 // ===== UI Helpers =====
 
@@ -37,6 +39,12 @@ function route() {
         const id = hash.split('/')[2];
         if (id) renderSubject(id);
         else renderDashboard();
+    } else if (hash.startsWith('#/seance/')) {
+        const [, , matiere, seance] = hash.split('/');
+        if (matiere && seance) renderSeance(decodeURIComponent(matiere), decodeURIComponent(seance));
+        else renderDashboard();
+    } else if (hash === '#/aujourdhui') {
+        renderAujourdhui();
     } else {
         renderDashboard();
     }

@@ -1,0 +1,155 @@
+{
+  "seance": "cm3-listes-deux-pointeurs",
+  "questions": [
+    {
+      "id": "q-cm3-listes-deux-pointeurs-001",
+      "notion": "liste-deux-pointeurs",
+      "type": "qcm",
+      "enonce": "Pourquoi la suppression en fin reste-t-elle en O(n) même avec un pointeur dernier ?",
+      "choix": [
+        "Parce qu'il faut recopier toute la liste",
+        "Parce que dernier n'est pas mis à jour",
+        "Elle est en O(1) avec un pointeur dernier",
+        "Il faut atteindre l'avant-dernier nœud"
+      ],
+      "bonne": 3,
+      "explication": "Mettre à None le suivant de l'avant-dernier oblige à parcourir la liste depuis le premier nœud.",
+      "source": "CM3 chapitre, Questions de vérification 1 et tableau des coûts ; TD4 ex. 4 Q1-Q4"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-002",
+      "notion": "liste-deux-pointeurs",
+      "type": "qcm",
+      "enonce": "insereEnFin ajoute une valeur à la fin d'une liste à deux pointeurs (L.premier et L.dernier). Si la liste est vide (L.premier = None), quels champs faut-il mettre à jour ?",
+      "choix": [
+        "Seulement L.dernier, qui reçoit le nouveau nœud",
+        "L.premier et L.dernier, sur le nouveau nœud",
+        "Seulement L.premier, qui reçoit le nouveau nœud",
+        "On écrit L.dernier->suivant = tmp, sans autre mise à jour"
+      ],
+      "bonne": 1,
+      "explication": "La liste vide n'a pas de dernier nœud : le nouveau nœud devient à la fois le premier et le dernier.",
+      "source": "CM3 chapitre, section Liste à deux pointeurs ; TD4 ex. 4"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-003",
+      "notion": "liste-doublement-chainee",
+      "type": "qcm",
+      "enonce": "Insertion en tête dans une liste doublement chaînée non vide L : quelles mises à jour sont nécessaires ?",
+      "choix": [
+        "Le precedent de tous les nœuds de la liste",
+        "Seulement L->precedent = tmp, sans lier tmp à L",
+        "tmp->suivant = L et L->precedent = tmp",
+        "Seulement tmp->suivant = L, qui suffit pour relier"
+      ],
+      "bonne": 2,
+      "explication": "Il faut mettre à jour les deux sens : le nouveau nœud pointe sur L et L pointe en arrière sur lui.",
+      "source": "CM3 chapitre, section Liste doublement chaînée"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-004",
+      "notion": "liste-doublement-chainee",
+      "type": "qcm",
+      "enonce": "Insérer nv entre tmp et tmp->suivant (non None) : quel jeu d'instructions est complet ?",
+      "choix": [
+        "nv->suivant, puis tmp->suivant ; les deux precedent restent inchangés",
+        "nv->precedent, puis tmp->suivant ; le voisin suivant n'est pas touché",
+        "nv->suivant et nv->precedent ; tmp et son voisin suivant sont inchangés",
+        "nv->suivant, nv->precedent, tmp->suivant->precedent et tmp->suivant"
+      ],
+      "bonne": 3,
+      "explication": "Oublier le precedent du nœud suivant est l'erreur classique : les quatre liens doivent être mis à jour.",
+      "source": "TD3 ex. 4 Q3 et section Erreurs fréquentes"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-005",
+      "notion": "liste-doublement-chainee",
+      "type": "qcm",
+      "enonce": "Qu'apporte une liste doublement chaînée par rapport à une liste simple ?",
+      "choix": [
+        "Une suppression en fin en O(1) sans rien ajouter",
+        "Une insertion en fin en O(1) sans rien ajouter",
+        "Le retour en arrière, grâce au champ precedent",
+        "Moins de mémoire par nœud"
+      ],
+      "bonne": 2,
+      "explication": "Le tableau des coûts ne lui donne en plus que le retour en arrière (✓) ; en fin il faut un pointeur sur le dernier.",
+      "source": "CM3 chapitre, tableau des coûts"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-006",
+      "notion": "liste-circulaire",
+      "type": "qcm",
+      "enonce": "Pourquoi pointer sur le dernier nœud d'une liste circulaire plutôt que sur le premier ?",
+      "choix": [
+        "Pour économiser un champ suivant dans chaque nœud de la liste",
+        "Le premier est L->suivant : début et fin en O(1)",
+        "Pour pouvoir remonter en arrière comme avec un champ precedent",
+        "Parce que la liste est alors toujours triée par valeurs"
+      ],
+      "bonne": 1,
+      "explication": "Pointer sur le dernier donne accès au premier par L->suivant, donc aux deux extrémités en O(1).",
+      "source": "CM3 chapitre, section Liste circulaire et Questions de vérification 2"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-007",
+      "notion": "liste-circulaire",
+      "type": "qcm",
+      "enonce": "Dans une liste circulaire (pointeur L sur le dernier nœud), insertionCirculaireDebut ajoute une valeur au début. Comment obtient-on insertionCirculaireFin, qui ajoute à la fin, à partir d'elle ?",
+      "choix": [
+        "On insère en début puis on retourne L->suivant",
+        "On parcourt toute la liste jusqu'au dernier nœud",
+        "On insère en début puis on retourne None",
+        "On insère en début puis on retourne L inchangé"
+      ],
+      "bonne": 0,
+      "explication": "Le nœud inséré en début est le nouveau premier, donc le dernier devient celui-ci en décalant L d'un cran.",
+      "source": "CM3 chapitre, section Liste circulaire"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-008",
+      "notion": "liste-circulaire",
+      "type": "qcm",
+      "enonce": "Dans une liste circulaire (pointeur L sur le dernier) à un seul nœud, que vaut L->suivant ?",
+      "choix": [
+        "L->precedent",
+        "None",
+        "Un nœud factice",
+        "L lui-même"
+      ],
+      "bonne": 3,
+      "explication": "Avec un seul nœud, il est à la fois le premier et le dernier, donc son suivant est lui-même.",
+      "source": "CM3 chapitre, section Liste circulaire"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-009",
+      "notion": "fusion-listes-triees",
+      "type": "qcm",
+      "enonce": "Fusion des listes triées 1,3,7,7,11 et 2,3,4,8,12 : quel est le résultat ?",
+      "choix": [
+        "1, 2, 3, 4, 7, 8, 11, 12",
+        "1, 2, 3, 3, 4, 7, 7, 8, 11, 12",
+        "1, 2, 3, 3, 4, 7, 8, 11, 12",
+        "1, 3, 7, 7, 11, 2, 3, 4, 8, 12"
+      ],
+      "bonne": 1,
+      "explication": "Les doublons sont conservés (dix valeurs au total) et le résultat reste trié.",
+      "source": "TD3 ex. 2 (énoncé et correction)"
+    },
+    {
+      "id": "q-cm3-listes-deux-pointeurs-010",
+      "notion": "fusion-listes-triees",
+      "type": "qcm",
+      "enonce": "Fusion de deux listes triées de n1 et n2 nœuds : combien de comparaisons au plus ?",
+      "choix": [
+        "n1 + n2 + 1",
+        "n1 + n2 - 1",
+        "max(n1, n2)",
+        "n1 x n2"
+      ],
+      "bonne": 1,
+      "explication": "On crée n1 + n2 nœuds et on compare au plus n1 + n2 - 1 fois : coût linéaire.",
+      "source": "TD3 ex. 2 Q1"
+    }
+  ]
+}

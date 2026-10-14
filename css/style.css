@@ -756,3 +756,50 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* ===== Séances et quiz ===== */
+.seance { max-width: 820px; margin: 0 auto; }
+.seance-titre { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; font-size: 30px; margin: 12px 0 20px; }
+.seance-rappel { padding: 22px 26px; border: 1px solid var(--line, #ebe1cf); border-radius: 18px; background: var(--surface, #fbf7ec); }
+.seance-rappel p { margin: 0 0 14px; }
+.seance-onglets { display: flex; gap: 8px; margin-bottom: 18px; }
+.seance-onglet { padding: 8px 16px; border: 1px solid var(--line, #ebe1cf); border-radius: 100px; background: transparent; color: var(--ink-soft, #4c4239); font: inherit; cursor: pointer; }
+.seance-onglet.is-actif { color: #fff; border-color: var(--accent, #c0492a); background: var(--accent, #c0492a); }
+.seance-pdf { margin-bottom: 18px; }
+.seance-pdf iframe { width: 100%; height: 70vh; margin-top: 10px; border: 1px solid var(--line, #ebe1cf); border-radius: 12px; }
+.seance-md { line-height: 1.65; }
+.seance-md img { max-width: 100%; }
+.seance-md pre { overflow-x: auto; padding: 14px 16px; border-radius: 12px; background: var(--paper-shade, #efe7d3); }
+.seance-md table { border-collapse: collapse; }
+.seance-md th, .seance-md td { padding: 6px 12px; border: 1px solid var(--line, #ebe1cf); }
+.seance-erreur, .quiz-vide { padding: 18px 22px; border: 1px solid var(--line, #ebe1cf); border-radius: 14px; background: var(--surface, #fbf7ec); }
+.quiz { padding: 22px 26px; border: 1px solid var(--line, #ebe1cf); border-radius: 18px; background: var(--surface, #fbf7ec); }
+.quiz-top { display: flex; align-items: center; gap: 14px; color: var(--muted, #877c6d); font-size: 13px; }
+.quiz-bar { flex: 1; height: 6px; overflow: hidden; border-radius: 100px; background: var(--paper-shade, #efe7d3); }
+.quiz-bar > i { display: block; height: 100%; background: var(--accent, #c0492a); }
+.quiz-enonce { margin: 18px 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 21px; }
+.quiz-choix { display: grid; gap: 10px; }
+.quiz-choix-btn { padding: 12px 16px; text-align: left; border: 1px solid var(--line, #ebe1cf); border-radius: 12px; background: var(--paper, #f7f2e7); color: inherit; font: inherit; cursor: pointer; }
+.quiz-choix-btn:hover:not(:disabled) { border-color: var(--accent, #c0492a); }
+.quiz-choix-btn.is-bonne { border-color: #3a7d44; background: #e5f1e6; }
+.quiz-choix-btn.is-fausse { border-color: var(--accent, #c0492a); background: #f6e1da; }
+.quiz-retour { margin-top: 16px; }
+.quiz-verdict.ok { color: #3a7d44; font-weight: 600; }
+.quiz-verdict.ko { color: var(--accent, #c0492a); font-weight: 600; }
+.quiz-source { color: var(--muted, #877c6d); font-size: 12.5px; }
+.quiz-actions { display: flex; gap: 10px; }
+.seances-section { margin: 0 0 28px; }
+.seances-titre { margin: 0 0 12px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; font-size: 22px; }
+.seances-liste { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.seance-ligne { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: inherit; text-decoration: none; border: 1px solid var(--line, #ebe1cf); border-radius: 12px; background: var(--surface, #fbf7ec); }
+.seance-ligne:hover { border-color: var(--accent, #c0492a); }
+.seance-type { min-width: 34px; color: var(--accent, #c0492a); font-weight: 700; font-size: 13px; }
+.seance-nom { flex: 1; font-weight: 500; }
+.seance-etat { padding: 2px 10px; border-radius: 100px; background: var(--paper-shade, #efe7d3); color: var(--ink-soft, #4c4239); font-size: 12px; }
+.seance-etat.etat-acquise { background: #e5f1e6; color: #3a7d44; }
+.seance-etat.etat-a-revoir { background: #f6e1da; color: var(--accent, #c0492a); }
+
+.today-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 0 0 24px; padding: 20px 26px; border: 1px solid var(--line, #ebe1cf); border-radius: 18px; background: var(--surface, #fbf7ec); }
+.today-titre { margin: 0 0 4px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 500; font-size: 22px; }
+.today-card p, .today-intro { margin: 0; color: var(--ink-soft, #4c4239); }
+.today-intro { margin-bottom: 14px; }

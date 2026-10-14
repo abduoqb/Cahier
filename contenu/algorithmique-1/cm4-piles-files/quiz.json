@@ -1,0 +1,170 @@
+{
+  "seance": "cm4-piles-files",
+  "questions": [
+    {
+      "id": "q-cm4-piles-files-001",
+      "notion": "pile",
+      "type": "qcm",
+      "enonce": "Pile implémentée par une liste simple (sommet = premier nœud) : empiler ajoute un élément au sommet, depiler retire le sommet. Quel est le coût de chacune ?",
+      "choix": [
+        "empiler en O(1), depiler en O(n)",
+        "Les deux en O(1)",
+        "Les deux en O(n)",
+        "empiler en O(n), depiler en O(1)"
+      ],
+      "bonne": 1,
+      "explication": "Empiler et dépiler se font au début de la liste, en un nombre constant d'opérations.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts"
+    },
+    {
+      "id": "q-cm4-piles-files-002",
+      "notion": "pile",
+      "type": "qcm",
+      "enonce": "Dans depiler (pile par liste chaînée, qui retire le sommet P et retourne le reste de la pile), pourquoi lire tmp = P->suivant avant désallouer(P) ?",
+      "choix": [
+        "Parce que désallouer retourne le suivant du nœud",
+        "Pour éviter une division par zéro lors du dépilage",
+        "P->suivant n'est plus lisible après désallouer",
+        "Pour tester si la pile est vide avant de dépiler"
+      ],
+      "bonne": 2,
+      "explication": "On ne peut pas retourner P->suivant après avoir désalloué le nœud P.",
+      "source": "CM4 chapitre, section Pile avec une liste chaînée"
+    },
+    {
+      "id": "q-cm4-piles-files-003",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "File implémentée par un tableau (T[0] = nombre d'éléments) : quelle opération est coûteuse ?",
+      "choix": [
+        "Aucune, tout est en O(1) grâce à l'indexation",
+        "defiler, en O(n) par décalage à gauche",
+        "tete, en O(n) car il faut chercher le premier",
+        "enfiler, en O(n) à cause d'un parcours jusqu'à la fin"
+      ],
+      "bonne": 1,
+      "explication": "Retirer le premier élément oblige à décaler tous les autres vers la gauche.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts"
+    },
+    {
+      "id": "q-cm4-piles-files-004",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "Pourquoi la liste simple (pointeur sur le premier nœud) est-elle mal adaptée à une file ?",
+      "choix": [
+        "enfiler (insertion en fin) y coûte O(n)",
+        "Elle est limitée par une capacité maximale",
+        "defiler y coûte O(n)",
+        "On ne peut pas y lire la tête"
+      ],
+      "bonne": 0,
+      "explication": "Trouver le dernier nœud demande de parcourir la liste ; la liste à deux pointeurs ou circulaire règle cela.",
+      "source": "CM4 chapitre, tableau Implémentations et coûts ; TD4 ex. 3 Q1-Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-005",
+      "notion": "file",
+      "type": "qcm",
+      "enonce": "File par liste circulaire (pointeur sur le dernier nœud) : enfiler(F, x) ajoute x à la fin de la file. Que retourne-t-elle ?",
+      "choix": [
+        "Le premier nœud, F->suivant, après l'ajout",
+        "L'ancien F, resté pointeur sur le dernier",
+        "None, puisque la file est vide après",
+        "Le nouveau nœud tmp, le nouveau dernier"
+      ],
+      "bonne": 3,
+      "explication": "Retourner F au lieu de tmp laisse l'ancien dernier : l'ordre de la file devient faux.",
+      "source": "TD4 ex. 3 Q3 et section Erreurs fréquentes"
+    },
+    {
+      "id": "q-cm4-piles-files-006",
+      "notion": "bon-parenthesage",
+      "type": "qcm",
+      "enonce": "Pourquoi un simple compteur ne suffit-il plus avec deux types de parenthèses, par exemple « ( { ) } » ?",
+      "choix": [
+        "Il faut mémoriser le type de la dernière ouvrante, d'où une pile",
+        "Un compteur ne peut pas dépasser la valeur 2 sans déborder",
+        "Les accolades ne peuvent pas être comptées par un compteur entier",
+        "Ce texte est en fait bien parenthésé, 2 ouvrantes et 2 fermantes"
+      ],
+      "bonne": 0,
+      "explication": "Le compteur voit 2 ouvrantes et 2 fermantes, mais la parenthèse ) ferme un { donc le texte est mal parenthésé.",
+      "source": "TD4 ex. 1 Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-007",
+      "notion": "bon-parenthesage",
+      "type": "qcm",
+      "enonce": "bienParenthese vérifie qu'une chaîne est bien parenthésée (une pile, un seul type de parenthèse) : elle empile chaque ouvrante et dépile à chaque fermante. Que retourne-t-on après la boucle ?",
+      "choix": [
+        "Vrai",
+        "Faux",
+        "non pileVide(P)",
+        "pileVide(P)"
+      ],
+      "bonne": 3,
+      "explication": "Une pile non vide signifie qu'il reste des ouvrantes sans fermante ; l'autre erreur (fermante en trop) est détectée dans la boucle.",
+      "source": "CM4 chapitre, section Deux applications de cours"
+    },
+    {
+      "id": "q-cm4-piles-files-008",
+      "notion": "pile-appels",
+      "type": "qcm",
+      "enonce": "affichageInverseRec affiche les valeurs d'une liste à l'envers, par récursion. Appelée sur la liste 1 -> 2 -> 3, que s'affiche-t-il ?",
+      "choix": [
+        "1",
+        "3 2 1",
+        "3",
+        "1 2 3"
+      ],
+      "bonne": 1,
+      "explication": "L'affichage a lieu au retour des appels : les contextes sont dépilés dans l'ordre inverse.",
+      "source": "TD4 ex. 2 Q1-Q2"
+    },
+    {
+      "id": "q-cm4-piles-files-009",
+      "notion": "pile-appels",
+      "type": "qcm",
+      "enonce": "affichageInverseIt fait la même chose que affichageInverseRec (afficher une liste à l'envers) sans récursion, avec une pile. Quelle est la structure de l'algorithme ?",
+      "choix": [
+        "Dépiler d'abord la pile, puis empiler la liste entière",
+        "Une seule boucle qui affiche sans empiler",
+        "Afficher chaque valeur en l'empilant, puis dépiler pour finir",
+        "Empiler toutes les valeurs, puis dépiler en affichant"
+      ],
+      "bonne": 3,
+      "explication": "La phase de descente empile les valeurs, la phase de retour affiche sommet(P) puis dépile.",
+      "source": "TD4 ex. 2 Q3"
+    },
+    {
+      "id": "q-cm4-piles-files-010",
+      "notion": "tours-de-hanoi",
+      "type": "qcm",
+      "enonce": "Combien de déplacements au minimum pour 4 disques aux Tours de Hanoï ?",
+      "choix": [
+        "16",
+        "31",
+        "15",
+        "8"
+      ],
+      "bonne": 2,
+      "explication": "Le minimum est 2^n - 1, soit 2^4 - 1 = 15.",
+      "source": "CM4 chapitre, section Deux applications de cours ; notion Tours de Hanoï"
+    },
+    {
+      "id": "q-cm4-piles-files-011",
+      "notion": "tours-de-hanoi",
+      "type": "qcm",
+      "enonce": "Quelle est l'idée récursive de la résolution des Tours de Hanoï ?",
+      "choix": [
+        "Le grand disque d'abord sur la tour auxiliaire, puis les autres sur la cible",
+        "Trier les disques par taille avant de les déplacer sur la cible",
+        "Déplacer les disques un par un, dans n'importe quel ordre, sur la cible",
+        "n-1 disques sur l'auxiliaire, le grand sur la cible, puis les n-1 dessus"
+      ],
+      "bonne": 3,
+      "explication": "Cela donne T(n) = 2T(n-1) + 1, soit 2^n - 1 déplacements.",
+      "source": "notion Tours de Hanoï"
+    }
+  ]
+}

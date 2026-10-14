@@ -13,3 +13,11 @@ node_modules/
 
 # Misc
 *.log
+
+# eCampus snapshots (donnees de session, ne jamais commiter)
+tools/snapshots/
+tools/.chrome-profile/
+.env
+
+# Supports PDF des profs (droits : ne jamais commiter)
+contenu/**/support.pdf

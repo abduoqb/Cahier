@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" width="640" height="240" role="img" aria-label="A et B pointent sur le même objet, C sur une copie">
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+<marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+</defs>
+<rect width="640" height="240" fill="#fff"/>
+<rect x="40" y="30" width="64" height="34" rx="17" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="72.0" y="52.5" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#92400e" text-anchor="middle" font-weight="bold" >A</text>
+<rect x="40" y="90" width="64" height="34" rx="17" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="72.0" y="112.5" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#92400e" text-anchor="middle" font-weight="bold" >B</text>
+<rect x="40" y="170" width="64" height="34" rx="17" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="72.0" y="192.5" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#92400e" text-anchor="middle" font-weight="bold" >C</text>
+<rect x="230" y="55" width="90" height="54" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="275" y="89" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#1e293b" text-anchor="middle" font-weight="bold" >5</text>
+<rect x="230" y="160" width="90" height="54" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+<text x="275" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#1e293b" text-anchor="middle" font-weight="bold" >12</text>
+<line x1="106" y1="47" x2="228" y2="72" stroke="#f59e0b" stroke-width="2" marker-end="url(#o)"/>
+<line x1="106" y1="107" x2="228" y2="94" stroke="#f59e0b" stroke-width="2" marker-end="url(#o)"/>
+<line x1="106" y1="187" x2="228" y2="187" stroke="#f59e0b" stroke-width="2" marker-end="url(#o)"/>
+<text x="340" y="88" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569" text-anchor="start" font-weight="normal" >A et B partagent le même objet</text>
+<text x="340" y="193" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569" text-anchor="start" font-weight="normal" >C a son propre objet (copie de valeur)</text>
+
+</svg>
