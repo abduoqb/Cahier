@@ -6,6 +6,7 @@
 - Sous-requête non corrélée : exécutée une fois ; corrélée : réévaluée pour chaque ligne externe.
 - `x >= ALL (…)` : supérieur ou égal à toutes les valeurs ; `= ANY` équivaut à `IN`.
 - `LEFT JOIN` : garde toute la table de gauche, `NULL` à droite sans correspondance. `UNION` : mêmes colonnes, doublons éliminés.
+- `DELETE` / `UPDATE` sans `WHERE` : toutes les lignes sont touchées ; `DROP TABLE` supprime la table.
 - Division = « pour tous » : `R/S = R[X] − ((R[X] × S) − R)[X]`.
 
 **Patrons à retenir**

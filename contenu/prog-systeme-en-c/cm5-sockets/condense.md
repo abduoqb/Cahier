@@ -1,7 +1,7 @@
 # CM5 — Les sockets, en bref
 
 **Définitions**
-- Socket : descripteur de fichier (système) ; point de communication IP + port + protocole (réseau) ; bidirectionnelle. Fichier `s` de taille 0 en local.
+- Socket : descripteur de fichier (système) ; point de communication IP + port + protocole (réseau) ; bidirectionnelle.
 - Serveur TCP : `socket`, `bind`, `listen`, `accept`, `read/write`, `close`. Client : `socket`, `connect`, `write/read`, `close`.
 - `accept` bloque et renvoie une nouvelle socket de service ; la socket d'écoute reste pour les autres clients.
 - UDP : pas de `listen` / `accept` / `connect` ; `sendto` / `recvfrom` avec l'adresse à chaque appel.

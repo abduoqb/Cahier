@@ -52,10 +52,10 @@
       "type": "qcm",
       "enonce": "Une commande contient plusieurs produits et un produit figure dans plusieurs commandes. Quelle est la clé minimale de DETAIL(RefCom, RefP, Quantité) ?",
       "choix": [
-        "RefCom seul",
+        "L'attribut RefCom seul",
         "Le couple (RefCom, RefP)",
-        "RefP seul",
-        "Quantité"
+        "L'attribut RefP seul",
+        "Le couple (RefP, Quantité)"
       ],
       "bonne": 1,
       "explication": "Ni RefCom seul ni RefP seul ne suffisent à identifier une ligne : la clé est le couple (RefCom, RefP).",
@@ -173,7 +173,7 @@
       "enonce": "Laquelle de ces requêtes se traduit naturellement par une division R / S ?",
       "choix": [
         "Les villes où habite au moins un client",
-        "Les personnes ayant visité toutes les capitales",
+        "Ceux qui ont visité toutes les capitales",
         "Les personnes qui habitent à Caen",
         "Les pays qui n'ont jamais été visités"
       ],

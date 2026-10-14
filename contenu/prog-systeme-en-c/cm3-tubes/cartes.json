@@ -4,8 +4,8 @@
     {
       "id": "c-cm3-tubes-001",
       "notion": "tube-anonyme",
-      "recto": "Tube anonyme créé par pipe : quel descripteur du tableau sert à lire, lequel à écrire ?",
-      "verso": "fd[0] lit, fd[1] écrit.",
+      "recto": "Tube anonyme créé par pipe : quel bout sert à lire, lequel à écrire ?",
+      "verso": "Le premier (indice 0) lit, le second (indice 1) écrit.",
       "source": "CM3 chapitre, section 3"
     },
     {
@@ -53,9 +53,9 @@
     {
       "id": "c-cm3-tubes-008",
       "notion": "dup2",
-      "recto": "dup2(ancien, nouveau) : que devient le descripteur nouveau ?",
+      "recto": "dup2 avec un ancien et un nouveau descripteur : que devient le nouveau ?",
       "verso": "Une copie de ancien (nouveau est fermé d'abord).",
-      "source": "CM3 chapitre, section 4 et 7"
+      "source": "CM3 chapitre, sections 4 et 6"
     },
     {
       "id": "c-cm3-tubes-009",
@@ -69,7 +69,7 @@
       "notion": "memoire-partagee",
       "recto": "Quel est l'avantage et le manque de la mémoire partagée par rapport à un tube ?",
       "verso": "Très rapide, mais aucune synchronisation fournie.",
-      "source": "CM3 chapitre, section 8"
+      "source": "CM3 chapitre, section 7"
     }
   ]
 }

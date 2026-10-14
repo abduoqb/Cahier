@@ -12,7 +12,7 @@
       "id": "c-cm4-sql-suite-002",
       "notion": "agregats-group-by-having",
       "recto": "Quelle différence entre le décompte de toutes les lignes et le décompte d'une colonne A face aux valeurs NULL ?",
-      "verso": "Le décompte des lignes les compte ; celui de la colonne A ignore les NULL.",
+      "verso": "Le décompte des lignes inclut les NULL ; celui de A les ignore.",
       "source": "CM4 notion Agrégat"
     },
     {
@@ -38,14 +38,14 @@
     },
     {
       "id": "c-cm4-sql-suite-006",
-      "notion": "all-any",
+      "notion": "sous-requete",
       "recto": "La comparaison « égal à ANY » d'une sous-requête équivaut à quel opérateur ?",
       "verso": "À IN.",
       "source": "CM4 notion ALL et ANY"
     },
     {
       "id": "c-cm4-sql-suite-007",
-      "notion": "all-any",
+      "notion": "sous-requete",
       "recto": "Comment obtenir le ou les produits les plus chers, ex æquo compris, avec une sous-requête scalaire ou avec ALL ?",
       "verso": "Prix égal au MAX des prix, ou prix supérieur ou égal à ALL les prix.",
       "source": "CM4 chapitre, section Extrema et comparaison"
@@ -70,6 +70,13 @@
       "recto": "Quel mot de l'énoncé signale une division relationnelle, et quelles sont ses deux écritures en SQL ?",
       "verso": "« Tous » ; double NOT IN, ou comptage des distincts égal au total.",
       "source": "CM4 chapitre, section Division en SQL"
+    },
+    {
+      "id": "c-cm4-sql-suite-011",
+      "notion": "modification-donnees",
+      "recto": "Que font DELETE et UPDATE quand on oublie la clause WHERE ?",
+      "verso": "Ils s'appliquent à toutes les lignes de la table.",
+      "source": "CM4 chapitre, section Divers (dernière diapo)"
     }
   ]
 }

@@ -12,6 +12,7 @@
 - Ne pas perdre les lignes « à zéro » : **jointure externe** (`LEFT JOIN`) ou `UNION`.
 - Savoir pourquoi `NATURAL JOIN` est dangereux.
 - Écrire une **division** (« pour tous ») : double `NOT IN` ou comptage.
+- Modifier les données : `DELETE`, `UPDATE` (et l’effet d’un oubli de `WHERE`).
 
 ## L'essentiel
 
@@ -103,7 +104,7 @@ HAVING COUNT(DISTINCT P.TypeP) = (SELECT COUNT(DISTINCT TypeP) FROM PRODUIT);
 ```
 - `DISTINCT` est indispensable : un client peut acheter plusieurs produits du même type.
 - On part de `COMMANDE` (et non de `CLIENT`) dans le premier `SELECT` de la double différence : sinon un client sans aucune commande resterait à tort dans le résultat.
-- Exemples : TD5-6 exercice 6 (villes dont les clients ont commandé tous les types : Toulouse) ; TP3 exercice 3 question 9 (villes où l'on trouve toutes les catégories de clients : Toulouse, 4 catégories).
+- Exemples : TD5-6 exercice 6 (villes dont les clients ont commandé tous les types : Toulouse) ; TP3 exercice 3 question 9 (villes où l'on trouve toutes les catégories de clients : Toulouse, 4 catégories après la mise à jour du TP3 : Mercier en C1, Neuman en C2).
 
 ### 8. Choisir son outil
 | L'énoncé dit… | On écrit… |
@@ -113,6 +114,16 @@ HAVING COUNT(DISTINCT P.TypeP) = (SELECT COUNT(DISTINCT TypeP) FROM PRODUIT);
 | « tous / chaque / pour toutes » | division : comptage ou double `NOT IN` |
 | « pourcentage / par rapport au total » | sous-requête scalaire ou dans le `FROM` |
 | « sans oublier ceux qui n'ont rien » | `LEFT JOIN` ou `UNION` |
+
+### 9. Divers : clé étrangère, DROP, DELETE, UPDATE
+```sql
+FOREIGN KEY (RefP) REFERENCES PRODUIT      -- dans CREATE TABLE DETAIL : toute valeur de RefP existe comme clé primaire de PRODUIT
+DROP TABLE IF EXISTS CLIENT, PRODUIT, DETAIL, COMMANDE;
+DELETE FROM <Table> WHERE <sélection>;
+UPDATE <Table> SET att1 = v1, att2 = v2 WHERE <sélection>;
+```
+- Sans `WHERE`, `DELETE` et `UPDATE` s’appliquent à **toutes** les lignes de la table. `DROP TABLE` supprime la table elle-même.
+- Exemple : `UPDATE CLIENT SET CAT = 'C1' WHERE NomC = 'MERCIER'` modifie une seule ligne.
 
 ## Questions de vérification
 1. Quelle différence entre `WHERE` et `HAVING` ?

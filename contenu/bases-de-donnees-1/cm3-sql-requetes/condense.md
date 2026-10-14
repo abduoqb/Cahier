@@ -5,6 +5,7 @@
 - SQL ne supprime pas les doublons : DISTINCT est à demander.
 - LIKE : motif sur toute la chaîne (`%` = 0..n caractères, `_` = 1). REGEXP : motif présent n'importe où.
 - NULL = valeur absente (≠ 0, ≠ ''). Les agrégats l'ignorent, sauf COUNT(*).
+- `CREATE TABLE` crée la table **vide** ; `INSERT INTO` y ajoute des lignes ; `CREATE TABLE … AS SELECT` crée et remplit.
 - WHERE filtre les lignes avant le regroupement ; HAVING filtre les groupes.
 
 **Patrons à retenir**

@@ -9,7 +9,7 @@
       "choix": [
         "Synchrone : il arrive toujours à un point précis du programme",
         "Synchrone : l'émetteur attend que le destinataire ait réagi",
-        "Asynchrone : il peut arriver à tout moment, quelle que soit l'instruction en cours",
+        "Asynchrone : il peut arriver à n'importe quel moment",
         "Asynchrone : mais seulement pendant un appel système bloquant"
       ],
       "bonne": 2,
@@ -37,7 +37,7 @@
       "type": "qcm",
       "enonce": "Un processus reçoit deux SIGUSR1 alors que le premier est encore pendant (envoyé mais pas encore pris en compte). Combien de fois son handler est-il lancé ?",
       "choix": [
-        "Une seule fois : un seul exemplaire par type peut être pendant",
+        "Une fois : un seul exemplaire par type reste pendant",
         "Deux fois, l'une après l'autre, dans l'ordre d'envoi",
         "Zéro fois : les deux signaux s'annulent mutuellement",
         "Deux fois, mais dans un ordre non défini entre elles"
@@ -69,7 +69,7 @@
       "choix": [
         "signal est incapable d'installer un handler sur SIGINT",
         "sigaction accepte aussi SIGKILL et SIGSTOP, pas signal",
-        "Le comportement de signal varie selon l'Unix ; sigaction est précis (POSIX)",
+        "signal varie selon les Unix ; sigaction est fiable (POSIX)",
         "sigaction permet de transporter une donnée avec le signal"
       ],
       "bonne": 2,
@@ -104,7 +104,7 @@
       ],
       "bonne": 3,
       "explication": "Un signal bloqué n'est pas perdu : il reste pendant jusqu'au déblocage, puis il est délivré.",
-      "source": "CM2 chapitre, sections 2 et 6 ; annale 2024-2025 Q8"
+      "source": "CM2 chapitre, sections 2 et 4 (sigprocmask) ; annale 2024-2025 Q8"
     },
     {
       "id": "q-cm2-signaux-008",
@@ -113,7 +113,7 @@
       "enonce": "Un programme teste un drapeau « recu » puis appelle pause (qui endort le processus jusqu'à l'arrivée d'un signal quelconque). Pourquoi ce schéma est-il incorrect ?",
       "choix": [
         "pause ne peut pas être appelée dans une boucle",
-        "Le signal peut arriver entre le test et pause : on dort pour toujours",
+        "Un signal arrivé entre le test et pause est raté",
         "pause consomme le signal avant que le handler ne s'exécute",
         "pause retourne 0 et le test du drapeau est alors faux"
       ],
@@ -127,7 +127,7 @@
       "type": "qcm",
       "enonce": "sigsuspend(&masque) installe un masque puis endort le processus jusqu'à un signal. Qu'apporte-t-il de plus que pause pour attendre un signal précis ?",
       "choix": [
-        "Le changement de masque et l'endormissement forment une seule opération atomique",
+        "Masque et endormissement se font en une opération atomique",
         "Il renvoie le numéro du signal qui a réveillé le processus",
         "Il permet d'attendre SIGKILL et SIGSTOP en les débloquant",
         "Il retourne 0 dès qu'un signal arrive, au lieu de -1"

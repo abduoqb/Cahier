@@ -5,26 +5,31 @@
       "id": "q-cm4-sql-suite-001",
       "notion": "agregats-group-by-having",
       "type": "qcm",
-      "enonce": "Dans la table CLIENT du TP (15 clients), CAT n'est pas défini (NULL) pour Mercier et Neuman. Que renvoie SELECT COUNT(CAT) FROM CLIENT, COUNT(CAT) comptant les valeurs non nulles de la colonne ?",
-      "choix": ["15", "13", "2", "0"],
+      "enonce": "On suppose que CAT vaut NULL (et non '') pour Mercier et Neuman sur les 15 clients. Que renvoie SELECT COUNT(CAT) FROM CLIENT, COUNT(CAT) comptant les valeurs non nulles ?",
+      "choix": [
+        "15",
+        "13",
+        "2",
+        "0"
+      ],
       "bonne": 1,
       "explication": "COUNT(A) ignore les NULL : 15 clients moins les 2 valeurs non définies donnent 13 ; seul COUNT(*) compterait les 15 lignes.",
       "source": "TP3 exercice 2 (CAT non défini pour Mercier et Neuman) ; CM4 chapitre, section Agrégat"
     },
     {
       "id": "q-cm4-sql-suite-002",
-      "notion": "agregats-group-by-having",
+      "notion": "jointure-externe-union",
       "type": "qcm",
-      "enonce": "Pour garder les clients dont le montant total commandé dépasse 10000, avec GROUP BY COM.RefC, où écrire la condition SUM(P.Prix*D.Quantite) > 10000 ?",
+      "enonce": "NATURAL JOIN joint deux tables sur tous les attributs de même nom. CLIENT (15 lignes) et COMMUNE (11 lignes) n'ont aucun attribut commun. Combien de lignes donne CLIENT NATURAL JOIN COMMUNE ?",
       "choix": [
-        "Dans le WHERE, avant le regroupement des lignes",
-        "Dans le ON de la jointure entre DETAIL et PRODUIT",
-        "Dans l'ORDER BY, après le calcul de chaque somme",
-        "Dans un HAVING, placé après le GROUP BY"
+        "0",
+        "15",
+        "165",
+        "26"
       ],
-      "bonne": 3,
-      "explication": "HAVING filtre les groupes, après GROUP BY, sur un agrégat ; WHERE filtre les lignes avant regroupement et n'accepte pas d'agrégat.",
-      "source": "CM4 chapitre, section HAVING (exemple des clients à plus de 10000)"
+      "bonne": 2,
+      "explication": "Sans attribut commun, NATURAL JOIN devient un produit cartésien silencieux : 15 × 11 = 165 lignes.",
+      "source": "CM4 chapitre, section NATURAL JOIN ; question de vérification 3"
     },
     {
       "id": "q-cm4-sql-suite-003",
@@ -49,8 +54,8 @@
       "choix": [
         "Il place l'agrégat AVG directement dans le WHERE",
         "Il écrit un HAVING AVG(...) sans aucun GROUP BY",
-        "Une sous-requête du FROM somme chaque commande (Total), puis AVG(Total)",
-        "Il divise COUNT(*) par SUM(Prix) sur toute la table"
+        "Il somme chaque commande dans le FROM, puis fait AVG",
+        "Il divise COUNT(*) par SUM(Prix) sur toute la table DETAIL"
       ],
       "bonne": 2,
       "explication": "Un agrégat ne s'imbrique pas dans un autre : la sous-requête du FROM calcule le total de chaque commande, puis on en prend la moyenne (37252.857143).",
@@ -88,7 +93,7 @@
     },
     {
       "id": "q-cm4-sql-suite-007",
-      "notion": "all-any",
+      "notion": "sous-requete",
       "type": "qcm",
       "enonce": "Sur PRODUIT, la requête SELECT RefP, Prix FROM PRODUIT WHERE Prix >= ALL (SELECT Prix FROM PRODUIT) renvoie quoi ?",
       "choix": [
@@ -103,7 +108,7 @@
     },
     {
       "id": "q-cm4-sql-suite-008",
-      "notion": "all-any",
+      "notion": "sous-requete",
       "type": "qcm",
       "enonce": "Pourquoi SELECT RefP, MAX(Prix) FROM PRODUIT est-il refusé par MySQL (only_full_group_by) ?",
       "choix": [
@@ -122,8 +127,8 @@
       "type": "qcm",
       "enonce": "TP3 : quantité de clous commandée par client, avec 0 pour les clients sans clou. Le corrigé utilise un UNION. À quoi sert le second SELECT de l'UNION ?",
       "choix": [
-        "À éliminer les clients en double du premier SELECT",
-        "À ajouter les clients sans commande de clous, avec la quantité 0",
+        "À éliminer les clients en double qui sortent du premier SELECT",
+        "À ajouter les clients sans clou, avec la quantité 0",
         "À additionner les quantités issues des deux SELECT",
         "À remplacer le GROUP BY du premier SELECT"
       ],
@@ -152,13 +157,13 @@
       "type": "qcm",
       "enonce": "TP3 : villes où l'on trouve toutes les catégories de clients, version par comptage (GROUP BY Ville). Que compare la clause HAVING ?",
       "choix": [
-        "Les catégories distinctes de la ville, au nombre total de catégories",
+        "Ses catégories distinctes, au nombre total de catégories",
         "Le nombre de clients de la ville, au nombre de villes",
         "Le nombre de lignes du groupe, au nombre de lignes de CLIENT",
         "La somme des catégories de la ville, à la somme totale"
       ],
       "bonne": 0,
-      "explication": "COUNT(DISTINCT CAT) de la ville est comparé au nombre total de catégories ; seule Toulouse, avec 4 catégories, convient.",
+      "explication": "COUNT(DISTINCT CAT) de la ville est comparé au nombre total de catégories ; seule Toulouse convient, avec 4 catégories (après la mise à jour du TP3 : Mercier en C1, Neuman en C2).",
       "source": "TP3 exercice 3 question 9 (corrigé, version COUNT) ; CM4 chapitre, section Division"
     },
     {
@@ -170,11 +175,41 @@
         "Pour ignorer les types dont la valeur est NULL",
         "Pour que les clients sortent triés par type de produit",
         "Pour accélérer le calcul de chaque groupe de clients",
-        "Parce qu'un client peut acheter plusieurs produits du même type"
+        "Car un client achète parfois deux produits d'un type"
       ],
       "bonne": 3,
       "explication": "Sans DISTINCT, les lignes du même type seraient comptées plusieurs fois et le total pourrait atteindre le nombre de types sans les couvrir tous.",
       "source": "CM4 chapitre, section Division en SQL (DISTINCT indispensable)"
+    },
+    {
+      "id": "q-cm4-sql-suite-013",
+      "notion": "modification-donnees",
+      "type": "qcm",
+      "enonce": "DELETE FROM CLIENT, écrit sans clause WHERE, supprime des lignes de la table CLIENT. Que se passe-t-il ?",
+      "choix": [
+        "Toutes les lignes sont supprimées, la table reste",
+        "Seule la première ligne de CLIENT est supprimée",
+        "La commande est refusée tant qu'il n'y a pas de WHERE",
+        "La table CLIENT est détruite avec sa structure"
+      ],
+      "bonne": 0,
+      "explication": "Sans WHERE, DELETE et UPDATE s'appliquent à toutes les lignes. Détruire la table elle-même relève de DROP TABLE.",
+      "source": "CM4 chapitre, section Divers (dernière diapo)"
+    },
+    {
+      "id": "q-cm4-sql-suite-014",
+      "notion": "modification-donnees",
+      "type": "qcm",
+      "enonce": "UPDATE CLIENT SET CAT='C1' WHERE NomC='MERCIER' change une valeur dans des lignes existantes. Un seul client s'appelle MERCIER : combien de lignes cette commande modifie-t-elle ?",
+      "choix": [
+        "15 lignes, toute la table CLIENT",
+        "2 lignes, Mercier et un autre client",
+        "1 ligne, celle du client MERCIER",
+        "0 ligne, car UPDATE ne crée pas de valeur"
+      ],
+      "bonne": 2,
+      "explication": "Le WHERE sélectionne les lignes à modifier : ici la seule ligne de MERCIER, dont CAT passe à C1.",
+      "source": "CM4 chapitre, section Divers (dernière diapo)"
     }
   ]
 }

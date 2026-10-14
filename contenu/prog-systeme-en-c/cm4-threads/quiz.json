@@ -6,7 +6,7 @@
       "notion": "thread",
       "type": "qcm",
       "enonce": "Dans main, on appelle quatre fois pthread_create (qui lance un nouveau thread exécutant une fonction donnée), sans autre création. Combien de threads le processus compte-t-il, thread principal compris ?",
-      "choix": ["4 threads : les quatre créés", "8 threads : chaque appel en crée deux", "5 threads : les quatre créés plus le principal", "16 threads : doublement à chaque appel"],
+      "choix": ["4 threads : les quatre créés", "8 threads : chaque appel en crée deux", "5 : les quatre plus le principal", "16 threads : doublement à chaque appel"],
       "bonne": 2,
       "explication": "Chaque pthread_create ajoute un thread, et le thread principal existe déjà : 4 + 1 = 5. Le doublement (2^n) est le comptage des fork, pas des threads.",
       "source": "annale 2022-2023 ex. 1 Q10 (idem annale 2022-2022 Q9)"
@@ -86,7 +86,7 @@
       "notion": "pthread-create",
       "type": "qcm",
       "enonce": "Une boucle for (int i = 0; ...) lance N threads par pthread_create(&t[i], NULL, f, &i), pthread_create lançant un thread qui exécute f. Pourquoi est-ce un bug ?",
-      "choix": ["pthread_create refuse l'adresse d'un entier", "Chaque thread reçoit une copie figée de i", "Tous les threads lisent le même i, qui continue de changer", "Une boucle for est interdite avec pthread_create"],
+      "choix": ["pthread_create refuse l'adresse d'un entier", "Chaque thread reçoit une copie figée de i", "Tous lisent le même i, qui continue de changer", "Une boucle for est interdite avec pthread_create"],
       "bonne": 2,
       "explication": "On passe l'adresse de la même variable à tous les threads, et la boucle la modifie. Il faut un tableau data[i] ou un malloc par thread.",
       "source": "CM4 chapitre, section Erreurs classiques"
@@ -106,7 +106,7 @@
       "notion": "condition-de-concurrence",
       "type": "qcm",
       "enonce": "Deux threads font compteur += 1 sans mutex puis affichent compteur : on lit parfois « thread 2 terminé » deux fois. Quelle est la cause ?",
-      "choix": ["Le compilateur supprime l'un des deux affichages", "L'ordonnanceur coupe un thread au milieu de l'opération", "Le deuxième thread est lancé deux fois par erreur", "Le tas est copié dans chaque thread au départ"],
+      "choix": ["Le compilateur supprime l'un des deux affichages", "Un thread est coupé au milieu de l'opération", "Le deuxième thread est lancé deux fois par erreur", "Le tas est copié dans chaque thread au départ"],
       "bonne": 1,
       "explication": "compteur += 1 se fait en plusieurs étapes (lire, ajouter, écrire) : l'ordonnanceur peut interrompre un thread entre elles, d'où un résultat qui dépend de l'ordre.",
       "source": "CM4 chapitre, section 8 ; fiche Condition de concurrence"

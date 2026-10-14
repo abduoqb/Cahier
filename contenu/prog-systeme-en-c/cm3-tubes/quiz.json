@@ -37,7 +37,7 @@
       "type": "qcm",
       "enonce": "Deux processus de l'utilisateur etudiant, sans lien de parenté, communiquent dans un seul sens par un tube. De quel type de tube s'agit-il ?",
       "choix": [
-        "Un tube anonyme créé par pipe avant le lancement des deux",
+        "Un tube anonyme créé par pipe avant le lancement des deux processus",
         "Un tube anonyme partagé par les descripteurs standard 0 et 1",
         "Un tube anonyme ouvert par les deux avec le même numéro de fd",
         "Un tube nommé (FIFO), qui a un nom dans le système de fichiers"
@@ -52,7 +52,7 @@
       "type": "qcm",
       "enonce": "Un processus appelle read sur un tube vide dont le bout d'écriture est encore ouvert dans un autre processus. Que se passe-t-il ?",
       "choix": [
-        "read rend 0 aussitôt, comme à la fin d'un fichier",
+        "read rend 0 aussitôt, comme à la fin d'un fichier normal",
         "read bloque jusqu'à ce que des données soient écrites",
         "read rend -1 avec une erreur de tube vide",
         "read rend un tampon rempli de zéros sans attendre"
@@ -70,7 +70,7 @@
         "Il rend 0 car le fils, seul écrivain, est terminé",
         "Il rend -1 car le tube est considéré comme cassé",
         "Il provoque l'envoi de SIGPIPE au père lui-même",
-        "Il bloque pour toujours : un bout d'écriture reste ouvert"
+        "Il bloque : un bout d'écriture reste ouvert"
       ],
       "bonne": 3,
       "explication": "read ne rend 0 que si plus aucun descripteur d'écriture n'est ouvert. Le père garde le sien : c'est la cause classique d'un programme figé.",
@@ -95,7 +95,7 @@
       "id": "q-cm3-tubes-007",
       "notion": "dup2",
       "type": "qcm",
-      "enonce": "Dans un fils, avant un exec, l'appel dup2(p[1], 1) fait du descripteur 1 une copie du bout d'écriture p[1] du tube. Quel est l'effet pour le programme lancé ensuite ?",
+      "enonce": "Dans un fils, avant un exec (qui remplace le programme du processus), l'appel dup2(p[1], 1) fait du descripteur 1 une copie du bout d'écriture p[1] du tube. Quel est l'effet pour le programme lancé ensuite ?",
       "choix": [
         "Il lit désormais son entrée standard dans le tube",
         "Il écrit à la fois dans le terminal et dans le tube",
@@ -113,9 +113,9 @@
       "enonce": "Pour ls | wc -l, le père redirige son entrée avec dup2(p[0], 0), qui fait du descripteur 0 une copie de p[0], puis lance wc. Il oublie de fermer p[1]. Que risque-t-il ?",
       "choix": [
         "Rien : dup2 ferme lui-même les originaux",
-        "Son read ne rend jamais 0 : un bout d'écriture reste ouvert",
+        "Son read ne rend jamais 0 : p[1] reste ouvert",
         "wc reçoit SIGPIPE dès sa première lecture",
-        "wc lit chaque donnée deux fois dans le tube"
+        "wc lit chaque donnée deux fois dans le tube ouvert"
       ],
       "bonne": 1,
       "explication": "Après dup2, il faut fermer les deux originaux. Un p[1] resté ouvert dans le lecteur l'empêche de voir la fin de fichier.",
@@ -149,13 +149,13 @@
       ],
       "bonne": 0,
       "explication": "Pas de copie ni d'appel système pour lire ou écrire, mais il faut ajouter soi-même la synchronisation (sémaphores). Les tubes bloquent automatiquement.",
-      "source": "CM3 chapitre, section 8 (mémoire partagée)"
+      "source": "CM3 chapitre, section 7 (mémoire partagée)"
     },
     {
       "id": "q-cm3-tubes-011",
       "notion": "sigpipe",
       "type": "qcm",
-      "enonce": "Un programme ignore SIGPIPE avec signal(SIGPIPE, SIG_IGN), puis écrit dans un tube dont plus aucun lecteur n'existe. Que renvoie write ?",
+      "enonce": "Un programme demande à ignorer SIGPIPE, puis écrit dans un tube dont plus aucun lecteur n'existe. Que renvoie write ?",
       "choix": [
         "0, comme pour une fin de fichier",
         "-1, avec errno valant EPIPE",
@@ -175,11 +175,11 @@
         "Il est supprimé automatiquement avec la fin du processus",
         "Il est supprimé dès que le dernier processus l'a détaché",
         "Il est vidé, mais son identifiant est aussitôt libéré",
-        "Il reste en place : il faut le supprimer avec shmctl(IPC_RMID)"
+        "Il reste en place : il faut le supprimer explicitement (shmctl)"
       ],
       "bonne": 3,
-      "explication": "exit détache le segment mais ne le supprime pas. La suppression explicite se fait avec shmctl(IPC_RMID) (ou ipcrm en commande).",
-      "source": "CM3 chapitre, section 8 (cycle de vie de la mémoire partagée)"
+      "explication": "exit détache le segment mais ne le supprime pas. shmctl avec IPC_RMID détruit le segment (ou ipcrm en commande).",
+      "source": "CM3 chapitre, section 7 (cycle de vie de la mémoire partagée)"
     }
   ]
 }

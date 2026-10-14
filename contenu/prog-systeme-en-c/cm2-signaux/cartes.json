@@ -48,7 +48,7 @@
       "notion": "masque-signaux",
       "recto": "Que devient un signal bloqué par le masque ?",
       "verso": "Il reste pendant et est délivré au déblocage.",
-      "source": "CM2 chapitre, section 6 ; annale 2024-2025 Q8"
+      "source": "CM2 chapitre, sections 2 et 4 (sigprocmask) ; annale 2024-2025 Q8"
     },
     {
       "id": "c-cm2-signaux-008",

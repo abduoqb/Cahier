@@ -59,7 +59,7 @@
     },
     {
       "id": "c-cm3-sql-requetes-009",
-      "notion": "auto-jointure",
+      "notion": "select-jointure",
       "recto": "Dans une auto-jointure qui forme des paires, pourquoi comparer les deux noms avec un inférieur strict ?",
       "verso": "Pour écarter (A,A) et ne garder qu'un des deux ordres (A,B)/(B,A).",
       "source": "CM3 chapitre, Auto-jointure ; TD3-4 questions 11 et 12"
@@ -70,6 +70,13 @@
       "recto": "Dans quel ordre logique le SGBD évalue-t-il les clauses d'un SELECT avec regroupement ?",
       "verso": "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY.",
       "source": "CM3 chapitre, Ordre d'exécution"
+    },
+    {
+      "id": "c-cm3-sql-requetes-011",
+      "notion": "ldd-ldm",
+      "recto": "Quelle différence entre créer une table et y insérer des lignes ?",
+      "verso": "CREATE TABLE crée la table vide ; INSERT y ajoute des lignes.",
+      "source": "CM3 chapitre, section « Créer et remplir »"
     }
   ]
 }

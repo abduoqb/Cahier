@@ -22,7 +22,7 @@
       "type": "qcm",
       "enonce": "Dans une gestion par fichiers, que signifie la « dépendance données / traitements » ?",
       "choix": [
-        "Modifier la structure d'un fichier est délicat car les programmes en dépendent",
+        "Changer la structure d'un fichier oblige à changer les programmes",
         "Les données dépendent de l'ordre dans lequel on exécute les programmes",
         "Chaque traitement doit être validé par l'administrateur",
         "Les traitements ne peuvent s'exécuter qu'à partir d'un seul fichier"
@@ -38,7 +38,7 @@
       "enonce": "Quelle phrase distingue correctement un SGBD d'une base de données ?",
       "choix": [
         "Le SGBD est l'ensemble des tables, la base de données est le logiciel",
-        "Le SGBD est le logiciel (ex. MySQL), la base de données est l'ensemble des données qu'il gère",
+        "Le SGBD est le logiciel, la base de données les données qu'il gère",
         "Ce sont deux noms pour la même chose",
         "Le SGBD désigne uniquement le matériel qui héberge les données"
       ],
@@ -55,7 +55,7 @@
         "L'indépendance physique",
         "Le partage des données",
         "La sécurité et le contrôle",
-        "La duplication des données dans un fichier par application"
+        "La duplication des données"
       ],
       "bonne": 3,
       "explication": "Les objectifs listés sont : indépendance physique et logique, cohérence, partage, souplesse d'accès, performances, sécurité et contrôle. La duplication est le défaut des fichiers.",

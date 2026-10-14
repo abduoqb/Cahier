@@ -52,7 +52,7 @@
       "type": "qcm",
       "enonce": "Quelle est la définition d'un processus zombie ?",
       "choix": [
-        "Un processus terminé dont le père n'a pas lu le code de retour",
+        "Un processus mort dont le père n'a pas lu le code",
         "Un processus vivant dont le père est mort",
         "Un processus de service détaché de tout terminal",
         "Un processus qui boucle sans jamais être endormi"
@@ -140,11 +140,11 @@
       "id": "q-cm1-processus-010",
       "notion": "wait-et-exit",
       "type": "qcm",
-      "enonce": "Un fils termine par exit(7) et le père a fait wait(&status). Comment le père obtient-il la valeur 7 ?",
+      "enonce": "Un fils termine par exit(7) (fin du processus avec le code 7) et le père a fait wait(&status) (attente d'un fils, code rangé dans status). Comment le père obtient-il la valeur 7 ?",
       "choix": [
         "En lisant directement la variable status",
         "En appelant getppid() dans le fils",
-        "Avec WEXITSTATUS(status), après WIFEXITED(status)",
+        "Avec WEXITSTATUS, après un test par WIFEXITED",
         "Avec la valeur retournée par wait"
       ],
       "bonne": 2,
@@ -170,7 +170,7 @@
       "id": "q-cm1-processus-012",
       "notion": "zombie",
       "type": "qcm",
-      "enonce": "Un processus zombie est visible avec ps (état Z). On ne peut pas le tuer, car il est déjà mort. Qu'est-ce qui le fait disparaître ?",
+      "enonce": "Un processus zombie est visible avec ps (qui liste les processus), état Z. On ne peut pas le tuer, car il est déjà mort. Qu'est-ce qui le fait disparaître ?",
       "choix": [
         "Un signal SIGKILL envoyé par le père",
         "L'arrêt du terminal du fils",

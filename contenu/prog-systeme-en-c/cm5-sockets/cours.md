@@ -30,7 +30,6 @@
 - **Système** : un descripteur de fichier spécial (3, 4, 5… car 0, 1, 2 sont stdin/stdout/stderr), utilisé avec `read` / `write` / `close`.
 - **Réseau IP** : un point de communication identifié par adresse IP + port + protocole (TCP/UDP). Dire « socket = IP + port » est incomplet.
 - **Bidirectionnelle**, contrairement à un tube.
-- En local (`AF_UNIX`), la socket est un fichier de type `s` et de **taille 0** : c'est juste un nom (i-noeud), les données transitent par le noyau et non par le disque. Un tube nommé est de type `p`, même raison.
 
 | Choix | Valeur | Signification |
 |---|---|---|
@@ -107,7 +106,7 @@ while (1) {
 ## Annales
 - **2022-2022** : ex. 1 Q7 (socket côté système et réseau) ; ex. 2.2 (appels et déroulé d'un serveur UDP, servir plusieurs clients).
 - **2022-2023** : ex. 2.3 serveur parallèle sur le port 22 (service SSH ; à chaque connexion `accept` renvoie une nouvelle socket puis `fork`) ; Q9 taille d'un tube et d'une socket = 0.
-- **2024-2025** : Q7 fichiers `p` et `s` de taille 0 ; Q10 et ex. 2.3 « je vous rends un service à tous » (serveur itératif trop lent, solution `fork` / thread après `accept`).
+- **2024-2025** : Q10 et ex. 2.3 « je vous rends un service à tous » (serveur itératif trop lent, solution `fork` / thread après `accept`).
 
 ## Erreurs classiques
 | Message / symptôme | Cause |

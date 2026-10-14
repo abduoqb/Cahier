@@ -9,27 +9,12 @@
       "choix": [
         "Un processus serveur en attente de clients",
         "Une adresse IP associée à un numéro de port",
-        "Un descripteur de fichier spécial, utilisable avec read et write",
+        "Un descripteur de fichier spécial pour communiquer",
         "Un tampon partagé entre deux threads du même processus"
       ],
       "bonne": 2,
       "explication": "Côté système, une socket est un descripteur de fichier spécial servant à communiquer ; l'adresse IP + port + protocole est la vision réseau.",
       "source": "annale 2022-2022 ex. 1 Q7"
-    },
-    {
-      "id": "q-cm5-sockets-002",
-      "notion": "socket",
-      "type": "qcm",
-      "enonce": "Dans un répertoire, ls -l affiche un fichier de type s (une socket locale) et de taille 0. Pourquoi cette taille ?",
-      "choix": [
-        "Ce n'est qu'un nom (i-noeud) : les données passent par le noyau, pas par le disque",
-        "Le fichier est vide tant qu'aucun client n'est connecté",
-        "Les données sont écrites sur le disque puis supprimées aussitôt",
-        "Le fichier est compressé et ls ne sait pas afficher sa taille"
-      ],
-      "bonne": 0,
-      "explication": "Comme un tube nommé (type p), la socket n'a pas de contenu sur disque : c'est un simple nom, les données transitent par le noyau.",
-      "source": "annale 2024-2025 Q7 ; annale 2022-2023 Q9"
     },
     {
       "id": "q-cm5-sockets-003",
@@ -53,7 +38,7 @@
       "enonce": "Un serveur parallèle écoute sur le port 22. Quand un client se connecte, accept (qui attend puis extrait une connexion) se débloque. Que renvoie-t-il ?",
       "choix": [
         "Le descripteur de la socket d'écoute, inchangé",
-        "Un nouveau descripteur : la socket dédiée à ce client",
+        "Une nouvelle socket dédiée à ce client",
         "L'adresse IP du client sous forme de chaîne",
         "Le PID du processus fils créé pour ce client"
       ],
@@ -85,7 +70,7 @@
         "SOCK_DGRAM : TCP, flux d'octets fiable",
         "SOCK_STREAM : UDP, datagrammes sans garantie",
         "SOCK_DGRAM : TCP, avec connect et accept",
-        "SOCK_STREAM : TCP, flux d'octets connecté et fiable"
+        "SOCK_STREAM : TCP, flux connecté et fiable"
       ],
       "bonne": 3,
       "explication": "SOCK_STREAM correspond à TCP (connecté, fiable, ordonné) ; SOCK_DGRAM correspond à UDP (datagrammes, sans garantie).",
@@ -98,7 +83,7 @@
       "enonce": "On écrit adr.sin_port = 1664 sans conversion. Le serveur écoute alors sur un autre port que prévu (32774). Quelle fonction oublie-t-on ?",
       "choix": [
         "inet_addr, qui convertit une adresse texte en entier",
-        "htons, qui met un entier 16 bits dans l'ordre des octets du réseau",
+        "htons, qui convertit un port en ordre réseau",
         "listen, qui fixe la taille de la file d'attente",
         "ntohl, qui convertit une adresse IP en ordre machine"
       ],
@@ -114,7 +99,7 @@
       "choix": [
         "Le port est attribué mais en lecture seule",
         "Le système choisit un autre port libre à la place",
-        "bind échoue avec Permission denied : les ports 1 à 1023 demandent root",
+        "bind échoue : les ports 1 à 1023 exigent root",
         "bind réussit, car 80 est un port enregistré"
       ],
       "bonne": 2,
@@ -127,7 +112,7 @@
       "type": "qcm",
       "enonce": "Un script lance des dizaines de clients ; le serveur (accept, traite le client, close, puis accept suivant) devient de plus en plus lent. Quelle est l'erreur de conception ?",
       "choix": [
-        "C'est un serveur itératif : le dernier client attend les précédents",
+        "Il est itératif : les clients passent un par un",
         "Le serveur utilise TCP au lieu d'UDP",
         "Le serveur n'appelle pas htons sur le port",
         "La file d'attente de listen est de taille 0"

@@ -119,8 +119,8 @@
             "distinct-order-by",
             "like-regexp",
             "valeur-null",
-            "auto-jointure",
-            "ordre-execution"
+            "ordre-execution",
+            "ldd-ldm"
           ]
         },
         {
@@ -133,9 +133,9 @@
             "agregats-group-by-having",
             "sous-requete",
             "in-exists",
-            "all-any",
             "jointure-externe-union",
-            "division"
+            "division",
+            "modification-donnees"
           ]
         }
       ]

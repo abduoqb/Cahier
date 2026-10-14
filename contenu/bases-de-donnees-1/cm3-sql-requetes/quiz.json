@@ -59,7 +59,7 @@
       ],
       "bonne": 3,
       "explication": "Le premier critère est TypeP (croissant par défaut) ; DESC ne concerne que Prix, qui départage les produits d'un même type.",
-      "source": "CM3 chapitre, tableau Sélections et affichage ; TD3-4 question 3"
+      "source": "CM3 chapitre, tableau Sélections et affichage ; TD3-4 question 7 (ORDER BY Ville ASC, RefC DESC)"
     },
     {
       "id": "q-cm3-sql-requetes-005",
@@ -68,7 +68,7 @@
       "enonce": "Dans SELECT D.RefP, COUNT(*) AS NB FROM DETAIL D GROUP BY D.RefP ORDER BY NB DESC, l'alias NB (nom donné à une colonne par AS) est utilisable dans ORDER BY. Pourquoi ?",
       "choix": [
         "Parce que ORDER BY s'exécute avant SELECT",
-        "Parce que ORDER BY s'exécute après SELECT, où l'alias est défini",
+        "Parce que ORDER BY s'exécute après SELECT",
         "Parce que l'alias est défini dans la clause FROM",
         "Parce que GROUP BY crée automatiquement les alias"
       ],
@@ -89,7 +89,7 @@
       ],
       "bonne": 3,
       "explication": "« e.*e » trouvé n'importe où se traduit par %e%e% avec LIKE. 'e%e' exigerait un e au début et à la fin ; « .* » n'a pas de sens dans LIKE.",
-      "source": "CM3 chapitre, équivalences LIKE / REGEXP ; TD3-4 question 7"
+      "source": "CM3 chapitre, équivalences LIKE/REGEXP ; question de vérification 5"
     },
     {
       "id": "q-cm3-sql-requetes-007",
@@ -104,7 +104,7 @@
       ],
       "bonne": 0,
       "explication": "Seules Geneve, Bruxelles et Lille se terminent par e. 11 serait le résultat des villes qui contiennent un e (REGEXP 'e').",
-      "source": "CM3 chapitre, LIKE '%e' ; données client.dat de TablesTP_Commandes (TD3-4 question 7)"
+      "source": "CM3 chapitre, LIKE '%e' ; données client.dat de TablesTP_Commandes"
     },
     {
       "id": "q-cm3-sql-requetes-008",
@@ -138,12 +138,12 @@
     },
     {
       "id": "q-cm3-sql-requetes-010",
-      "notion": "auto-jointure",
+      "notion": "select-jointure",
       "type": "qcm",
       "enonce": "Pour lister les paires de clients d'une même ville (FROM CLIENT C1, CLIENT C2 WHERE C1.Ville = C2.Ville AND …), pourquoi écrire C1.NomC < C2.NomC avec un < strict ?",
       "choix": [
         "Pour trier le résultat par ordre alphabétique",
-        "Pour écarter les paires (A,A) et garder un seul de (A,B)/(B,A)",
+        "Pour éviter (A,A) et le doublon (A,B)/(B,A)",
         "Pour écarter seulement les paires (A,A)",
         "Pour ne garder que les noms uniques dans la ville"
       ],
@@ -153,7 +153,7 @@
     },
     {
       "id": "q-cm3-sql-requetes-011",
-      "notion": "auto-jointure",
+      "notion": "select-jointure",
       "type": "qcm",
       "enonce": "SELECT C1.NomC, C2.NomC FROM CLIENT C1, CLIENT C2 WHERE C1.Ville = 'Toulouse' AND C2.Ville = 'Toulouse' AND C1.NomC < C2.NomC. Les clients 4, 5, 7, 9 et 12 habitent Toulouse. Combien de lignes ?",
       "choix": [
@@ -175,11 +175,41 @@
         "WHERE filtre les groupes mais HAVING filtre les lignes",
         "HAVING s'exécute avant WHERE et voit donc toutes les lignes",
         "SUM n'est pas autorisé dans une requête qui a un WHERE",
-        "WHERE s'exécute avant GROUP BY, quand les groupes n'existent pas encore"
+        "WHERE s'exécute avant GROUP BY : pas encore de groupes"
       ],
       "bonne": 3,
       "explication": "Ordre logique : FROM, WHERE, GROUP BY, HAVING. Un agrégat porte sur un groupe : il n'est utilisable qu'à partir de HAVING.",
       "source": "CM3 chapitre, Agrégats et Ordre d'exécution (question de vérification 4)"
+    },
+    {
+      "id": "q-cm3-sql-requetes-013",
+      "notion": "ldd-ldm",
+      "type": "qcm",
+      "enonce": "CREATE TABLE crée la structure d'une table. Juste après CREATE TABLE DETAIL (…, PRIMARY KEY (RefCom, RefP)), combien de lignes contient DETAIL ?",
+      "choix": [
+        "Une seule ligne, remplie de valeurs NULL",
+        "Autant de lignes que le fichier detail.dat",
+        "Aucune : la table est créée mais vide",
+        "Une ligne pour chaque couple de clés possible"
+      ],
+      "bonne": 2,
+      "explication": "CREATE TABLE ne définit que la structure : la table est vide tant qu'on n'a pas fait d'INSERT ou de LOAD DATA.",
+      "source": "CM3 chapitre, section « Créer et remplir »"
+    },
+    {
+      "id": "q-cm3-sql-requetes-014",
+      "notion": "ldd-ldm",
+      "type": "qcm",
+      "enonce": "INSERT ajoute des lignes à une table existante. Quelle différence y a-t-il entre CREATE TABLE Copie AS SELECT … et INSERT INTO Copie SELECT … ?",
+      "choix": [
+        "Le second crée Copie et le premier la remplit ensuite",
+        "Les deux exigent que Copie existe déjà et soit vide",
+        "Le premier ne copie que la structure de Copie, le second que les données",
+        "L'un crée et remplit Copie, l'autre remplit une Copie déjà créée"
+      ],
+      "bonne": 3,
+      "explication": "CREATE TABLE … AS SELECT crée la table et la remplit en une fois ; INSERT INTO … SELECT suppose la table déjà créée.",
+      "source": "CM3 chapitre, section « Créer et remplir »"
     }
   ]
 }
