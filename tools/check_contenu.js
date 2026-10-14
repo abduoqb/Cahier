@@ -1,4 +1,4 @@
-// Vérifie contenu/ : index, fichiers, schéma des quiz, ids uniques, longueurs, annale réservée.
+// Vérifie contenu/ : index, fichiers, schéma des quiz et des cartes, ids uniques, longueurs, annale réservée.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -7,6 +7,37 @@ const RESERVEES = [/2023-2024/];
 const MAX_ENONCE = 400;
 const MAX_CHOIX = 120;
 const FICHIERS = ['cours.md', 'condense.md', 'quiz.json'];
+const MAX_RECTO = 200;
+const MAX_VERSO = 120;
+
+function verifierCartes(s, ou, dossier, ids, erreurs) {
+    const p = path.join(dossier, 'cartes.json');
+    if (!s.cartes) {
+        if (fs.existsSync(p)) erreurs.push(`${ou} : cartes.json présent sans "cartes": true dans l'index`);
+        return;
+    }
+    let c;
+    try { c = JSON.parse(fs.readFileSync(p, 'utf8')); }
+    catch (e) { erreurs.push(`${ou} : "cartes": true mais cartes.json illisible (${e.message})`); return; }
+    if (c.seance !== s.id) erreurs.push(`${ou} : cartes.seance vaut "${c.seance}", attendu "${s.id}"`);
+    if (!Array.isArray(c.cartes) || c.cartes.length === 0) { erreurs.push(`${ou} : cartes.json sans cartes`); return; }
+    const declarees = new Set(s.notions || []);
+    const motif = new RegExp(`^c-${s.id}-\\d{3}$`);
+    const reservee = t => typeof t === 'string' && RESERVEES.some(r => r.test(t));
+    for (const k of c.cartes) {
+        const ko = `${ou} ${k.id}`;
+        if (!motif.test(k.id || '')) erreurs.push(`${ko} : id invalide (attendu c-${s.id}-nnn)`);
+        if (ids.has(k.id)) erreurs.push(`${ko} : id en double`);
+        ids.add(k.id);
+        if (!declarees.has(k.notion)) erreurs.push(`${ko} : notion "${k.notion}" absente de l'index`);
+        if (typeof k.recto !== 'string' || !k.recto.trim() || k.recto.length > MAX_RECTO) erreurs.push(`${ko} : recto vide ou trop long`);
+        if (typeof k.verso !== 'string' || !k.verso.trim() || k.verso.length > MAX_VERSO || /[\r\n]/.test(k.verso)) {
+            erreurs.push(`${ko} : verso vide, trop long ou sur plusieurs lignes`);
+        }
+        if (typeof k.source !== 'string' || !k.source.trim()) erreurs.push(`${ko} : source manquante`);
+        if ([k.source, k.recto, k.verso].some(reservee)) erreurs.push(`${ko} : annale réservée aux tests blancs`);
+    }
+}
 
 export function verifierContenu(racine, avertissements = []) {
     const erreurs = [];
@@ -15,6 +46,7 @@ export function verifierContenu(racine, avertissements = []) {
     catch (e) { return [`index.json illisible : ${e.message}`]; }
 
     const ids = new Set();
+    const idsCartes = new Set();
     for (const m of index.matieres || []) {
         for (const s of m.seances || []) {
             const ou = `${m.id}/${s.id}`;
@@ -34,6 +66,7 @@ export function verifierContenu(racine, avertissements = []) {
                     if (!fs.existsSync(path.join(dossier, mm[1]))) erreurs.push(`${ou}/${f} : image absente ${mm[1]}`);
                 }
             }
+            verifierCartes(s, ou, dossier, idsCartes, erreurs);
             let quiz;
             try { quiz = JSON.parse(fs.readFileSync(path.join(dossier, 'quiz.json'), 'utf8')); }
             catch (e) { erreurs.push(`${ou} : quiz.json illisible (${e.message})`); continue; }

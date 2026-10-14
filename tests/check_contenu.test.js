@@ -75,3 +75,55 @@ test('support.pdf absent : avertissement, pas d\'erreur', () => {
     assert.deepEqual(verifierContenu(racine, avertissements), []);
     assert.ok(avertissements.some(m => m.includes('support.pdf')), avertissements.join('\n'));
 });
+
+function avecCartes(racine, cartes, { drapeau = true, seance = 'cm1' } = {}) {
+    if (cartes !== null) fs.writeFileSync(path.join(racine, 'algo', 'cm1', 'cartes.json'), JSON.stringify({ seance, cartes }));
+    if (drapeau) {
+        const p = path.join(racine, 'index.json');
+        const idx = JSON.parse(fs.readFileSync(p, 'utf8'));
+        idx.matieres[0].seances[0].cartes = true;
+        fs.writeFileSync(p, JSON.stringify(idx));
+    }
+    return racine;
+}
+const carte = (o = {}) => ({ id: 'c-cm1-001', notion: 'tableaux', recto: 'Coût du parcours complet ?', verso: 'O(n).', source: 'TD1 ex. 2', ...o });
+const contient = (erreurs, motif) => erreurs.some(e => e.includes(motif));
+
+test('cartes valides : aucune erreur', () => {
+    assert.deepEqual(verifierContenu(avecCartes(fixture(), [carte(), carte({ id: 'c-cm1-002' })])), []);
+});
+
+test('cartes : drapeau sans fichier', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), null)), 'cartes.json illisible'));
+});
+
+test('cartes : fichier sans drapeau', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte()], { drapeau: false })), 'sans "cartes": true'));
+});
+
+test('cartes : seance incohérente et liste vide', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte()], { seance: 'autre' })), 'cartes.seance'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [])), 'sans cartes'));
+});
+
+test('cartes : id invalide ou en double', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ id: 'c-autre-001' })])), 'id invalide'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte(), carte()])), 'id en double'));
+});
+
+test('cartes : notion absente de l\'index', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ notion: 'inconnue' })])), 'absente de l\'index'));
+});
+
+test('cartes : longueurs et verso sur une ligne', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ recto: 'x'.repeat(201) })])), 'recto'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ verso: 'x'.repeat(121) })])), 'verso'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ verso: 'ligne 1\nligne 2' })])), 'plusieurs lignes'));
+    assert.deepEqual(verifierContenu(avecCartes(fixture(), [carte({ recto: 'x'.repeat(200), verso: 'y'.repeat(120) })])), []);
+});
+
+test('cartes : source manquante ou annale réservée', () => {
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ source: ' ' })])), 'source manquante'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ source: 'annale 2023-2024 ex. 1' })])), 'annale réservée'));
+    assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ verso: 'Vu en 2023-2024.' })])), 'annale réservée'));
+});
