@@ -5,7 +5,7 @@
       "id": "q-cm4-piles-files-001",
       "notion": "pile",
       "type": "qcm",
-      "enonce": "Pile implémentée par une liste simple (sommet = premier nœud) : quel est le coût de empiler et de depiler ?",
+      "enonce": "Pile implémentée par une liste simple (sommet = premier nœud) : empiler ajoute un élément au sommet, depiler retire le sommet. Quel est le coût de chacune ?",
       "choix": [
         "empiler en O(1), depiler en O(n)",
         "Les deux en O(1)",
@@ -20,7 +20,7 @@
       "id": "q-cm4-piles-files-002",
       "notion": "pile",
       "type": "qcm",
-      "enonce": "Dans depiler (pile par liste chaînée), pourquoi lire tmp = P->suivant avant désallouer(P) ?",
+      "enonce": "Dans depiler (pile par liste chaînée, qui retire le sommet P et retourne le reste de la pile), pourquoi lire tmp = P->suivant avant désallouer(P) ?",
       "choix": [
         "Parce que désallouer retourne le suivant du nœud",
         "Pour éviter une division par zéro lors du dépilage",
@@ -65,7 +65,7 @@
       "id": "q-cm4-piles-files-005",
       "notion": "file",
       "type": "qcm",
-      "enonce": "File par liste circulaire (pointeur sur le dernier) : que retourne enfiler(F, x) ?",
+      "enonce": "File par liste circulaire (pointeur sur le dernier nœud) : enfiler(F, x) ajoute x à la fin de la file. Que retourne-t-elle ?",
       "choix": [
         "Le premier nœud, F->suivant, après l'ajout",
         "L'ancien F, resté pointeur sur le dernier",
@@ -95,7 +95,7 @@
       "id": "q-cm4-piles-files-007",
       "notion": "bon-parenthesage",
       "type": "qcm",
-      "enonce": "bienParenthese (une pile, un seul type de parenthèse) : que retourne-t-on après la boucle ?",
+      "enonce": "bienParenthese vérifie qu'une chaîne est bien parenthésée (une pile, un seul type de parenthèse) : elle empile chaque ouvrante et dépile à chaque fermante. Que retourne-t-on après la boucle ?",
       "choix": [
         "Vrai",
         "Faux",
@@ -110,7 +110,7 @@
       "id": "q-cm4-piles-files-008",
       "notion": "pile-appels",
       "type": "qcm",
-      "enonce": "affichageInverseRec appelée sur la liste 1 -> 2 -> 3 : que s'affiche-t-il ?",
+      "enonce": "affichageInverseRec affiche les valeurs d'une liste à l'envers, par récursion. Appelée sur la liste 1 -> 2 -> 3, que s'affiche-t-il ?",
       "choix": [
         "1",
         "3 2 1",
@@ -125,7 +125,7 @@
       "id": "q-cm4-piles-files-009",
       "notion": "pile-appels",
       "type": "qcm",
-      "enonce": "Version itérative de affichageInverseIt : quelle est la structure de l'algorithme avec une pile ?",
+      "enonce": "affichageInverseIt fait la même chose que affichageInverseRec (afficher une liste à l'envers) sans récursion, avec une pile. Quelle est la structure de l'algorithme ?",
       "choix": [
         "Dépiler d'abord la pile, puis empiler la liste entière",
         "Une seule boucle qui affiche sans empiler",

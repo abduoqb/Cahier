@@ -5,7 +5,7 @@
       "id": "q-cm1-tableaux-001",
       "notion": "tri-a-bulles",
       "type": "qcm",
-      "enonce": "Tri à bulles (mystere) sur tab3 = 5 4 3 2 1 : quel est le tableau après le premier échange (fin = 3, i = 0) ?",
+      "enonce": "Tri à bulles (fonction mystere : pour fin de n-2 à 0, compare tab[i] et tab[i+1] pour i de 0 à fin et les échange si besoin) sur tab3 = 5 4 3 2 1 : quel est le tableau après le premier échange (fin = 3, i = 0) ?",
       "choix": [
         "4 3 5 2 1",
         "4 5 3 2 1",
@@ -140,7 +140,7 @@
       "id": "q-cm1-tableaux-010",
       "notion": "partition-avec-pivot",
       "type": "qcm",
-      "enonce": "Partition de T = 9 5 4 12 10 3 (pivot 9) : quel est T après la 3e étape (12 > 9, échange de T[3] et T[5]) ?",
+      "enonce": "La procédure partition réorganise T autour d'un pivot (ici T[0] = 9) : les valeurs plus petites vont à gauche, les plus grandes à droite. Sur T = 9 5 4 12 10 3, quel est T après la 3e étape (12 > 9, échange de T[3] et T[5]) ?",
       "choix": [
         "5 4 3 9 10 12",
         "4 5 9 12 10 3",
@@ -155,7 +155,7 @@
       "id": "q-cm1-tableaux-011",
       "notion": "partition-avec-pivot",
       "type": "qcm",
-      "enonce": "Combien de tours de boucle fait la procédure partition sur un tableau de n éléments ?",
+      "enonce": "La procédure partition réorganise un tableau de n éléments autour d'un pivot (petits à gauche, grands à droite). Combien de tours de boucle fait-elle ?",
       "choix": [
         "n(n-1)/2 tours dans le pire cas",
         "Entre 1 et n-1 tours selon le tableau",

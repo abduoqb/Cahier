@@ -20,7 +20,7 @@
       "id": "q-cm5-arbres-002",
       "notion": "arbre-binaire",
       "type": "qcm",
-      "enonce": "nombre_noeuds(A) pour un nœud non vide dont la valeur est entre 0 et 100 : que retourne-t-il ?",
+      "enonce": "nombre_noeuds(A) compte les nœuds d'un arbre binaire dont la valeur est entre 0 et 100. Pour un nœud non vide dont la valeur est dans cet intervalle, que retourne-t-elle ?",
       "choix": [
         "nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",
         "1 + nombre_noeuds(A->gauche) + nombre_noeuds(A->droit)",

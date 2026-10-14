@@ -20,7 +20,7 @@
       "id": "q-cm3-listes-deux-pointeurs-002",
       "notion": "liste-deux-pointeurs",
       "type": "qcm",
-      "enonce": "insereEnFin dans une liste à deux pointeurs vide (L.premier = None) : quels champs mettre à jour ?",
+      "enonce": "insereEnFin ajoute une valeur à la fin d'une liste à deux pointeurs (L.premier et L.dernier). Si la liste est vide (L.premier = None), quels champs faut-il mettre à jour ?",
       "choix": [
         "Seulement L.dernier, qui reçoit le nouveau nœud",
         "L.premier et L.dernier, sur le nouveau nœud",
@@ -95,7 +95,7 @@
       "id": "q-cm3-listes-deux-pointeurs-007",
       "notion": "liste-circulaire",
       "type": "qcm",
-      "enonce": "Comment obtient-on insertionCirculaireFin à partir de insertionCirculaireDebut ?",
+      "enonce": "Dans une liste circulaire (pointeur L sur le dernier nœud), insertionCirculaireDebut ajoute une valeur au début. Comment obtient-on insertionCirculaireFin, qui ajoute à la fin, à partir d'elle ?",
       "choix": [
         "On insère en début puis on retourne L->suivant",
         "On parcourt toute la liste jusqu'au dernier nœud",

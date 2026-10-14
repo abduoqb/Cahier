@@ -35,7 +35,7 @@
       "id": "q-cm2-listes-chainees-003",
       "notion": "liste-chainee",
       "type": "qcm",
-      "enonce": "Pour obtenir la liste 5 -> 7 -> 9 en n'utilisant que insertionDebut, dans quel ordre insérer les valeurs ?",
+      "enonce": "La procédure insertionDebut ajoute une valeur au début d'une liste. Pour obtenir la liste 5 -> 7 -> 9 en n'utilisant qu'elle, dans quel ordre insérer les valeurs ?",
       "choix": [
         "L'ordre n'a pas d'importance",
         "7, puis 5, puis 9",
@@ -65,7 +65,7 @@
       "id": "q-cm2-listes-chainees-005",
       "notion": "parcours-liste",
       "type": "qcm",
-      "enonce": "Dans affichage_deplacement, quelle instruction met correctement à jour l'abscisse x ?",
+      "enonce": "Chaque nœud d'une liste contient un déplacement (dx, dy) ; affichage_deplacement part de (0,0) et affiche la position (x, y) après chaque nœud. Quelle instruction met correctement à jour l'abscisse x ?",
       "choix": [
         "x = x + dx",
         "x = L->dx",
@@ -80,7 +80,7 @@
       "id": "q-cm2-listes-chainees-006",
       "notion": "parcours-liste",
       "type": "qcm",
-      "enonce": "retour_point_depart sur une liste de n nœuds : quel est le coût maximal (nœuds visités), et pour quel exemple ?",
+      "enonce": "retour_point_depart parcourt une liste de déplacements (dx, dy) depuis (0,0) et retourne Vrai dès qu'on repasse par (0,0). Sur une liste de n nœuds, quel est le coût maximal (nœuds visités), et pour quel exemple ?",
       "choix": [
         "n, par exemple si tous les nœuds sont (1,0)",
         "2, quel que soit le cas",
@@ -125,7 +125,7 @@
       "id": "q-cm2-listes-chainees-009",
       "notion": "construire-liste",
       "type": "qcm",
-      "enonce": "En copiant un nœud dans deplacement_abscisse_rec, quelle instruction est correcte pour recopier dy ?",
+      "enonce": "deplacement_abscisse_rec construit une nouvelle liste qui ne garde que les déplacements avec dx <> 0 (nœud recopié dans L2). Quelle instruction est correcte pour recopier dy ?",
       "choix": [
         "L2->dy = L->suivant->dy",
         "L2->dy = L->dy",
@@ -140,7 +140,7 @@
       "id": "q-cm2-listes-chainees-010",
       "notion": "construire-liste",
       "type": "qcm",
-      "enonce": "Dans la version itérative (patron tête/queue), quelle instruction faut-il après avoir accroché le nouveau nœud nv ?",
+      "enonce": "Même construction en itératif : on recopie les nœuds de dx <> 0 dans une nouvelle liste avec les pointeurs tete et queue (patron tête/queue). Quelle instruction faut-il après avoir accroché le nouveau nœud nv ?",
       "choix": [
         "queue = tete",
         "tete = nv",
@@ -155,7 +155,7 @@
       "id": "q-cm2-listes-chainees-011",
       "notion": "recursivite",
       "type": "qcm",
-      "enonce": "affichePairsInverseRec (affichage après l'appel récursif) sur 1 -> 2 -> 3 -> 4 : que s'affiche-t-il ?",
+      "enonce": "affichePairsInverseRec affiche les valeurs paires d'une liste, en ordre inverse (affichage après l'appel récursif). Que s'affiche-t-il sur 1 -> 2 -> 3 -> 4 ?",
       "choix": [
         "1 3",
         "2 4",
@@ -170,7 +170,7 @@
       "id": "q-cm2-listes-chainees-012",
       "notion": "recursivite",
       "type": "qcm",
-      "enonce": "copiePairs (cas None, cas impair, cas pair) appliquée à 3 -> 4 -> 7 -> 8 retourne quelle liste ?",
+      "enonce": "copiePairs construit une nouvelle liste avec les seules valeurs paires de la liste donnée (cas None, cas impair, cas pair). Que retourne-t-elle sur 3 -> 4 -> 7 -> 8 ?",
       "choix": [
         "Une nouvelle liste 4 -> 8",
         "La liste d'origine inchangée",
