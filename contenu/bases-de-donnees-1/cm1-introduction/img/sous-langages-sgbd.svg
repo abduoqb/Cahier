@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="1200" height="480" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1200" height="480" fill="#fff"/>
+<text x="600.0" y="40" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="middle" >Les 4 sous-langages d'un SGBD relationnel (SQL)</text>
+<rect x="27.0" y="76" width="270" height="350" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" />
+<path d="M27.0 146 V88 Q27.0 76 39.0 76 H285.0 Q297.0 76 297.0 88 V146 Z" fill="#2563eb"/>
+<text x="162.0" y="124" font-size="34" fill="#fff" font-weight="bold" text-anchor="middle" >LDD</text>
+<text x="162.0" y="178" font-size="14" fill="#475569" font-weight="normal" text-anchor="middle" >Langage de Définition des Données</text>
+<text x="162.0" y="218" font-size="20" fill="#1e40af" font-weight="bold" text-anchor="middle" >définit la STRUCTURE</text>
+<text x="162.0" y="242" font-size="14.5" fill="#475569" font-weight="normal" text-anchor="middle" >(schéma : tables, colonnes, vues)</text>
+<line x1="51.0" y1="266" x2="273.0" y2="266" stroke="#2563eb" stroke-width="1.5"/>
+<rect x="57.0" y="284" width="210" height="34" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.2" />
+<text x="162.0" y="307" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >CREATE TABLE</text>
+<rect x="57.0" y="326" width="210" height="34" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.2" />
+<text x="162.0" y="349" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >ALTER TABLE</text>
+<rect x="57.0" y="368" width="210" height="34" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.2" />
+<text x="162.0" y="391" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >DROP TABLE</text>
+<rect x="319.0" y="76" width="270" height="350" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5" />
+<path d="M319.0 146 V88 Q319.0 76 331.0 76 H577.0 Q589.0 76 589.0 88 V146 Z" fill="#16a34a"/>
+<text x="454.0" y="124" font-size="34" fill="#fff" font-weight="bold" text-anchor="middle" >LID</text>
+<text x="454.0" y="178" font-size="14" fill="#475569" font-weight="normal" text-anchor="middle" >Langage d'Interrogation des Données</text>
+<text x="454.0" y="218" font-size="20" fill="#166534" font-weight="bold" text-anchor="middle" >LIT les données</text>
+<text x="454.0" y="242" font-size="14.5" fill="#475569" font-weight="normal" text-anchor="middle" >(requêtes, rien n'est modifié)</text>
+<line x1="343.0" y1="266" x2="565.0" y2="266" stroke="#16a34a" stroke-width="1.5"/>
+<rect x="349.0" y="284" width="210" height="34" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.2" />
+<text x="454.0" y="307" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >SELECT … FROM …</text>
+<rect x="349.0" y="326" width="210" height="34" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.2" />
+<text x="454.0" y="349" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >WHERE · GROUP BY</text>
+<rect x="349.0" y="368" width="210" height="34" rx="6" fill="#fff" stroke="#16a34a" stroke-width="1.2" />
+<text x="454.0" y="391" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >ORDER BY</text>
+<rect x="611.0" y="76" width="270" height="350" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5" />
+<path d="M611.0 146 V88 Q611.0 76 623.0 76 H869.0 Q881.0 76 881.0 88 V146 Z" fill="#f59e0b"/>
+<text x="746.0" y="124" font-size="34" fill="#fff" font-weight="bold" text-anchor="middle" >LMD</text>
+<text x="746.0" y="178" font-size="14" fill="#475569" font-weight="normal" text-anchor="middle" >Langage de Manipulation des Données</text>
+<text x="746.0" y="218" font-size="20" fill="#92400e" font-weight="bold" text-anchor="middle" >MODIFIE le contenu</text>
+<text x="746.0" y="242" font-size="14.5" fill="#475569" font-weight="normal" text-anchor="middle" >(les lignes des tables)</text>
+<line x1="635.0" y1="266" x2="857.0" y2="266" stroke="#f59e0b" stroke-width="1.5"/>
+<rect x="641.0" y="284" width="210" height="34" rx="6" fill="#fff" stroke="#f59e0b" stroke-width="1.2" />
+<text x="746.0" y="307" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >INSERT INTO</text>
+<rect x="641.0" y="326" width="210" height="34" rx="6" fill="#fff" stroke="#f59e0b" stroke-width="1.2" />
+<text x="746.0" y="349" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >UPDATE</text>
+<rect x="641.0" y="368" width="210" height="34" rx="6" fill="#fff" stroke="#f59e0b" stroke-width="1.2" />
+<text x="746.0" y="391" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >DELETE</text>
+<rect x="903.0" y="76" width="270" height="350" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2.5" />
+<path d="M903.0 146 V88 Q903.0 76 915.0 76 H1161.0 Q1173.0 76 1173.0 88 V146 Z" fill="#7c3aed"/>
+<text x="1038.0" y="124" font-size="34" fill="#fff" font-weight="bold" text-anchor="middle" >LCD</text>
+<text x="1038.0" y="178" font-size="14" fill="#475569" font-weight="normal" text-anchor="middle" >Langage de Contrôle des Données</text>
+<text x="1038.0" y="218" font-size="20" fill="#5b21b6" font-weight="bold" text-anchor="middle" >GÈRE les droits</text>
+<text x="1038.0" y="242" font-size="14.5" fill="#475569" font-weight="normal" text-anchor="middle" >(qui peut faire quoi)</text>
+<line x1="927.0" y1="266" x2="1149.0" y2="266" stroke="#7c3aed" stroke-width="1.5"/>
+<rect x="933.0" y="284" width="210" height="34" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.2" />
+<text x="1038.0" y="307" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >GRANT</text>
+<rect x="933.0" y="326" width="210" height="34" rx="6" fill="#fff" stroke="#7c3aed" stroke-width="1.2" />
+<text x="1038.0" y="349" font-size="16" fill="#1e293b" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >REVOKE</text>
+<text x="600.0" y="458" font-size="14.5" fill="#475569" font-weight="normal" text-anchor="middle" font-style="italic" >Certains cours rangent SELECT dans le LMD ; ici (cours de Caen) le LID est distingué.</text>
+
+</svg>

@@ -1,0 +1,75 @@
+{
+  "seance": "cm1-processus",
+  "cartes": [
+    {
+      "id": "c-cm1-processus-001",
+      "notion": "fork",
+      "recto": "fork (duplique le processus appelant) : quelle valeur retourne-t-il dans le père, dans le fils, en cas d'échec ?",
+      "verso": "PID du fils dans le père, 0 dans le fils, -1 si échec.",
+      "source": "annale 2022-2023 ex. 1 Q2"
+    },
+    {
+      "id": "c-cm1-processus-002",
+      "notion": "fork",
+      "recto": "Pourquoi fork (duplique le processus appelant) renvoie-t-il deux valeurs ?",
+      "verso": "L'appel retourne dans le père et le fils, avec des valeurs différentes.",
+      "source": "annale 2022-2022 ex. 1 Q1 et 2022-2023 ex. 1 Q2"
+    },
+    {
+      "id": "c-cm1-processus-003",
+      "notion": "fork",
+      "recto": "Combien de processus (père compris) après n fork consécutifs ?",
+      "verso": "2^n (4 fork donnent 16).",
+      "source": "annale 2022-2023 ex. 1 Q3"
+    },
+    {
+      "id": "c-cm1-processus-004",
+      "notion": "zombie",
+      "recto": "Qu'est-ce qu'un processus zombie ?",
+      "verso": "Un fils terminé dont le père n'a pas lu le code de retour.",
+      "source": "annale 2022-2023 ex. 1 Q4 et 2024-2025 Q4"
+    },
+    {
+      "id": "c-cm1-processus-005",
+      "notion": "orphelin",
+      "recto": "Qu'est-ce qu'un processus orphelin, et qui l'adopte ?",
+      "verso": "Un processus vivant dont le père est mort ; init (PID 1) l'adopte.",
+      "source": "annale 2022-2023 ex. 1 Q4"
+    },
+    {
+      "id": "c-cm1-processus-006",
+      "notion": "wait-et-exit",
+      "recto": "À quoi sert wait (bloque le père jusqu'à la fin d'un de ses fils) ?",
+      "verso": "À synchroniser le père et à récupérer le code de sortie du fils.",
+      "source": "notion wait et waitpid (CM1)"
+    },
+    {
+      "id": "c-cm1-processus-007",
+      "notion": "processus",
+      "recto": "Quelle différence entre un programme et un processus ?",
+      "verso": "Programme : fichier inerte. Processus : programme en cours d'exécution.",
+      "source": "CM1 chapitre, section 1"
+    },
+    {
+      "id": "c-cm1-processus-008",
+      "notion": "processus",
+      "recto": "Comment un programme utilisateur passe-t-il en mode kernel ?",
+      "verso": "Uniquement par un appel système (fork, read, write...).",
+      "source": "annale 2022-2023 ex. 1 Q1"
+    },
+    {
+      "id": "c-cm1-processus-009",
+      "notion": "heritage-pere-fils",
+      "recto": "Qu'est-ce que le fils ne reçoit pas du père après un fork ?",
+      "verso": "Son PID et son PPID (nouveaux), les signaux en attente, les verrous.",
+      "source": "notion Héritage père-fils (CM1)"
+    },
+    {
+      "id": "c-cm1-processus-010",
+      "notion": "heritage-pere-fils",
+      "recto": "Après un fork, père et fils ont des descripteurs de fichiers ouverts : que partagent-ils ?",
+      "verso": "La même description de fichier, donc le même décalage de lecture/écriture.",
+      "source": "notion Héritage père-fils (CM1), CM1 chapitre section 8"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1200" height="520" fill="#fff"/>
+<text x="600.0" y="40" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="middle" >Gestion par fichiers vs SGBD</text>
+<rect x="30" y="70" width="540" height="420" rx="12" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5" />
+<text x="300" y="104" font-size="20" fill="#991b1b" font-weight="bold" text-anchor="middle" >SANS SGBD</text>
+<rect x="50" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="125.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 1</text>
+<line x1="125" y1="174" x2="125" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="50" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="125.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 1</text>
+<line x1="125" y1="258" x2="125" y2="298" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="50" y="298" width="150" height="44" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
+<text x="125.0" y="326.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Fichier 1</text>
+<rect x="225" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="300.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 2</text>
+<line x1="300" y1="174" x2="300" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="225" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="300.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 2</text>
+<line x1="300" y1="258" x2="300" y2="298" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="225" y="298" width="150" height="44" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
+<text x="300.0" y="326.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Fichier 2</text>
+<rect x="400" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="475.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 3</text>
+<line x1="475" y1="174" x2="475" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="400" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="475.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 3</text>
+<line x1="475" y1="258" x2="475" y2="298" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="400" y="298" width="150" height="44" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" />
+<text x="475.0" y="326.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Fichier 3</text>
+<text x="60" y="382" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >• 1 fichier dédié à chaque application</text>
+<text x="60" y="406" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >• mêmes données recopiées : REDONDANCE</text>
+<text x="60" y="430" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >• copies qui divergent : INCOHÉRENCE</text>
+<text x="60" y="454" font-size="16" fill="#475569" font-weight="normal" text-anchor="start" >• structures liées aux programmes</text>
+<text x="74" y="478" font-size="16" fill="#475569" font-weight="normal" text-anchor="start" >(modification délicate)</text>
+<rect x="630" y="70" width="540" height="420" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" />
+<text x="900" y="104" font-size="20" fill="#166534" font-weight="bold" text-anchor="middle" >AVEC SGBD</text>
+<rect x="650" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="725.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 1</text>
+<line x1="725" y1="174" x2="725" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="650" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="725.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 1</text>
+<line x1="725" y1="258" x2="900" y2="296" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="825" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="900.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 2</text>
+<line x1="900" y1="174" x2="900" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="825" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="900.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 2</text>
+<line x1="900" y1="258" x2="900" y2="296" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1000" y="130" width="150" height="44" rx="8" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<text x="1075.0" y="158.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Utilisateur 3</text>
+<line x1="1075" y1="174" x2="1075" y2="214" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="1000" y="214" width="150" height="44" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" />
+<text x="1075.0" y="242.0" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="middle" >Application 3</text>
+<line x1="1075" y1="258" x2="900" y2="296" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="760" y="298" width="280" height="44" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+<text x="900" y="327" font-size="19" fill="#166534" font-weight="bold" text-anchor="middle" >SGBD</text>
+<line x1="900" y1="342" x2="900" y2="372" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+<path d="M810 384 v30 a90 14 0 0 0 180 0 v-30" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><ellipse cx="900" cy="384" rx="90" ry="14" fill="#fde68a" stroke="#f59e0b" stroke-width="2"/>
+<text x="900" y="414" font-size="15" fill="#1e293b" font-weight="bold" text-anchor="middle" >BD : une seule copie</text>
+<text x="660" y="448" font-size="15.5" fill="#1e293b" font-weight="normal" text-anchor="start" >• données stockées une fois, partagées entre applications</text>
+<text x="660" y="472" font-size="15.5" fill="#1e293b" font-weight="normal" text-anchor="start" >• cohérence, sécurité, accès concurrents gérés par le SGBD</text>
+
+</svg>

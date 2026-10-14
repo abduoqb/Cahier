@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 354" width="1000" height="354" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1000" height="354" fill="#fff"/>
+<text x="40" y="44" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="start" >⋈  Jointure naturelle — relie sur l'attribut commun</text>
+<text x="40" y="78" font-size="19" fill="#2563eb" font-weight="bold" text-anchor="start" font-family="Consolas, 'Courier New', monospace" >Personne ⋈ Voyage      (attribut commun : nompers)</text>
+<text x="40" y="106" font-size="15.5" fill="#475569" font-weight="normal" text-anchor="start" >Produit cartésien filtré sur l'égalité des attributs communs ; la colonne commune n'est gardée qu'une fois.</text>
+<text x="40" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >Personne</text>
+<rect x="40" y="164" width="178.0" height="120" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="40" y="164" width="178.0" height="30" rx="4" fill="#2563eb"/>
+<rect x="40" y="188" width="178.0" height="6" fill="#2563eb"/>
+<text x="53" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="142.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >ville</text>
+<rect x="41" y="194" width="176.0" height="30" fill="#dbeafe"/>
+<line x1="40" y1="194" x2="218.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="142.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >caen</text>
+<rect x="41" y="224" width="176.0" height="30" fill="#f8fafc"/>
+<line x1="40" y1="224" x2="218.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="244.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">jean</text>
+<text x="142.0" y="244.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">creully</text>
+<rect x="41" y="254" width="176.0" height="30" fill="#fef3c7"/>
+<line x1="40" y1="254" x2="218.0" y2="254" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >helena</text>
+<text x="142.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >paris</text>
+<rect x="40" y="164" width="178.0" height="120" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<text x="252.0" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >Voyage</text>
+<rect x="252.0" y="164" width="196.0" height="120" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="252.0" y="164" width="196.0" height="30" rx="4" fill="#2563eb"/>
+<rect x="252.0" y="188" width="196.0" height="6" fill="#2563eb"/>
+<text x="265.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="354.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompays</text>
+<rect x="253.0" y="194" width="194.0" height="30" fill="#dbeafe"/>
+<line x1="252.0" y1="194" x2="448.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="265.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="354.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >irlande</text>
+<rect x="253.0" y="224" width="194.0" height="30" fill="#dbeafe"/>
+<line x1="252.0" y1="224" x2="448.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="265.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="354.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >macedoine</text>
+<rect x="253.0" y="254" width="194.0" height="30" fill="#fef3c7"/>
+<line x1="252.0" y1="254" x2="448.0" y2="254" stroke="#e2e8f0" stroke-width="1"/>
+<text x="265.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >helena</text>
+<text x="354.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >perou</text>
+<rect x="252.0" y="164" width="196.0" height="120" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<line x1="476.0" y1="224" x2="566.0" y2="224" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrB)"/>
+<text x="521.0" y="208" font-size="22" fill="#2563eb" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >⋈</text>
+<text x="596.0" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >Résultat</text>
+<rect x="596.0" y="164" width="267.0" height="120" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="596.0" y="164" width="267.0" height="30" rx="4" fill="#16a34a"/>
+<rect x="596.0" y="188" width="267.0" height="6" fill="#16a34a"/>
+<text x="609.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="698.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >ville</text>
+<text x="769.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompays</text>
+<rect x="597.0" y="194" width="265.0" height="30" fill="#dbeafe"/>
+<line x1="596.0" y1="194" x2="863.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="609.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="698.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >caen</text>
+<text x="769.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >irlande</text>
+<rect x="597.0" y="224" width="265.0" height="30" fill="#dbeafe"/>
+<line x1="596.0" y1="224" x2="863.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="609.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="698.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >caen</text>
+<text x="769.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >macedoine</text>
+<rect x="597.0" y="254" width="265.0" height="30" fill="#fef3c7"/>
+<line x1="596.0" y1="254" x2="863.0" y2="254" stroke="#e2e8f0" stroke-width="1"/>
+<text x="609.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >helena</text>
+<text x="698.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >paris</text>
+<text x="769.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >perou</text>
+<rect x="596.0" y="164" width="267.0" height="120" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<text x="40" y="322" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >jean n'a aucun voyage : sa ligne disparaît (un n-uplet sans partenaire est perdu).</text>
+
+</svg>

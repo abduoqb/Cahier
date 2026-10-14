@@ -1,0 +1,75 @@
+{
+  "seance": "cm3-tubes",
+  "cartes": [
+    {
+      "id": "c-cm3-tubes-001",
+      "notion": "tube-anonyme",
+      "recto": "Tube anonyme créé par pipe : quel descripteur du tableau sert à lire, lequel à écrire ?",
+      "verso": "fd[0] lit, fd[1] écrit.",
+      "source": "CM3 chapitre, section 3"
+    },
+    {
+      "id": "c-cm3-tubes-002",
+      "notion": "tube-anonyme",
+      "recto": "Pourquoi crée-t-on le tube anonyme avant de dupliquer le processus avec fork ?",
+      "verso": "Pour que le fils hérite des descripteurs du même tube.",
+      "source": "annale 2022-2023 ex. 2.2 Q4"
+    },
+    {
+      "id": "c-cm3-tubes-003",
+      "notion": "tube-anonyme",
+      "recto": "Quand la lecture d'un tube vide rend-elle 0 au lieu de bloquer ?",
+      "verso": "Quand plus aucun descripteur d'écriture n'est ouvert.",
+      "source": "CM3 chapitre, section 3 (règles de blocage)"
+    },
+    {
+      "id": "c-cm3-tubes-004",
+      "notion": "tube-anonyme",
+      "recto": "Combien de tubes anonymes faut-il pour un dialogue père-fils dans les deux sens ?",
+      "verso": "Deux, car un tube est à sens unique.",
+      "source": "CM3 chapitre, section 3"
+    },
+    {
+      "id": "c-cm3-tubes-005",
+      "notion": "tube-nomme",
+      "recto": "Deux processus sans lien de parenté veulent communiquer par un tube : lequel utiliser ?",
+      "verso": "Un tube nommé (FIFO), créé avec mkfifo.",
+      "source": "annale 2022-2022 ex. 2.1 Q1"
+    },
+    {
+      "id": "c-cm3-tubes-006",
+      "notion": "tube-nomme",
+      "recto": "Quelle est la taille d'un tube dans le système de fichiers, et où sont les données ?",
+      "verso": "0 : les données sont dans un tampon du noyau.",
+      "source": "annale 2022-2022 ex. 1 Q8"
+    },
+    {
+      "id": "c-cm3-tubes-007",
+      "notion": "sigpipe",
+      "recto": "Que reçoit un processus qui écrit dans un tube dont plus aucun lecteur n'existe ?",
+      "verso": "Le signal SIGPIPE, qui le tue par défaut.",
+      "source": "annale 2022-2022 ex. 1 Q4, annale 2022-2023 ex. 2.2 Q5"
+    },
+    {
+      "id": "c-cm3-tubes-008",
+      "notion": "dup2",
+      "recto": "dup2(ancien, nouveau) : que devient le descripteur nouveau ?",
+      "verso": "Une copie de ancien (nouveau est fermé d'abord).",
+      "source": "CM3 chapitre, section 4 et 7"
+    },
+    {
+      "id": "c-cm3-tubes-009",
+      "notion": "descripteur",
+      "recto": "Quels numéros de descripteurs désignent l'entrée, la sortie et l'erreur standard ?",
+      "verso": "0, 1 et 2.",
+      "source": "annale 2022-2022 ex. 1 Q3 et Q5"
+    },
+    {
+      "id": "c-cm3-tubes-010",
+      "notion": "memoire-partagee",
+      "recto": "Quel est l'avantage et le manque de la mémoire partagée par rapport à un tube ?",
+      "verso": "Très rapide, mais aucune synchronisation fournie.",
+      "source": "CM3 chapitre, section 8"
+    }
+  ]
+}

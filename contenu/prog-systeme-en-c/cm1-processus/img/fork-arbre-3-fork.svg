@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">fork(); fork(); fork(); : chaque fork double le nombre de processus</text>
+
+  <!-- colonnes de fork -->
+  <g stroke="#cbd5e1" stroke-dasharray="6 5" stroke-width="1.5">
+    <line x1="230" y1="60" x2="230" y2="440"/>
+    <line x1="410" y1="60" x2="410" y2="440"/>
+    <line x1="590" y1="60" x2="590" y2="440"/>
+  </g>
+  <g font-size="16" font-weight="600" fill="#2563eb" text-anchor="middle">
+    <text x="230" y="58">fork n°1 : 2 proc.</text>
+    <text x="410" y="58">fork n°2 : 4 proc.</text>
+    <text x="590" y="58">fork n°3 : 8 proc.</text>
+  </g>
+
+  <!-- lignes de vie (rangées y = 100 + 45*i) -->
+  <g stroke="#475569" stroke-width="3" fill="none">
+    <line x1="60"  y1="100" x2="760" y2="100"/>
+    <line x1="230" y1="280" x2="760" y2="280"/>
+    <line x1="410" y1="190" x2="760" y2="190"/>
+    <line x1="410" y1="370" x2="760" y2="370"/>
+    <line x1="590" y1="145" x2="760" y2="145"/>
+    <line x1="590" y1="235" x2="760" y2="235"/>
+    <line x1="590" y1="325" x2="760" y2="325"/>
+    <line x1="590" y1="415" x2="760" y2="415"/>
+  </g>
+
+  <!-- branches fils (fleches orange) -->
+  <g stroke="#f59e0b" stroke-width="3" fill="none">
+    <line x1="230" y1="100" x2="230" y2="280" marker-end="url(#b)"/>
+    <line x1="410" y1="100" x2="410" y2="190" marker-end="url(#b)"/>
+    <line x1="410" y1="280" x2="410" y2="370" marker-end="url(#b)"/>
+    <line x1="590" y1="100" x2="590" y2="145" marker-end="url(#b)"/>
+    <line x1="590" y1="190" x2="590" y2="235" marker-end="url(#b)"/>
+    <line x1="590" y1="280" x2="590" y2="325" marker-end="url(#b)"/>
+    <line x1="590" y1="370" x2="590" y2="415" marker-end="url(#b)"/>
+  </g>
+
+  <!-- noms des processus -->
+  <g font-size="16" fill="#1e293b" font-weight="600">
+    <text x="60" y="88">P0 (original)</text>
+    <text x="238" y="272">P1</text>
+    <text x="418" y="182">P2</text>
+    <text x="418" y="362">P3</text>
+    <text x="598" y="137">P4</text>
+    <text x="598" y="227">P5</text>
+    <text x="598" y="317">P6</text>
+    <text x="598" y="407">P7</text>
+  </g>
+  <g font-size="15" fill="#475569">
+    <text x="772" y="105">sleep(300)</text>
+    <text x="772" y="150">sleep(300)</text>
+    <text x="772" y="195">sleep(300)</text>
+    <text x="772" y="240">sleep(300)</text>
+    <text x="772" y="285">sleep(300)</text>
+    <text x="772" y="330">sleep(300)</text>
+    <text x="772" y="375">sleep(300)</text>
+    <text x="772" y="420">sleep(300)</text>
+  </g>
+
+  <!-- legende -->
+  <line x1="60" y1="468" x2="110" y2="468" stroke="#475569" stroke-width="3"/>
+  <text x="120" y="473" font-size="15" fill="#1e293b">vie d'un processus (le père continue)</text>
+  <line x1="420" y1="468" x2="470" y2="468" stroke="#f59e0b" stroke-width="3" marker-end="url(#b)"/>
+  <text x="482" y="473" font-size="15" fill="#1e293b">naissance d'un fils (copie du père)</text>
+  <text x="450" y="505" text-anchor="middle" font-size="16" font-weight="600" fill="#2563eb">n fork consécutifs = 2^n processus (6 fork = 64, 10 fork = 1024)</text>
+</svg>

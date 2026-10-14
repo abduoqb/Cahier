@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 384" width="1000" height="384" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1000" height="384" fill="#fff"/>
+<text x="40" y="44" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="start" >÷  Division — « pour TOUS »</text>
+<text x="40" y="78" font-size="19" fill="#2563eb" font-weight="bold" text-anchor="start" font-family="Consolas, 'Courier New', monospace" >R ÷ S   avec R(nompers, capitale) et S(capitale)</text>
+<text x="40" y="106" font-size="15.5" fill="#475569" font-weight="normal" text-anchor="start" >Garde les valeurs de nompers associées à TOUTES les valeurs de S.</text>
+<text x="40" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >R</text>
+<rect x="40" y="164" width="187.0" height="150" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="40" y="164" width="187.0" height="30" rx="4" fill="#2563eb"/>
+<rect x="40" y="188" width="187.0" height="6" fill="#2563eb"/>
+<text x="53" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="142.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >capitale</text>
+<rect x="41" y="194" width="185.0" height="30" fill="#dcfce7"/>
+<line x1="40" y1="194" x2="227.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="142.0" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >dublin</text>
+<rect x="41" y="224" width="185.0" height="30" fill="#dcfce7"/>
+<line x1="40" y1="224" x2="227.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="244.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="142.0" y="244.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >lima</text>
+<rect x="41" y="254" width="185.0" height="30" fill="#fee2e2"/>
+<line x1="40" y1="254" x2="227.0" y2="254" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >mehdi</text>
+<text x="142.0" y="274.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >dublin</text>
+<rect x="41" y="284" width="185.0" height="30" fill="#fee2e2"/>
+<line x1="40" y1="284" x2="227.0" y2="284" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="304.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >helena</text>
+<text x="142.0" y="304.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >lima</text>
+<rect x="40" y="164" width="187.0" height="150" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<text x="261.0" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >S</text>
+<rect x="261.0" y="164" width="98.0" height="90" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="261.0" y="164" width="98.0" height="30" rx="4" fill="#2563eb"/>
+<rect x="261.0" y="188" width="98.0" height="6" fill="#2563eb"/>
+<text x="274.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >capitale</text>
+<line x1="261.0" y1="194" x2="359.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="274.0" y="214.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >dublin</text>
+<line x1="261.0" y1="224" x2="359.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="274.0" y="244.5" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="start" >lima</text>
+<rect x="261.0" y="164" width="98.0" height="90" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<line x1="387.0" y1="224" x2="477.0" y2="224" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrB)"/>
+<text x="432.0" y="208" font-size="22" fill="#2563eb" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >÷</text>
+<text x="507.0" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >R ÷ S</text>
+<rect x="507.0" y="164" width="89.0" height="60" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="507.0" y="164" width="89.0" height="30" rx="4" fill="#16a34a"/>
+<rect x="507.0" y="188" width="89.0" height="6" fill="#16a34a"/>
+<text x="520.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<rect x="508.0" y="194" width="87.0" height="30" fill="#dcfce7"/>
+<line x1="507.0" y1="194" x2="596.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="520.0" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >chloe</text>
+<rect x="507.0" y="164" width="89.0" height="60" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<text x="40" y="352" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >chloe est liée à dublin ET à lima : gardée. mehdi (pas lima) et helena (pas dublin) : éliminés.</text>
+
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="960" height="470" fill="#fff"/>
+  <text x="480" y="32" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">Cycle de vie d'un signal</text>
+
+  <rect x="20" y="90" width="190" height="64" rx="8" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="115" y="118" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e293b">Émission</text>
+  <text x="115" y="140" font-size="13" text-anchor="middle" fill="#475569">kill() / clavier / noyau</text>
+
+  <rect x="260" y="90" width="190" height="64" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="355" y="118" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e293b">PENDANT</text>
+  <text x="355" y="140" font-size="13" text-anchor="middle" fill="#475569">en attente (1 seul exemplaire)</text>
+
+  <rect x="500" y="90" width="190" height="64" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="595" y="118" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e293b">DÉLIVRÉ</text>
+  <text x="595" y="140" font-size="13" text-anchor="middle" fill="#475569">retour noyau vers utilisateur</text>
+
+  <line x1="210" y1="122" x2="260" y2="122" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="450" y1="122" x2="500" y2="122" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+
+  <rect x="260" y="210" width="190" height="56" rx="8" fill="#fff" stroke="#475569" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="355" y="234" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Signal BLOQUÉ (masque)</text>
+  <text x="355" y="254" font-size="13" text-anchor="middle" fill="#475569">attend jusqu'au déblocage</text>
+  <line x1="355" y1="154" x2="355" y2="210" stroke="#475569" stroke-width="2" marker-end="url(#g)"/>
+
+  <line x1="690" y1="122" x2="740" y2="122" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+  <text x="840" y="62" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Action choisie (par signal)</text>
+  <rect x="740" y="76" width="200" height="56" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="840" y="100" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">SIG_DFL</text>
+  <text x="840" y="120" font-size="13" text-anchor="middle" fill="#475569">défaut : le plus souvent mort</text>
+  <rect x="740" y="146" width="200" height="56" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="840" y="170" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">SIG_IGN</text>
+  <text x="840" y="190" font-size="13" text-anchor="middle" fill="#475569">ignoré, rien ne se passe</text>
+  <rect x="740" y="216" width="200" height="56" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+  <text x="840" y="240" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">handler(sig)</text>
+  <text x="840" y="260" font-size="13" text-anchor="middle" fill="#475569">ta fonction C, puis reprise</text>
+
+  <rect x="20" y="330" width="920" height="115" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="40" y="360" font-size="15" font-weight="bold" fill="#1e293b">À retenir</text>
+  <text x="40" y="386" font-size="14" fill="#475569">SIGKILL (9) et SIGSTOP (19) : ni bloqués, ni ignorés, ni interceptés. Rien n'empêche de tuer un processus.</text>
+  <text x="40" y="408" font-size="14" fill="#475569">Plusieurs signaux identiques pendant la même attente : un seul est conservé (pas de compteur).</text>
+  <text x="40" y="430" font-size="14" fill="#475569">Le handler s'exécute dans le processus, entre deux instructions, puis le programme reprend où il en était.</text>
+</svg>

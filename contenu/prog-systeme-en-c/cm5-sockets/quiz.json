@@ -1,0 +1,170 @@
+{
+  "seance": "cm5-sockets",
+  "questions": [
+    {
+      "id": "q-cm5-sockets-001",
+      "notion": "socket",
+      "type": "qcm",
+      "enonce": "Du point de vue du système (et non du réseau IP), qu'est-ce qu'une socket ?",
+      "choix": [
+        "Un processus serveur en attente de clients",
+        "Une adresse IP associée à un numéro de port",
+        "Un descripteur de fichier spécial, utilisable avec read et write",
+        "Un tampon partagé entre deux threads du même processus"
+      ],
+      "bonne": 2,
+      "explication": "Côté système, une socket est un descripteur de fichier spécial servant à communiquer ; l'adresse IP + port + protocole est la vision réseau.",
+      "source": "annale 2022-2022 ex. 1 Q7"
+    },
+    {
+      "id": "q-cm5-sockets-002",
+      "notion": "socket",
+      "type": "qcm",
+      "enonce": "Dans un répertoire, ls -l affiche un fichier de type s (une socket locale) et de taille 0. Pourquoi cette taille ?",
+      "choix": [
+        "Ce n'est qu'un nom (i-noeud) : les données passent par le noyau, pas par le disque",
+        "Le fichier est vide tant qu'aucun client n'est connecté",
+        "Les données sont écrites sur le disque puis supprimées aussitôt",
+        "Le fichier est compressé et ls ne sait pas afficher sa taille"
+      ],
+      "bonne": 0,
+      "explication": "Comme un tube nommé (type p), la socket n'a pas de contenu sur disque : c'est un simple nom, les données transitent par le noyau.",
+      "source": "annale 2024-2025 Q7 ; annale 2022-2023 Q9"
+    },
+    {
+      "id": "q-cm5-sockets-003",
+      "notion": "appels-tcp",
+      "type": "qcm",
+      "enonce": "Quel est l'ordre des appels d'un serveur TCP ? (bind attache une adresse, listen ouvre la file d'attente, accept attend un client.)",
+      "choix": [
+        "socket, accept, bind, listen, read, write",
+        "socket, listen, bind, accept, read, write",
+        "bind, socket, listen, accept, read, write",
+        "socket, bind, listen, accept, read, write"
+      ],
+      "bonne": 3,
+      "explication": "On crée la socket, on lui donne une adresse (bind), on se met à l'écoute (listen), puis on accepte les clients (accept) avant de dialoguer.",
+      "source": "CM5 chapitre, section Mode connecté (TCP)"
+    },
+    {
+      "id": "q-cm5-sockets-004",
+      "notion": "appels-tcp",
+      "type": "qcm",
+      "enonce": "Un serveur parallèle écoute sur le port 22. Quand un client se connecte, accept (qui attend puis extrait une connexion) se débloque. Que renvoie-t-il ?",
+      "choix": [
+        "Le descripteur de la socket d'écoute, inchangé",
+        "Un nouveau descripteur : la socket dédiée à ce client",
+        "L'adresse IP du client sous forme de chaîne",
+        "Le PID du processus fils créé pour ce client"
+      ],
+      "bonne": 1,
+      "explication": "accept renvoie une nouvelle socket (nouveau descripteur) dédiée au client ; la socket d'écoute reste disponible pour les suivants.",
+      "source": "annale 2022-2023 ex. 2.3 Q2"
+    },
+    {
+      "id": "q-cm5-sockets-005",
+      "notion": "tcp-udp",
+      "type": "qcm",
+      "enonce": "Serveur UDP, sans connexion. recvfrom reçoit un datagramme avec l'adresse de l'émetteur ; sendto envoie un datagramme à une adresse donnée. Quels appels suffisent côté serveur ?",
+      "choix": [
+        "socket, bind, listen, accept, read, write",
+        "socket, listen, recvfrom, close",
+        "socket, bind, recvfrom, sendto, close",
+        "socket, connect, recvfrom, sendto, close"
+      ],
+      "bonne": 2,
+      "explication": "UDP est sans connexion : ni listen ni accept (réservés à TCP), et le serveur n'appelle pas connect. Il lie son port, reçoit, répond.",
+      "source": "annale 2022-2022 ex. 2.2 Q1"
+    },
+    {
+      "id": "q-cm5-sockets-006",
+      "notion": "tcp-udp",
+      "type": "qcm",
+      "enonce": "Quelle paire correspond correctement au type de socket et au protocole ?",
+      "choix": [
+        "SOCK_DGRAM : TCP, flux d'octets fiable",
+        "SOCK_STREAM : UDP, datagrammes sans garantie",
+        "SOCK_DGRAM : TCP, avec connect et accept",
+        "SOCK_STREAM : TCP, flux d'octets connecté et fiable"
+      ],
+      "bonne": 3,
+      "explication": "SOCK_STREAM correspond à TCP (connecté, fiable, ordonné) ; SOCK_DGRAM correspond à UDP (datagrammes, sans garantie).",
+      "source": "CM5 chapitre, section Une socket, c'est quoi"
+    },
+    {
+      "id": "q-cm5-sockets-007",
+      "notion": "port-htons",
+      "type": "qcm",
+      "enonce": "On écrit adr.sin_port = 1664 sans conversion. Le serveur écoute alors sur un autre port que prévu (32774). Quelle fonction oublie-t-on ?",
+      "choix": [
+        "inet_addr, qui convertit une adresse texte en entier",
+        "htons, qui met un entier 16 bits dans l'ordre des octets du réseau",
+        "listen, qui fixe la taille de la file d'attente",
+        "ntohl, qui convertit une adresse IP en ordre machine"
+      ],
+      "bonne": 1,
+      "explication": "Le PC est little-endian et le réseau big-endian : sans htons, les deux octets du port sont inversés (0x0680 lu 0x8006 = 32774).",
+      "source": "CM5 chapitre, section Mode connecté (TCP)"
+    },
+    {
+      "id": "q-cm5-sockets-008",
+      "notion": "port-htons",
+      "type": "qcm",
+      "enonce": "Un utilisateur ordinaire lance un serveur qui fait bind (attache une adresse à la socket) sur le port 80. Que se passe-t-il ?",
+      "choix": [
+        "Le port est attribué mais en lecture seule",
+        "Le système choisit un autre port libre à la place",
+        "bind échoue avec Permission denied : les ports 1 à 1023 demandent root",
+        "bind réussit, car 80 est un port enregistré"
+      ],
+      "bonne": 2,
+      "explication": "Les ports 1 à 1023 sont réservés aux services classiques : bind exige les droits root. Au-dessus de 1023, les droits ordinaires suffisent.",
+      "source": "CM5 chapitre, section Client, serveur, port"
+    },
+    {
+      "id": "q-cm5-sockets-009",
+      "notion": "serveur-parallele",
+      "type": "qcm",
+      "enonce": "Un script lance des dizaines de clients ; le serveur (accept, traite le client, close, puis accept suivant) devient de plus en plus lent. Quelle est l'erreur de conception ?",
+      "choix": [
+        "C'est un serveur itératif : le dernier client attend les précédents",
+        "Le serveur utilise TCP au lieu d'UDP",
+        "Le serveur n'appelle pas htons sur le port",
+        "La file d'attente de listen est de taille 0"
+      ],
+      "bonne": 0,
+      "explication": "Un serveur qui traite un client à la fois est itératif. Il faut un serveur parallèle : fork ou thread après accept.",
+      "source": "annale 2024-2025 ex. 2.3 Q1"
+    },
+    {
+      "id": "q-cm5-sockets-010",
+      "notion": "serveur-parallele",
+      "type": "qcm",
+      "enonce": "Serveur parallèle TCP : après accept, le père appelle fork (crée un processus fils) puis le fils sert le client. Que doit fermer chacun ?",
+      "choix": [
+        "Le père ferme la socket d'écoute, le fils ferme la socket de service",
+        "Aucun des deux : le système ferme les sockets à leur place",
+        "Le père et le fils ferment tous les deux la socket d'écoute",
+        "Le père ferme la socket de service, le fils ferme la socket d'écoute"
+      ],
+      "bonne": 3,
+      "explication": "Le père garde l'écoute pour le prochain accept et n'a pas besoin de la socket du client ; le fils fait l'inverse.",
+      "source": "annale 2022-2023 ex. 2.3 Q3"
+    },
+    {
+      "id": "q-cm5-sockets-011",
+      "notion": "appels-tcp",
+      "type": "qcm",
+      "enonce": "Un client TCP appelle connect (demande la connexion au serveur) sans avoir fait bind. Pourquoi est-ce accepté ?",
+      "choix": [
+        "Le système lui attribue automatiquement un port libre",
+        "Le client réutilise le port du serveur",
+        "connect échoue toujours sans bind préalable",
+        "Le client n'a besoin d'aucun port pour communiquer"
+      ],
+      "bonne": 0,
+      "explication": "Le client n'a pas besoin d'être joignable par un numéro connu : le noyau lui donne un port libre (49152-65535) lors du connect.",
+      "source": "CM5 chapitre, section Mode connecté (TCP)"
+    }
+  ]
+}

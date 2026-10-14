@@ -1,0 +1,75 @@
+{
+  "seance": "cm1-introduction",
+  "cartes": [
+    {
+      "id": "c-cm1-introduction-001",
+      "notion": "gestion-par-fichiers",
+      "recto": "Citez les trois limites d'une gestion par fichiers (un fichier par application).",
+      "verso": "Redondance, dépendance données/traitements, multiplicité des normes.",
+      "source": "CM1 chapitre, section « Limites de l'organisation par fichiers »"
+    },
+    {
+      "id": "c-cm1-introduction-002",
+      "notion": "sgbd",
+      "recto": "Quelle différence entre un SGBD et une base de données ?",
+      "verso": "Le SGBD est le logiciel ; la base de données est l'ensemble des données gérées.",
+      "source": "Notion SGBD, CM1 chapitre"
+    },
+    {
+      "id": "c-cm1-introduction-003",
+      "notion": "sgbd",
+      "recto": "Quelles opérations un SGBD permet-il avec un langage de haut niveau ?",
+      "verso": "Rechercher, insérer et modifier les données (et les stocker et protéger).",
+      "source": "CM1 chapitre, section « SGBD : définition »"
+    },
+    {
+      "id": "c-cm1-introduction-004",
+      "notion": "langages-sgbd",
+      "recto": "Quel est le rôle du LDD ? Citez trois commandes.",
+      "verso": "Définir la structure : CREATE, ALTER, DROP.",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notion LDD"
+    },
+    {
+      "id": "c-cm1-introduction-005",
+      "notion": "langages-sgbd",
+      "recto": "Quel est le rôle du LMD ? Citez ses commandes.",
+      "verso": "Modifier le contenu : INSERT, UPDATE, DELETE.",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notion LMD"
+    },
+    {
+      "id": "c-cm1-introduction-006",
+      "notion": "langages-sgbd",
+      "recto": "Quels sont les rôles du LID et du LCD ?",
+      "verso": "LID : interroger (SELECT) ; LCD : gérer les droits (GRANT, REVOKE).",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notions LID, LCD"
+    },
+    {
+      "id": "c-cm1-introduction-007",
+      "notion": "architecture-3-niveaux",
+      "recto": "Quels sont les trois niveaux d'un SGBD et ce que décrit chacun ?",
+      "verso": "Externe : vue d'un utilisateur ; conceptuel : schéma de la BD ; interne : stockage physique.",
+      "source": "CM1 chapitre, section « Architecture à trois niveaux »"
+    },
+    {
+      "id": "c-cm1-introduction-008",
+      "notion": "architecture-3-niveaux",
+      "recto": "Différence entre indépendance physique et indépendance logique ?",
+      "verso": "Physique : changer le stockage sans toucher au conceptuel ; logique : changer le conceptuel sans casser les vues.",
+      "source": "Notion Architecture à trois niveaux"
+    },
+    {
+      "id": "c-cm1-introduction-009",
+      "notion": "anomalies-tableur",
+      "recto": "Tableau personnes-pays : si une personne déménage, quel problème apparaît ?",
+      "verso": "Incohérence : il faut modifier toutes ses lignes (redondance).",
+      "source": "CM1 chapitre, « Exemple minimal : pourquoi un tableur n'est pas une BD »"
+    },
+    {
+      "id": "c-cm1-introduction-010",
+      "notion": "anomalies-tableur",
+      "recto": "Tableau personnes-pays : quelle solution pour supprimer ces anomalies ?",
+      "verso": "Dissocier les informations des personnes de celles des pays (modèle relationnel).",
+      "source": "CM1 chapitre, « Exemple minimal : pourquoi un tableur n'est pas une BD »"
+    }
+  ]
+}

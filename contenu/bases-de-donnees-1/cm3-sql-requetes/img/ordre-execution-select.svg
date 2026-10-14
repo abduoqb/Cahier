@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 760" width="800" height="760" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="800" height="760" fill="#ffffff"/>
+  <text x="400" y="34" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">Ordre logique d'exécution d'un SELECT</text>
+  <text x="400" y="58" font-size="14" text-anchor="middle" fill="#475569">(≠ ordre d'écriture : on lit FROM en premier, SELECT en cinquième)</text>
+
+  <!-- boxes: x=40 w=300 ; descriptions x=380 -->
+  <g stroke="#2563eb" stroke-width="2" fill="#eff6ff">
+    <rect x="40" y="80" width="300" height="70" rx="8"/>
+    <rect x="40" y="180" width="300" height="70" rx="8"/>
+    <rect x="40" y="280" width="300" height="70" rx="8"/>
+    <rect x="40" y="380" width="300" height="70" rx="8"/>
+  </g>
+  <g stroke="#f59e0b" stroke-width="2" fill="#fffbeb">
+    <rect x="40" y="480" width="300" height="70" rx="8"/>
+    <rect x="40" y="580" width="300" height="70" rx="8"/>
+  </g>
+
+  <g font-size="16" fill="#1e293b" font-weight="bold">
+    <text x="60" y="108">① FROM / JOIN</text>
+    <text x="60" y="208">② WHERE</text>
+    <text x="60" y="308">③ GROUP BY</text>
+    <text x="60" y="408">④ HAVING</text>
+    <text x="60" y="508">⑤ SELECT [DISTINCT]</text>
+    <text x="60" y="608">⑥ ORDER BY</text>
+  </g>
+  <g font-size="14" fill="#475569">
+    <text x="60" y="130">construit les lignes (produit + jointures)</text>
+    <text x="60" y="230">filtre les LIGNES (pas d'agrégat ici)</text>
+    <text x="60" y="330">partitionne en groupes</text>
+    <text x="60" y="430">filtre les GROUPES (agrégats permis)</text>
+    <text x="60" y="530">projette, calcule, alias, déduplique</text>
+    <text x="60" y="630">trie (peut utiliser les alias)</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="2" marker-end="url(#arr)">
+    <line x1="190" y1="150" x2="190" y2="178"/>
+    <line x1="190" y1="250" x2="190" y2="278"/>
+    <line x1="190" y1="350" x2="190" y2="378"/>
+    <line x1="190" y1="450" x2="190" y2="478"/>
+    <line x1="190" y1="550" x2="190" y2="578"/>
+  </g>
+
+  <!-- right: what the data looks like -->
+  <g font-size="14" fill="#1e293b">
+    <text x="380" y="108" font-weight="bold">Données manipulées</text>
+    <text x="380" y="130">table(s) → grosse table de lignes</text>
+    <text x="380" y="208" font-weight="bold">lignes → lignes retenues</text>
+    <text x="380" y="230">alias de SELECT inconnus ici</text>
+    <text x="380" y="308" font-weight="bold">lignes → groupes</text>
+    <text x="380" y="330">un groupe = une valeur de la clé</text>
+    <text x="380" y="408" font-weight="bold">groupes → groupes retenus</text>
+    <text x="380" y="430">COUNT, SUM, AVG, MIN, MAX utilisables</text>
+    <text x="380" y="508" font-weight="bold">groupes/lignes → colonnes</text>
+    <text x="380" y="530">DISTINCT élimine les doublons du résultat</text>
+    <text x="380" y="608" font-weight="bold">résultat final trié</text>
+    <text x="380" y="630">ASC (défaut) / DESC</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="40" y="690" width="18" height="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="68" y="705" font-size="14" fill="#475569">filtrage / construction des données</text>
+  <rect x="420" y="690" width="18" height="18" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="448" y="705" font-size="14" fill="#475569">mise en forme du résultat</text>
+  <text x="40" y="740" font-size="14" fill="#475569">Dans le cours : pas de HAVING sans GROUP BY (HAVING sélectionne des groupes).</text>
+</svg>

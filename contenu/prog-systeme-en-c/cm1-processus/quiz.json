@@ -1,0 +1,185 @@
+{
+  "seance": "cm1-processus",
+  "questions": [
+    {
+      "id": "q-cm1-processus-001",
+      "notion": "fork",
+      "type": "qcm",
+      "enonce": "L'appel fork() duplique le processus courant : l'appel est fait une seule fois mais retourne dans deux processus. Quelle valeur reçoit le processus fils ?",
+      "choix": [
+        "Le PID du père",
+        "0",
+        "Le PID du fils",
+        "-1"
+      ],
+      "bonne": 1,
+      "explication": "Le fils reçoit 0, le père reçoit le PID du fils ; -1 n'est rendu que si le fork échoue (pas de fils).",
+      "source": "annale 2022-2023 ex. 1 Q2 (fork, deux valeurs)"
+    },
+    {
+      "id": "q-cm1-processus-002",
+      "notion": "fork",
+      "type": "qcm",
+      "enonce": "Un programme exécute fork(); fork(); fork(); fork(); (fork duplique le processus appelant) sans autre instruction. Combien de processus existent à la fin, le processus d'origine compris ?",
+      "choix": [
+        "8",
+        "15",
+        "16",
+        "4"
+      ],
+      "bonne": 2,
+      "explication": "Chaque fork double le nombre de processus, fils compris, donc 2^4 = 16 (15 créés plus l'original).",
+      "source": "annale 2022-2023 ex. 1 Q3"
+    },
+    {
+      "id": "q-cm1-processus-003",
+      "notion": "fork",
+      "type": "qcm",
+      "enonce": "Dans un programme où le père crée un fils avec fork (fonction qui duplique le processus), le code du fils ne se termine pas par exit(0). Que se passe-t-il le plus probablement ?",
+      "choix": [
+        "Le fils devient un zombie dès sa création",
+        "Le fils est arrêté par le noyau",
+        "Le père est bloqué jusqu'à la fin du fils",
+        "Le fils continue d'exécuter le code du père"
+      ],
+      "bonne": 3,
+      "explication": "Sans exit, le fils poursuit après son bloc et rejoue le code du père, avec parfois de nouveaux fork.",
+      "source": "CM1 chapitre, section Erreurs classiques (fils sans exit)"
+    },
+    {
+      "id": "q-cm1-processus-004",
+      "notion": "zombie",
+      "type": "qcm",
+      "enonce": "Quelle est la définition d'un processus zombie ?",
+      "choix": [
+        "Un processus terminé dont le père n'a pas lu le code de retour",
+        "Un processus vivant dont le père est mort",
+        "Un processus de service détaché de tout terminal",
+        "Un processus qui boucle sans jamais être endormi"
+      ],
+      "bonne": 0,
+      "explication": "Le zombie est mort mais garde une entrée dans la table des processus tant que le père n'a pas fait wait ; vivant sans père, c'est l'orphelin.",
+      "source": "annale 2022-2023 ex. 1 Q4"
+    },
+    {
+      "id": "q-cm1-processus-005",
+      "notion": "orphelin",
+      "type": "qcm",
+      "enonce": "Un père crée un fils qui dort 1 h ; le père dort 5 s, affiche un message puis se termine sans wait (wait attend la fin d'un fils). Que devient le fils après 5 s ?",
+      "choix": [
+        "Il est tué avec son père",
+        "Il est adopté par init, de PPID 1",
+        "Il devient aussitôt un zombie",
+        "Il est adopté par le shell du père"
+      ],
+      "bonne": 1,
+      "explication": "Le fils est vivant alors que son père est mort : c'est un orphelin, adopté par init (PID 1) ; il n'est pas zombie car il n'est pas terminé.",
+      "source": "annale 2022-2023 ex. 2.1 Q1-Q2 (suite)"
+    },
+    {
+      "id": "q-cm1-processus-006",
+      "notion": "processus",
+      "type": "qcm",
+      "enonce": "Un programme appelle getchar (lit un caractère au clavier) et l'utilisateur met 2 secondes à taper. Pendant ces 2 secondes, dans quel état est le processus ?",
+      "choix": [
+        "Actif, il occupe le processeur en attendant",
+        "Zombie, en attente de son père",
+        "Stoppé, il attend le signal SIGCONT",
+        "Bloqué, il attend une entrée/sortie"
+      ],
+      "bonne": 3,
+      "explication": "Il est endormi (état S) : il ne consomme pas de processeur et sera réveillé par l'interruption du clavier.",
+      "source": "annale 2024-2025 Q2"
+    },
+    {
+      "id": "q-cm1-processus-007",
+      "notion": "processus",
+      "type": "qcm",
+      "enonce": "Le processeur a un mode user et un mode kernel. Comment un programme utilisateur passe-t-il en mode kernel ?",
+      "choix": [
+        "Par un appel système",
+        "En appelant n'importe quelle fonction de bibliothèque",
+        "Quand l'ordonnanceur le décide pour tout programme",
+        "En modifiant lui-même le registre de mode"
+      ],
+      "bonne": 0,
+      "explication": "Seul un appel système (fork, read, write...) fait passer en mode kernel ; le programme revient ensuite en mode user.",
+      "source": "annale 2022-2023 ex. 1 Q1"
+    },
+    {
+      "id": "q-cm1-processus-008",
+      "notion": "processus",
+      "type": "qcm",
+      "enonce": "Lors de l'exécution d'un programme, sqrt(64) calcule une racine carrée et printf affiche un texte à l'écran. Lequel de ces deux appels fait intervenir le noyau ?",
+      "choix": [
+        "sqrt seulement",
+        "Les deux, par un appel système chacun",
+        "printf seulement, par l'appel système write",
+        "Aucun des deux, tout reste en mode user"
+      ],
+      "bonne": 2,
+      "explication": "sqrt est un calcul de bibliothèque en mode user ; printf finit par l'appel système write, exécuté par le noyau.",
+      "source": "annale 2024-2025 Q1"
+    },
+    {
+      "id": "q-cm1-processus-009",
+      "notion": "wait-et-exit",
+      "type": "qcm",
+      "enonce": "Un père a créé 3 fils et veut attendre la fin de chacun. wait (bloque le père jusqu'à la mort d'un de ses fils) est appelé : combien de fois faut-il l'appeler ?",
+      "choix": [
+        "1 fois, il attend tous les fils",
+        "3 fois, une par fils",
+        "2 fois, le dernier fils étant libéré seul",
+        "Aucune, le noyau libère les fils"
+      ],
+      "bonne": 1,
+      "explication": "Chaque appel de wait n'attend qu'un seul fils : pour N fils il faut N appels, en boucle.",
+      "source": "notion wait et waitpid (CM1)"
+    },
+    {
+      "id": "q-cm1-processus-010",
+      "notion": "wait-et-exit",
+      "type": "qcm",
+      "enonce": "Un fils termine par exit(7) et le père a fait wait(&status). Comment le père obtient-il la valeur 7 ?",
+      "choix": [
+        "En lisant directement la variable status",
+        "En appelant getppid() dans le fils",
+        "Avec WEXITSTATUS(status), après WIFEXITED(status)",
+        "Avec la valeur retournée par wait"
+      ],
+      "bonne": 2,
+      "explication": "status est encodé : on teste la sortie normale avec WIFEXITED puis on lit le code avec WEXITSTATUS. wait retourne le PID du fils.",
+      "source": "CM1 chapitre, section 6 (wait, WEXITSTATUS)"
+    },
+    {
+      "id": "q-cm1-processus-011",
+      "notion": "heritage-pere-fils",
+      "type": "qcm",
+      "enonce": "Après un fork (duplication du processus), le fils modifie une variable x héritée du père. Quelle valeur de x voit le père ?",
+      "choix": [
+        "L'ancienne, car la mémoire est copiée",
+        "La nouvelle, car la mémoire est partagée",
+        "La nouvelle, mais seulement pour une variable globale",
+        "Aucune, le fork interdit de modifier x"
+      ],
+      "bonne": 0,
+      "explication": "Le fils reçoit une copie de la mémoire : les modifications ne sont pas visibles du père (c'est ce qui distingue le fork d'un thread).",
+      "source": "notion Héritage père-fils (CM1) ; annale 2022-2023 ex. 1 Q12"
+    },
+    {
+      "id": "q-cm1-processus-012",
+      "notion": "zombie",
+      "type": "qcm",
+      "enonce": "Un processus zombie est visible avec ps (état Z). On ne peut pas le tuer, car il est déjà mort. Qu'est-ce qui le fait disparaître ?",
+      "choix": [
+        "Un signal SIGKILL envoyé par le père",
+        "L'arrêt du terminal du fils",
+        "Un nouveau fork du père",
+        "Un wait du père, ou la mort du père"
+      ],
+      "bonne": 3,
+      "explication": "Le zombie disparaît quand son père lit son code avec wait, ou quand le père meurt : init adopte alors le zombie et le nettoie.",
+      "source": "annale 2024-2025 Q4 ; notion Zombie (CM1)"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "seance": "cm2-signaux",
+  "questions": [
+    {
+      "id": "q-cm2-signaux-001",
+      "notion": "signal",
+      "type": "qcm",
+      "enonce": "Un signal (événement envoyé à un processus par le noyau, le clavier ou un autre processus) est-il synchrone ou asynchrone par rapport au processus qui le reçoit ?",
+      "choix": [
+        "Synchrone : il arrive toujours à un point précis du programme",
+        "Synchrone : l'émetteur attend que le destinataire ait réagi",
+        "Asynchrone : il peut arriver à tout moment, quelle que soit l'instruction en cours",
+        "Asynchrone : mais seulement pendant un appel système bloquant"
+      ],
+      "bonne": 2,
+      "explication": "Le signal arrive indépendamment de ce que fait le destinataire, qui est interrompu pour lancer le handler ; l'émetteur n'attend pas.",
+      "source": "annale 2022-2022 Q2 ; annale 2024-2025 Q6"
+    },
+    {
+      "id": "q-cm2-signaux-002",
+      "notion": "signal",
+      "type": "qcm",
+      "enonce": "Un processus P1 envoie à P2 un signal non masqué avec kill (appel qui envoie un signal à un processus). Quand P2 prend-il ce signal en compte ?",
+      "choix": [
+        "Immédiatement à l'envoi, même si P2 n'est pas sur le processeur",
+        "Quand P2 repasse du mode noyau au mode utilisateur",
+        "Seulement quand P2 appelle lui-même pause ou sigsuspend",
+        "Jamais tant que P2 n'a pas installé de handler"
+      ],
+      "bonne": 1,
+      "explication": "Le signal est d'abord pendant ; il est délivré quand P2 reprend la main, au retour du mode noyau vers le mode utilisateur.",
+      "source": "annale 2024-2025 Q8"
+    },
+    {
+      "id": "q-cm2-signaux-003",
+      "notion": "signal",
+      "type": "qcm",
+      "enonce": "Un processus reçoit deux SIGUSR1 alors que le premier est encore pendant (envoyé mais pas encore pris en compte). Combien de fois son handler est-il lancé ?",
+      "choix": [
+        "Une seule fois : un seul exemplaire par type peut être pendant",
+        "Deux fois, l'une après l'autre, dans l'ordre d'envoi",
+        "Zéro fois : les deux signaux s'annulent mutuellement",
+        "Deux fois, mais dans un ordre non défini entre elles"
+      ],
+      "bonne": 0,
+      "explication": "Un seul exemplaire d'un type donné peut être pendant ; le second est perdu.",
+      "source": "CM2 chapitre, section 2 (trois états, trois réactions)"
+    },
+    {
+      "id": "q-cm2-signaux-004",
+      "notion": "handler-sigaction",
+      "type": "qcm",
+      "enonce": "Un programme installe, avec sigaction (appel qui associe une fonction à un signal), un handler sur SIGINT qui écrit un message puis retourne. Que se passe-t-il quand on tape Ctrl-C ?",
+      "choix": [
+        "Le programme se termine immédiatement, sans afficher le message",
+        "Le programme redémarre depuis le début de main",
+        "Le message s'affiche et le Ctrl-C suivant tue le programme",
+        "Le message s'affiche, puis le programme reprend là où il en était"
+      ],
+      "bonne": 3,
+      "explication": "Le handler s'exécute entre deux instructions, puis le programme reprend. Le handler reste installé sauf si SA_RESETHAND est demandé.",
+      "source": "annale 2022-2023 Q7 ; CM2 chapitre, section 5"
+    },
+    {
+      "id": "q-cm2-signaux-005",
+      "notion": "handler-sigaction",
+      "type": "qcm",
+      "enonce": "Signal et sigaction installent tous deux un handler. Pourquoi le cours demande-t-il de préférer sigaction ?",
+      "choix": [
+        "signal est incapable d'installer un handler sur SIGINT",
+        "sigaction accepte aussi SIGKILL et SIGSTOP, pas signal",
+        "Le comportement de signal varie selon l'Unix ; sigaction est précis (POSIX)",
+        "sigaction permet de transporter une donnée avec le signal"
+      ],
+      "bonne": 2,
+      "explication": "Avec signal, le handler est réinitialisé ou non selon l'Unix. sigaction est fiable et portable ; elle échoue sur SIGKILL et SIGSTOP.",
+      "source": "CM2 chapitre, section 4 (récapitulatif des appels) et erreurs classiques"
+    },
+    {
+      "id": "q-cm2-signaux-006",
+      "notion": "kill",
+      "type": "qcm",
+      "enonce": "Un processus appelle kill(0, SIGTERM) (kill envoie un signal à un ou plusieurs processus selon son premier argument). Quels processus reçoivent SIGTERM ?",
+      "choix": [
+        "Tous les processus du groupe de l'appelant",
+        "Seulement l'appelant lui-même",
+        "Tous les processus du système sauf init",
+        "Seulement le père de l'appelant"
+      ],
+      "bonne": 0,
+      "explication": "pid = 0 vise le groupe de l'appelant ; pid = -1 vise tous les processus accessibles ; pid < -1 vise le groupe -pid.",
+      "source": "CM2 chapitre, section 4 ; CM2 questions de vérification n°2"
+    },
+    {
+      "id": "q-cm2-signaux-007",
+      "notion": "masque-signaux",
+      "type": "qcm",
+      "enonce": "Un processus bloque SIGINT avec sigprocmask (appel qui modifie l'ensemble des signaux bloqués), puis l'utilisateur tape Ctrl-C. Que devient ce signal ?",
+      "choix": [
+        "Il est perdu définitivement, comme s'il n'avait jamais été envoyé",
+        "Il est transformé en SIGKILL par le noyau",
+        "Il est ignoré, puis un nouveau Ctrl-C sera nécessaire",
+        "Il reste pendant et est délivré dès que SIGINT est débloqué"
+      ],
+      "bonne": 3,
+      "explication": "Un signal bloqué n'est pas perdu : il reste pendant jusqu'au déblocage, puis il est délivré.",
+      "source": "CM2 chapitre, sections 2 et 6 ; annale 2024-2025 Q8"
+    },
+    {
+      "id": "q-cm2-signaux-008",
+      "notion": "pause-sigsuspend",
+      "type": "qcm",
+      "enonce": "Un programme teste un drapeau « recu » puis appelle pause (qui endort le processus jusqu'à l'arrivée d'un signal quelconque). Pourquoi ce schéma est-il incorrect ?",
+      "choix": [
+        "pause ne peut pas être appelée dans une boucle",
+        "Le signal peut arriver entre le test et pause : on dort pour toujours",
+        "pause consomme le signal avant que le handler ne s'exécute",
+        "pause retourne 0 et le test du drapeau est alors faux"
+      ],
+      "bonne": 1,
+      "explication": "Entre le test et l'appel de pause, le signal peut arriver sans être vu. Il faut bloquer le signal d'abord, puis utiliser sigsuspend.",
+      "source": "CM2 chapitre, section « Attendre proprement un signal » ; TD1 exercice 3"
+    },
+    {
+      "id": "q-cm2-signaux-009",
+      "notion": "pause-sigsuspend",
+      "type": "qcm",
+      "enonce": "sigsuspend(&masque) installe un masque puis endort le processus jusqu'à un signal. Qu'apporte-t-il de plus que pause pour attendre un signal précis ?",
+      "choix": [
+        "Le changement de masque et l'endormissement forment une seule opération atomique",
+        "Il renvoie le numéro du signal qui a réveillé le processus",
+        "Il permet d'attendre SIGKILL et SIGSTOP en les débloquant",
+        "Il retourne 0 dès qu'un signal arrive, au lieu de -1"
+      ],
+      "bonne": 0,
+      "explication": "Atomique : aucun signal ne peut se glisser entre le déblocage et l'endormissement. Comme pause, il retourne toujours -1 avec errno = EINTR.",
+      "source": "CM2 chapitre, section 4 (sigsuspend) ; TD1 exercice 3"
+    },
+    {
+      "id": "q-cm2-signaux-010",
+      "notion": "signaux-usuels",
+      "type": "qcm",
+      "enonce": "Un handler de SIGSEGV se contente de retourner (sans quitter) après une écriture à l'adresse NULL. Que se passe-t-il ensuite ?",
+      "choix": [
+        "Le programme continue à l'instruction suivante comme si de rien n'était",
+        "Le programme se termine avec le code EXIT_SUCCESS",
+        "Le noyau ignore la faute et rend le pointeur valide",
+        "L'instruction fautive est réexécutée : SIGSEGV se répète en boucle"
+      ],
+      "bonne": 3,
+      "explication": "Au retour du handler, l'instruction fautive est relancée et provoque à nouveau SIGSEGV. Un tel handler ne peut qu'afficher un message et quitter, ou sauter ailleurs avec siglongjmp.",
+      "source": "annale 2024-2025 Q11 et ex. 2.2"
+    },
+    {
+      "id": "q-cm2-signaux-011",
+      "notion": "signaux-usuels",
+      "type": "qcm",
+      "enonce": "Un fils écrit dans un tube dont plus aucun descripteur de lecture n'est ouvert. SIGPIPE n'est ni ignoré ni capté. Que lui arrive-t-il ?",
+      "choix": [
+        "write bloque indéfiniment en attendant un lecteur",
+        "Il est tué par SIGPIPE (action par défaut)",
+        "write retourne 0 et le fils continue normalement",
+        "Seul le père reçoit SIGPIPE et le fils continue"
+      ],
+      "bonne": 1,
+      "explication": "Sans lecteur, le noyau envoie SIGPIPE à l'écrivain, tué par défaut. Si le signal est ignoré ou capté, write retourne -1 avec errno = EPIPE.",
+      "source": "annale 2022-2023 ex. 2.2 Q5 ; annale 2022-2022 Q4"
+    },
+    {
+      "id": "q-cm2-signaux-012",
+      "notion": "signaux-usuels",
+      "type": "qcm",
+      "enonce": "Un processus fils se termine. Quel signal le noyau envoie-t-il au père, et dans quel état reste le fils tant que le père n'a pas fait wait (appel qui récupère un fils terminé) ?",
+      "choix": [
+        "SIGCHLD ; le fils disparaît aussitôt de la table des processus",
+        "SIGTERM ; le fils devient orphelin",
+        "SIGCHLD ; le fils reste zombie",
+        "SIGUSR1 ; le fils reste zombie"
+      ],
+      "bonne": 2,
+      "explication": "Le père reçoit SIGCHLD (ignoré par défaut) ; le fils reste zombie tant que le père ne l'a pas récolté avec wait ou waitpid.",
+      "source": "annale 2024-2025 Q9"
+    }
+  ]
+}

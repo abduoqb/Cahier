@@ -1,0 +1,125 @@
+{
+  "seance": "cm4-threads",
+  "questions": [
+    {
+      "id": "q-cm4-threads-001",
+      "notion": "thread",
+      "type": "qcm",
+      "enonce": "Dans main, on appelle quatre fois pthread_create (qui lance un nouveau thread exécutant une fonction donnée), sans autre création. Combien de threads le processus compte-t-il, thread principal compris ?",
+      "choix": ["4 threads : les quatre créés", "8 threads : chaque appel en crée deux", "5 threads : les quatre créés plus le principal", "16 threads : doublement à chaque appel"],
+      "bonne": 2,
+      "explication": "Chaque pthread_create ajoute un thread, et le thread principal existe déjà : 4 + 1 = 5. Le doublement (2^n) est le comptage des fork, pas des threads.",
+      "source": "annale 2022-2023 ex. 1 Q10 (idem annale 2022-2022 Q9)"
+    },
+    {
+      "id": "q-cm4-threads-002",
+      "notion": "pthread-join",
+      "type": "qcm",
+      "enonce": "Le thread principal a lancé 4 threads avec pthread_create. Il doit attendre leur fin, sinon le processus se termine et les tue. Quelle fonction appeler, et combien de fois ?",
+      "choix": ["pthread_join, 4 fois (une par thread)", "pthread_join, une seule fois pour tous", "pthread_create, 4 fois de plus", "pthread_self, 4 fois (une par thread)"],
+      "bonne": 0,
+      "explication": "pthread_join attend la fin d'un seul thread : il en faut un appel par thread créé. Sans eux, main peut finir avant les threads et tuer tout le processus.",
+      "source": "annale 2022-2023 ex. 1 Q11"
+    },
+    {
+      "id": "q-cm4-threads-003",
+      "notion": "processus-vs-thread",
+      "type": "qcm",
+      "enonce": "Une globale i est modifiée par un fils créé avec fork (qui duplique le processus), une autre globale j par un thread créé avec pthread_create. Que voit le créateur après ces modifications ?",
+      "choix": ["La modification de i et celle de j", "Ni celle de i ni celle de j", "Celle de i, mais pas celle de j", "Celle de j, mais pas celle de i"],
+      "bonne": 3,
+      "explication": "Après fork, la mémoire est copiée : le père ne voit pas les changements du fils. Un thread partage globales et tas avec son créateur : j est modifiée pour tous.",
+      "source": "annale 2022-2023 ex. 1 Q12 ; CM4 chapitre, section 2"
+    },
+    {
+      "id": "q-cm4-threads-004",
+      "notion": "thread",
+      "type": "qcm",
+      "enonce": "ps -jfT (qui affiche une ligne par thread) montre trois lignes ./thread de même PID, avec des SPID 36380, 36381 et 36382. Que représentent ces trois lignes ?",
+      "choix": ["Trois processus indépendants lancés par bash", "Un seul processus qui contient trois threads", "Un processus et deux zombies en attente", "Trois processus qui se partagent un même PID"],
+      "bonne": 1,
+      "explication": "Même PID = même processus ; les SPID différents identifient les threads : le principal et deux autres.",
+      "source": "annale 2022-2023 ex. 2.4 Q2"
+    },
+    {
+      "id": "q-cm4-threads-005",
+      "notion": "mutex",
+      "type": "qcm",
+      "enonce": "Un thread appelle pthread_mutex_lock (prend le verrou et bloque si un autre le détient), puis sort par un return anticipé sans pthread_mutex_unlock. Que subissent les autres threads qui demandent ce verrou ?",
+      "choix": ["Ils attendent indéfiniment : c'est un interblocage", "Ils obtiennent le verrou après un délai fixé", "Ils l'obtiennent : le verrou est rendu au return", "Ils sont tués par le noyau pour cause de blocage"],
+      "bonne": 0,
+      "explication": "Un lock sans unlock, y compris par un return anticipé, bloque tous les autres threads à jamais.",
+      "source": "CM4 chapitre, section Erreurs classiques ; fiche Mutex"
+    },
+    {
+      "id": "q-cm4-threads-006",
+      "notion": "condition-de-concurrence",
+      "type": "qcm",
+      "enonce": "Un programme lance 10 threads qui affichent chacun leur numéro. D'une exécution à l'autre, l'ordre d'affichage change. Quelle en est la cause ?",
+      "choix": ["Le compilateur réordonne les appels à chaque compilation", "Chaque thread reçoit un numéro tiré au hasard", "L'ordonnanceur choisit l'ordre, qui n'est pas déterministe", "Le dernier thread créé s'exécute toujours en premier"],
+      "bonne": 2,
+      "explication": "Les threads sont concurrents : c'est l'ordonnanceur qui décide qui s'exécute, et l'ordre peut changer à chaque lancement.",
+      "source": "annale 2024-2025 ex. 2.4 Q1"
+    },
+    {
+      "id": "q-cm4-threads-007",
+      "notion": "pthread-join",
+      "type": "qcm",
+      "enonce": "Le thread principal ne fait aucun join (attente de la fin d'un thread) et se termine aussitôt, alors que ses threads travaillent encore. Que risque-t-il d'arriver ?",
+      "choix": ["Les threads continuent seuls et finissent normalement", "Les threads deviennent des zombies en attente d'un père", "Le noyau retarde la fin du processus jusqu'aux threads", "Le processus s'arrête et tue les threads en cours"],
+      "bonne": 3,
+      "explication": "La fin de main termine le processus et donc tous ses threads : des affichages peuvent être perdus. Le join sert à l'éviter.",
+      "source": "annale 2024-2025 ex. 2.4 Q2 ; annale 2022-2023 ex. 2.4 Q3"
+    },
+    {
+      "id": "q-cm4-threads-008",
+      "notion": "pthread-create",
+      "type": "qcm",
+      "enonce": "pthread_create (qui lance un nouveau thread) échoue. Que renvoie-t-elle ?",
+      "choix": ["-1, et errno contient la cause", "Un code d'erreur non nul, pas -1", "NULL, sans autre information", "0, l'échec se lit dans le thread"],
+      "bonne": 1,
+      "explication": "Les fonctions pthread renvoient 0 si tout va bien et directement un code d'erreur sinon ; on n'utilise pas errno (strerror du retour).",
+      "source": "CM4 chapitre, section 3 (tableau de l'API pthread)"
+    },
+    {
+      "id": "q-cm4-threads-009",
+      "notion": "pthread-create",
+      "type": "qcm",
+      "enonce": "Une boucle for (int i = 0; ...) lance N threads par pthread_create(&t[i], NULL, f, &i), pthread_create lançant un thread qui exécute f. Pourquoi est-ce un bug ?",
+      "choix": ["pthread_create refuse l'adresse d'un entier", "Chaque thread reçoit une copie figée de i", "Tous les threads lisent le même i, qui continue de changer", "Une boucle for est interdite avec pthread_create"],
+      "bonne": 2,
+      "explication": "On passe l'adresse de la même variable à tous les threads, et la boucle la modifie. Il faut un tableau data[i] ou un malloc par thread.",
+      "source": "CM4 chapitre, section Erreurs classiques"
+    },
+    {
+      "id": "q-cm4-threads-010",
+      "notion": "mutex",
+      "type": "qcm",
+      "enonce": "Pour protéger compteur += 1 entre plusieurs threads avec pthread_mutex_lock (qui prend le verrou), comment doit être le mutex ?",
+      "choix": ["Global : le même mutex pour tous les threads", "Local à chaque thread, créé juste avant le lock", "Différent à chaque appel de la fonction du thread", "Propre au thread principal, copié dans les autres"],
+      "bonne": 0,
+      "explication": "Le verrou n'a d'effet que si tous les threads utilisent le même mutex. Un mutex local à chaque thread n'exclut personne.",
+      "source": "CM4 chapitre, section 8 ; fiche Mutex (pièges)"
+    },
+    {
+      "id": "q-cm4-threads-011",
+      "notion": "condition-de-concurrence",
+      "type": "qcm",
+      "enonce": "Deux threads font compteur += 1 sans mutex puis affichent compteur : on lit parfois « thread 2 terminé » deux fois. Quelle est la cause ?",
+      "choix": ["Le compilateur supprime l'un des deux affichages", "L'ordonnanceur coupe un thread au milieu de l'opération", "Le deuxième thread est lancé deux fois par erreur", "Le tas est copié dans chaque thread au départ"],
+      "bonne": 1,
+      "explication": "compteur += 1 se fait en plusieurs étapes (lire, ajouter, écrire) : l'ordonnanceur peut interrompre un thread entre elles, d'où un résultat qui dépend de l'ordre.",
+      "source": "CM4 chapitre, section 8 ; fiche Condition de concurrence"
+    },
+    {
+      "id": "q-cm4-threads-012",
+      "notion": "thread",
+      "type": "qcm",
+      "enonce": "Dans un processus à plusieurs threads, l'un d'eux appelle exit(1) (qui termine le processus appelant). Quelle est la conséquence ?",
+      "choix": ["Seul ce thread s'arrête, les autres continuent", "Seul le thread principal reçoit le code 1", "Ce thread devient zombie jusqu'à son join", "Tout le processus s'arrête, donc tous ses threads"],
+      "bonne": 3,
+      "explication": "exit termine le processus entier. Pour ne terminer que le thread, il faut return ou pthread_exit.",
+      "source": "CM4 chapitre, section 7 ; fiche pthread_exit"
+    }
+  ]
+}

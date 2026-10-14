@@ -1,0 +1,75 @@
+{
+  "seance": "cm2-signaux",
+  "cartes": [
+    {
+      "id": "c-cm2-signaux-001",
+      "notion": "signal",
+      "recto": "Un signal transporte-t-il des données ?",
+      "verso": "Non, seulement son numéro : il prévient, il ne communique pas.",
+      "source": "CM2 chapitre, section 1"
+    },
+    {
+      "id": "c-cm2-signaux-002",
+      "notion": "signal",
+      "recto": "Un signal est-il synchrone ou asynchrone ?",
+      "verso": "Asynchrone : il peut arriver à tout moment.",
+      "source": "annale 2022-2022 Q2"
+    },
+    {
+      "id": "c-cm2-signaux-003",
+      "notion": "signal",
+      "recto": "Quelles sont les trois réactions possibles d'un processus à un signal délivré ?",
+      "verso": "Action par défaut, ignorer, ou lancer un handler.",
+      "source": "CM2 chapitre, section 2"
+    },
+    {
+      "id": "c-cm2-signaux-004",
+      "notion": "handler-sigaction",
+      "recto": "Pourquoi préférer sigaction à signal pour installer un handler ?",
+      "verso": "Comportement fiable et portable (POSIX), alors que signal varie selon l'Unix.",
+      "source": "CM2 chapitre, section 4"
+    },
+    {
+      "id": "c-cm2-signaux-005",
+      "notion": "handler-sigaction",
+      "recto": "Pendant l'exécution d'un handler, que devient le signal qui l'a déclenché ?",
+      "verso": "Il est automatiquement bloqué jusqu'à la fin du handler.",
+      "source": "CM2 chapitre, section 5"
+    },
+    {
+      "id": "c-cm2-signaux-006",
+      "notion": "kill",
+      "recto": "Que fait l'appel kill, malgré son nom ?",
+      "verso": "Il envoie un signal ; il ne tue que si la réaction est de terminer.",
+      "source": "CM2 chapitre, erreurs classiques ; TD1 exercice 1"
+    },
+    {
+      "id": "c-cm2-signaux-007",
+      "notion": "masque-signaux",
+      "recto": "Que devient un signal bloqué par le masque ?",
+      "verso": "Il reste pendant et est délivré au déblocage.",
+      "source": "CM2 chapitre, section 6 ; annale 2024-2025 Q8"
+    },
+    {
+      "id": "c-cm2-signaux-008",
+      "notion": "pause-sigsuspend",
+      "recto": "Qu'apporte sigsuspend de plus que pause ?",
+      "verso": "Il change le masque et endort le processus en une seule opération atomique.",
+      "source": "CM2 chapitre, section 4"
+    },
+    {
+      "id": "c-cm2-signaux-009",
+      "notion": "signaux-usuels",
+      "recto": "Quels deux signaux ne peuvent être ni interceptés, ni ignorés, ni bloqués ?",
+      "verso": "SIGKILL (9) et SIGSTOP (19).",
+      "source": "CM2 chapitre, section 2"
+    },
+    {
+      "id": "c-cm2-signaux-010",
+      "notion": "signaux-usuels",
+      "recto": "Un programme est lancé avec & dans le shell : Ctrl-C l'arrête-t-il ?",
+      "verso": "Non, SIGINT ne vise que le premier plan ; il faut kill PID.",
+      "source": "annale 2024-2025 ex. 2.1"
+    }
+  ]
+}

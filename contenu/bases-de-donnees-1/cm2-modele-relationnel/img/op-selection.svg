@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 414" width="1000" height="414" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1000" height="414" fill="#fff"/>
+<text x="40" y="44" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="start" >σ  Sélection — garde certaines LIGNES</text>
+<text x="40" y="78" font-size="19" fill="#2563eb" font-weight="bold" text-anchor="start" font-family="Consolas, 'Courier New', monospace" >σ ville='caen' (Personne)   ou   Personne : (ville='caen')</text>
+<text x="40" y="106" font-size="15.5" fill="#475569" font-weight="normal" text-anchor="start" >Mêmes colonnes, moins de lignes : seules les lignes qui vérifient la condition survivent.</text>
+<text x="40" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >Personne</text>
+<rect x="40" y="164" width="178.0" height="180" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="40" y="164" width="178.0" height="30" rx="4" fill="#2563eb"/>
+<rect x="40" y="188" width="178.0" height="6" fill="#2563eb"/>
+<text x="53" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="142.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >ville</text>
+<rect x="41" y="194" width="176.0" height="30" fill="#dcfce7"/>
+<line x1="40" y1="194" x2="218.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="142.0" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >caen</text>
+<rect x="41" y="224" width="176.0" height="30" fill="#f8fafc"/>
+<line x1="40" y1="224" x2="218.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="244.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">jean</text>
+<text x="142.0" y="244.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">creully</text>
+<rect x="41" y="254" width="176.0" height="30" fill="#dcfce7"/>
+<line x1="40" y1="254" x2="218.0" y2="254" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="274.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >mehdi</text>
+<text x="142.0" y="274.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >caen</text>
+<rect x="41" y="284" width="176.0" height="30" fill="#f8fafc"/>
+<line x1="40" y1="284" x2="218.0" y2="284" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="304.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">lea</text>
+<text x="142.0" y="304.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">epron</text>
+<rect x="41" y="314" width="176.0" height="30" fill="#f8fafc"/>
+<line x1="40" y1="314" x2="218.0" y2="314" stroke="#e2e8f0" stroke-width="1"/>
+<text x="53" y="334.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">helena</text>
+<text x="142.0" y="334.5" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" text-decoration="line-through">paris</text>
+<rect x="40" y="164" width="178.0" height="180" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<line x1="246.0" y1="224" x2="336.0" y2="224" stroke="#2563eb" stroke-width="3.5" marker-end="url(#arrB)"/>
+<text x="291.0" y="208" font-size="22" fill="#2563eb" font-weight="bold" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" >σ</text>
+<text x="366.0" y="152" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" >Résultat</text>
+<rect x="366.0" y="164" width="160.0" height="90" rx="4" fill="#fff" stroke="#475569" stroke-width="1.5" />
+<rect x="366.0" y="164" width="160.0" height="30" rx="4" fill="#16a34a"/>
+<rect x="366.0" y="188" width="160.0" height="6" fill="#16a34a"/>
+<text x="379.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >nompers</text>
+<text x="468.0" y="184.5" font-size="15" fill="#fff" font-weight="bold" text-anchor="start" >ville</text>
+<rect x="367.0" y="194" width="158.0" height="30" fill="#dcfce7"/>
+<line x1="366.0" y1="194" x2="526.0" y2="194" stroke="#e2e8f0" stroke-width="1"/>
+<text x="379.0" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >chloe</text>
+<text x="468.0" y="214.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >caen</text>
+<rect x="367.0" y="224" width="158.0" height="30" fill="#dcfce7"/>
+<line x1="366.0" y1="224" x2="526.0" y2="224" stroke="#e2e8f0" stroke-width="1"/>
+<text x="379.0" y="244.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >mehdi</text>
+<text x="468.0" y="244.5" font-size="15" fill="#166534" font-weight="normal" text-anchor="start" >caen</text>
+<rect x="366.0" y="164" width="160.0" height="90" rx="4" fill="none" stroke="#475569" stroke-width="1.5" />
+<text x="40" y="382" font-size="16" fill="#1e293b" font-weight="normal" text-anchor="start" >Lignes éliminées : grisées et barrées. Colonnes : inchangées (2 → 2).</text>
+
+</svg>

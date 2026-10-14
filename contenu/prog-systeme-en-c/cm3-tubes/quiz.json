@@ -1,0 +1,185 @@
+{
+  "seance": "cm3-tubes",
+  "questions": [
+    {
+      "id": "q-cm3-tubes-001",
+      "notion": "tube-anonyme",
+      "type": "qcm",
+      "enonce": "Un père et son fils communiquent dans un seul sens par un tube anonyme. Dans quel ordre faut-il créer le tube (appel pipe) et le fils (appel fork, qui duplique le processus) ?",
+      "choix": [
+        "fork d'abord : chaque processus ouvre ensuite le tube de son côté",
+        "fork d'abord : le fils crée le tube et le père le rejoint par son nom",
+        "pipe d'abord : le fils hérite d'une copie des descripteurs du tube",
+        "L'ordre est sans importance : le noyau relie les deux tubes créés"
+      ],
+      "bonne": 2,
+      "explication": "Le tube anonyme n'a pas de nom : le fils n'y accède que par les descripteurs hérités au fork. Avec fork d'abord, chacun a son propre tube.",
+      "source": "annale 2022-2023 ex. 2.2 Q4"
+    },
+    {
+      "id": "q-cm3-tubes-002",
+      "notion": "sigpipe",
+      "type": "qcm",
+      "enonce": "Un père et son fils ferment tous les deux le bout de lecture d'un tube anonyme, puis le fils écrit dans ce tube. Que se passe-t-il ?",
+      "choix": [
+        "Le noyau envoie SIGPIPE au fils, qui est tué par défaut",
+        "write bloque jusqu'à ce que le père rouvre le bout de lecture",
+        "write rend le nombre d'octets demandés et les perd en silence",
+        "Le père reçoit SIGPIPE et se termine à la place du fils"
+      ],
+      "bonne": 0,
+      "explication": "Il n'existe plus aucun lecteur : l'écrivain reçoit SIGPIPE, dont l'action par défaut est de terminer le processus.",
+      "source": "annale 2022-2023 ex. 2.2 Q5 (a)"
+    },
+    {
+      "id": "q-cm3-tubes-003",
+      "notion": "tube-nomme",
+      "type": "qcm",
+      "enonce": "Deux processus de l'utilisateur etudiant, sans lien de parenté, communiquent dans un seul sens par un tube. De quel type de tube s'agit-il ?",
+      "choix": [
+        "Un tube anonyme créé par pipe avant le lancement des deux",
+        "Un tube anonyme partagé par les descripteurs standard 0 et 1",
+        "Un tube anonyme ouvert par les deux avec le même numéro de fd",
+        "Un tube nommé (FIFO), qui a un nom dans le système de fichiers"
+      ],
+      "bonne": 3,
+      "explication": "Sans parenté, pas d'héritage de descripteurs : il faut un nom que les deux processus peuvent ouvrir, donc un tube nommé créé par mkfifo.",
+      "source": "annale 2022-2022 ex. 2.1 Q1, annale 2022-2023 ex. 2.2 Q1"
+    },
+    {
+      "id": "q-cm3-tubes-004",
+      "notion": "tube-anonyme",
+      "type": "qcm",
+      "enonce": "Un processus appelle read sur un tube vide dont le bout d'écriture est encore ouvert dans un autre processus. Que se passe-t-il ?",
+      "choix": [
+        "read rend 0 aussitôt, comme à la fin d'un fichier",
+        "read bloque jusqu'à ce que des données soient écrites",
+        "read rend -1 avec une erreur de tube vide",
+        "read rend un tampon rempli de zéros sans attendre"
+      ],
+      "bonne": 1,
+      "explication": "Tant qu'un écrivain existe, la lecture sur tube vide bloque. C'est ce qui synchronise les deux processus.",
+      "source": "annale 2024-2025 Q6, CM3 chapitre section 3 (règles de blocage)"
+    },
+    {
+      "id": "q-cm3-tubes-005",
+      "notion": "tube-anonyme",
+      "type": "qcm",
+      "enonce": "Le fils a écrit son message dans le tube puis s'est terminé. Le père lit dans ce tube mais n'a pas fermé son propre bout d'écriture. Que fait son read une fois le tube vidé ?",
+      "choix": [
+        "Il rend 0 car le fils, seul écrivain, est terminé",
+        "Il rend -1 car le tube est considéré comme cassé",
+        "Il provoque l'envoi de SIGPIPE au père lui-même",
+        "Il bloque pour toujours : un bout d'écriture reste ouvert"
+      ],
+      "bonne": 3,
+      "explication": "read ne rend 0 que si plus aucun descripteur d'écriture n'est ouvert. Le père garde le sien : c'est la cause classique d'un programme figé.",
+      "source": "CM3 chapitre, section Erreurs classiques"
+    },
+    {
+      "id": "q-cm3-tubes-006",
+      "notion": "descripteur",
+      "type": "qcm",
+      "enonce": "Un processus a ses trois descripteurs standard (entrée, sortie, erreur) ouverts. Il ouvre successivement deux fichiers. Quels numéros de descripteurs reçoivent-ils ?",
+      "choix": [
+        "3 puis 4 : le plus petit numéro libre est attribué",
+        "0 puis 1 : les descripteurs standard sont réutilisés",
+        "4 puis 5 : le numéro 3 est réservé au noyau",
+        "1 puis 2 : on remplace la sortie et l'erreur"
+      ],
+      "bonne": 0,
+      "explication": "Le noyau attribue toujours le plus petit descripteur libre ; 0, 1 et 2 sont déjà pris.",
+      "source": "annale 2024-2025 Q5"
+    },
+    {
+      "id": "q-cm3-tubes-007",
+      "notion": "dup2",
+      "type": "qcm",
+      "enonce": "Dans un fils, avant un exec, l'appel dup2(p[1], 1) fait du descripteur 1 une copie du bout d'écriture p[1] du tube. Quel est l'effet pour le programme lancé ensuite ?",
+      "choix": [
+        "Il lit désormais son entrée standard dans le tube",
+        "Il écrit à la fois dans le terminal et dans le tube",
+        "Sa sortie standard part dans le tube, sans qu'il le sache",
+        "Il ne peut plus écrire car le descripteur 1 est fermé"
+      ],
+      "bonne": 2,
+      "explication": "Les descripteurs sont conservés par exec : le programme écrit sur sa sortie standard, qui est maintenant le tube (c'est le principe de ls | wc).",
+      "source": "CM3 chapitre, section 6 (redirection avec dup2)"
+    },
+    {
+      "id": "q-cm3-tubes-008",
+      "notion": "dup2",
+      "type": "qcm",
+      "enonce": "Pour ls | wc -l, le père redirige son entrée avec dup2(p[0], 0), qui fait du descripteur 0 une copie de p[0], puis lance wc. Il oublie de fermer p[1]. Que risque-t-il ?",
+      "choix": [
+        "Rien : dup2 ferme lui-même les originaux",
+        "Son read ne rend jamais 0 : un bout d'écriture reste ouvert",
+        "wc reçoit SIGPIPE dès sa première lecture",
+        "wc lit chaque donnée deux fois dans le tube"
+      ],
+      "bonne": 1,
+      "explication": "Après dup2, il faut fermer les deux originaux. Un p[1] resté ouvert dans le lecteur l'empêche de voir la fin de fichier.",
+      "source": "CM3 chapitre, sections 6 et Erreurs classiques"
+    },
+    {
+      "id": "q-cm3-tubes-009",
+      "notion": "tube-nomme",
+      "type": "qcm",
+      "enonce": "Dans le système de fichiers, que vaut la taille affichée pour un tube (anonyme ou nommé) et où transitent les données qu'on y écrit ?",
+      "choix": [
+        "4096 octets, avec les données stockées sur le disque",
+        "La taille du dernier message, stocké dans un fichier",
+        "0 octet : les données passent par un tampon du noyau",
+        "64 Ko réservés sur le disque lors de l'appel à mkfifo"
+      ],
+      "bonne": 2,
+      "explication": "Le tube n'est pas stocké sur disque : c'est un tampon en mémoire du noyau. Un tube nommé n'a qu'une entrée dans le répertoire, de taille 0.",
+      "source": "annale 2022-2022 ex. 1 Q8, annale 2022-2023 ex. 1 Q9"
+    },
+    {
+      "id": "q-cm3-tubes-010",
+      "notion": "memoire-partagee",
+      "type": "qcm",
+      "enonce": "Parmi les moyens de communication locaux entre processus, lequel est le plus rapide mais ne fournit aucune synchronisation ?",
+      "choix": [
+        "La mémoire partagée, zone de RAM vue par plusieurs processus",
+        "Le tube anonyme, avec sa lecture destructive en tampon",
+        "Le tube nommé, avec son nom dans le système de fichiers",
+        "Le code de sortie d'un fils, récupéré par le père avec wait"
+      ],
+      "bonne": 0,
+      "explication": "Pas de copie ni d'appel système pour lire ou écrire, mais il faut ajouter soi-même la synchronisation (sémaphores). Les tubes bloquent automatiquement.",
+      "source": "CM3 chapitre, section 8 (mémoire partagée)"
+    },
+    {
+      "id": "q-cm3-tubes-011",
+      "notion": "sigpipe",
+      "type": "qcm",
+      "enonce": "Un programme ignore SIGPIPE avec signal(SIGPIPE, SIG_IGN), puis écrit dans un tube dont plus aucun lecteur n'existe. Que renvoie write ?",
+      "choix": [
+        "0, comme pour une fin de fichier",
+        "-1, avec errno valant EPIPE",
+        "Le nombre d'octets demandés, sans rien écrire",
+        "Rien : il reste bloqué en attendant un lecteur"
+      ],
+      "bonne": 1,
+      "explication": "Si SIGPIPE est ignoré ou capté, write rend -1 avec errno = EPIPE ; il suffit alors de tester le retour pour s'arrêter proprement.",
+      "source": "annale 2022-2022 ex. 1 Q4, annale 2022-2023 ex. 2.2 Q5 (b)"
+    },
+    {
+      "id": "q-cm3-tubes-012",
+      "notion": "memoire-partagee",
+      "type": "qcm",
+      "enonce": "Un processus a créé un segment de mémoire partagée, l'a attaché, puis se termine par exit. Que devient le segment ?",
+      "choix": [
+        "Il est supprimé automatiquement avec la fin du processus",
+        "Il est supprimé dès que le dernier processus l'a détaché",
+        "Il est vidé, mais son identifiant est aussitôt libéré",
+        "Il reste en place : il faut le supprimer avec shmctl(IPC_RMID)"
+      ],
+      "bonne": 3,
+      "explication": "exit détache le segment mais ne le supprime pas. La suppression explicite se fait avec shmctl(IPC_RMID) (ou ipcrm en commande).",
+      "source": "CM3 chapitre, section 8 (cycle de vie de la mémoire partagée)"
+    }
+  ]
+}

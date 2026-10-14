@@ -1,0 +1,75 @@
+{
+  "seance": "cm3-sql-requetes",
+  "cartes": [
+    {
+      "id": "c-cm3-sql-requetes-001",
+      "notion": "select-jointure",
+      "recto": "Quel est l'équivalent algébrique d'une requête avec liste de relations après FROM, condition F après WHERE et attributs après SELECT ?",
+      "verso": "Produit cartésien, puis sélection F, puis projection.",
+      "source": "CM3 chapitre, Forme générale d'un SELECT"
+    },
+    {
+      "id": "c-cm3-sql-requetes-002",
+      "notion": "select-jointure",
+      "recto": "Comment exprime-t-on une jointure quand on écrit deux tables séparées par une virgule après FROM ?",
+      "verso": "Par une égalité de clés dans le WHERE (ex. clé étrangère = clé primaire).",
+      "source": "CM3 chapitre, exemple du client de la commande 4"
+    },
+    {
+      "id": "c-cm3-sql-requetes-003",
+      "notion": "distinct-order-by",
+      "recto": "SQL supprime-t-il les doublons d'un résultat par défaut ? Comment les supprimer ?",
+      "verso": "Non ; on ajoute DISTINCT après SELECT.",
+      "source": "CM3 chapitre, DISTINCT ; TD3-4 question 3"
+    },
+    {
+      "id": "c-cm3-sql-requetes-004",
+      "notion": "distinct-order-by",
+      "recto": "Quel est le sens de tri par défaut de ORDER BY, et comment obtenir l'ordre inverse ?",
+      "verso": "Croissant (ASC) par défaut ; DESC pour décroissant.",
+      "source": "CM3 chapitre, tableau Sélections et affichage"
+    },
+    {
+      "id": "c-cm3-sql-requetes-005",
+      "notion": "like-regexp",
+      "recto": "Dans un motif LIKE, que représentent les jokers % et _ ?",
+      "verso": "% : 0 à n caractères ; _ : exactement un caractère.",
+      "source": "CM3 chapitre, tableau Sélections et affichage"
+    },
+    {
+      "id": "c-cm3-sql-requetes-006",
+      "notion": "like-regexp",
+      "recto": "Quelle différence de portée entre le motif d'un LIKE et celui d'un REGEXP ?",
+      "verso": "LIKE : motif sur toute la chaîne ; REGEXP : motif trouvé n'importe où.",
+      "source": "CM3 chapitre, tableau Sélections et affichage"
+    },
+    {
+      "id": "c-cm3-sql-requetes-007",
+      "notion": "valeur-null",
+      "recto": "Comment teste-t-on qu'une valeur est absente, et pourquoi ne pas utiliser l'égalité avec NULL ?",
+      "verso": "IS NULL / IS NOT NULL ; comparer à NULL n'est ni vrai ni faux (ligne rejetée).",
+      "source": "fiche Valeur NULL"
+    },
+    {
+      "id": "c-cm3-sql-requetes-008",
+      "notion": "valeur-null",
+      "recto": "Quelle différence entre compter les lignes (COUNT(*)) et compter une colonne A (COUNT(A)) ?",
+      "verso": "COUNT(A) ignore les valeurs NULL de A ; COUNT(*) compte toutes les lignes.",
+      "source": "CM3 chapitre, Agrégats (question de vérification 2)"
+    },
+    {
+      "id": "c-cm3-sql-requetes-009",
+      "notion": "auto-jointure",
+      "recto": "Dans une auto-jointure qui forme des paires, pourquoi comparer les deux noms avec un inférieur strict ?",
+      "verso": "Pour écarter (A,A) et ne garder qu'un des deux ordres (A,B)/(B,A).",
+      "source": "CM3 chapitre, Auto-jointure ; TD3-4 questions 11 et 12"
+    },
+    {
+      "id": "c-cm3-sql-requetes-010",
+      "notion": "ordre-execution",
+      "recto": "Dans quel ordre logique le SGBD évalue-t-il les clauses d'un SELECT avec regroupement ?",
+      "verso": "FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY.",
+      "source": "CM3 chapitre, Ordre d'exécution"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "seance": "cm1-introduction",
+  "questions": [
+    {
+      "id": "q-cm1-introduction-001",
+      "notion": "gestion-par-fichiers",
+      "type": "qcm",
+      "enonce": "Plusieurs applications utilisent chacune leur propre fichier, avec les mêmes données répétées. Quel est le premier problème que cela pose ?",
+      "choix": [
+        "Les fichiers ne peuvent plus être lus par les utilisateurs",
+        "Les applications ne peuvent pas fonctionner en même temps",
+        "La redondance : perte d'espace et cohérence non assurée",
+        "Les données sont automatiquement chiffrées en double"
+      ],
+      "bonne": 2,
+      "explication": "Un fichier par application duplique les données : place perdue, et rien ne garantit que les copies restent identiques.",
+      "source": "CM1 chapitre, section « Limites de l'organisation par fichiers » (diapos 01-diaposIntroBD)"
+    },
+    {
+      "id": "q-cm1-introduction-002",
+      "notion": "gestion-par-fichiers",
+      "type": "qcm",
+      "enonce": "Dans une gestion par fichiers, que signifie la « dépendance données / traitements » ?",
+      "choix": [
+        "Modifier la structure d'un fichier est délicat car les programmes en dépendent",
+        "Les données dépendent de l'ordre dans lequel on exécute les programmes",
+        "Chaque traitement doit être validé par l'administrateur",
+        "Les traitements ne peuvent s'exécuter qu'à partir d'un seul fichier"
+      ],
+      "bonne": 0,
+      "explication": "Les programmes sont liés à la structure des fichiers : la changer oblige à adapter les traitements. Le SGBD sépare données et traitements.",
+      "source": "CM1 chapitre, section « Limites de l'organisation par fichiers »"
+    },
+    {
+      "id": "q-cm1-introduction-003",
+      "notion": "sgbd",
+      "type": "qcm",
+      "enonce": "Quelle phrase distingue correctement un SGBD d'une base de données ?",
+      "choix": [
+        "Le SGBD est l'ensemble des tables, la base de données est le logiciel",
+        "Le SGBD est le logiciel (ex. MySQL), la base de données est l'ensemble des données qu'il gère",
+        "Ce sont deux noms pour la même chose",
+        "Le SGBD désigne uniquement le matériel qui héberge les données"
+      ],
+      "bonne": 1,
+      "explication": "Un SGBD (par exemple MySQL) est le système qui gère les données ; la base de données est le contenu géré.",
+      "source": "Notion SGBD / Base de données, CM1 chapitre « SGBD : principes, définition et objectifs »"
+    },
+    {
+      "id": "q-cm1-introduction-004",
+      "notion": "sgbd",
+      "type": "qcm",
+      "enonce": "Parmi ces propositions, laquelle n'est PAS un objectif d'un SGBD ?",
+      "choix": [
+        "L'indépendance physique",
+        "Le partage des données",
+        "La sécurité et le contrôle",
+        "La duplication des données dans un fichier par application"
+      ],
+      "bonne": 3,
+      "explication": "Les objectifs listés sont : indépendance physique et logique, cohérence, partage, souplesse d'accès, performances, sécurité et contrôle. La duplication est le défaut des fichiers.",
+      "source": "CM1 chapitre, section « SGBD : principes, définition et objectifs »"
+    },
+    {
+      "id": "q-cm1-introduction-005",
+      "notion": "sgbd",
+      "type": "qcm",
+      "enonce": "Pour un SGBD multi-utilisateur, quelle impression doit avoir chaque utilisateur ?",
+      "choix": [
+        "D'être sur un système partagé où il doit attendre son tour",
+        "D'être seul sur le système",
+        "De ne voir que les données des autres utilisateurs",
+        "De devoir gérer lui-même les accès concurrents"
+      ],
+      "bonne": 1,
+      "explication": "Le SGBD gère les accès concurrents : l'utilisateur doit avoir l'impression d'être seul sur le système.",
+      "source": "CM1 chapitre, section « SGBD : principes, définition et objectifs »"
+    },
+    {
+      "id": "q-cm1-introduction-006",
+      "notion": "langages-sgbd",
+      "type": "qcm",
+      "enonce": "Quel sous-langage regroupe les commandes CREATE TABLE, ALTER TABLE et DROP TABLE, qui créent, modifient et suppriment la structure des tables ?",
+      "choix": [
+        "Le LMD",
+        "Le LID",
+        "Le LCD",
+        "Le LDD"
+      ],
+      "bonne": 3,
+      "explication": "Le langage de définition des données (LDD) définit la structure (le schéma), pas le contenu.",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notion LDD"
+    },
+    {
+      "id": "q-cm1-introduction-007",
+      "notion": "langages-sgbd",
+      "type": "qcm",
+      "enonce": "INSERT, UPDATE et DELETE ajoutent, changent et retirent des lignes dans les tables. De quel sous-langage relèvent-elles ?",
+      "choix": [
+        "Le LMD (manipulation des données)",
+        "Le LDD (définition des données)",
+        "Le LCD (contrôle des données)",
+        "Le LID (interrogation des données)"
+      ],
+      "bonne": 0,
+      "explication": "Ces commandes modifient le contenu des tables : c'est le rôle du LMD.",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notion LMD"
+    },
+    {
+      "id": "q-cm1-introduction-008",
+      "notion": "langages-sgbd",
+      "type": "qcm",
+      "enonce": "GRANT et REVOKE donnent et retirent des droits d'accès aux utilisateurs. Quel sous-langage les regroupe ?",
+      "choix": [
+        "Le LDD",
+        "Le LMD",
+        "Le LCD",
+        "Le LID"
+      ],
+      "bonne": 2,
+      "explication": "Le langage de contrôle des données (LCD) gère qui peut faire quoi.",
+      "source": "CM1 chapitre, section « Langages d'un SGBD » ; notion LCD"
+    },
+    {
+      "id": "q-cm1-introduction-009",
+      "notion": "architecture-3-niveaux",
+      "type": "qcm",
+      "enonce": "Dans l'architecture à trois niveaux, quel niveau décrit l'organisation physique du stockage (logiciel et matériel) ?",
+      "choix": [
+        "Le niveau externe",
+        "Le niveau interne",
+        "Le niveau conceptuel",
+        "Le niveau logique"
+      ],
+      "bonne": 1,
+      "explication": "Externe = vue d'un utilisateur, conceptuel = schéma de la BD, interne = organisation physique.",
+      "source": "CM1 chapitre, section « Architecture à trois niveaux »"
+    },
+    {
+      "id": "q-cm1-introduction-010",
+      "notion": "architecture-3-niveaux",
+      "type": "qcm",
+      "enonce": "On change l'organisation des fichiers sur disque sans toucher au schéma conceptuel ni aux vues. Quelle propriété est illustrée ?",
+      "choix": [
+        "L'indépendance logique",
+        "La cohérence des données",
+        "L'indépendance physique",
+        "La redondance contrôlée"
+      ],
+      "bonne": 2,
+      "explication": "L'indépendance physique permet de changer le stockage sans toucher au niveau conceptuel.",
+      "source": "CM1 chapitre, section « Architecture à trois niveaux » ; notion Architecture à trois niveaux"
+    },
+    {
+      "id": "q-cm1-introduction-011",
+      "notion": "anomalies-tableur",
+      "type": "qcm",
+      "enonce": "Un tableau unique contient (nom, ville, datenaissance, pays visité), une ligne par voyage. Helena n'a visité que le Pérou. Que se passe-t-il si on supprime la ligne « Pérou » ?",
+      "choix": [
+        "Les autres pays visités sont supprimés aussi",
+        "Rien : Helena garde ses informations ailleurs",
+        "La ville d'Helena est copiée sur une autre ligne",
+        "On perd aussi toute l'information sur Helena"
+      ],
+      "bonne": 3,
+      "explication": "Personne et pays sont mélangés dans la même ligne : supprimer un pays supprime l'unique ligne d'Helena (perte d'information).",
+      "source": "CM1 chapitre, « Exemple minimal : pourquoi un tableur n'est pas une BD » (tableau personnes-pays)"
+    },
+    {
+      "id": "q-cm1-introduction-012",
+      "notion": "anomalies-tableur",
+      "type": "qcm",
+      "enonce": "Dans le tableau personnes-pays, chloe apparaît sur deux lignes (une par pays visité) avec la même ville. Comment appelle-t-on ce défaut ?",
+      "choix": [
+        "Une redondance",
+        "Une jointure",
+        "Une vue externe",
+        "Une indépendance physique"
+      ],
+      "bonne": 0,
+      "explication": "Les infos de la personne sont répétées à chaque voyage : c'est de la redondance, qui menace la cohérence en cas de déménagement.",
+      "source": "CM1 chapitre, « Exemple minimal : pourquoi un tableur n'est pas une BD » ; notion Redondance des données"
+    }
+  ]
+}

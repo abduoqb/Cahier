@@ -1,0 +1,15 @@
+{
+  "seance": "cm4-threads",
+  "cartes": [
+    { "id": "c-cm4-threads-001", "notion": "thread", "recto": "Un programme appelle 4 fois pthread_create (qui lance un thread). Combien de threads au total ?", "verso": "5 : les 4 créés plus le thread principal.", "source": "annale 2022-2022 ex. 1 Q9" },
+    { "id": "c-cm4-threads-002", "notion": "processus-vs-thread", "recto": "Que partagent les threads d'un même processus, et que possède chacun en propre ?", "verso": "Partagés : code, globales, tas, fichiers. Propres : pile, registres.", "source": "annale 2022-2022 ex. 1 Q10 ; CM4 chapitre, section 2" },
+    { "id": "c-cm4-threads-003", "notion": "processus-vs-thread", "recto": "fork (duplique le processus) ou pthread_create (lance un thread) : lequel copie la mémoire, lequel la partage ?", "verso": "fork la copie (isolation) ; pthread_create la partage.", "source": "annale 2024-2025 ex. 1 Q3" },
+    { "id": "c-cm4-threads-004", "notion": "pthread-join", "recto": "Pourquoi le thread principal doit-il attendre ses threads (join) avant de se terminer ?", "verso": "Sinon le processus s'arrête et tue les threads en cours.", "source": "annale 2022-2023 ex. 2.4 Q3" },
+    { "id": "c-cm4-threads-005", "notion": "thread", "recto": "Dans ps -jfT, trois lignes ./thread ont le même PID et des SPID différents. Combien de processus ?", "verso": "Un seul, avec 3 threads.", "source": "annale 2022-2023 ex. 2.4 Q2" },
+    { "id": "c-cm4-threads-006", "notion": "pthread-create", "recto": "Quelle est la signature imposée à la fonction exécutée par un thread ?", "verso": "Elle prend un void * et renvoie un void *.", "source": "CM4 chapitre, section 3" },
+    { "id": "c-cm4-threads-007", "notion": "pthread-create", "recto": "Que renvoie pthread_create (qui lance un thread) en cas d'erreur ?", "verso": "Un code d'erreur non nul, pas -1.", "source": "CM4 chapitre, section 3" },
+    { "id": "c-cm4-threads-008", "notion": "mutex", "recto": "À quoi sert un mutex ?", "verso": "À n'avoir qu'un thread à la fois dans la section critique.", "source": "CM4 chapitre, section 8" },
+    { "id": "c-cm4-threads-009", "notion": "condition-de-concurrence", "recto": "Pourquoi l'ordre d'affichage de plusieurs threads change-t-il d'une exécution à l'autre ?", "verso": "L'ordonnanceur décide, de façon non déterministe.", "source": "annale 2024-2025 ex. 2.4 Q1" },
+    { "id": "c-cm4-threads-010", "notion": "condition-de-concurrence", "recto": "Qu'est-ce qu'une condition de concurrence ?", "verso": "Un résultat qui dépend de l'ordre d'exécution de threads sur une donnée partagée.", "source": "CM4 chapitre, section 8 ; fiche Condition de concurrence" }
+  ]
+}

@@ -4,16 +4,220 @@
       "id": "algorithmique-1",
       "nom": "Algorithmique 1",
       "seances": [
-        { "id": "cm1-tableaux", "type": "CM", "titre": "Tableaux", "dossier": "algorithmique-1/cm1-tableaux", "cartes": true,
-          "notions": ["tri-a-bulles", "complexite", "recherche-sequentielle", "recherche-dichotomique", "partition-avec-pivot"] },
-        { "id": "cm2-listes-chainees", "type": "CM", "titre": "Listes chaînées", "dossier": "algorithmique-1/cm2-listes-chainees", "cartes": true,
-          "notions": ["pointeur", "liste-chainee", "parcours-liste", "construire-liste", "recursivite"] },
-        { "id": "cm3-listes-deux-pointeurs", "type": "CM", "titre": "Listes à deux pointeurs, doublement chaînées et circulaires", "dossier": "algorithmique-1/cm3-listes-deux-pointeurs", "cartes": true,
-          "notions": ["liste-deux-pointeurs", "liste-doublement-chainee", "liste-circulaire", "fusion-listes-triees"] },
-        { "id": "cm4-piles-files", "type": "CM", "titre": "Piles et files", "dossier": "algorithmique-1/cm4-piles-files", "cartes": true,
-          "notions": ["pile", "file", "bon-parenthesage", "pile-appels", "tours-de-hanoi"] },
-        { "id": "cm5-arbres", "type": "CM", "titre": "Arbres", "dossier": "algorithmique-1/cm5-arbres", "cartes": true,
-          "notions": ["arbre-binaire", "profondeur-hauteur", "longueur-cheminement", "parcours-profondeur", "parcours-largeur"] }
+        {
+          "id": "cm1-tableaux",
+          "type": "CM",
+          "titre": "Tableaux",
+          "dossier": "algorithmique-1/cm1-tableaux",
+          "cartes": true,
+          "notions": [
+            "tri-a-bulles",
+            "complexite",
+            "recherche-sequentielle",
+            "recherche-dichotomique",
+            "partition-avec-pivot"
+          ]
+        },
+        {
+          "id": "cm2-listes-chainees",
+          "type": "CM",
+          "titre": "Listes chaînées",
+          "dossier": "algorithmique-1/cm2-listes-chainees",
+          "cartes": true,
+          "notions": [
+            "pointeur",
+            "liste-chainee",
+            "parcours-liste",
+            "construire-liste",
+            "recursivite"
+          ]
+        },
+        {
+          "id": "cm3-listes-deux-pointeurs",
+          "type": "CM",
+          "titre": "Listes à deux pointeurs, doublement chaînées et circulaires",
+          "dossier": "algorithmique-1/cm3-listes-deux-pointeurs",
+          "cartes": true,
+          "notions": [
+            "liste-deux-pointeurs",
+            "liste-doublement-chainee",
+            "liste-circulaire",
+            "fusion-listes-triees"
+          ]
+        },
+        {
+          "id": "cm4-piles-files",
+          "type": "CM",
+          "titre": "Piles et files",
+          "dossier": "algorithmique-1/cm4-piles-files",
+          "cartes": true,
+          "notions": [
+            "pile",
+            "file",
+            "bon-parenthesage",
+            "pile-appels",
+            "tours-de-hanoi"
+          ]
+        },
+        {
+          "id": "cm5-arbres",
+          "type": "CM",
+          "titre": "Arbres",
+          "dossier": "algorithmique-1/cm5-arbres",
+          "cartes": true,
+          "notions": [
+            "arbre-binaire",
+            "profondeur-hauteur",
+            "longueur-cheminement",
+            "parcours-profondeur",
+            "parcours-largeur"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bases-de-donnees-1",
+      "nom": "Bases de données 1",
+      "seances": [
+        {
+          "id": "cm1-introduction",
+          "type": "CM",
+          "titre": "Introduction aux bases de données",
+          "dossier": "bases-de-donnees-1/cm1-introduction",
+          "cartes": true,
+          "notions": [
+            "gestion-par-fichiers",
+            "sgbd",
+            "langages-sgbd",
+            "architecture-3-niveaux",
+            "anomalies-tableur"
+          ]
+        },
+        {
+          "id": "cm2-modele-relationnel",
+          "type": "CM",
+          "titre": "Modèle relationnel et algèbre relationnelle",
+          "dossier": "bases-de-donnees-1/cm2-modele-relationnel",
+          "cartes": true,
+          "notions": [
+            "relation-schema-extension",
+            "cles",
+            "projection-selection",
+            "produit-cartesien-jointure",
+            "difference-negation",
+            "division"
+          ]
+        },
+        {
+          "id": "cm3-sql-requetes",
+          "type": "CM",
+          "titre": "SQL : langage de requêtes",
+          "dossier": "bases-de-donnees-1/cm3-sql-requetes",
+          "cartes": true,
+          "notions": [
+            "select-jointure",
+            "distinct-order-by",
+            "like-regexp",
+            "valeur-null",
+            "auto-jointure",
+            "ordre-execution"
+          ]
+        },
+        {
+          "id": "cm4-sql-suite",
+          "type": "CM",
+          "titre": "SQL : agrégats, sous-requêtes, jointures externes",
+          "dossier": "bases-de-donnees-1/cm4-sql-suite",
+          "cartes": true,
+          "notions": [
+            "agregats-group-by-having",
+            "sous-requete",
+            "in-exists",
+            "all-any",
+            "jointure-externe-union",
+            "division"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prog-systeme-en-c",
+      "nom": "Prog système en C",
+      "seances": [
+        {
+          "id": "cm1-processus",
+          "type": "CM",
+          "titre": "Les processus",
+          "dossier": "prog-systeme-en-c/cm1-processus",
+          "cartes": true,
+          "notions": [
+            "processus",
+            "fork",
+            "wait-et-exit",
+            "zombie",
+            "orphelin",
+            "heritage-pere-fils"
+          ]
+        },
+        {
+          "id": "cm2-signaux",
+          "type": "CM",
+          "titre": "Les signaux",
+          "dossier": "prog-systeme-en-c/cm2-signaux",
+          "cartes": true,
+          "notions": [
+            "signal",
+            "handler-sigaction",
+            "kill",
+            "masque-signaux",
+            "pause-sigsuspend",
+            "signaux-usuels"
+          ]
+        },
+        {
+          "id": "cm3-tubes",
+          "type": "CM",
+          "titre": "Communication interprocessus : les tubes",
+          "dossier": "prog-systeme-en-c/cm3-tubes",
+          "cartes": true,
+          "notions": [
+            "tube-anonyme",
+            "tube-nomme",
+            "descripteur",
+            "dup2",
+            "sigpipe",
+            "memoire-partagee"
+          ]
+        },
+        {
+          "id": "cm4-threads",
+          "type": "CM",
+          "titre": "Les threads",
+          "dossier": "prog-systeme-en-c/cm4-threads",
+          "cartes": true,
+          "notions": [
+            "thread",
+            "processus-vs-thread",
+            "pthread-create",
+            "pthread-join",
+            "mutex",
+            "condition-de-concurrence"
+          ]
+        },
+        {
+          "id": "cm5-sockets",
+          "type": "CM",
+          "titre": "Les sockets",
+          "dossier": "prog-systeme-en-c/cm5-sockets",
+          "cartes": true,
+          "notions": [
+            "socket",
+            "appels-tcp",
+            "tcp-udp",
+            "port-htons",
+            "serveur-parallele"
+          ]
+        }
       ]
     }
   ]

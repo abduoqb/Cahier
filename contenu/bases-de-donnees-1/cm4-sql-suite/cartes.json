@@ -1,0 +1,75 @@
+{
+  "seance": "cm4-sql-suite",
+  "cartes": [
+    {
+      "id": "c-cm4-sql-suite-001",
+      "notion": "agregats-group-by-having",
+      "recto": "Quelle clause filtre les groupes (sur un agrégat), après le regroupement, alors que WHERE filtre les lignes avant ?",
+      "verso": "HAVING.",
+      "source": "CM4 notion HAVING"
+    },
+    {
+      "id": "c-cm4-sql-suite-002",
+      "notion": "agregats-group-by-having",
+      "recto": "Quelle différence entre le décompte de toutes les lignes et le décompte d'une colonne A face aux valeurs NULL ?",
+      "verso": "Le décompte des lignes les compte ; celui de la colonne A ignore les NULL.",
+      "source": "CM4 notion Agrégat"
+    },
+    {
+      "id": "c-cm4-sql-suite-003",
+      "notion": "sous-requete",
+      "recto": "Sous-requête corrélée ou non corrélée : laquelle est exécutée une seule fois ?",
+      "verso": "La non corrélée ; la corrélée est réévaluée pour chaque ligne externe.",
+      "source": "CM4 notion Sous-requête corrélée"
+    },
+    {
+      "id": "c-cm4-sql-suite-004",
+      "notion": "sous-requete",
+      "recto": "Quand une sous-requête est-elle inutile, voire déconseillée ?",
+      "verso": "Quand les conditions sont à la même granularité : une jointure suffit.",
+      "source": "CM4 chapitre, section Quand imbriquer"
+    },
+    {
+      "id": "c-cm4-sql-suite-005",
+      "notion": "in-exists",
+      "recto": "Que devient « x n'appartient pas à l'ensemble » si la sous-requête renvoie un NULL ? Quelle alternative sûre ?",
+      "verso": "Jamais vrai ; utiliser la non-existence, robuste aux NULL.",
+      "source": "CM4 notion IN et NOT IN"
+    },
+    {
+      "id": "c-cm4-sql-suite-006",
+      "notion": "all-any",
+      "recto": "La comparaison « égal à ANY » d'une sous-requête équivaut à quel opérateur ?",
+      "verso": "À IN.",
+      "source": "CM4 notion ALL et ANY"
+    },
+    {
+      "id": "c-cm4-sql-suite-007",
+      "notion": "all-any",
+      "recto": "Comment obtenir le ou les produits les plus chers, ex æquo compris, avec une sous-requête scalaire ou avec ALL ?",
+      "verso": "Prix égal au MAX des prix, ou prix supérieur ou égal à ALL les prix.",
+      "source": "CM4 chapitre, section Extrema et comparaison"
+    },
+    {
+      "id": "c-cm4-sql-suite-008",
+      "notion": "jointure-externe-union",
+      "recto": "Que fait une jointure externe gauche pour une ligne de gauche sans correspondance à droite ?",
+      "verso": "Elle la garde, avec des NULL pour les colonnes de droite.",
+      "source": "CM4 notion Jointure externe"
+    },
+    {
+      "id": "c-cm4-sql-suite-009",
+      "notion": "jointure-externe-union",
+      "recto": "Quelles conditions pour réunir deux SELECT avec UNION ? Que deviennent les doublons ?",
+      "verso": "Même nombre de colonnes, types compatibles ; doublons éliminés (sauf UNION ALL).",
+      "source": "CM4 notion UNION"
+    },
+    {
+      "id": "c-cm4-sql-suite-010",
+      "notion": "division",
+      "recto": "Quel mot de l'énoncé signale une division relationnelle, et quelles sont ses deux écritures en SQL ?",
+      "verso": "« Tous » ; double NOT IN, ou comptage des distincts égal au total.",
+      "source": "CM4 chapitre, section Division en SQL"
+    }
+  ]
+}

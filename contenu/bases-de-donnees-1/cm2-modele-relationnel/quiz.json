@@ -1,0 +1,185 @@
+{
+  "seance": "cm2-modele-relationnel",
+  "questions": [
+    {
+      "id": "q-cm2-modele-relationnel-001",
+      "notion": "relation-schema-extension",
+      "type": "qcm",
+      "enonce": "La relation Personne(nompers, ville, datenaissance) contient 5 n-uplets. Quels sont son degré et sa cardinalité ?",
+      "choix": [
+        "Degré 5 et cardinalité 3",
+        "Degré 5 et cardinalité 5",
+        "Degré 3 et cardinalité 5",
+        "Degré 3 et cardinalité 3"
+      ],
+      "bonne": 2,
+      "explication": "Le degré est le nombre d'attributs (3), la cardinalité le nombre de n-uplets (5).",
+      "source": "CM2 diapos 4-5 (exemple Personne)"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-002",
+      "notion": "relation-schema-extension",
+      "type": "qcm",
+      "enonce": "Quand on insère ou supprime une ligne dans une relation, qu'est-ce qui change ?",
+      "choix": [
+        "L'extension de la relation",
+        "Le schéma de la relation",
+        "Le degré de la relation",
+        "Le domaine de chaque attribut"
+      ],
+      "bonne": 0,
+      "explication": "L'extension est l'ensemble des n-uplets actuels ; le schéma (nom, attributs, domaines) reste fixe.",
+      "source": "CM2 diapos 5, notion « Schéma et extension »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-003",
+      "notion": "relation-schema-extension",
+      "type": "qcm",
+      "enonce": "Quelle affirmation est vraie pour une relation du modèle relationnel ?",
+      "choix": [
+        "Les colonnes ont un ordre fixe, les lignes n'en ont pas",
+        "Un même n-uplet peut apparaître plusieurs fois dans la table",
+        "Les lignes sont rangées dans l'ordre croissant de la clé",
+        "Il n'y a ni ordre sur les lignes ni sur les colonnes, ni doublon"
+      ],
+      "bonne": 3,
+      "explication": "Modèle ensembliste : pas d'ordre sur les lignes ni les colonnes, pas de doublon.",
+      "source": "CM2 diapos 4-5, notion « Relation »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-004",
+      "notion": "cles",
+      "type": "qcm",
+      "enonce": "Une commande contient plusieurs produits et un produit figure dans plusieurs commandes. Quelle est la clé minimale de DETAIL(RefCom, RefP, Quantité) ?",
+      "choix": [
+        "RefCom seul",
+        "Le couple (RefCom, RefP)",
+        "RefP seul",
+        "Quantité"
+      ],
+      "bonne": 1,
+      "explication": "Ni RefCom seul ni RefP seul ne suffisent à identifier une ligne : la clé est le couple (RefCom, RefP).",
+      "source": "TD1-2_TP1 (TP1 : clé de DETAIL), notion « Clé candidate »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-005",
+      "notion": "cles",
+      "type": "qcm",
+      "enonce": "Dans DETAIL, chaque valeur de RefP doit exister comme clé primaire dans PRODUIT. Quel est le rôle de RefP dans DETAIL ?",
+      "choix": [
+        "Domaine de l'attribut Quantité",
+        "Clé étrangère vers PRODUIT",
+        "Clé candidate de PRODUIT",
+        "Schéma de la relation DETAIL"
+      ],
+      "bonne": 1,
+      "explication": "Une clé étrangère est un attribut dont les valeurs doivent exister comme clé primaire d'une autre table.",
+      "source": "CM2 diapos 7 (contraintes), notion « Clé étrangère »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-006",
+      "notion": "projection-selection",
+      "type": "qcm",
+      "enonce": "R(A, B, C) = {(b,c,a), (b,a,b), (a,b,c)}. Combien de n-uplets contient la projection R[A] ?",
+      "choix": [
+        "3 n-uplets, un par ligne de R",
+        "1 n-uplet, la valeur la plus fréquente",
+        "9 n-uplets, un par couple de lignes",
+        "2 n-uplets (a et b), sans doublon"
+      ],
+      "bonne": 3,
+      "explication": "La projection garde la colonne A et supprime les doublons : b apparaît deux fois, il reste {a, b}.",
+      "source": "TD1-2 exercice 1 (R, S donnés)"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-007",
+      "notion": "projection-selection",
+      "type": "qcm",
+      "enonce": "Quelle expression donne les noms des clients qui habitent Toulouse (base Commandes, notation du cours) ?",
+      "choix": [
+        "(CLIENT : Ville='Toulouse')[NomC]",
+        "(CLIENT[NomC]) : Ville='Toulouse'",
+        "CLIENT[NomC, Ville='Toulouse']",
+        "(CLIENT × Ville)[NomC]"
+      ],
+      "bonne": 0,
+      "explication": "On sélectionne d'abord les lignes (Ville='Toulouse'), puis on projette sur NomC. Après la projection, Ville n'existe plus.",
+      "source": "TD1-2 exercice 2 Q2"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-008",
+      "notion": "produit-cartesien-jointure",
+      "type": "qcm",
+      "enonce": "Personne et Voyage ont chacune 5 n-uplets. Combien de n-uplets contient Personne × Voyage ?",
+      "choix": [
+        "10",
+        "5",
+        "25",
+        "15"
+      ],
+      "bonne": 2,
+      "explication": "Le produit cartésien combine chaque ligne de l'une avec chaque ligne de l'autre : 5 × 5 = 25.",
+      "source": "CM2 diapos 11 (produit Personne × Voyage)"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-009",
+      "notion": "produit-cartesien-jointure",
+      "type": "qcm",
+      "enonce": "R(A,B,C) = {(b,c,a), (b,a,b), (a,b,c)} et S(B,C,D) = {(b,c,c), (c,a,a), (c,a,b)}. Combien de n-uplets dans (R × S):(A = S.C) ?",
+      "choix": [
+        "1",
+        "3",
+        "6",
+        "2"
+      ],
+      "bonne": 3,
+      "explication": "Seule la ligne (a,b,c) de R a A = a, et deux lignes de S ont C = a : 2 n-uplets.",
+      "source": "TD1-2 exercice 1"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-010",
+      "notion": "difference-negation",
+      "type": "qcm",
+      "enonce": "Dans la base Commandes, que donne l'expression PRODUIT[RefP] − DETAIL[RefP] ?",
+      "choix": [
+        "Les références des produits jamais commandés",
+        "Les références des produits commandés au moins une fois",
+        "Les références des produits commandés plusieurs fois",
+        "Les références des commandes sans aucun produit"
+      ],
+      "bonne": 0,
+      "explication": "On retire des produits ceux qui figurent dans DETAIL : il reste ceux qui n'ont jamais été commandés.",
+      "source": "TD1-2 exercice 4 Q1"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-011",
+      "notion": "difference-negation",
+      "type": "qcm",
+      "enonce": "L'opérateur ∩ n'est pas autorisé. Comment écrire l'intersection de deux relations compatibles R et S ?",
+      "choix": [
+        "R − S",
+        "(R − S) ∪ (S − R)",
+        "R − (R − S)",
+        "R ∪ (R − S)"
+      ],
+      "bonne": 2,
+      "explication": "R − S garde ce qui est dans R seul ; le retirer de R laisse ce qui est à la fois dans R et dans S.",
+      "source": "CM2 chapitre (tableau des opérateurs), TD1-2 « Méthode rapide »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-012",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "Laquelle de ces requêtes se traduit naturellement par une division R / S ?",
+      "choix": [
+        "Les villes où habite au moins un client",
+        "Les personnes ayant visité toutes les capitales",
+        "Les personnes qui habitent à Caen",
+        "Les pays qui n'ont jamais été visités"
+      ],
+      "bonne": 1,
+      "explication": "Le mot « toutes » signale une division : on garde les valeurs associées à toutes les valeurs de S.",
+      "source": "CM2 diapos 18 (division), notion « Division relationnelle »"
+    }
+  ]
+}

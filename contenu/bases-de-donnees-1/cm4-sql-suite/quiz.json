@@ -1,0 +1,180 @@
+{
+  "seance": "cm4-sql-suite",
+  "questions": [
+    {
+      "id": "q-cm4-sql-suite-001",
+      "notion": "agregats-group-by-having",
+      "type": "qcm",
+      "enonce": "Dans la table CLIENT du TP (15 clients), CAT n'est pas défini (NULL) pour Mercier et Neuman. Que renvoie SELECT COUNT(CAT) FROM CLIENT, COUNT(CAT) comptant les valeurs non nulles de la colonne ?",
+      "choix": ["15", "13", "2", "0"],
+      "bonne": 1,
+      "explication": "COUNT(A) ignore les NULL : 15 clients moins les 2 valeurs non définies donnent 13 ; seul COUNT(*) compterait les 15 lignes.",
+      "source": "TP3 exercice 2 (CAT non défini pour Mercier et Neuman) ; CM4 chapitre, section Agrégat"
+    },
+    {
+      "id": "q-cm4-sql-suite-002",
+      "notion": "agregats-group-by-having",
+      "type": "qcm",
+      "enonce": "Pour garder les clients dont le montant total commandé dépasse 10000, avec GROUP BY COM.RefC, où écrire la condition SUM(P.Prix*D.Quantite) > 10000 ?",
+      "choix": [
+        "Dans le WHERE, avant le regroupement des lignes",
+        "Dans le ON de la jointure entre DETAIL et PRODUIT",
+        "Dans l'ORDER BY, après le calcul de chaque somme",
+        "Dans un HAVING, placé après le GROUP BY"
+      ],
+      "bonne": 3,
+      "explication": "HAVING filtre les groupes, après GROUP BY, sur un agrégat ; WHERE filtre les lignes avant regroupement et n'accepte pas d'agrégat.",
+      "source": "CM4 chapitre, section HAVING (exemple des clients à plus de 10000)"
+    },
+    {
+      "id": "q-cm4-sql-suite-003",
+      "notion": "sous-requete",
+      "type": "qcm",
+      "enonce": "Dans WHERE Prix < (SELECT Prix FROM PRODUIT WHERE RefP = 'PL224'), que doit renvoyer la sous-requête pour que la comparaison soit valide ?",
+      "choix": [
+        "Une seule ligne d'une seule colonne",
+        "Au moins une ligne, avec autant de colonnes que voulu",
+        "Une table avec un alias obligatoire",
+        "Une liste de valeurs, comme pour un test IN"
+      ],
+      "bonne": 0,
+      "explication": "Avec < ou =, la sous-requête est scalaire : 1 ligne × 1 colonne. Une liste de valeurs demande IN, ANY ou ALL.",
+      "source": "CM4 chapitre, section Extrema et comparaison (diapos 40 à 66)"
+    },
+    {
+      "id": "q-cm4-sql-suite-004",
+      "notion": "sous-requete",
+      "type": "qcm",
+      "enonce": "TD5-6 : montant moyen d'une commande, toutes commandes confondues. AVG(SUM(...)) est impossible ; comment le corrigé procède-t-il ?",
+      "choix": [
+        "Il place l'agrégat AVG directement dans le WHERE",
+        "Il écrit un HAVING AVG(...) sans aucun GROUP BY",
+        "Une sous-requête du FROM somme chaque commande (Total), puis AVG(Total)",
+        "Il divise COUNT(*) par SUM(Prix) sur toute la table"
+      ],
+      "bonne": 2,
+      "explication": "Un agrégat ne s'imbrique pas dans un autre : la sous-requête du FROM calcule le total de chaque commande, puis on en prend la moyenne (37252.857143).",
+      "source": "TD5-6 exercice 3 question 4 (corrigé : sous-requête dans le FROM)"
+    },
+    {
+      "id": "q-cm4-sql-suite-005",
+      "notion": "in-exists",
+      "type": "qcm",
+      "enonce": "Dans x NOT IN (SELECT ...), la sous-requête renvoie au moins une valeur NULL parmi ses résultats. Que devient le test ?",
+      "choix": [
+        "Il reste vrai pour tout x absent de l'ensemble",
+        "Le NULL est ignoré, comme dans un agrégat",
+        "Il provoque une erreur de syntaxe à l'exécution",
+        "Il n'est jamais vrai, quel que soit x"
+      ],
+      "bonne": 3,
+      "explication": "Avec un NULL dans l'ensemble, x NOT IN (...) n'est jamais vrai. Filtrer IS NOT NULL ou utiliser NOT EXISTS, qui est robuste aux NULL.",
+      "source": "CM4 notions IN et NOT IN, EXISTS et NOT EXISTS (piège NULL)"
+    },
+    {
+      "id": "q-cm4-sql-suite-006",
+      "notion": "in-exists",
+      "type": "qcm",
+      "enonce": "Sur CLIENT C, la requête WHERE NOT EXISTS (SELECT * FROM COMMANDE COM WHERE COM.RefC = C.RefC) donne les clients sans commande. Comment qualifier sa sous-requête ?",
+      "choix": [
+        "Non corrélée : exécutée une seule fois pour toute la requête",
+        "Corrélée : réévaluée pour chaque client de la requête externe",
+        "Scalaire : elle renvoie une seule valeur à comparer",
+        "Dérivée : elle est placée dans le FROM avec un alias"
+      ],
+      "bonne": 1,
+      "explication": "Elle référence C.RefC de la requête externe, donc elle est corrélée et réévaluée pour chaque client. La version NOT IN équivalente est non corrélée.",
+      "source": "CM4 chapitre, section NOT EXISTS (sous-requête corrélée)"
+    },
+    {
+      "id": "q-cm4-sql-suite-007",
+      "notion": "all-any",
+      "type": "qcm",
+      "enonce": "Sur PRODUIT, la requête SELECT RefP, Prix FROM PRODUIT WHERE Prix >= ALL (SELECT Prix FROM PRODUIT) renvoie quoi ?",
+      "choix": [
+        "Les produits moins chers que la moyenne des prix",
+        "Un seul produit, choisi au hasard parmi les plus chers",
+        "Les produits au moins aussi chers qu'un autre produit",
+        "Le ou les produits les plus chers, ex æquo compris"
+      ],
+      "bonne": 3,
+      "explication": ">= ALL exige un prix supérieur ou égal à tous les prix : on obtient le ou les produits les plus chers, équivalent à = (SELECT MAX(Prix) ...).",
+      "source": "CM4 chapitre, section Extrema et comparaison ; notion ALL et ANY"
+    },
+    {
+      "id": "q-cm4-sql-suite-008",
+      "notion": "all-any",
+      "type": "qcm",
+      "enonce": "Pourquoi SELECT RefP, MAX(Prix) FROM PRODUIT est-il refusé par MySQL (only_full_group_by) ?",
+      "choix": [
+        "MAX ne peut s'utiliser qu'avec un GROUP BY",
+        "RefP n'est pas défini à la granularité de l'agrégat",
+        "Plusieurs produits peuvent avoir le même prix maximal",
+        "La table PRODUIT n'a pas reçu d'alias dans le FROM"
+      ],
+      "bonne": 1,
+      "explication": "L'agrégat donne une valeur pour toute la table, mais RefP est défini par ligne. La solution : Prix = (SELECT MAX(Prix) FROM PRODUIT).",
+      "source": "CM4 chapitre, section Extrema et comparaison (diapos 40 à 66)"
+    },
+    {
+      "id": "q-cm4-sql-suite-009",
+      "notion": "jointure-externe-union",
+      "type": "qcm",
+      "enonce": "TP3 : quantité de clous commandée par client, avec 0 pour les clients sans clou. Le corrigé utilise un UNION. À quoi sert le second SELECT de l'UNION ?",
+      "choix": [
+        "À éliminer les clients en double du premier SELECT",
+        "À ajouter les clients sans commande de clous, avec la quantité 0",
+        "À additionner les quantités issues des deux SELECT",
+        "À remplacer le GROUP BY du premier SELECT"
+      ],
+      "bonne": 1,
+      "explication": "Le premier SELECT ne contient que les clients ayant commandé des clous ; le second ajoute les autres (RefC NOT IN (...)) avec la valeur 0.",
+      "source": "TP3 exercice 3 question 7 (corrigé : UNION nécessaire) ; notion UNION"
+    },
+    {
+      "id": "q-cm4-sql-suite-010",
+      "notion": "jointure-externe-union",
+      "type": "qcm",
+      "enonce": "Avec CLIENT C LEFT JOIN COMMANDE CO ON C.RefC = CO.RefC, on veut filtrer sur CO.DateCom sans perdre les clients sans commande. Où placer la condition ?",
+      "choix": [
+        "Dans le WHERE, c'est strictement équivalent",
+        "Dans le HAVING, après un GROUP BY sur RefC",
+        "Dans le ON de la jointure, et non dans le WHERE",
+        "Dans un second LEFT JOIN vers la table CLIENT"
+      ],
+      "bonne": 2,
+      "explication": "Une condition sur la table de droite dans le WHERE élimine les lignes complétées par NULL et annule l'effet du LEFT JOIN ; dans le ON, elle les conserve.",
+      "source": "CM4 notion Jointure externe (À ne pas confondre)"
+    },
+    {
+      "id": "q-cm4-sql-suite-011",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "TP3 : villes où l'on trouve toutes les catégories de clients, version par comptage (GROUP BY Ville). Que compare la clause HAVING ?",
+      "choix": [
+        "Les catégories distinctes de la ville, au nombre total de catégories",
+        "Le nombre de clients de la ville, au nombre de villes",
+        "Le nombre de lignes du groupe, au nombre de lignes de CLIENT",
+        "La somme des catégories de la ville, à la somme totale"
+      ],
+      "bonne": 0,
+      "explication": "COUNT(DISTINCT CAT) de la ville est comparé au nombre total de catégories ; seule Toulouse, avec 4 catégories, convient.",
+      "source": "TP3 exercice 3 question 9 (corrigé, version COUNT) ; CM4 chapitre, section Division"
+    },
+    {
+      "id": "q-cm4-sql-suite-012",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "Division par comptage : clients ayant acheté au moins un produit de chaque type. Pourquoi écrire COUNT(DISTINCT P.TypeP) plutôt que COUNT(P.TypeP) dans le HAVING ?",
+      "choix": [
+        "Pour ignorer les types dont la valeur est NULL",
+        "Pour que les clients sortent triés par type de produit",
+        "Pour accélérer le calcul de chaque groupe de clients",
+        "Parce qu'un client peut acheter plusieurs produits du même type"
+      ],
+      "bonne": 3,
+      "explication": "Sans DISTINCT, les lignes du même type seraient comptées plusieurs fois et le total pourrait atteindre le nombre de types sans les couvrir tous.",
+      "source": "CM4 chapitre, section Division en SQL (DISTINCT indispensable)"
+    }
+  ]
+}

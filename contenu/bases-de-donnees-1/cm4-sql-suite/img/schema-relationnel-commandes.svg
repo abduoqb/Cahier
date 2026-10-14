@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 520" width="1220" height="520" font-family="Segoe UI, Arial, Helvetica, sans-serif">
+<defs>
+<marker id="arr" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#475569"/></marker>
+<marker id="arrB" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11 z" fill="#2563eb"/></marker>
+
+</defs>
+<rect width="1220" height="520" fill="#fff"/>
+<text x="610.0" y="40" font-size="24" fill="#1e293b" font-weight="bold" text-anchor="middle" >Base Commandes — schéma relationnel</text>
+<text x="610.0" y="66" font-size="15" fill="#475569" font-weight="normal" text-anchor="middle" >Les flèches vont de la clé étrangère (FK) vers la clé primaire (PK) qu'elle référence</text>
+<rect x="34" y="166" width="210" height="166" rx="8" fill="#0f172a" opacity="0.08"/>
+<rect x="30" y="162" width="210" height="166" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2" />
+<path d="M30 200 V170 Q30 162 38 162 H232 Q240 162 240 170 V200 Z" fill="#2563eb"/>
+<text x="135.0" y="187" font-size="19" fill="#fff" font-weight="bold" text-anchor="middle" >CLIENT</text>
+<text x="46" y="221" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" text-decoration="underline">RefC</text>
+<rect x="192" y="207" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="209" y="221" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<line x1="30" y1="232" x2="240" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+<text x="46" y="253" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >NomC</text>
+<line x1="30" y1="264" x2="240" y2="264" stroke="#e2e8f0" stroke-width="1"/>
+<text x="46" y="285" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >Ville</text>
+<line x1="30" y1="296" x2="240" y2="296" stroke="#e2e8f0" stroke-width="1"/>
+<text x="46" y="317" font-size="16" fill="#94a3b8" font-weight="normal" text-anchor="start" font-style="italic" >CAT</text>
+<text x="226" y="317" font-size="12" fill="#94a3b8" font-weight="normal" text-anchor="end" font-style="italic" >TP seulement</text>
+<rect x="349" y="134" width="210" height="134" rx="8" fill="#0f172a" opacity="0.08"/>
+<rect x="345" y="130" width="210" height="134" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2" />
+<path d="M345 168 V138 Q345 130 353 130 H547 Q555 130 555 138 V168 Z" fill="#2563eb"/>
+<text x="450.0" y="155" font-size="19" fill="#fff" font-weight="bold" text-anchor="middle" >COMMANDE</text>
+<text x="361" y="189" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" text-decoration="underline">RefCom</text>
+<rect x="507" y="175" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="524" y="189" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<line x1="345" y1="200" x2="555" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="361" y="221" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >RefC</text>
+<rect x="507" y="207" width="34" height="19" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+<text x="524" y="221" font-size="12" fill="#92400e" font-weight="bold" text-anchor="middle" >FK</text>
+<line x1="345" y1="232" x2="555" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+<text x="361" y="253" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >DateCom</text>
+<rect x="664" y="134" width="210" height="134" rx="8" fill="#0f172a" opacity="0.08"/>
+<rect x="660" y="130" width="210" height="134" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2" />
+<path d="M660 168 V138 Q660 130 668 130 H862 Q870 130 870 138 V168 Z" fill="#2563eb"/>
+<text x="765.0" y="155" font-size="19" fill="#fff" font-weight="bold" text-anchor="middle" >DETAIL</text>
+<text x="676" y="189" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" text-decoration="underline">RefCom</text>
+<rect x="822" y="175" width="34" height="19" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+<text x="839" y="189" font-size="12" fill="#92400e" font-weight="bold" text-anchor="middle" >FK</text>
+<rect x="782" y="175" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="799" y="189" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<line x1="660" y1="200" x2="870" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="676" y="221" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" text-decoration="underline">RefP</text>
+<rect x="822" y="207" width="34" height="19" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+<text x="839" y="221" font-size="12" fill="#92400e" font-weight="bold" text-anchor="middle" >FK</text>
+<rect x="782" y="207" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="799" y="221" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<line x1="660" y1="232" x2="870" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+<text x="676" y="253" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >Quantité</text>
+<rect x="984" y="166" width="210" height="166" rx="8" fill="#0f172a" opacity="0.08"/>
+<rect x="980" y="162" width="210" height="166" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2" />
+<path d="M980 200 V170 Q980 162 988 162 H1182 Q1190 162 1190 170 V200 Z" fill="#2563eb"/>
+<text x="1085.0" y="187" font-size="19" fill="#fff" font-weight="bold" text-anchor="middle" >PRODUIT</text>
+<text x="996" y="221" font-size="17" fill="#1e293b" font-weight="bold" text-anchor="start" text-decoration="underline">RefP</text>
+<rect x="1142" y="207" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="1159" y="221" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<line x1="980" y1="232" x2="1190" y2="232" stroke="#e2e8f0" stroke-width="1"/>
+<text x="996" y="253" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >TypeP</text>
+<line x1="980" y1="264" x2="1190" y2="264" stroke="#e2e8f0" stroke-width="1"/>
+<text x="996" y="285" font-size="17" fill="#1e293b" font-weight="normal" text-anchor="start" >Prix</text>
+<line x1="980" y1="296" x2="1190" y2="296" stroke="#e2e8f0" stroke-width="1"/>
+<text x="996" y="317" font-size="16" fill="#94a3b8" font-weight="normal" text-anchor="start" font-style="italic" >QStock</text>
+<text x="1176" y="317" font-size="12" fill="#94a3b8" font-weight="normal" text-anchor="end" font-style="italic" >TP seulement</text>
+<line x1="345" y1="216.0" x2="242" y2="216.0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrB)"/>
+<text x="266" y="204.0" font-size="20" fill="#2563eb" font-weight="bold" text-anchor="middle" >1</text>
+<text x="325" y="204.0" font-size="20" fill="#f59e0b" font-weight="bold" text-anchor="middle" >N</text>
+<text x="292.5" y="240.0" font-size="15" fill="#475569" font-weight="normal" text-anchor="middle" font-style="italic" >passe</text>
+<line x1="660" y1="184.0" x2="557" y2="184.0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrB)"/>
+<text x="581" y="172.0" font-size="20" fill="#2563eb" font-weight="bold" text-anchor="middle" >1</text>
+<text x="640" y="172.0" font-size="20" fill="#f59e0b" font-weight="bold" text-anchor="middle" >N</text>
+<text x="607.5" y="208.0" font-size="15" fill="#475569" font-weight="normal" text-anchor="middle" font-style="italic" >contient</text>
+<line x1="870" y1="216.0" x2="978" y2="216.0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrB)"/>
+<text x="954" y="204.0" font-size="20" fill="#2563eb" font-weight="bold" text-anchor="middle" >1</text>
+<text x="890" y="204.0" font-size="20" fill="#f59e0b" font-weight="bold" text-anchor="middle" >N</text>
+<text x="925.0" y="240.0" font-size="15" fill="#475569" font-weight="normal" text-anchor="middle" font-style="italic" >concerne</text>
+<path d="M345 338 V356 H1190 V338" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+<rect x="270.0" y="370" width="680" height="62" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" />
+<text x="610.0" y="396" font-size="17" fill="#92400e" font-weight="bold" text-anchor="middle" >COMMANDE ⟷ PRODUIT est une relation N–N</text>
+<text x="610.0" y="418" font-size="15" fill="#1e293b" font-weight="normal" text-anchor="middle" >portée par la table d'association DETAIL — clé primaire composée (RefCom, RefP)</text>
+<rect x="30" y="476" width="34" height="19" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2" />
+<text x="47" y="490" font-size="12" fill="#1e40af" font-weight="bold" text-anchor="middle" >PK</text>
+<text x="72" y="491" font-size="15" fill="#475569" font-weight="normal" text-anchor="start" >clé primaire (soulignée)</text>
+<rect x="290" y="476" width="34" height="19" rx="9" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.2" />
+<text x="307" y="490" font-size="12" fill="#92400e" font-weight="bold" text-anchor="middle" >FK</text>
+<text x="332" y="491" font-size="15" fill="#475569" font-weight="normal" text-anchor="start" >clé étrangère</text>
+<line x1="470" y1="485" x2="530" y2="485" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrB)"/>
+<text x="542" y="491" font-size="15" fill="#475569" font-weight="normal" text-anchor="start" >FK → PK référencée (1 côté PK, N côté FK)</text>
+<text x="930" y="491" font-size="15" fill="#94a3b8" font-weight="normal" text-anchor="start" font-style="italic" >CAT, QStock : colonnes des TP uniquement</text>
+
+</svg>

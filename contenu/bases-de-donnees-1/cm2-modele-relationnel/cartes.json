@@ -1,0 +1,75 @@
+{
+  "seance": "cm2-modele-relationnel",
+  "cartes": [
+    {
+      "id": "c-cm2-modele-relationnel-001",
+      "notion": "relation-schema-extension",
+      "recto": "Degré et cardinalité d'une relation : que comptent-ils ?",
+      "verso": "Degré = nombre d'attributs ; cardinalité = nombre de n-uplets.",
+      "source": "CM2 diapos 5"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-002",
+      "notion": "relation-schema-extension",
+      "recto": "Schéma et extension d'une relation : quelle différence ?",
+      "verso": "Schéma = nom, attributs, domaines (fixe) ; extension = n-uplets actuels.",
+      "source": "CM2 diapos 5"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-003",
+      "notion": "relation-schema-extension",
+      "recto": "Qu'est-ce qu'une relation au sens du cours ?",
+      "verso": "Un sous-ensemble du produit cartésien d'une liste de domaines.",
+      "source": "CM2 diapos 4"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-004",
+      "notion": "cles",
+      "recto": "Qu'est-ce qu'une clé candidate ?",
+      "verso": "Des attributs dont les valeurs déterminent un unique n-uplet (on vise le minimum).",
+      "source": "CM2 diapos 6"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-005",
+      "notion": "cles",
+      "recto": "Qu'est-ce qu'une clé étrangère ?",
+      "verso": "Un attribut dont les valeurs existent comme clé primaire d'une autre table.",
+      "source": "CM2 diapos 7, notion « Clé étrangère »"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-006",
+      "notion": "projection-selection",
+      "recto": "Projection ou sélection : laquelle garde des colonnes ?",
+      "verso": "La projection R[A] ; la sélection R:(F) garde des lignes.",
+      "source": "CM2 diapos 9"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-007",
+      "notion": "produit-cartesien-jointure",
+      "recto": "Produit cartésien R × S : combien de n-uplets si R en a m et S en a n ?",
+      "verso": "m × n.",
+      "source": "CM2 diapos 11"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-008",
+      "notion": "produit-cartesien-jointure",
+      "recto": "Comment s'écrit la thêta-jointure R ⋈(F) S avec le produit cartésien ?",
+      "verso": "(R × S) : F, c'est-à-dire un produit cartésien filtré par F.",
+      "source": "CM2 diapos 16"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-009",
+      "notion": "difference-negation",
+      "recto": "Comment traduire « aucun » ou « jamais » en algèbre relationnelle ?",
+      "verso": "Par une différence A[X] − B[X], pas par une jointure avec ≠.",
+      "source": "TD1-2 « Méthode rapide » et erreurs fréquentes"
+    },
+    {
+      "id": "c-cm2-modele-relationnel-010",
+      "notion": "division",
+      "recto": "Quel mot de l'énoncé signale une division ?",
+      "verso": "« Toutes » ou « tous » (ex. les personnes ayant visité toutes les capitales).",
+      "source": "CM2 diapos 18, notion « Division relationnelle »"
+    }
+  ]
+}

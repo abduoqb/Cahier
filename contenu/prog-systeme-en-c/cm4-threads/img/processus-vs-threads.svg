@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Segoe UI, Arial, sans-serif">
+<rect width="960" height="470" fill="#fff"/>
+<text x="240" y="34" font-size="20" font-weight="700" fill="#1e293b" text-anchor="middle">fork() : 2 processus</text>
+<text x="715" y="34" font-size="20" font-weight="700" fill="#1e293b" text-anchor="middle">pthread_create() : 1 processus, 2 threads</text>
+<rect x="20" y="55" width="205" height="330" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="122" y="82" font-size="16" font-weight="700" fill="#475569" text-anchor="middle">Processus père</text>
+<rect x="255" y="55" width="205" height="330" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="357" y="82" font-size="16" font-weight="700" fill="#475569" text-anchor="middle">Processus fils</text>
+<g font-size="15" fill="#1e293b" text-anchor="middle">
+<rect x="40" y="100" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="122" y="126">Code</text>
+<rect x="40" y="150" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="122" y="176">Données (copie)</text>
+<rect x="40" y="200" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="122" y="226">Fichiers ouverts</text>
+<rect x="40" y="250" width="165" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="122" y="276">Pile</text>
+<rect x="40" y="300" width="165" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="122" y="326">Registres</text>
+<rect x="275" y="100" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="357" y="126">Code</text>
+<rect x="275" y="150" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="357" y="176">Données (copie)</text>
+<rect x="275" y="200" width="165" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="357" y="226">Fichiers ouverts</text>
+<rect x="275" y="250" width="165" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="357" y="276">Pile</text>
+<rect x="275" y="300" width="165" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="357" y="326">Registres</text>
+</g>
+<text x="240" y="412" font-size="15" fill="#1e293b" text-anchor="middle">Tout est dupliqué : mémoires séparées</text>
+<text x="240" y="436" font-size="15" fill="#475569" text-anchor="middle">Communication : tubes, signaux, sockets</text>
+<rect x="500" y="55" width="440" height="330" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+<text x="720" y="82" font-size="16" font-weight="700" fill="#475569" text-anchor="middle">Un seul processus (même PID)</text>
+<g font-size="15" fill="#1e293b" text-anchor="middle">
+<rect x="520" y="100" width="400" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="720" y="126">Code (partagé)</text>
+<rect x="520" y="150" width="400" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="720" y="176">Données globales + tas malloc (partagés)</text>
+<rect x="520" y="200" width="400" height="40" rx="6" fill="#dbeafe" stroke="#2563eb"/><text x="720" y="226">Fichiers ouverts (partagés)</text>
+<rect x="520" y="255" width="195" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="617" y="281">Pile du thread 1</text>
+<rect x="725" y="255" width="195" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="822" y="281">Pile du thread 2</text>
+<rect x="520" y="305" width="195" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="617" y="331">Registres 1</text>
+<rect x="725" y="305" width="195" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/><text x="822" y="331">Registres 2</text>
+</g>
+<text x="720" y="412" font-size="15" fill="#1e293b" text-anchor="middle">Seuls pile + registres sont propres à chaque thread</text>
+<text x="720" y="436" font-size="15" fill="#b45309" text-anchor="middle" font-weight="700">Données partagées : danger, il faut un mutex</text>
+<text x="480" y="260" font-size="26" fill="#475569" text-anchor="middle">vs</text>
+</svg>

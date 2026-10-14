@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+  </defs>
+  <rect width="900" height="440" fill="#fff"/>
+  <text x="450" y="34" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">Tube anonyme entre un fils (écrivain) et son père (lecteur)</text>
+
+  <!-- Fils -->
+  <rect x="30" y="70" width="230" height="230" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="145" y="100" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e293b">FILS</text>
+  <text x="145" y="124" font-size="14" text-anchor="middle" fill="#475569">il écrit</text>
+  <rect x="55" y="150" width="180" height="40" rx="6" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="145" y="176" font-size="15" text-anchor="middle" fill="#64748b">fd[0] fermé (close)</text>
+  <rect x="55" y="215" width="180" height="40" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="145" y="241" font-size="15" text-anchor="middle" fill="#1e293b">fd[1] ouvert : write</text>
+
+  <!-- Père -->
+  <rect x="640" y="70" width="230" height="230" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+  <text x="755" y="100" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e293b">PÈRE</text>
+  <text x="755" y="124" font-size="14" text-anchor="middle" fill="#475569">il lit</text>
+  <rect x="665" y="150" width="180" height="40" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="755" y="176" font-size="15" text-anchor="middle" fill="#1e293b">fd[0] ouvert : read</text>
+  <rect x="665" y="215" width="180" height="40" rx="6" fill="#fff" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="755" y="241" font-size="15" text-anchor="middle" fill="#64748b">fd[1] fermé (close)</text>
+
+  <!-- Tube (noyau) -->
+  <rect x="310" y="150" width="280" height="105" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="178" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">TUBE (tampon du noyau)</text>
+  <text x="450" y="202" font-size="14" text-anchor="middle" fill="#475569">file d'octets FIFO, sens unique</text>
+  <text x="450" y="224" font-size="14" text-anchor="middle" fill="#475569">plein : write bloque</text>
+  <text x="450" y="244" font-size="14" text-anchor="middle" fill="#475569">vide : read bloque</text>
+
+  <line x1="235" y1="235" x2="310" y2="235" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="590" y1="170" x2="665" y2="170" stroke="#2563eb" stroke-width="3" marker-end="url(#a)"/>
+
+  <!-- Etapes -->
+  <text x="30" y="335" font-size="15" font-weight="bold" fill="#1e293b">Ordre à respecter :</text>
+  <text x="30" y="360" font-size="15" fill="#475569">1. pipe(fd)  puis  2. fork()  (le fils hérite des 2 descripteurs)</text>
+  <text x="30" y="384" font-size="15" fill="#475569">3. chacun ferme le bout qu'il n'utilise pas   4. write / read   5. close du bout utilisé</text>
+  <text x="30" y="414" font-size="15" fill="#b45309">Si un bout inutile reste ouvert : le lecteur ne reçoit jamais la fin de fichier (read bloque).</text>
+</svg>
