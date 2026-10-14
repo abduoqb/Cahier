@@ -131,3 +131,4 @@ puis ouvrir http://localhost:8000. Vérifier le contenu : `node tools/check_cont
 Les PDF des profs (`contenu/**/support.pdf`) ne sont pas versionnés.
 La progression des quiz (clé `cahier.progress.v1`) reste dans le navigateur et n'est pas incluse dans l'export ZIP.
 La liste des séances apparaît sous une matière dont le nom, mis en minuscules sans accents ni espaces, correspond à l'id de `contenu/index.json` (ex. « Algorithmique 1 » -> `algorithmique-1`).
+Flashcards : une séance avec `"cartes": true` dans `contenu/index.json` a un fichier `cartes.json` et un onglet « Cartes » (révision libre, sans effet sur le calendrier). Les cartes à revoir se révisent depuis « Aujourd'hui » (`#/cartes-du-jour`) : boîtes de Leitner à 1, 3, 7, 14 et 30 jours, 10 nouvelles cartes par jour. Le calendrier (clé `cahier.cartes.v1`) reste dans le navigateur et n'est pas inclus dans l'export ZIP.
