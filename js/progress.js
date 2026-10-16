@@ -73,6 +73,10 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
         }
         d.notions[id] = rec;
         save(d);
+        // Journal des réponses (écouté par sync.js ; sans effet hors navigateur).
+        if (typeof dispatchEvent === 'function' && typeof CustomEvent === 'function') {
+            dispatchEvent(new CustomEvent('cahier:reponse', { detail: { seanceId, notion: question.notion, questionId: question.id, ok } }));
+        }
     }
 
     function notionsDues(now = Date.now()) {

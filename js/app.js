@@ -238,4 +238,6 @@ function init() {
     route();
 }
 
-document.addEventListener('DOMContentLoaded', init);
+// app.js est chargé après la connexion : DOMContentLoaded est déjà passé.
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();

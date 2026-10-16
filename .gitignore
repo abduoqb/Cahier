@@ -21,3 +21,4 @@ tools/.chrome-profile/
 
 # Supports PDF des profs (droits : ne jamais commiter)
 contenu/**/support.pdf
+.vercel

@@ -819,3 +819,14 @@ a { color: inherit; }
 }
 
 .carte-actions [hidden] { display: none; }
+
+/* Connexion (accès privé) : le site reste masqué tant qu'on n'est pas connecté */
+body:not(.connecte) > .header, body:not(.connecte) > main, body:not(.connecte) > .modal-overlay { display: none; }
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login[hidden] { display: none; }
+.login-card { width: min(360px, 100%); display: grid; gap: 14px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-card); }
+.login-titre { margin: 0; font: italic 600 34px var(--font-display); }
+.login-sous { margin: -8px 0 4px; color: var(--muted); font-size: 13px; }
+.login-card label { display: grid; gap: 4px; color: var(--ink-soft); font-size: 13px; font-weight: 500; }
+.login-card input { padding: 9px 11px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); }
+.login-erreur { min-height: 1.2em; margin: 0; color: var(--alert); font-size: 13px; }
