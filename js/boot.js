@@ -1,5 +1,5 @@
 // Point d'entrée : le site ne se charge qu'après connexion à Supabase (accès privé, un seul compte).
-import { sessionActive, seConnecter, seDeconnecter, demarrerSync } from './sync.js?v=2';
+import { sessionActive, seConnecter, seDeconnecter, demarrerSync } from './sync.js?v=3';
 
 const ecran = document.getElementById('login');
 

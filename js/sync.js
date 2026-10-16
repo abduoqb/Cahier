@@ -2,7 +2,6 @@
 // chaque « cycle » récupère le serveur, fusionne par ligne (la plus récente gagne, suppressions comprises),
 // écrit le résultat en local puis envoie ce qui est plus récent chez nous. Un cycle est idempotent :
 // on le relance à chaque changement local, à chaque événement temps réel, au retour sur l'onglet et toutes les minutes.
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
 import { Store } from './store.js';
 import { canon, hash, aplatir, reconstruire } from './sync-merge.js';
 
@@ -19,7 +18,8 @@ const K_FICHIERS = 'cahier.sync.files'; // ids de fichiers déjà envoyés
 const SURVEILLES = [K_PROGRESS, K_CARTES, K_STORE, K_ICS];
 const CLES_LOCALES = [...SURVEILLES, K_BASE, K_META, K_FICHIERS];
 
-export const supabase = createClient(URL, CLE);
+// supabase-js 2.45.4, hébergé dans js/vendor (chargé par index.html) : aucun CDN externe.
+export const supabase = globalThis.supabase.createClient(URL, CLE);
 
 const lire = k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } };
 let interne = false; // vrai pendant nos propres écritures locales, pour ne pas relancer de cycle
