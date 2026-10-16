@@ -830,3 +830,8 @@ body:not(.connecte) > .header, body:not(.connecte) > main, body:not(.connecte) >
 .login-card label { display: grid; gap: 4px; color: var(--ink-soft); font-size: 13px; font-weight: 500; }
 .login-card input { padding: 9px 11px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); }
 .login-erreur { min-height: 1.2em; margin: 0; color: var(--alert); font-size: 13px; }
+.sync-etat { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.sync-etat[data-etat="sync"]::before, .sync-etat[data-etat="ok"]::before, .sync-etat[data-etat="hors-ligne"]::before, .sync-etat[data-etat="erreur"]::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--muted-light); }
+.sync-etat[data-etat="ok"]::before { background: var(--success); }
+.sync-etat[data-etat="hors-ligne"]::before, .sync-etat[data-etat="erreur"]::before { background: var(--alert); }
+@media (max-width: 640px) { .sync-etat { display: none; } }

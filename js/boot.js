@@ -1,5 +1,5 @@
 // Point d'entrée : le site ne se charge qu'après connexion à Supabase (accès privé, un seul compte).
-import { sessionActive, seConnecter, seDeconnecter, demarrerSync } from './sync.js';
+import { sessionActive, seConnecter, seDeconnecter, demarrerSync } from './sync.js?v=2';
 
 const ecran = document.getElementById('login');
 
@@ -28,7 +28,7 @@ async function demarrer() {
     document.body.classList.add('connecte');
     document.getElementById('btn-logout').addEventListener('click', seDeconnecter);
     await demarrerSync(session);
-    await import('./app.js?v=10');
+    await import('./app.js?v=11');
 }
 
 demarrer();

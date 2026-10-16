@@ -238,6 +238,19 @@ function init() {
     route();
 }
 
+// Données reçues d'un autre appareil : on rafraîchit la vue, sauf pendant une saisie, un quiz ou une fenêtre ouverte.
+addEventListener('cahier:synced', () => {
+    const h = location.hash;
+    const vueSure = !h || h === '#/' || h.startsWith('#/subject/') || h === '#/aujourdhui';
+    const actif = document.activeElement;
+    const saisie = actif && ['INPUT', 'TEXTAREA', 'SELECT'].includes(actif.tagName);
+    const modal = !document.getElementById('modal-overlay').classList.contains('hidden');
+    if (!vueSure || saisie || modal) return;
+    const y = window.scrollY;
+    route();
+    window.scrollTo(0, y);
+});
+
 // app.js est chargé après la connexion : DOMContentLoaded est déjà passé.
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
 else init();
