@@ -61,7 +61,9 @@ export function verifierContenu(racine, avertissements = []) {
                 if (!fs.existsSync(p)) continue;
                 const txt = fs.readFileSync(p, 'utf8');
                 if (RESERVEES.some(r => r.test(txt))) erreurs.push(`${ou}/${f} : mention d'une annale réservée`);
-                if (/\[\[[^\]]+\]\]/.test(txt)) erreurs.push(`${ou}/${f} : wikilink [[…]] interdit`);
+                // Les doubles crochets de bash ([[ -n $x ]]) sont autorisés dans le code : on ne cherche les wikilinks que dans le texte.
+                const horsCode = txt.replace(/^```[\s\S]*?^```/gm, '').replace(/`[^`\n]*`/g, '');
+                if (/\[\[[^\]]+\]\]/.test(horsCode)) erreurs.push(`${ou}/${f} : wikilink [[…]] interdit`);
                 if (/^>\s*\[!/m.test(txt)) erreurs.push(`${ou}/${f} : callout Obsidian interdit`);
                 for (const bloc of txt.matchAll(/```pas-a-pas\r?\n([\s\S]*?)\r?\n```/g)) {
                     try { for (const m of validerPasAPas(JSON.parse(bloc[1]))) erreurs.push(`${ou}/${f} : pas-a-pas : ${m}`); }
@@ -97,6 +99,13 @@ export function verifierContenu(racine, avertissements = []) {
                 else if (RESERVEES.some(r => r.test(q.source))) erreurs.push(`${qo} : annale réservée aux tests blancs`);
             }
             for (const n of declarees) if (!vues.has(n)) erreurs.push(`${ou} : notion "${n}" sans question`);
+            // Avertissements de qualité : une bonne réponse qui se devine à sa longueur ou à sa place.
+            const qcm = (quiz.questions || []).filter(q => Array.isArray(q.choix) && Number.isInteger(q.bonne) && q.choix[q.bonne] !== undefined);
+            if (qcm.length >= 6) {
+                const plusLongue = qcm.filter(q => { const L = q.choix.map(c => c.length); const max = Math.max(...L); return L[q.bonne] === max && L.filter(x => x === max).length === 1; }).length;
+                if (plusLongue / qcm.length > 0.5) avertissements.push(`avertissement : ${ou} : la bonne réponse est strictement la plus longue dans ${plusLongue} questions sur ${qcm.length} (allonger les distracteurs)`);
+                if (new Set(qcm.map(q => q.bonne)).size === 1) avertissements.push(`avertissement : ${ou} : toutes les questions ont bonne = ${qcm[0].bonne} (varier la place de la bonne réponse)`);
+            }
         }
     }
     return erreurs;

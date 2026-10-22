@@ -52,6 +52,28 @@ test('choix trop long et source vide', () => {
     assert.ok(e.some(m => m.includes('trop long')) && e.some(m => m.includes('source')), e.join('\n'));
 });
 
+test('doubles crochets de bash autorisés dans le code, wikilink refusé dans le texte', () => {
+    const racine = fixture();
+    const cours = path.join(racine, 'algo', 'cm1', 'cours.md');
+    fs.writeFileSync(cours, ['Test :', '```bash', 'if [[ -n "$a" ]]; then echo ok; fi', '```', 'et `[[ -e f ]]` en ligne.', ''].join('\n'));
+    assert.deepEqual(verifierContenu(racine), []);
+    fs.writeFileSync(cours, ['```bash', '[[ -n $a ]]', '```', 'Voir [[Autre note]]', ''].join('\n'));
+    assert.ok(verifierContenu(racine).some(m => m.includes('wikilink')));
+});
+
+test('avertissement : bonne réponse toujours la plus longue ou toujours à la même place', () => {
+    const racine = fixture(q => {
+        q.questions = Array.from({ length: 6 }, (_, i) => ({
+            id: `q-cm1-${String(i + 1).padStart(3, '0')}`, notion: 'tableaux', type: 'qcm', enonce: 'Q ?',
+            choix: ['une réponse bien plus longue', 'non', 'faux'], bonne: 0, explication: 'Oui.', source: 'TD1',
+        }));
+        return q;
+    });
+    const avertissements = [];
+    assert.deepEqual(verifierContenu(racine, avertissements), []);
+    assert.ok(avertissements.some(m => m.includes('la plus longue')) && avertissements.some(m => m.includes('bonne = 0')), avertissements.join('\n'));
+});
+
 test('image manquante et wikilink', () => {
     const racine = fixture();
     fs.writeFileSync(path.join(racine, 'algo', 'cm1', 'cours.md'), 'Voir [[Autre note]] ![x](img/absente.svg)');
