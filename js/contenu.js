@@ -20,6 +20,9 @@ export function chargerIndex() {
 }
 export const chargerQuiz = (dossier) => lire(`${dossier}/quiz.json`, 'json');
 export const chargerCartes = (dossier) => lire(`${dossier}/cartes.json`, 'json');
+export async function existe(chemin) {
+    try { return (await fetch(BASE + chemin, { method: 'HEAD' })).ok; } catch { return false; }
+}
 export const chargerTexte = (chemin) => lire(chemin, 'text');
 
 export async function trouverMatiere(nom) {

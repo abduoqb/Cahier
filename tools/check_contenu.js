@@ -54,7 +54,7 @@ export function verifierContenu(racine, avertissements = []) {
             for (const f of FICHIERS) {
                 if (!fs.existsSync(path.join(dossier, f))) erreurs.push(`${ou} : fichier manquant ${f}`);
             }
-            if (!fs.existsSync(path.join(dossier, 'support.pdf'))) avertissements.push(`avertissement : ${ou} : support.pdf absent (non versionné)`);
+            if (!fs.existsSync(path.join(dossier, 'support.pdf')) && !fs.existsSync(path.join(dossier, 'fiche.pdf'))) avertissements.push(`avertissement : ${ou} : support.pdf absent (non versionné)`);
             for (const f of ['cours.md', 'condense.md']) {
                 const p = path.join(dossier, f);
                 if (!fs.existsSync(p)) continue;

@@ -1,5 +1,5 @@
 import { escapeHtml } from './utils.js?v=6';
-import { chargerIndex, chargerQuiz, chargerCartes, messageErreur } from './contenu.js?v=2';
+import { chargerIndex, chargerQuiz, chargerCartes, messageErreur } from './contenu.js?v=3';
 import { progress } from './progress.js';
 import { choisirDuJour } from './quiz-session.js';
 import { lancerQuiz } from './quiz.js';

@@ -1,6 +1,6 @@
 import { Store } from './store.js';
 import { escapeHtml } from './utils.js?v=6';
-import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, messageErreur, slug } from './contenu.js?v=2';
+import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, existe, messageErreur, slug } from './contenu.js?v=3';
 import { construireSession, melanger } from './quiz-session.js';
 import { lancerQuiz } from './quiz.js';
 import { lancerCartes } from './cartes.js';
@@ -23,6 +23,14 @@ export async function renderSeance(matiereId, seanceId) {
             chargerQuiz(seance.dossier),
             seance.cartes ? chargerCartes(seance.dossier).catch(() => null) : Promise.resolve(null),
         ]);
+        const [aSupport, aFiche] = await Promise.all([
+            existe(`${seance.dossier}/support.pdf`), existe(`${seance.dossier}/fiche.pdf`),
+        ]);
+        const pdfs = [
+            aSupport && ['Support du prof (PDF)', 'support.pdf', 'Support du prof'],
+            aFiche && ['Fiche de révision (PDF)', 'fiche.pdf', 'Fiche de révision'],
+        ].filter(Boolean).map(([titre, fichier, t]) => `<details class="seance-pdf"><summary>${titre}</summary>
+                            <iframe src="contenu/${seance.dossier}/${fichier}" title="${t}"></iframe></details>`).join('');
         const sujet = Store.getSubjects().find(s => slug(s.name) === matiereId);
         const retour = sujet ? `#/subject/${sujet.id}` : '#/';
 
@@ -42,8 +50,7 @@ export async function renderSeance(matiereId, seanceId) {
                         ${seance.cartes ? '<button class="seance-onglet" data-tab="cartes">Cartes</button>' : ''}
                     </div>
                     <div class="seance-panneau" data-panneau="cours">
-                        <details class="seance-pdf"><summary>Support du prof (PDF)</summary>
-                            <iframe src="contenu/${seance.dossier}/support.pdf" title="Support du prof"></iframe></details>
+                        ${pdfs}
                         <div class="seance-md">${md(cours, seance.dossier)}</div>
                     </div>
                     <div class="seance-panneau" data-panneau="condense" hidden><div class="seance-md">${md(condense, seance.dossier)}</div></div>
