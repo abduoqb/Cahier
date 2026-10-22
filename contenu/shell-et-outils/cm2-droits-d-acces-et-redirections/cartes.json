@@ -1,0 +1,89 @@
+{
+  "seance": "cm2-droits-d-acces-et-redirections",
+  "cartes": [
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-001",
+      "notion": "droits-rwx",
+      "recto": "Que signifient r, w et x sur un répertoire ?",
+      "verso": "r lister, w créer et supprimer des fichiers, x traverser le répertoire.",
+      "source": "CM2, §1.1 Catégories d'utilisateurs et droits associés"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-002",
+      "notion": "droits-rwx",
+      "recto": "Quel droit faut-il pour supprimer un fichier dans un répertoire ?",
+      "verso": "Le droit w sur le répertoire, plus x pour le traverser.",
+      "source": "CM2, §1.1 ; TP3, partie 2"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-003",
+      "notion": "chmod",
+      "recto": "Quelles sont les trois informations du format symbolique de chmod ?",
+      "verso": "Qui (u, g, o, a), l'action (+ - =), l'accès (r, w, x).",
+      "source": "CM2, §1.2.1 Format symbolique"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-004",
+      "notion": "chmod",
+      "recto": "Comment coder r, w et x en octal, et à quoi correspond 750 ?",
+      "verso": "r=4, w=2, x=1 ; 750 = rwxr-x---.",
+      "source": "CM2, §1.2.2 Mode octal"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-005",
+      "notion": "droits-particuliers",
+      "recto": "Que fait le bit set-uid sur un programme exécutable ?",
+      "verso": "Le programme s'exécute avec les droits de son propriétaire (x devient s).",
+      "source": "CM2, §1.2.3 Droits particuliers"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-006",
+      "notion": "droits-particuliers",
+      "recto": "Que protège le sticky bit dans un répertoire comme /tmp ?",
+      "verso": "Lui seul permet à chacun de supprimer ses propres fichiers (x devient t).",
+      "source": "CM2, §1.2.3 Droits particuliers"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-007",
+      "notion": "umask",
+      "recto": "Comment calcule-t-on les droits par défaut d'un fichier ou d'un répertoire créé ?",
+      "verso": "777 moins le masque ; le x n'est jamais donné à un fichier ordinaire.",
+      "source": "CM2, §1.3 Masque de création"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-008",
+      "notion": "umask",
+      "recto": "Avec umask 022, quels droits reçoivent un fichier puis un répertoire créés ?",
+      "verso": "644 pour le fichier et 755 pour le répertoire.",
+      "source": "CM2, §1.3 ; TP3, partie 2"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-009",
+      "notion": "redirections",
+      "recto": "À quoi correspondent les descripteurs 0, 1 et 2 ?",
+      "verso": "0 entrée standard, 1 sortie standard, 2 sortie d'erreur.",
+      "source": "CM2, §2.1 Généralités"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-010",
+      "notion": "redirections",
+      "recto": "Comment envoyer la sortie standard et la sortie d'erreur dans un même fichier ?",
+      "verso": "Rediriger 1 vers le fichier puis écrire 2>&1 (l'ordre compte).",
+      "source": "CM2, §2.2 et §2.4"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-011",
+      "notion": "tubes-filtres",
+      "recto": "Quel est l'effet du tube entre deux commandes ?",
+      "verso": "La sortie standard de la première devient l'entrée standard de la seconde.",
+      "source": "CM2, §2.5 Communication entre processus"
+    },
+    {
+      "id": "c-cm2-droits-d-acces-et-redirections-012",
+      "notion": "tubes-filtres",
+      "recto": "Qu'est-ce qu'un filtre ?",
+      "verso": "Une commande qui lit son entrée standard et écrit sa sortie standard (cat, wc, grep).",
+      "source": "CM2, §2.5 Communication entre processus"
+    }
+  ]
+}

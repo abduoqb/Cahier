@@ -1,0 +1,103 @@
+{
+  "seance": "cm3-expressions-regulieres-grep-sed-et-awk",
+  "cartes": [
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-001",
+      "notion": "expressions-regulieres",
+      "recto": "Que signifient les ancres ^ et $ dans une expression régulière ?",
+      "verso": "^ début de ligne, $ fin de ligne.",
+      "source": "CM3, §1.1 Expressions régulières et normes POSIX"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-002",
+      "notion": "expressions-regulieres",
+      "recto": "Que signifient les multiplicateurs *, +, ? et {n,m} ?",
+      "verso": "0..n, au moins 1, 0 ou 1, et entre n et m occurrences du précédent.",
+      "source": "CM3, §1.1 Tableau POSIX"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-003",
+      "notion": "groupes-captures",
+      "recto": "Comment capture-t-on un groupe dans une expression régulière, et comment le réutilise-t-on ?",
+      "verso": "Avec les parenthèses, puis \\1, \\2… dans l'ordre des groupes.",
+      "source": "CM3, §1.1 Groupes de captures"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-004",
+      "notion": "groupes-captures",
+      "recto": "À quoi sert \\b dans un motif comme \\b([a-z]).{1}\\1\\b ?",
+      "verso": "À délimiter un mot : le motif doit couvrir le mot entier.",
+      "source": "CM3, §1.1 Groupes de captures"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-005",
+      "notion": "grep",
+      "recto": "Que font les options -i, -c, -n, -l et -v de grep ?",
+      "verso": "Casse ignorée, comptage, numéros de ligne, noms de fichiers, inversion.",
+      "source": "CM3, §1.2 La commande grep"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-006",
+      "notion": "grep",
+      "recto": "Comment chercher des lignes contenant motif1 OU motif2 ? Et les deux à la fois ?",
+      "verso": "motif1|motif2 avec -E pour le ou ; deux grep successifs par pipe pour le et.",
+      "source": "CM3, §1.2.1 Chercher plusieurs motifs avec grep"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-007",
+      "notion": "sed-substitution",
+      "recto": "Que fait le flag g dans une substitution sed, et que fait -i ?",
+      "verso": "g remplace toutes les occurrences de la ligne ; -i écrit dans le fichier.",
+      "source": "CM3, §1.3 La commande sed"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-008",
+      "notion": "sed-substitution",
+      "recto": "Comment rappeler un groupe capturé dans le remplacement d'une substitution sed ?",
+      "verso": "Avec \\1, \\2… à la place voulue dans le remplacement.",
+      "source": "CM3, §1.3.2 Script sed"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-009",
+      "notion": "sed-effacement",
+      "recto": "Quelle commande sed supprime les lignes qui ne contiennent pas un motif ?",
+      "verso": "/motif/!d : le ! inverse la sélection avant suppression.",
+      "source": "CM3, §1.3 La commande sed (tableau des commandes)"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-010",
+      "notion": "sed-effacement",
+      "recto": "Comment afficher seulement la ligne 5000 d'un fichier avec sed ?",
+      "verso": "sed -n 5000p fichier : -n coupe l'affichage, p imprime la ligne.",
+      "source": "CM3, §1.3 La commande sed (exemples)"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-011",
+      "notion": "awk-champs",
+      "recto": "Que désignent $0, $1, $NF, NF et FS dans awk ?",
+      "verso": "Ligne, premier champ, dernier champ, nombre de champs, séparateur d'entrée.",
+      "source": "CM3, §1.4 La commande et le langage awk"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-012",
+      "notion": "awk-champs",
+      "recto": "Comment traiter un fichier CSV avec awk ?",
+      "verso": "Changer le séparateur : -F',' ou BEGIN{FS=\",\"}.",
+      "source": "CM3, §1.4.3 Exemples ; TP5, question 1"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-013",
+      "notion": "awk-sections",
+      "recto": "Quelle est la structure d'un programme awk et l'ordre d'exécution des sections ?",
+      "verso": "BEGIN, puis une paire condition/action par ligne, puis END.",
+      "source": "CM3, §1.4 La commande et le langage awk"
+    },
+    {
+      "id": "c-cm3-expressions-regulieres-grep-sed-et-awk-014",
+      "notion": "awk-sections",
+      "recto": "Quelle différence entre NR et FNR ?",
+      "verso": "NR compte depuis le début, FNR dans le fichier courant.",
+      "source": "CM3, §1.4.2 Section principale"
+    }
+  ]
+}

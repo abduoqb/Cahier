@@ -279,6 +279,88 @@
           ]
         }
       ]
+    },
+    {
+      "id": "shell-et-outils",
+      "nom": "Shell et outils",
+      "seances": [
+        {
+          "id": "cm1-linux-terminal-et-fichiers",
+          "type": "CM",
+          "titre": "Linux, terminal et fichiers",
+          "dossier": "shell-et-outils/cm1-linux-terminal-et-fichiers",
+          "cartes": true,
+          "notions": [
+            "terminal-shell-prompt",
+            "arborescence-chemins",
+            "fichier-inode",
+            "commande-options",
+            "variables-environnement",
+            "archivage-compression"
+          ]
+        },
+        {
+          "id": "cm2-droits-d-acces-et-redirections",
+          "type": "CM",
+          "titre": "Droits d'accès et redirections",
+          "dossier": "shell-et-outils/cm2-droits-d-acces-et-redirections",
+          "cartes": true,
+          "notions": [
+            "droits-rwx",
+            "chmod",
+            "droits-particuliers",
+            "umask",
+            "redirections",
+            "tubes-filtres"
+          ]
+        },
+        {
+          "id": "cm3-expressions-regulieres-grep-sed-et-awk",
+          "type": "CM",
+          "titre": "Expressions régulières, grep, sed et awk",
+          "dossier": "shell-et-outils/cm3-expressions-regulieres-grep-sed-et-awk",
+          "cartes": true,
+          "notions": [
+            "expressions-regulieres",
+            "groupes-captures",
+            "grep",
+            "sed-substitution",
+            "sed-effacement",
+            "awk-champs",
+            "awk-sections"
+          ]
+        },
+        {
+          "id": "cm4-scripts-bash",
+          "type": "CM",
+          "titre": "Scripts bash",
+          "dossier": "shell-et-outils/cm4-scripts-bash",
+          "cartes": true,
+          "notions": [
+            "script-shell",
+            "variables-shell",
+            "tests",
+            "structures-controle",
+            "globbing-expansion",
+            "arguments-shift"
+          ]
+        },
+        {
+          "id": "tp1-exercices-terminal-droits-filtres-et-scripts",
+          "type": "TP",
+          "titre": "Exercices : terminal, droits, filtres et scripts",
+          "dossier": "shell-et-outils/tp1-exercices-terminal-droits-filtres-et-scripts",
+          "cartes": true,
+          "notions": [
+            "exercices-terminal",
+            "exercices-permissions",
+            "exercices-redirections",
+            "exercices-filtres",
+            "exercices-awk",
+            "exercices-scripts"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,185 @@
+{
+  "seance": "tp1-exercices-terminal-droits-filtres-et-scripts",
+  "questions": [
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-001",
+      "notion": "exercices-terminal",
+      "type": "qcm",
+      "enonce": "Quelle commande crée le répertoire autres/toto/titi en une seule fois, même si autres et toto n'existent pas ?",
+      "choix": [
+        "mkdir -p autres/toto/titi",
+        "mkdir autres/toto/titi",
+        "mkdir -r autres/toto/titi",
+        "touch -p autres/toto/titi"
+      ],
+      "bonne": 0,
+      "explication": "-p crée les répertoires parents manquants ; sans lui, mkdir échoue si le parent n'existe pas.",
+      "source": "TP1, partie 3.2 Manipulation de répertoires"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-002",
+      "notion": "exercices-terminal",
+      "type": "qcm",
+      "enonce": "Comment supprimer le répertoire autres et tout son contenu sans être obligé de confirmer ?",
+      "choix": [
+        "rm -r autres",
+        "rmdir autres",
+        "rm autres",
+        "cp -r autres"
+      ],
+      "bonne": 0,
+      "explication": "rm -r supprime récursivement le répertoire et son contenu ; rmdir ne supprime qu'un répertoire vide et rm sans -r refuse un répertoire.",
+      "source": "TP1, partie 3.2 Manipulation de répertoires"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-003",
+      "notion": "exercices-permissions",
+      "type": "qcm",
+      "enonce": "Le répertoire test est en --x------ et contient toto. Que se passe-t-il avec ls test puis cat test/toto ?",
+      "choix": [
+        "ls test échoue (pas de r) ; cat test/toto fonctionne (x permet de traverser)",
+        "ls test fonctionne ; cat test/toto échoue",
+        "Les deux échouent car il n'y a aucun droit de lecture",
+        "Les deux fonctionnent car le propriétaire a toujours tous les droits"
+      ],
+      "bonne": 0,
+      "explication": "r sur un répertoire permet de lister son contenu ; x permet de le traverser pour atteindre un fichier dont on connaît le nom.",
+      "source": "TP3, partie 2 Permissions"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-004",
+      "notion": "exercices-permissions",
+      "type": "qcm",
+      "enonce": "Quels droits reçoivent un répertoire et un fichier créés avec umask 002 ?",
+      "choix": [
+        "775 pour le répertoire, 664 pour le fichier",
+        "755 pour le répertoire, 644 pour le fichier",
+        "775 pour le répertoire, 775 pour le fichier",
+        "750 pour le répertoire, 640 pour le fichier"
+      ],
+      "bonne": 0,
+      "explication": "777 – 002 = 775 pour un répertoire ; pour un fichier le x n'est pas donné, donc 775 devient 664.",
+      "source": "TP3, partie 2 (masque de création)"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-005",
+      "notion": "exercices-redirections",
+      "type": "qcm",
+      "enonce": "La commande ls liste des fichiers existants et d'autres inexistants. Comment afficher les trouvés à l'écran et écrire les erreurs dans erreurs.txt ?",
+      "choix": [
+        "ls fichier1 fichier2 tata 2> erreurs.txt",
+        "ls fichier1 fichier2 tata > erreurs.txt",
+        "ls fichier1 fichier2 tata 2>&1 > erreurs.txt",
+        "ls fichier1 fichier2 tata < erreurs.txt"
+      ],
+      "bonne": 0,
+      "explication": "2> redirige uniquement la sortie d'erreur ; la sortie standard reste à l'écran. > aurait envoyé les fichiers trouvés dans le fichier.",
+      "source": "TP3, partie 3 Redirections, question 5"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-006",
+      "notion": "exercices-redirections",
+      "type": "qcm",
+      "enonce": "Quelle commande compte les répertoires contenus dans /usr/bin (pas seulement au premier niveau) ?",
+      "choix": [
+        "find /usr/bin -type d | wc -l",
+        "ls /usr/bin | wc -l",
+        "find /usr/bin -name d | wc -l",
+        "ls -d /usr/bin | wc -l"
+      ],
+      "bonne": 0,
+      "explication": "find -type d sélectionne les répertoires et le tube les compte avec wc -l ; ls | wc -l compterait toutes les entrées, fichiers compris.",
+      "source": "TP3, partie 3 Redirections, question 9"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-007",
+      "notion": "exercices-filtres",
+      "type": "qcm",
+      "enonce": "Quelle commande sélectionne les mots du dictionnaire qui commencent par a et se terminent par ing ?",
+      "choix": [
+        "grep -E \"^a.*ing$\" words",
+        "grep \"a.*ing\" words",
+        "grep -E \"a.ing\" words",
+        "grep -c \"^a\" words"
+      ],
+      "bonne": 0,
+      "explication": "^a ancre le début, ing$ ancre la fin et .* autorise n'importe quoi entre les deux ; sans ancres, le motif apparaîtrait n'importe où.",
+      "source": "TP Expressions régulières et grep, question 3"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-008",
+      "notion": "exercices-filtres",
+      "type": "qcm",
+      "enonce": "Dans Athletes.csv, quelle commande supprime les lignes de commentaire (commençant par %) et tous les guillemets ?",
+      "choix": [
+        "sed '/^%/d; s/\"//g' Athletes.csv",
+        "sed '/%/d; s/\"/\\//g' Athletes.csv",
+        "sed '$d; s/\"/ /g' Athletes.csv",
+        "grep -v \"%\" Athletes.csv > Athletes.csv"
+      ],
+      "bonne": 0,
+      "explication": "/^%/d supprime les lignes qui commencent par % et s/\"//g retire tous les guillemets ; les commandes sed s'exécutent dans l'ordre.",
+      "source": "TP5, question 6"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-009",
+      "notion": "exercices-awk",
+      "type": "qcm",
+      "enonce": "Dans svgnam_copie.def (nom, rouge, vert, bleu séparés par , ou ;), quelle commande compte les couleurs sans bleu ?",
+      "choix": [
+        "awk 'BEGIN{FS=\"[,;]\"} $4 == 0 { nb++ } END{ print nb }' fichier",
+        "awk 'BEGIN{FS=\"[,;]\"} $2 == 0 { print nb }' fichier",
+        "awk '$4 == 0 { print }' fichier",
+        "grep -c \"bleu\" fichier"
+      ],
+      "bonne": 0,
+      "explication": "Le bleu est le 4e champ ; on incrémente nb sur chaque ligne concernée et on affiche le total dans END.",
+      "source": "TP5, question 2 (comptage des couleurs sans bleu)"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-010",
+      "notion": "exercices-awk",
+      "type": "qcm",
+      "enonce": "Colonnes d'Athletes.csv : ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal. Quelle commande affiche nom, saison et année des athlètes français ?",
+      "choix": [
+        "awk -F, '$7 == \"France\" { print $2, $11, $10 }' Athletes.csv",
+        "awk -F, '$2 == \"France\" { print $7, $10, $11 }' Athletes.csv",
+        "awk -F, '{ print $2, $10, $11 }' Athletes.csv | grep France",
+        "awk -F, '$7 == \"France\" { print $2, $10, $11 }' Athletes.csv"
+      ],
+      "bonne": 0,
+      "explication": "$7 est Team (France), $2 Name, $11 Season et $10 Year ; l'ordre demandé est nom, saison, année.",
+      "source": "TP5, question 7"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-011",
+      "notion": "exercices-scripts",
+      "type": "qcm",
+      "enonce": "Un script attend au moins deux arguments. Quelle vérification affiche l'usage sur la sortie d'erreur et termine en échec ?",
+      "choix": [
+        "if (( $# < 2 )); then echo \"$usage\" 1>&2; exit 1; fi",
+        "if (( $# < 2 )); then echo \"$usage\"; exit 0; fi",
+        "if (( $# < 2 )); then print \"$usage\"; return; fi",
+        "if [ $# < 2 ]; then echo \"$usage\" > /dev/null; fi"
+      ],
+      "bonne": 0,
+      "explication": "1>&2 envoie le message sur la sortie d'erreur et exit 1 signale l'échec ; exit 0 indiquerait une réussite.",
+      "source": "TP6, questions 9 ; CM5, §5"
+    },
+    {
+      "id": "q-tp1-exercices-terminal-droits-filtres-et-scripts-012",
+      "notion": "exercices-scripts",
+      "type": "qcm",
+      "enonce": "Le script doit créer les fichiers lala, « ma ma » et « mo mi mu » passés en arguments. Quelle boucle convient ?",
+      "choix": [
+        "while [[ -n \"$1\" ]]; do créer \"$1\"; shift; done",
+        "for nom in $@; do créer $nom; done",
+        "for nom in \"$@\"; do créer $nom; done",
+        "while [[ -n $@ ]]; do créer $@; shift; done"
+      ],
+      "bonne": 0,
+      "explication": "for in $@ découpe les arguments sur les espaces : « ma ma » donnerait deux fichiers. while avec shift traite chaque argument entier.",
+      "source": "TP6, questions 11 à 13"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "seance": "tp1-exercices-terminal-droits-filtres-et-scripts",
+  "cartes": [
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-001",
+      "notion": "exercices-terminal",
+      "recto": "Comment créer toute une arborescence de répertoires en une commande ?",
+      "verso": "mkdir -p a/b/c crée les parents manquants.",
+      "source": "TP1, partie 3.2"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-002",
+      "notion": "exercices-terminal",
+      "recto": "Comment chercher tous les fichiers de plus de 1 Mo avec find ?",
+      "verso": "find . -type f -size +1M (et -size -50c pour moins de 50 octets).",
+      "source": "TP2, partie 3 Recherche de fichiers"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-003",
+      "notion": "exercices-permissions",
+      "recto": "Un répertoire en --x------ : que peut-on encore faire ?",
+      "verso": "Le traverser et lire un fichier connu, mais pas le lister ni y créer.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-004",
+      "notion": "exercices-permissions",
+      "recto": "Quels droits donne umask 077 aux nouveaux fichiers et répertoires ?",
+      "verso": "Fichiers 600, répertoires 700.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-005",
+      "notion": "exercices-redirections",
+      "recto": "Comment n'envoyer que les erreurs d'une commande dans un fichier ?",
+      "verso": "Avec 2> fichier ; la sortie standard reste à l'écran.",
+      "source": "TP3, partie 3, questions 4 à 6"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-006",
+      "notion": "exercices-redirections",
+      "recto": "Comment compter les éléments d'un répertoire avec un tube ?",
+      "verso": "ls /usr/bin | wc -l ; avec find -type d ou -type f pour filtrer.",
+      "source": "TP3, partie 3, questions 7 à 9"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-007",
+      "notion": "exercices-filtres",
+      "recto": "Quelle commande grep trouve les mots qui contiennent au moins deux w ?",
+      "verso": "grep -E \"w.*w\" words.",
+      "source": "TP Expressions régulières et grep, question 3"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-008",
+      "notion": "exercices-filtres",
+      "recto": "Quelle commande sed supprime les commentaires d'un fichier Python ?",
+      "verso": "sed '/^#/d' fichier.",
+      "source": "TP Expressions régulières et grep, question 8"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-009",
+      "notion": "exercices-awk",
+      "recto": "Comment écrire une condition sur un champ avec awk ?",
+      "verso": "$2 == 0, $3 > .9, $1 !~ /motif/ : la condition précède l'accolade d'action.",
+      "source": "TP5, questions 1 et 2"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-010",
+      "notion": "exercices-awk",
+      "recto": "Comment compter des lignes selon une condition avec awk ?",
+      "verso": "Incrémenter un compteur dans l'action, puis l'afficher dans END.",
+      "source": "TP5, question 1 (dernière commande)"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-011",
+      "notion": "exercices-scripts",
+      "recto": "Comment faire une copie de sauvegarde d'un fichier seulement s'il existe déjà ?",
+      "verso": "[ -f \"$f\" ] && cp \"$f\" \"$f.old\".",
+      "source": "TP6, exercice 1, questions 5 et 6"
+    },
+    {
+      "id": "c-tp1-exercices-terminal-droits-filtres-et-scripts-012",
+      "notion": "exercices-scripts",
+      "recto": "Comment traiter des arguments contenant des espaces dans un script ?",
+      "verso": "Boucler avec while [[ -n \"$1\" ]] et faire shift à chaque tour.",
+      "source": "TP6, questions 11 à 13"
+    }
+  ]
+}

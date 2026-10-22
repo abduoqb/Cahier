@@ -1,0 +1,96 @@
+{
+  "seance": "cm4-scripts-bash",
+  "cartes": [
+    {
+      "id": "c-cm4-scripts-bash-001",
+      "notion": "script-shell",
+      "recto": "Quelles sont les caractéristiques d'un script shell ?",
+      "verso": "Fichier exécutable, shebang #!/bin/bash, extension .sh, lignes # en commentaire.",
+      "source": "CM5, §1.2 Hello World"
+    },
+    {
+      "id": "c-cm4-scripts-bash-002",
+      "notion": "script-shell",
+      "recto": "Quelle différence entre lancer sh script.sh et ./script.sh ?",
+      "verso": "./ exige le droit x ; sh passe le fichier à l'interpréteur, sans ce droit.",
+      "source": "TP3, partie 2 ; CM5, §1.2"
+    },
+    {
+      "id": "c-cm4-scripts-bash-003",
+      "notion": "variables-shell",
+      "recto": "Quelle syntaxe affecte une variable en shell, et comment la lit-on ?",
+      "verso": "nom=valeur sans espaces ; lecture avec $nom ou ${nom}.",
+      "source": "CM1, §3.1 ; CM5, §2.1"
+    },
+    {
+      "id": "c-cm4-scripts-bash-004",
+      "notion": "variables-shell",
+      "recto": "Comment faire un calcul entier en bash ?",
+      "verso": "(( i = i + 4 )) ou i=$(( i + 4 )) ; expr fonctionne aussi.",
+      "source": "CM5, §2.3 Opérations arithmétiques"
+    },
+    {
+      "id": "c-cm4-scripts-bash-005",
+      "notion": "tests",
+      "recto": "Que vaut $? après un test vrai, et après un test faux ?",
+      "verso": "0 si le test est vrai (succès), 1 s'il est faux (échec).",
+      "source": "CM5, §2.4 Tests"
+    },
+    {
+      "id": "c-cm4-scripts-bash-006",
+      "notion": "tests",
+      "recto": "Quelles formes de test utiliser pour les nombres, les chaînes et les fichiers ?",
+      "verso": "(( )) pour les nombres, [[ ]] pour chaînes et fichiers, test ou [ ] partout.",
+      "source": "CM5, §2.4 Tests"
+    },
+    {
+      "id": "c-cm4-scripts-bash-007",
+      "notion": "structures-controle",
+      "recto": "Quels mots ferment un if, une boucle et un case ?",
+      "verso": "fi pour if, done pour for et while, esac pour case.",
+      "source": "CM5, §3 Structures de contrôle"
+    },
+    {
+      "id": "c-cm4-scripts-bash-008",
+      "notion": "structures-controle",
+      "recto": "Comment écrire un case avec un cas par défaut ?",
+      "verso": "case $var in motif) ... ;; *) ... ;; esac",
+      "source": "CM5, §3.4 case"
+    },
+    {
+      "id": "c-cm4-scripts-bash-009",
+      "notion": "globbing-expansion",
+      "recto": "Que fait le globbing sur *.sh dans une boucle for ?",
+      "verso": "bash remplace *.sh par la liste des fichiers correspondants, sans ls.",
+      "source": "CM5, §4 Globbing et expansion"
+    },
+    {
+      "id": "c-cm4-scripts-bash-010",
+      "notion": "globbing-expansion",
+      "recto": "Que produit l'expansion d'accolades {1..6} et {a-d} ?",
+      "verso": "Les nombres 1 à 6 et les lettres a, b, c, d.",
+      "source": "CM5, §4 Globbing et expansion"
+    },
+    {
+      "id": "c-cm4-scripts-bash-011",
+      "notion": "arguments-shift",
+      "recto": "Que contiennent $0, $#, $@ et $1 ?",
+      "verso": "Nom du script, nombre d'arguments, tous les arguments, premier argument.",
+      "source": "CM5, §5 Arguments de commande"
+    },
+    {
+      "id": "c-cm4-scripts-bash-012",
+      "notion": "arguments-shift",
+      "recto": "À quoi sert shift et pourquoi l'utiliser dans une boucle while ?",
+      "verso": "À décaler les arguments de 1 : chaque argument reste entier, espaces compris.",
+      "source": "CM5, §5 Arguments de commande"
+    },
+    {
+      "id": "c-cm4-scripts-bash-013",
+      "notion": "arguments-shift",
+      "recto": "Comment vérifier le nombre d'arguments et signaler un usage incorrect ?",
+      "verso": "Tester $#, afficher l'usage avec 1>&2, puis exit 1.",
+      "source": "CM5, §5 Application : vérifier le nombre d'arguments"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "seance": "cm1-linux-terminal-et-fichiers",
+  "cartes": [
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-001",
+      "notion": "terminal-shell-prompt",
+      "recto": "Quelles sont les six étapes de la boucle du shell ?",
+      "verso": "Prompt, saisie jusqu'à Entrée, analyse, demande d'exécution, affichage, retour au prompt.",
+      "source": "CM1, §2.1 Le terminal et le shell bash"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-002",
+      "notion": "terminal-shell-prompt",
+      "recto": "Dans le prompt utilisateur@hote:repertoire$, que signifie le $ final ?",
+      "verso": "Le shell est prêt et attend une commande.",
+      "source": "CM1, §2.4.2 Prompt"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-003",
+      "notion": "arborescence-chemins",
+      "recto": "Que désignent les notations ., .., ~ et / dans un chemin ?",
+      "verso": ". le répertoire courant, .. le parent, ~ le home, / la racine.",
+      "source": "CM1, §2.3 Chemin des fichiers et répertoires"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-004",
+      "notion": "arborescence-chemins",
+      "recto": "Quelle différence entre un chemin absolu et un chemin relatif ?",
+      "verso": "L'absolu part de la racine / ; le relatif part du répertoire courant.",
+      "source": "CM1, §2.3 ; TP1, partie 3.3"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-005",
+      "notion": "fichier-inode",
+      "recto": "De quoi un fichier est-il composé sous Linux ?",
+      "verso": "D'un i-node (métadonnées) et d'un contenu (suite d'octets).",
+      "source": "CM1, §2.2 Fichiers et répertoires"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-006",
+      "notion": "fichier-inode",
+      "recto": "Qu'est-ce qu'un répertoire pour le système Linux ?",
+      "verso": "Une table de liens (i-numéro, nom), que seul le système peut écrire.",
+      "source": "CM1, §2.3, remarque sur les répertoires"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-007",
+      "notion": "commande-options",
+      "recto": "Quelle est la syntaxe générale d'une commande et la différence argument / option ?",
+      "verso": "commande [options] [arguments] : l'argument dit sur quoi, l'option comment.",
+      "source": "CM1, §2.4 Terminal et interpréteur de commandes"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-008",
+      "notion": "commande-options",
+      "recto": "Comment obtenir le manuel d'une commande, et comment note-t-on une option en mot ?",
+      "verso": "man commande ; une option en mot s'écrit avec deux tirets (--force).",
+      "source": "CM1, §2.4 ; TP1, partie 2"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-009",
+      "notion": "variables-environnement",
+      "recto": "À quoi sert export sur une variable ?",
+      "verso": "À la rendre visible du terminal et de ses sous-shells (variable d'environnement).",
+      "source": "CM1, §3.2 Variables d'environnement"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-010",
+      "notion": "variables-environnement",
+      "recto": "Que contient la variable PATH et à quoi sert-elle ?",
+      "verso": "La liste des répertoires où le shell cherche les commandes, séparés par :.",
+      "source": "CM1, §3.3 ; TP2, partie 1.1"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-011",
+      "notion": "variables-environnement",
+      "recto": "Où mettre un alias pour qu'il soit actif à chaque nouveau terminal ?",
+      "verso": "Dans ~/.bashrc, puis source ~/.bashrc pour le recharger.",
+      "source": "CM1, §3.3 et §3.4 ; TP2, parties 1.2 et 1.3"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-012",
+      "notion": "archivage-compression",
+      "recto": "Que signifient les options c, x, t, v, f de tar ?",
+      "verso": "créer, extraire, lister, détailler, nommer l'archive.",
+      "source": "CM1, §4 Archivage et compression"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-013",
+      "notion": "archivage-compression",
+      "recto": "Quelles options de tar compressent l'archive, et avec quelles extensions ?",
+      "verso": "z avec gzip (.tar.gz ou .tgz), j avec bzip2 (.tar.bz2 ou .tbz).",
+      "source": "CM1, §4 Archivage et compression"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-014",
+      "notion": "archivage-compression",
+      "recto": "L'extraction d'un tar écrase-t-elle les fichiers existants ? Comment l'éviter ?",
+      "verso": "Oui par défaut ; l'option k empêche l'écrasement.",
+      "source": "CM1, §4 Archivage et compression"
+    }
+  ]
+}

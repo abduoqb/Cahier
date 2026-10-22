@@ -1,0 +1,185 @@
+{
+  "seance": "cm4-scripts-bash",
+  "questions": [
+    {
+      "id": "q-cm4-scripts-bash-001",
+      "notion": "script-shell",
+      "type": "qcm",
+      "enonce": "Quelle ligne doit figurer en tête d'un script pour indiquer le langage utilisé, et que se passe-t-il si elle manque ?",
+      "choix": [
+        "#!/bin/bash (ou #!/bin/sh) : sans elle, les syntaxes propres à bash peuvent ne pas être comprises",
+        "#commentaire : sans elle, le script ne peut pas contenir de commentaires",
+        "#!/bin/sh : sans elle, le fichier n'a pas le droit d'exécution",
+        "echo : sans elle, le script n'affiche rien"
+      ],
+      "bonne": 0,
+      "explication": "Le shebang indique l'interpréteur du script ; le TP6 rappelle que les mémos bash exigent #!/bin/bash et un lancement par bash.",
+      "source": "CM5, §1.2 Hello World ; TP6, partie 1"
+    },
+    {
+      "id": "q-cm4-scripts-bash-002",
+      "notion": "script-shell",
+      "type": "qcm",
+      "enonce": "Vous créez script.sh, non exécutable. Quelles commandes fonctionnent ?",
+      "choix": [
+        "sh script.sh fonctionne ; ./script.sh échoue tant que chmod u+x n'a pas été fait",
+        "sh script.sh échoue ; ./script.sh fonctionne toujours",
+        "Les deux échouent, il faut compiler le script",
+        "Les deux fonctionnent, seul ./ demande les droits du propriétaire"
+      ],
+      "bonne": 0,
+      "explication": "sh script.sh passe le fichier en argument à l'interpréteur ; ./script.sh exécute le fichier lui-même et exige donc le droit x.",
+      "source": "TP3, partie 2 (script.sh et ./script.sh)"
+    },
+    {
+      "id": "q-cm4-scripts-bash-003",
+      "notion": "variables-shell",
+      "type": "qcm",
+      "enonce": "i vaut 5. Quelle instruction met i à 9 ?",
+      "choix": [
+        "(( i = i + 4 ))",
+        "i=$i + 4",
+        "i = i + 4",
+        "i++ + 4"
+      ],
+      "bonne": 0,
+      "explication": "(( )) évalue une expression arithmétique. i=$i + 4 fait exécuter la commande « + » et i = i + 4 cherche la commande i.",
+      "source": "CM5, §2.1 Variables et §2.3 Opérations arithmétiques"
+    },
+    {
+      "id": "q-cm4-scripts-bash-004",
+      "notion": "variables-shell",
+      "type": "qcm",
+      "enonce": "Que récupère $(ls /usr/include/*.h) dans un script ?",
+      "choix": [
+        "Ce que la commande ls a affiché sur sa sortie standard",
+        "Le code de retour de la commande ls, 0 en cas de succès",
+        "Le nombre de fichiers trouvés par ls",
+        "Le nom du script en cours d'exécution"
+      ],
+      "bonne": 0,
+      "explication": "$( ) capture la sortie standard ; le code de retour est dans $?. C'est ce qui permet de boucler sur les fichiers listés.",
+      "source": "CM5, §2.2 Récupérer les résultats d'une commande"
+    },
+    {
+      "id": "q-cm4-scripts-bash-005",
+      "notion": "tests",
+      "type": "qcm",
+      "enonce": "Après test $a -lt $b avec a=5 et b=7, que vaut $? et pourquoi ?",
+      "choix": [
+        "0, car le test est vrai : 0 signifie succès de la commande test",
+        "1, car le test est vrai : 1 signifie vrai en shell",
+        "5, car $? renvoie la valeur de a",
+        "Rien : $? n'est défini qu'après un if"
+      ],
+      "bonne": 0,
+      "explication": "test est une commande : elle réussit (code 0) quand le test est vrai, et échoue (code 1) quand il est faux. C'est l'inverse de l'intuition.",
+      "source": "CM5, §2.4 Tests (et TP6, question 9)"
+    },
+    {
+      "id": "q-cm4-scripts-bash-006",
+      "notion": "tests",
+      "type": "qcm",
+      "enonce": "Quel test vérifie que la chaîne contenue dans ch est vide, puis qu'elle est non vide ?",
+      "choix": [
+        "test -z $ch pour vide, test -n $ch pour non vide",
+        "test -n $ch pour vide, test -z $ch pour non vide",
+        "test -e $ch pour vide, test -d $ch pour non vide",
+        "test $ch = \"\" pour non vide, test $ch != \"\" pour vide"
+      ],
+      "bonne": 0,
+      "explication": "-z (zero) est vrai si la chaîne est vide, -n (non zero) si elle ne l'est pas ; -e et -d concernent l'existence et le type de fichier.",
+      "source": "CM5, §2.4 Tests (tableau des tests)"
+    },
+    {
+      "id": "q-cm4-scripts-bash-007",
+      "notion": "structures-controle",
+      "type": "qcm",
+      "enonce": "Quelle est la bonne syntaxe d'une boucle for sur une liste en shell ?",
+      "choix": [
+        "for chaine in toto titi tutu; do echo \"$chaine\"; done",
+        "for chaine in toto titi tutu; then echo \"$chaine\"; fi",
+        "foreach chaine (toto titi tutu) { echo $chaine }",
+        "for chaine in toto titi tutu; do echo \"$chaine\"; esac"
+      ],
+      "bonne": 0,
+      "explication": "Une boucle for s'ouvre par do et se ferme par done ; fi ferme un if et esac un case.",
+      "source": "CM5, §3.2 for"
+    },
+    {
+      "id": "q-cm4-scripts-bash-008",
+      "notion": "structures-controle",
+      "type": "qcm",
+      "enonce": "Que fait le while (( i < 5 )) avec i initialisé à 0 et (( i++ )) dans le corps ?",
+      "choix": [
+        "Il affiche i de 0 à 4, puis s'arrête quand i vaut 5",
+        "Il affiche i de 0 à 5, puis s'arrête quand i vaut 6",
+        "Il ne s'exécute jamais car (( )) n'est pas un test",
+        "Il boucle indéfiniment car i n'est jamais modifié"
+      ],
+      "bonne": 0,
+      "explication": "Le test est évalué avant chaque tour : 0, 1, 2, 3, 4 passent, et à 5 la condition devient fausse.",
+      "source": "CM5, §3.3 while"
+    },
+    {
+      "id": "q-cm4-scripts-bash-009",
+      "notion": "globbing-expansion",
+      "type": "qcm",
+      "enonce": "Que produit echo {1..6} puis echo {1..P} ?",
+      "choix": [
+        "1 2 3 4 5 6, puis la chaîne {1..P} telle quelle car l'expansion n'est pas reconnue",
+        "1 2 3 4 5 6, puis 1 2 3 jusqu'à P",
+        "La chaîne {1..6} telle quelle, puis une erreur",
+        "Deux erreurs, car les accolades ne sont pas du shell"
+      ],
+      "bonne": 0,
+      "explication": "L'expansion d'accolades énumère des nombres ou des lettres ; un intervalle mixte comme {1..P} n'est pas reconnu et reste littéral.",
+      "source": "CM5, §4 Globbing et expansion"
+    },
+    {
+      "id": "q-cm4-scripts-bash-010",
+      "notion": "globbing-expansion",
+      "type": "qcm",
+      "enonce": "Pour parcourir tous les fichiers .sh du répertoire, quelle boucle suffit ?",
+      "choix": [
+        "for fichier in *.sh; do echo $fichier; done",
+        "for fichier in $(find *.sh); do echo $fichier; done",
+        "for fichier in ls *.sh; do echo $fichier; done",
+        "while fichier in *.sh; do echo $fichier; done"
+      ],
+      "bonne": 0,
+      "explication": "bash interprète le * par globbing : la liste est déjà développée, sans passer par ls.",
+      "source": "CM5, §4 Globbing et expansion (exemple de boucle)"
+    },
+    {
+      "id": "q-cm4-scripts-bash-011",
+      "notion": "arguments-shift",
+      "type": "qcm",
+      "enonce": "Dans un script lancé par bash 12-params.sh tata titi toto \"tutu tutu\", que valent $0, $# et $1 ?",
+      "choix": [
+        "12-params.sh, 4 et tata",
+        "bash, 3 et tata",
+        "tata, 4 et 12-params.sh",
+        "12-params.sh, 3 et tata"
+      ],
+      "bonne": 0,
+      "explication": "$0 est le nom du script, $# le nombre d'arguments (4, l'argument entre guillemets compte pour un) et $1 le premier argument.",
+      "source": "CM5, §5 Arguments de commande"
+    },
+    {
+      "id": "q-cm4-scripts-bash-012",
+      "notion": "arguments-shift",
+      "type": "qcm",
+      "enonce": "Pourquoi préférer while [[ -n \"$1\" ]]; do ...; shift; done à for chaine in $@ ?",
+      "choix": [
+        "Parce que $@ perd les espaces internes et les arguments vides, alors que shift les conserve",
+        "Parce que la boucle for ne fonctionne pas en bash",
+        "Parce que shift est plus rapide à exécuter",
+        "Parce que [[ ]] affiche chaque argument automatiquement"
+      ],
+      "bonne": 0,
+      "explication": "$@ est une chaîne : le shell ne distingue plus les espaces. Avec shift, chaque argument reste entier, même « tutu tutu ».",
+      "source": "CM5, §5 Arguments de commande ; TP6, questions 13 à 15"
+    }
+  ]
+}

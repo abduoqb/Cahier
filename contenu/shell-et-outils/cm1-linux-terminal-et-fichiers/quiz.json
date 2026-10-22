@@ -1,0 +1,200 @@
+{
+  "seance": "cm1-linux-terminal-et-fichiers",
+  "questions": [
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-001",
+      "notion": "terminal-shell-prompt",
+      "type": "qcm",
+      "enonce": "Quand un terminal est ouvert, dans quel ordre bash exécute-t-il son programme ?",
+      "choix": [
+        "Afficher le prompt, lire la commande, l'analyser, demander son exécution, afficher le résultat, revenir au prompt",
+        "Lire la commande, afficher le prompt, demander l'exécution, analyser la sortie, revenir au prompt",
+        "Analyser la commande, afficher le prompt, la stocker dans un fichier, l'exécuter au prochain démarrage",
+        "Afficher le prompt, exécuter directement la dernière commande, afficher le résultat, quitter"
+      ],
+      "bonne": 0,
+      "explication": "Le shell boucle : prompt, saisie jusqu'à Entrée, analyse du texte, demande d'exécution au système, affichage, puis retour à l'étape 1.",
+      "source": "CM1, §2.1 Le terminal, la ligne de commande, le shell bash"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-002",
+      "notion": "terminal-shell-prompt",
+      "type": "qcm",
+      "enonce": "Dans un terminal bash, quels raccourcis interrompent la commande en cours et terminent le shell ?",
+      "choix": [
+        "Ctrl+C interrompt, Ctrl+D termine",
+        "Ctrl+Z interrompt, Ctrl+C termine",
+        "Ctrl+D interrompt, Ctrl+L termine",
+        "Ctrl+L interrompt, Ctrl+Z termine"
+      ],
+      "bonne": 0,
+      "explication": "Ctrl+C interrompt la commande en cours ; Ctrl+D termine le shell (équivaut à exit). Ctrl+L efface l'écran et Ctrl+Z stoppe la commande (bg/fg la relancent).",
+      "source": "CM1, §2.4.3 Raccourcis clavier, tableau 2.1"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-003",
+      "notion": "arborescence-chemins",
+      "type": "qcm",
+      "enonce": "Le répertoire courant est /home/jml/projet. Comment désigner le fichier /home/jml/.profile en chemin relatif ?",
+      "choix": [
+        "../.profile",
+        "~/.profile",
+        "./profile",
+        "../../.profile"
+      ],
+      "bonne": 0,
+      "explication": ".. remonte au parent /home/jml, où se trouve .profile. ~/.profile est aussi correct mais ~ est un raccourci absolu, pas un chemin relatif.",
+      "source": "CM1, §2.3 Chemin des fichiers et répertoires"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-004",
+      "notion": "arborescence-chemins",
+      "type": "qcm",
+      "enonce": "Quelle commande ramène dans le répertoire personnel, quel que soit le répertoire courant ?",
+      "choix": [
+        "cd seul, ou cd ~",
+        "cd ..",
+        "cd /",
+        "cd ./home"
+      ],
+      "bonne": 0,
+      "explication": "cd sans argument retourne dans le home directory, tout comme cd ~. cd .. remonte d'un niveau et cd / va à la racine du système.",
+      "source": "CM1, §2.2 Fichiers et répertoires ; TP1, partie 2"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-005",
+      "notion": "fichier-inode",
+      "type": "qcm",
+      "enonce": "Que contient le noeud d'index (i-node) d'un fichier ?",
+      "choix": [
+        "Les métadonnées : dates, taille, propriétaire du fichier, droits",
+        "Le texte ou les octets du fichier, sans les métadonnées",
+        "La liste des répertoires parents du fichier",
+        "Le nom du fichier et son contenu complet"
+      ],
+      "bonne": 0,
+      "explication": "L'i-node regroupe les caractéristiques du fichier (dates, taille, propriétaire, droits) ; le contenu est une suite d'octets stockée à part.",
+      "source": "CM1, §2.2 Fichiers et répertoires"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-006",
+      "notion": "fichier-inode",
+      "type": "qcm",
+      "enonce": "Dans un ls -l, que trouve-t-on en premier sur une ligne comme « drwxr-xr-x 3 jml ens 512 ... licpro » ?",
+      "choix": [
+        "Le type du fichier sur un caractère : d pour un répertoire, - pour un fichier ordinaire",
+        "Le nombre de liens du fichier",
+        "Le propriétaire du fichier",
+        "La taille du contenu en octets"
+      ],
+      "bonne": 0,
+      "explication": "Le premier caractère donne le type (- fichier, d répertoire, l lien, b ou c périphérique), puis viennent les 9 droits, les liens, le propriétaire, le groupe, la taille, la date et le nom.",
+      "source": "CM1, §2.2 ; TP1, partie 2 (format long)"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-007",
+      "notion": "commande-options",
+      "type": "qcm",
+      "enonce": "Dans la commande wc -l /etc/fstab, qu'est-ce qui est l'argument et qu'est-ce qui est l'option ?",
+      "choix": [
+        "/etc/fstab est l'argument, -l est l'option",
+        "-l est l'argument, /etc/fstab est l'option",
+        "wc est l'argument, -l est l'option",
+        "/etc/fstab est l'option, -l est l'argument"
+      ],
+      "bonne": 0,
+      "explication": "L'argument indique sur quoi travailler (/etc/fstab) ; l'option -l modifie la façon de travailler (ici compter les lignes).",
+      "source": "CM1, §2.4 Terminal et interpréteur de commandes"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-008",
+      "notion": "commande-options",
+      "type": "qcm",
+      "enonce": "Comment obtenir l'aide d'une commande classique, et comment se note une option en plusieurs lettres ?",
+      "choix": [
+        "man commande ; --mot pour une option en plusieurs lettres",
+        "help commande ; -mot pour une option en plusieurs lettres",
+        "man commande ; -mot pour une option en plusieurs lettres",
+        "info commande ; *mot pour une option en plusieurs lettres"
+      ],
+      "bonne": 0,
+      "explication": "man commande affiche le manuel ; une option d'une lettre est précédée d'un tiret (-l), une option en mot de deux (--force).",
+      "source": "CM1, §2.4 Terminal et interpréteur de commandes"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-009",
+      "notion": "variables-environnement",
+      "type": "qcm",
+      "enonce": "Quelle est la différence entre une variable shell et une variable d'environnement ?",
+      "choix": [
+        "La variable shell n'est connue que du terminal courant ; export la rend visible des sous-shells",
+        "La variable shell est visible de tous les autres terminaux ; la variable d'environnement ne l'est pas",
+        "La variable shell est en majuscules ; la variable d'environnement en minuscules",
+        "Les deux sont identiques, seule la commande echo les distingue"
+      ],
+      "bonne": 0,
+      "explication": "Une variable affectée dans le terminal reste locale ; export nom=valeur la fait hériter par les processus lancés depuis ce terminal.",
+      "source": "CM1, §3.1 Variables et §3.2 Variables d'environnement ; TP2, partie 1.1"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-010",
+      "notion": "variables-environnement",
+      "type": "qcm",
+      "enonce": "Après export PATH='', la commande ls ne fonctionne plus mais /bin/ls fonctionne. Pourquoi ?",
+      "choix": [
+        "Le shell cherche les commandes dans les répertoires du PATH, qui est maintenant vide",
+        "Le fichier /bin/ls a été rendu exécutable par la commande export",
+        "Le shell a perdu le répertoire courant et ne trouve plus aucun fichier",
+        "ls est un builtin que le PATH vide désactive, alors que /bin/ls est un programme"
+      ],
+      "bonne": 0,
+      "explication": "PATH donne les répertoires où chercher une commande. Vide, le shell ne trouve plus ls ; un chemin absolu comme /bin/ls ne dépend pas du PATH.",
+      "source": "TP2, partie 1.1 Variables d'environnement"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-011",
+      "notion": "variables-environnement",
+      "type": "qcm",
+      "enonce": "Pour que l'alias ll='ls -l' soit disponible à chaque nouveau terminal, où faut-il l'écrire ?",
+      "choix": [
+        "Dans ~/.bashrc, puis recharger avec source ~/.bashrc",
+        "Dans le terminal uniquement, il suffit de le taper une fois",
+        "Dans /etc/passwd, à la ligne de son utilisateur",
+        "Dans le fichier ~/.profile, lu à chaque commande"
+      ],
+      "bonne": 0,
+      "explication": "Un alias tapé dans le terminal disparaît à la fermeture. ~/.bashrc est lu à chaque lancement de terminal et conserve donc l'alias.",
+      "source": "CM1, §3.3 Configuration et §3.4 Alias ; TP2, parties 1.2 et 1.3"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-012",
+      "notion": "archivage-compression",
+      "type": "qcm",
+      "enonce": "Dans la commande tar zcvf cours.tar.gz *, à quoi servent les lettres z, c, v et f ?",
+      "choix": [
+        "z compresse avec gzip, c crée l'archive, v détaille, f donne le nom de l'archive",
+        "z extrait, c compresse, v vérifie, f force l'écriture",
+        "z liste, c copie, v supprime, f filtre les fichiers",
+        "z compresse avec bzip2, c crée, v détaille, f fixe les droits"
+      ],
+      "bonne": 0,
+      "explication": "c crée, x extrait, t liste, v détaille et f indique le nom de l'archive ; z passe par gzip (.tar.gz) et j par bzip2.",
+      "source": "CM1, §4 Archivage et compression de fichiers"
+    },
+    {
+      "id": "q-cm1-linux-terminal-et-fichiers-013",
+      "notion": "archivage-compression",
+      "type": "qcm",
+      "enonce": "Que fait l'extraction d'une archive tar par défaut si un fichier de même nom existe déjà ?",
+      "choix": [
+        "Elle écrase le fichier existant ; l'option k évite cela",
+        "Elle renomme le fichier existant en .old",
+        "Elle demande confirmation avant chaque fichier",
+        "Elle ignore l'archive et affiche une erreur"
+      ],
+      "bonne": 0,
+      "explication": "tar écrase par défaut les fichiers de même nom ; l'option k empêche l'écrasement.",
+      "source": "CM1, §4 Archivage et compression de fichiers"
+    }
+  ]
+}
