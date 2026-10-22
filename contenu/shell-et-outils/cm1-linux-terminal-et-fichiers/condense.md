@@ -6,7 +6,7 @@
 |---|---|
 | terminal-shell-prompt | Le terminal lance `bash` ; prompt `user@hote:repertoire$`, le `$` veut dire « prêt ». |
 | terminal-shell-prompt | Boucle : prompt, saisie, analyse, exécution, affichage, retour à l'étape 1. |
-| terminal-shell-prompt | `tab` complète, `↑` rappelle, `Ctrl+R` cherche, `Ctrl+C` interrompt, `Ctrl+D` quitte. |
+| terminal-shell-prompt | `tab` complète, `↑` rappelle, `Ctrl+R` cherche, `Ctrl+C` interrompt, `Ctrl+D` quitte, `Ctrl+S` / `Ctrl+Q` gèle / dégèle l'affichage. |
 | arborescence-chemins | Racine `/`, séparateur `/` ; `.` = courant, `..` = parent, `~` = home, `$HOME` = home. |
 | arborescence-chemins | Absolu = depuis `/` ; relatif = depuis le répertoire courant ; `pwd` l'affiche. |
 | arborescence-chemins | `cd` change de répertoire, `cd` seul retourne au home. |
@@ -20,7 +20,8 @@
 | variables-environnement | `nom=valeur` sans espaces ; `$nom` ou `${nom}` ; `unset` annule. |
 | variables-environnement | Locale = shell courant seulement ; `export` la rend visible des sous-shells. |
 | variables-environnement | `PATH` = répertoires où le shell cherche les commandes, séparés par `:`. |
-| variables-environnement | `.bashrc` est lu à chaque terminal ; le modifier puis `source ~/.bashrc`. |
+| variables-environnement | `.bashrc` est lu à chaque terminal ; le modifier puis `source ~/.bashrc`. `EDITOR` choisit l'éditeur par défaut. |
+| variables-environnement | `eval echo $B` relit le contenu de `B` comme une commande. |
 | variables-environnement | Alias : `alias ll='ls -l'` ; permanent seulement s'il est dans `.bashrc`. |
 | archivage-compression | `gzip`/`gunzip` (`.gz`), `bzip2` (`.bz2`), `zip`/`unzip`, `tar` (`.tar`). |
 | archivage-compression | `tar cvf` crée, `xvf` extrait, `tvf` liste ; `z` gzip, `j` bzip2, `k` n'écrase pas. |

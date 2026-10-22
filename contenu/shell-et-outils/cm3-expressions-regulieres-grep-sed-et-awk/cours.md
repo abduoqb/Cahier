@@ -37,6 +37,20 @@ email     : /^\S+@\S+\.\S+$/
 ```
 POSIX distingue les expressions **de base** et **étendues** (ERE). `+`, `?`, `|` font partie des ERE : pour les utiliser avec `grep` ou `sed`, il faut l'option `-E` (ou `-r` pour `sed`).
 
+**Aide-mémoire des feuilles de cours** (testé avec `grep -E` et `sed -E` de GNU) :
+
+| Notation | Sens | Remarque |
+|---|---|---|
+| `[:alpha:]`, `[:digit:]`, `[:alnum:]`, `[:upper:]`, `[:lower:]`, `[:space:]`, `[:punct:]` | classes POSIX | s'écrivent dans des crochets : `[[:digit:]]+` |
+| `\w`, `\W` | caractère de mot (lettre, chiffre, `_`) / son contraire | extension GNU, marche avec `grep -E` |
+| `\s`, `\S` | espace, tabulation… / son contraire | extension GNU |
+| `\b`, `\B` | limite de mot / pas une limite de mot | extension GNU |
+| `\d` | un chiffre | **n'existe pas en POSIX** : `grep -E '\d'` cherche la lettre d. Écrire `[0-9]` ou `[[:digit:]]` |
+| `*?`, `+?`, `(?=...)` | non gourmand, lookahead | réservés à PCRE (`grep -P`, Perl, Python) ; en ERE, `.*` prend le plus long (`<.*>` sur `<a><b>` donne `<a><b>`) |
+| `\.`, `\\`, `\$`, `\[` | caractère spécial pris au sens littéral | on l'échappe avec `\` |
+| `&` dans un remplacement `sed` | tout le texte trouvé | `echo hello \| sed 's/l/[&]/g'` donne `he[l][l]o` |
+| `\U`, `\L`, `\u`, `\l` dans un remplacement | majuscules / minuscules (GNU `sed`) | `echo hello \| sed 's/.*/\U&/'` donne `HELLO` |
+
 ### 2. Groupes de captures et références arrière
 On capture un caractère ou un groupe avec `\(...\)` et on le rappelle ensuite par `\1`, `\2`… dans l'ordre des groupes.
 
@@ -88,6 +102,40 @@ Les commandes d'un script `sed` s'exécutent **séquentiellement** :
 echo "aabac" | sed 's/a/b/g;s/b/c/g'   # ccccc : les a deviennent b, puis les b deviennent c
 echo "aabac" | sed 's/b/c/g;s/a/b/g'   # bbcbc : ordre inverse, résultat différent
 ```
+
+```pas-a-pas
+{
+  "titre": "sed 's/a/b/g;s/b/c/g' : les commandes s'enchaînent",
+  "code": [
+    "echo \"aabac\" | sed 's/a/b/g;s/b/c/g'",
+    "  s/a/b/g   # 1re commande",
+    "  s/b/c/g   # 2e commande"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"ligne lue":"aabac"},"note":"sed lit la ligne aabac et lui applique ses commandes dans l'ordre, l'une après l'autre."},
+    {"ligne":1,"vars":{"ligne lue":"bbbbc"},"note":"Première commande : tous les a deviennent b. Il y a maintenant quatre b."},
+    {"ligne":2,"vars":{"ligne lue":"ccccc"},"note":"Deuxième commande : elle s'applique au résultat de la première, donc TOUS les b (ceux d'origine et les nouveaux) deviennent c."},
+    {"ligne":null,"note":"Résultat affiché : ccccc. La seconde commande ne voit pas le texte d'origine, elle voit la sortie de la première."}
+  ]
+}
+```
+
+```pas-a-pas
+{
+  "titre": "sed 's/b/c/g;s/a/b/g' : l'ordre inverse",
+  "code": [
+    "echo \"aabac\" | sed 's/b/c/g;s/a/b/g'",
+    "  s/b/c/g   # 1re commande",
+    "  s/a/b/g   # 2e commande"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"ligne lue":"aabac"},"note":"Même texte, mêmes deux commandes, mais dans l'autre ordre."},
+    {"ligne":1,"vars":{"ligne lue":"aacac"},"note":"Le seul b devient c."},
+    {"ligne":2,"vars":{"ligne lue":"bbcbc"},"note":"Les a deviennent b : les b créés ne sont plus touchés puisque la commande qui change les b est déjà passée."},
+    {"ligne":null,"note":"Résultat : bbcbc, différent de ccccc. L'ordre des commandes sed compte."}
+  ]
+}
+```
 Groupes de captures avec `sed` (sans `-E`, il faut échapper les parenthèses) :
 ```bash
 sed 's/^..\/\(...\)\/.*/\1/' sample.txt    # garde le mois : Jan
@@ -135,6 +183,25 @@ awk -F',' '$3 == "F" { print $1 }' athletes.csv
 ```
 La deuxième commande fixe la virgule comme séparateur, saute l'en-tête (`NR>1`) et affiche nom, âge et dernier champ.
 
+```pas-a-pas
+{
+  "titre": "awk : BEGIN, section principale et END sur un petit CSV",
+  "code": [
+    "BEGIN { FS = \",\" }",
+    "NR > 1 { somme += $2 ; n++ }",
+    "END { print somme / n }"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"FS":",","somme":0,"n":0},"note":"Fichier lu : « Nom,Age » puis « Ana,24 », « Bob,30 », « Cid,18 ». BEGIN s'exécute une seule fois, avant la première ligne."},
+    {"ligne":1,"vars":{"NR":1,"$0":"Nom,Age","$2":"Age"},"note":"Ligne 1, l'en-tête : NR > 1 est faux, la règle est ignorée. C'est le rôle de cette condition."},
+    {"ligne":1,"vars":{"NR":2,"$0":"Ana,24","$2":24,"somme":24,"n":1},"note":"Ligne 2 : la condition est vraie, on ajoute le deuxième champ à somme et on compte la ligne."},
+    {"ligne":1,"vars":{"NR":3,"$0":"Bob,30","$2":30,"somme":54,"n":2},"note":"Ligne 3 : même règle."},
+    {"ligne":1,"vars":{"NR":4,"$0":"Cid,18","$2":18,"somme":72,"n":3},"note":"Ligne 4 : somme = 72, n = 3."},
+    {"ligne":2,"vars":{"affichage":24},"note":"Toutes les lignes sont lues : END s'exécute une seule fois et affiche 72 / 3 = 24."}
+  ]
+}
+```
+
 ### 7. awk : structure d'un programme
 Un programme `awk` est une suite de paires `<condition> { <traitements> }`, encadrées éventuellement par `BEGIN` et `END`.
 
@@ -169,7 +236,7 @@ END {
 - Mélanger l'ordre des commandes `sed` : elles s'enchaînent, la sortie de l'une est l'entrée de l'autre.
 - Croire que `sed` modifie le fichier : sans `-i`, il affiche seulement le résultat.
 - Oublier `-n` avec `p`, qui affiche alors chaque ligne deux fois.
-- Laisser `FS` à l'espace sur un CSV : tout le ligne devient `$1`, `$NF` vaut la ligne entière.
+- Laisser `FS` à l'espace sur un CSV : toute la ligne devient `$1` (s'il n'y a pas d'espace dedans), `$NF` vaut la ligne entière.
 - Oublier `NR>1` et traiter la ligne d'en-tête comme une donnée.
 - Confondre `NR` (toutes les lignes) et `FNR` (lignes du fichier courant).
 - Dans un script `awk` avec paramètre, oublier `ARGC--` : awk essaie d'ouvrir le paramètre comme fichier.

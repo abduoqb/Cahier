@@ -1,0 +1,75 @@
+{
+  "seance": "tp1-terminal-fichiers-archives-find",
+  "cartes": [
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-001",
+      "notion": "navigation-listage",
+      "recto": "Comment afficher le chemin complet du répertoire courant ?",
+      "verso": "pwd",
+      "source": "TP1, partie 2"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-002",
+      "notion": "navigation-listage",
+      "recto": "Comment voir les fichiers cachés, les tailles lisibles, l'arbre sur 2 niveaux ?",
+      "verso": "ls -a ; ls -lh ; tree -L 2",
+      "source": "TP1, partie 2"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-003",
+      "notion": "fichiers-repertoires",
+      "recto": "Comment créer toute une arborescence en une commande ?",
+      "verso": "mkdir -p a/b/c",
+      "source": "TP1, partie 3.2"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-004",
+      "notion": "fichiers-repertoires",
+      "recto": "Que fait cp a* A/ si autres commence par a ?",
+      "verso": "Il copie les fichiers et ignore le répertoire (sans -r).",
+      "source": "TP1, partie 3.2"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-005",
+      "notion": "chemins-casse-documents",
+      "recto": "Quel est le chemin relatif de ~/Documents depuis ~/systeme/tp1 ?",
+      "verso": "../../Documents",
+      "source": "TP1, partie 3.3"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-006",
+      "notion": "chemins-casse-documents",
+      "recto": "Pourquoi toto et Toto sont-ils identiques dans Documents ?",
+      "verso": "Dossier partagé avec Windows : il ignore la casse.",
+      "source": "TP1, partie 3.4"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-007",
+      "notion": "variables-path-alias",
+      "recto": "Que donne ls après export PATH='' ?",
+      "verso": "command not found ; /bin/ls marche encore (chemin complet).",
+      "source": "TP2, partie 1.1"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-008",
+      "notion": "variables-path-alias",
+      "recto": "Comment rendre des alias permanents ?",
+      "verso": "Les écrire dans ~/.bashrc puis source ~/.bashrc.",
+      "source": "TP2, partie 1.3"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-009",
+      "notion": "archives-find",
+      "recto": "Quelles commandes créent une archive ZIP et une archive TAR compressée ?",
+      "verso": "zip -r a.zip dossier ; tar zcvf a.tgz dossier",
+      "source": "TP2, partie 2"
+    },
+    {
+      "id": "c-tp1-terminal-fichiers-archives-find-010",
+      "notion": "archives-find",
+      "recto": "Comment chercher les fichiers de plus de 1 Mo et de moins de 50 octets ?",
+      "verso": "find . -type f -size +1M ; find . -type f -size -50c",
+      "source": "TP2, partie 3"
+    }
+  ]
+}

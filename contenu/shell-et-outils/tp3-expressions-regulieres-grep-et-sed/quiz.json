@@ -1,0 +1,230 @@
+{
+  "seance": "tp3-expressions-regulieres-grep-et-sed",
+  "questions": [
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-001",
+      "notion": "grep-passwd",
+      "type": "qcm",
+      "enonce": "Quelle commande sélectionne l'utilisateur man dans /etc/passwd sans ramener superman ?",
+      "choix": [
+        "grep 'man' /etc/passwd",
+        "grep 'man$' /etc/passwd",
+        "grep '^man:' /etc/passwd",
+        "grep -v man /etc/passwd"
+      ],
+      "bonne": 2,
+      "explication": "^ fixe le début de la ligne et : la fin du nom d'utilisateur.",
+      "source": "TP regexp, question 1"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-002",
+      "notion": "grep-passwd",
+      "type": "qcm",
+      "enonce": "Quelle regexp trouve les lignes de /etc/passwd dont le 5e champ est non vide ?",
+      "choix": [
+        "grep -E '^([^:]*:){4}[^:]+:'",
+        "grep -E '^([^:]*:){5}[^:]+:'",
+        "grep -E '^([^:]*){4}:+'",
+        "grep -E '^[^:]+:{4}'"
+      ],
+      "bonne": 0,
+      "explication": "On saute quatre champs (chacun suivi de :), puis on exige au moins un caractère non deux-points.",
+      "source": "TP regexp, question 1"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-003",
+      "notion": "grep-passwd",
+      "type": "qcm",
+      "enonce": "Que veut dire [^:]* dans une regexp ?",
+      "choix": [
+        "Un caractère deux-points répété zéro fois ou plus",
+        "Un ou plusieurs caractères quelconques sauf la fin de ligne",
+        "Un seul caractère qui n'est pas un deux-points",
+        "Zéro caractère ou plus, aucun n'étant un deux-points"
+      ],
+      "bonne": 3,
+      "explication": "[^:] est la classe « tout sauf : », * l'étend à zéro occurrence ou plus.",
+      "source": "TP regexp, question 1"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-004",
+      "notion": "grep-explications",
+      "type": "qcm",
+      "enonce": "Que sélectionne grep -E \"[w-z]{3}\" ?",
+      "choix": [
+        "Les mots de trois lettres exactement, dans l'ordre w, x, y",
+        "Les mots avec trois lettres de suite parmi w, x, y, z",
+        "Les mots avec la suite w-z répétée trois fois de suite",
+        "Les mots qui contiennent w, un tiret puis z, trois fois"
+      ],
+      "bonne": 1,
+      "explication": "[w-z] est une lettre entre w et z ; {3} en exige trois de suite.",
+      "source": "TP regexp, question 2"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-005",
+      "notion": "grep-explications",
+      "type": "qcm",
+      "enonce": "Que sélectionne grep -E \"(.)(.)(.)\\3\\2\\1$\" ?",
+      "choix": [
+        "Les mots composés de six lettres toutes différentes",
+        "Les mots qui finissent par un palindrome de six lettres",
+        "Les mots de six lettres exactement qui sont des palindromes",
+        "Les mots dont les trois premières lettres se retrouvent à la fin"
+      ],
+      "bonne": 1,
+      "explication": "Trois groupes puis \\3\\2\\1 : abccba. Le $ impose la fin du mot, mais rien n'impose le début.",
+      "source": "TP regexp, question 2"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-006",
+      "notion": "grep-explications",
+      "type": "qcm",
+      "enonce": "Que sélectionne grep -E \"^[pr][^f-z]rs?i..$\" (par exemple parsing) ?",
+      "choix": [
+        "Les mots de huit lettres exactement qui contiennent p, r, s et i",
+        "p ou r, trois lettres de f à z, puis rsi et deux lettres",
+        "Les mots qui contiennent p ou r, puis s ou i, suivis de deux points",
+        "p ou r, une lettre hors f-z, r, un s facultatif, i, puis deux caractères"
+      ],
+      "bonne": 3,
+      "explication": "s? rend le s facultatif ; .. désigne deux caractères quelconques ; ^ et $ encadrent le mot.",
+      "source": "TP regexp, question 2"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-007",
+      "notion": "grep-dictionnaire",
+      "type": "qcm",
+      "enonce": "Quelle commande sélectionne les mots qui contiennent au moins deux w ?",
+      "choix": [
+        "grep -E 'w.*w' words",
+        "grep -E 'w{2}' words",
+        "grep -c 'w' words",
+        "grep -E 'ww*' words"
+      ],
+      "bonne": 0,
+      "explication": "w.*w : un w, n'importe quoi, un autre w. w{2} exigerait deux w consécutifs.",
+      "source": "TP regexp, question 3"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-008",
+      "notion": "grep-dictionnaire",
+      "type": "qcm",
+      "enonce": "Quelle commande sélectionne les mots qui commencent par a et finissent par ing ?",
+      "choix": [
+        "grep -E 'a.*ing' words",
+        "grep -E '^a.ing$' words",
+        "grep -E '^a.*ing$' words",
+        "grep -E 'a|ing' words"
+      ],
+      "bonne": 2,
+      "explication": "Les ancres ^ et $ fixent le début et la fin ; .* admet n'importe quels caractères au milieu.",
+      "source": "TP regexp, question 3"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-009",
+      "notion": "grep-dictionnaire",
+      "type": "qcm",
+      "enonce": "Quelle commande sélectionne les mots qui ont un q non suivi de u (q final compris) ?",
+      "choix": [
+        "grep -E 'q^u' words",
+        "grep -E 'qu' words",
+        "grep -E 'q([^u]|$)' words",
+        "grep -E 'q[u]' words"
+      ],
+      "bonne": 2,
+      "explication": "q[^u] ne voit pas un q en fin de mot ; l'alternative |$ le couvre.",
+      "source": "TP regexp, question 3"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-010",
+      "notion": "sed-mise-en-forme",
+      "type": "qcm",
+      "enonce": "Quelle commande remplace les espaces multiples par une seule espace ?",
+      "choix": [
+        "sed 's/  */ /g'",
+        "sed 's/ /  /g'",
+        "sed 's/ */ /g'",
+        "sed 's/  / /'"
+      ],
+      "bonne": 0,
+      "explication": "Une espace suivie de espace* : au moins une espace. s/ */ /g ajouterait des espaces partout (zéro espace compte aussi).",
+      "source": "TP regexp, question 4"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-011",
+      "notion": "sed-mise-en-forme",
+      "type": "qcm",
+      "enonce": "Pourquoi les substitutions du script de mise en forme sont-elles dans un ordre précis ?",
+      "choix": [
+        "sed les trie automatiquement par ordre alphabétique",
+        "Seule la dernière commande du script est réellement appliquée",
+        "sed applique toutes les commandes en parallèle au texte d'origine",
+        "Chaque commande travaille sur le résultat de la précédente"
+      ],
+      "bonne": 3,
+      "explication": "Les commandes sed sont séquentielles : l'ordre change le résultat (cf. aabac).",
+      "source": "CM3, §1.3.1 et TP regexp, question 4"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-012",
+      "notion": "sed-mise-en-forme",
+      "type": "qcm",
+      "enonce": "Comment appliquer le script forme.sed au fichier texte.txt ?",
+      "choix": [
+        "sed forme.sed texte.txt",
+        "sed -f forme.sed texte.txt",
+        "sed -s forme.sed texte.txt",
+        "sed < forme.sed > texte.txt"
+      ],
+      "bonne": 1,
+      "explication": "-f lit les commandes dans un fichier : une commande par ligne ou séparées par ;.",
+      "source": "TP regexp, question 6"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-013",
+      "notion": "sed-effacement",
+      "type": "qcm",
+      "enonce": "Quelle commande supprime les commentaires d'une ligne (commençant par #) ?",
+      "choix": [
+        "sed 's/#//' copie.txt",
+        "sed '/^ *#/d' copie.txt",
+        "sed '/#/!d' copie.txt",
+        "sed -n '/^#/p' copie.txt"
+      ],
+      "bonne": 1,
+      "explication": "/^ *#/d supprime les lignes dont le premier caractère non blanc est #.",
+      "source": "TP regexp, question 8"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-014",
+      "notion": "sed-effacement",
+      "type": "qcm",
+      "enonce": "Que fait sed -r \"/^[a-z]/d; /'s$/d\" /usr/share/dict/words ?",
+      "choix": [
+        "Il garde les mots en minuscule et ceux qui finissent par 's",
+        "Il supprime les mots qui contiennent a-z et un s",
+        "Il affiche seulement les mots qui commencent par s",
+        "Il supprime les mots en minuscule et ceux qui finissent par 's"
+      ],
+      "bonne": 3,
+      "explication": "Il reste les noms propres (majuscule initiale) qui ne finissent pas par 's.",
+      "source": "TP regexp, question 7"
+    },
+    {
+      "id": "q-tp3-expressions-regulieres-grep-et-sed-015",
+      "notion": "sed-effacement",
+      "type": "qcm",
+      "enonce": "Quelle commande extrait le nom de la classe d'un fichier Python (class Nom(...):) ?",
+      "choix": [
+        "sed -n -E 's/^class +([A-Za-z_0-9]+).*/\\1/p' copie.txt",
+        "sed -E 's/^class +([A-Za-z_0-9]+).*/\\1/' copie.txt",
+        "sed -n 's/class//p' copie.txt",
+        "sed -n '/^class/d' copie.txt"
+      ],
+      "bonne": 0,
+      "explication": "-n coupe l'affichage automatique et p n'affiche que les lignes substituées. Sans -n, toutes les lignes sortiraient.",
+      "source": "TP regexp, question 8"
+    }
+  ]
+}

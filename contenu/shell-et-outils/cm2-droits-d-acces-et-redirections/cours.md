@@ -95,6 +95,22 @@ Droits accordés : rwx r-x ---  (750)
 - Masque `077` : fichiers `600` et répertoires `700`. Masque `002` : fichiers `664`, répertoires `775`.
 - Valeur usuelle : `umask 0022`.
 
+```pas-a-pas
+{
+  "titre": "umask 027 : les droits d'un fichier et d'un répertoire créés",
+  "code": [
+    "umask 027",
+    "mkdir rep",
+    "touch fich"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"masque":"027"},"note":"Le masque 027 se lit « --- -w- rwx » : ce sont les droits à retirer (rien au propriétaire, w au groupe, tout aux autres).","schema":{"type":"tableau","cases":["-","-","-","-","w","-","r","w","x"],"marques":{"propriétaire":0,"groupe":3,"autres":6},"surligne":[4,6,7,8]}},
+    {"ligne":1,"vars":{"droits de rep":"750"},"note":"Un répertoire part de 777 (rwx rwx rwx) : on retire le masque, il reste rwxr-x---.","schema":{"type":"tableau","cases":["r","w","x","r","-","x","-","-","-"],"marques":{"propriétaire":0,"groupe":3,"autres":6},"fixes":[0,1,2,3,5]}},
+    {"ligne":2,"vars":{"droits de fich":"640"},"note":"Un fichier part de 666 : le x n'est jamais donné par défaut. On retire le masque, il reste rw-r-----.","schema":{"type":"tableau","cases":["r","w","-","r","-","-","-","-","-"],"marques":{"propriétaire":0,"groupe":3,"autres":6},"fixes":[0,1,3]}}
+  ]
+}
+```
+
 ### 8. Descripteurs et redirections
 Tout processus lit et écrit via des **descripteurs de fichiers** numérotés :
 
@@ -180,6 +196,20 @@ ls | grep redir | wc -l # on peut enchaîner plus de deux tubes
 ```
 Le système synchronise les deux processus : le lecteur est bloqué si le tube est vide (et qu'un écrivain existe encore), l'écrivain est bloqué si le tube est plein.
 
+```pas-a-pas
+{
+  "titre": "ls | wc -w : un tube entre deux processus",
+  "code": [
+    "ls | wc -w"
+  ],
+  "etapes": [
+    {"ligne":0,"note":"Le shell crée un tube et lance les deux processus en même temps. ls n'écrit que dans le tube, wc ne lit que dans le tube.","schema":{"type":"tube","gauche":{"nom":"ls","lecture":"ferme","ecriture":"ouvert"},"droite":{"nom":"wc -w","lecture":"ouvert","ecriture":"ferme"},"tampon":""}},
+    {"ligne":0,"note":"ls écrit la liste de ses noms sur sa sortie standard, sans savoir que c'est un tube. Si le tube est plein, ls est bloqué.","schema":{"type":"tube","gauche":{"nom":"ls","lecture":"ferme","ecriture":"ouvert"},"droite":{"nom":"wc -w","lecture":"ouvert","ecriture":"ferme"},"tampon":"f1 f2 f3 f4"}},
+    {"ligne":0,"vars":{"wc -w affiche":4},"note":"wc lit son entrée standard au fur et à mesure et compte les mots. Si le tube est vide mais que ls n'a pas fini, wc attend.","schema":{"type":"tube","gauche":{"nom":"ls","lecture":"ferme","ecriture":"ferme"},"droite":{"nom":"wc -w","lecture":"ouvert","ecriture":"ferme"},"tampon":""}}
+  ]
+}
+```
+
 Une commande qui lit sur son entrée standard et écrit sur sa sortie standard est un **filtre** (`cat`, `wc`, `grep`). `ls` n'est pas un filtre : il lit un répertoire, pas son entrée.
 
 ## Pièges fréquents
@@ -188,7 +218,7 @@ Une commande qui lit sur son entrée standard et écrit sur sa sortie standard e
 - Écrire `chmod 777` « pour que ça marche » : on ouvre tout à tout le monde.
 - Confondre `chmod` et `umask` : `chmod` modifie un fichier existant, `umask` fixe les droits des futurs fichiers.
 - Oublier que `x` n'est jamais donné par défaut à un fichier : un script créé n'est pas exécutable, il faut `chmod u+x`.
-- Mettre un espace dans `2> erreurs` : `2 > erreurs` redirige la sortie standard et écrit « erreurs » comme argument.
+- Mettre un espace dans `2> erreurs` : `cmd 2 > erreurs` passe `2` comme **argument** de la commande (`ls: cannot access '2'`), envoie la sortie standard dans `erreurs`, et les messages d'erreur restent à l'écran.
 - Rediriger deux fois un même descripteur (`cmd > f1 > f2`) : un processus n'a qu'une sortie, seule la dernière compte.
 - `>` écrase le fichier ; `>>` ajoute. Une erreur classique efface un fichier qu'on voulait compléter.
 - Écrire `cmd 2>&1 > fichier` au lieu de `cmd > fichier 2>&1` : l'ordre des redirections change le résultat.

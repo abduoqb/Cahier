@@ -1,0 +1,230 @@
+{
+  "seance": "tp5-scripts-creation-et-rangement",
+  "questions": [
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-001",
+      "notion": "script-arguments",
+      "type": "qcm",
+      "enonce": "Que vaut $# après un shift dans un script lancé avec dossier a b c ?",
+      "choix": [
+        "4 : shift ne change pas le nombre d'arguments",
+        "2 : shift retire le dernier argument",
+        "3 : l'argument dossier a été retiré",
+        "1 : il ne reste que dossier"
+      ],
+      "bonne": 2,
+      "explication": "shift supprime le premier argument et décale les autres : il reste a, b, c.",
+      "source": "TP6, exercice 1, questions 7 et 8"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-002",
+      "notion": "script-arguments",
+      "type": "qcm",
+      "enonce": "Comment vérifier que le message d'usage est bien sur la sortie d'erreur ?",
+      "choix": [
+        "Lancer le script avec 2>/dev/null : le message ne doit plus s'afficher",
+        "Lancer le script avec >/dev/null : le message ne doit plus s'afficher à l'écran du terminal",
+        "Lancer le script avec 2>&1 : le message disparaît de l'écran",
+        "Lancer le script avec < /dev/null : le message disparaît"
+      ],
+      "bonne": 0,
+      "explication": "2>/dev/null jette la sortie d'erreur : un message sur 1>&2 disparaît, un message sur la sortie standard reste.",
+      "source": "TP6, exercice 1, question 9"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-003",
+      "notion": "script-arguments",
+      "type": "qcm",
+      "enonce": "Quelle ligne doit suivre echo \"$usage\" 1>&2 pour quitter en échec ?",
+      "choix": [
+        "exit 0",
+        "return 0",
+        "break",
+        "exit 1"
+      ],
+      "bonne": 3,
+      "explication": "exit 1 termine le script avec un code d'échec ; exit 0 signalerait un succès.",
+      "source": "CM5, §5 Application"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-004",
+      "notion": "script-tests-sauvegarde",
+      "type": "qcm",
+      "enonce": "Quel code crée le dossier seulement s'il n'existe pas ?",
+      "choix": [
+        "if [[ -f \"$d\" ]]; then echo existe; else mkdir \"$d\"; fi",
+        "if [[ -d \"$d\" ]]; then echo existe; else mkdir \"$d\"; fi",
+        "if mkdir \"$d\"; then echo existe; fi",
+        "if [[ -z \"$d\" ]]; then echo existe; else mkdir \"$d\"; fi"
+      ],
+      "bonne": 1,
+      "explication": "-d teste l'existence d'un répertoire ; -f un fichier ordinaire ; -z une chaîne vide.",
+      "source": "TP6, exercice 1, question 6"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-005",
+      "notion": "script-tests-sauvegarde",
+      "type": "qcm",
+      "enonce": "Que fait [[ -e \"$f\" ]] && cp \"$f\" \"$f.old\" ?",
+      "choix": [
+        "Copie toujours f dans f.old, puis teste f",
+        "Sauvegarde f dans f.old seulement si f existe",
+        "Supprime f s'il existe, puis crée f.old",
+        "Teste f.old, puis copie f s'il existe"
+      ],
+      "bonne": 1,
+      "explication": "&& n'exécute la seconde commande que si la première réussit.",
+      "source": "TP6, exercice 1, question 5"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-006",
+      "notion": "script-tests-sauvegarde",
+      "type": "qcm",
+      "enonce": "Que se passe-t-il au second lancement du script avec le même dossier ?",
+      "choix": [
+        "Dossier créé, puis les fichiers sont simplement ajoutés aux anciens sans sauvegarde",
+        "mkdir signale que le dossier existe, puis rien d'autre ne se passe",
+        "Une erreur : le script ne peut pas être relancé",
+        "Le dossier existe, puis les fichiers déjà présents sont sauvegardés en .old"
+      ],
+      "bonne": 3,
+      "explication": "Le test -d évite l'erreur de mkdir ; le test -e déclenche la sauvegarde avant d'écraser.",
+      "source": "TP6, exercice 1, questions 5 et 6"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-007",
+      "notion": "script-espaces",
+      "type": "qcm",
+      "enonce": "Sans guillemets, que fait mkdir $dossier si dossier vaut « to to » ?",
+      "choix": [
+        "Il crée to, puis signale une erreur car to existe déjà",
+        "Il crée un dossier nommé « to to »",
+        "Il ne crée rien : mkdir refuse l'espace",
+        "Il crée deux dossiers, to1 et to2"
+      ],
+      "bonne": 0,
+      "explication": "Sans guillemets, le shell coupe en deux mots, donc mkdir reçoit deux arguments.",
+      "source": "TP6, exercice 1, question 10"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-008",
+      "notion": "script-espaces",
+      "type": "qcm",
+      "enonce": "Avec for nom in $@ et les arguments lala et « ma ma », que se passe-t-il ?",
+      "choix": [
+        "« ma ma » est traité en un seul passage de la boucle",
+        "lala est créé deux fois",
+        "« ma ma » est coupé en deux : ma.txt est créé deux fois",
+        "La boucle s'arrête au premier argument qui contient une espace"
+      ],
+      "bonne": 2,
+      "explication": "$@ sans guillemets redonne les mots un à un : ma, puis ma ; d'où le ma.txt.old.",
+      "source": "TP6, exercice 1, question 11"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-009",
+      "notion": "script-espaces",
+      "type": "qcm",
+      "enonce": "Quelles boucles respectent « ma ma » ?",
+      "choix": [
+        "for nom in $@ et for nom in $*",
+        "for nom in \"$*\" et for nom in $@",
+        "while [[ -n \"$1\" ]] avec shift, et for nom in \"$@\"",
+        "Seulement for nom in $@ avec echo \"$nom\""
+      ],
+      "bonne": 2,
+      "explication": "Testé : while + shift et \"$@\" gardent chaque argument entier ; $@, $* et \"$*\" le coupent ou le regroupent.",
+      "source": "TP6, exercice 1, question 13"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-010",
+      "notion": "find-vrac",
+      "type": "qcm",
+      "enonce": "Quelle commande compte les fichiers de vrac ?",
+      "choix": [
+        "find vrac -type f | wc -l",
+        "find vrac | wc -l",
+        "ls vrac | wc -l",
+        "find vrac -name f | wc -l"
+      ],
+      "bonne": 0,
+      "explication": "find vrac seul liste aussi les répertoires ; -type f ne garde que les fichiers.",
+      "source": "TP6, exercice 2, question 3.1"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-011",
+      "notion": "find-vrac",
+      "type": "qcm",
+      "enonce": "Quelle commande liste les fichiers dont le nom contient une espace ?",
+      "choix": [
+        "find vrac -name \" \"",
+        "find vrac -name \"*_*\"",
+        "find vrac -space",
+        "find vrac -name \"* *\""
+      ],
+      "bonne": 3,
+      "explication": "Le motif \"* *\" accepte n'importe quoi avant et après une espace.",
+      "source": "TP6, exercice 2, question 3.1"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-012",
+      "notion": "find-vrac",
+      "type": "qcm",
+      "enonce": "Que change -iname par rapport à -name ?",
+      "choix": [
+        "Il cherche aussi dans les répertoires cachés",
+        "Il ignore la casse : *.JPG et *.jpg sont trouvés",
+        "Il n'affiche que les noms sans leur chemin",
+        "Il limite la recherche au répertoire courant"
+      ],
+      "bonne": 1,
+      "explication": "-iname fonctionne comme -name, mais insensible à la casse.",
+      "source": "TP6, exercice 2, indication"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-013",
+      "notion": "rangement-doublons",
+      "type": "qcm",
+      "enonce": "Pourquoi for f in $(find vrac ...) est-il risqué ?",
+      "choix": [
+        "find n'affiche jamais les noms de fichiers dans $( )",
+        "Un nom avec espace est coupé en plusieurs morceaux",
+        "for ne sait lire que des nombres",
+        "Les sous-répertoires sont ignorés par la boucle"
+      ],
+      "bonne": 1,
+      "explication": "$( ) redonne le texte sans guillemets : le shell le découpe sur les espaces. Testé avec « mon fichier.py ».",
+      "source": "TP6, exercice 2, question 3.2"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-014",
+      "notion": "rangement-doublons",
+      "type": "qcm",
+      "enonce": "Que fait diff -q a b utilisé dans un if ?",
+      "choix": [
+        "Il réussit (code 0) si les fichiers sont différents",
+        "Il affiche toutes les lignes qui diffèrent",
+        "Il compare seulement les noms des deux fichiers",
+        "Il réussit (code 0) si les fichiers ont le même contenu"
+      ],
+      "bonne": 3,
+      "explication": "diff -q ne dit rien si les fichiers sont identiques (code 0) et signale « differ » sinon.",
+      "source": "TP6, exercice 2, question 3.4"
+    },
+    {
+      "id": "q-tp5-scripts-creation-et-rangement-015",
+      "notion": "rangement-doublons",
+      "type": "qcm",
+      "enonce": "Pourquoi plusieurs __init__.py dans rangement/python/ sont-ils normaux ?",
+      "choix": [
+        "Quand leurs contenus diffèrent, la copie est renommée avec $RANDOM au lieu d'écraser",
+        "Parce que cp crée toujours une copie supplémentaire de chaque fichier déjà rangé, par prudence",
+        "Parce que diff ne supprime que les doublons de plus de dix fichiers",
+        "Parce que basename ajoute un numéro à chaque nom"
+      ],
+      "bonne": 0,
+      "explication": "Sans le renommage, le second __init__.py de contenu différent écraserait le premier.",
+      "source": "TP6, exercice 2, questions 3.2 et 3.3"
+    }
+  ]
+}

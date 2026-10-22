@@ -1,0 +1,230 @@
+{
+  "seance": "tp2-permissions-redirections-et-path",
+  "questions": [
+    {
+      "id": "q-tp2-permissions-redirections-et-path-001",
+      "notion": "droits-fichiers",
+      "type": "qcm",
+      "enonce": "Quelle commande rend fichier.txt lisible et modifiable par le seul propriétaire ?",
+      "choix": [
+        "chmod 060 fichier.txt",
+        "chmod 006 fichier.txt",
+        "chmod 600 fichier.txt",
+        "chmod 660 fichier.txt"
+      ],
+      "bonne": 2,
+      "explication": "Le premier chiffre est le propriétaire : 6 = rw-, puis 0 pour le groupe et 0 pour les autres.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-002",
+      "notion": "droits-fichiers",
+      "type": "qcm",
+      "enonce": "Quel octal correspond à chmod u=rw,g=r,o= fichier.txt ?",
+      "choix": [
+        "640",
+        "604",
+        "460",
+        "644"
+      ],
+      "bonne": 0,
+      "explication": "rw- = 6, r-- = 4, --- = 0 : 640.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-003",
+      "notion": "droits-fichiers",
+      "type": "qcm",
+      "enonce": "Pour un script sans droit x, que donnent sh script.sh et ./script.sh ?",
+      "choix": [
+        "Les deux marchent, le droit x est facultatif",
+        "Les deux échouent tant qu'il n'y a pas de droit x",
+        "Le premier échoue, le second marche",
+        "Le premier marche, le second répond Permission denied"
+      ],
+      "bonne": 3,
+      "explication": "sh lit le fichier comme une donnée ; ./script.sh demande au système de l'exécuter, donc d'avoir x.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-004",
+      "notion": "droits-repertoires",
+      "type": "qcm",
+      "enonce": "Répertoire test en --x------ contenant toto : que donne cat test/toto ?",
+      "choix": [
+        "Une erreur : sans r on ne peut rien lire dans test",
+        "Il affiche toto : x permet de traverser le répertoire",
+        "Une erreur : le droit w manque pour lire un fichier",
+        "Il affiche toto, mais seulement pour le super-utilisateur"
+      ],
+      "bonne": 1,
+      "explication": "Pour atteindre un fichier connu il faut x sur le répertoire ; r ne sert qu'à lister.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-005",
+      "notion": "droits-repertoires",
+      "type": "qcm",
+      "enonce": "Répertoire test en -wx------ : que donne touch test/titi ?",
+      "choix": [
+        "Une erreur : sans r on ne peut pas créer de fichier",
+        "Il crée titi : w permet d'ajouter, x de traverser",
+        "Il crée titi, mais on ne pourra plus le supprimer",
+        "Une erreur : seul root crée dans un répertoire"
+      ],
+      "bonne": 1,
+      "explication": "Créer un fichier demande w et x sur le répertoire ; lister (r) est un autre droit.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-006",
+      "notion": "droits-repertoires",
+      "type": "qcm",
+      "enonce": "Répertoire test en rw------- : que donne rm -f test/toto ?",
+      "choix": [
+        "Il supprime toto : le droit w suffit pour supprimer",
+        "Il supprime toto, mais demande une confirmation",
+        "Rien : -f ignore silencieusement tous les droits",
+        "Permission denied : sans x, on ne peut pas atteindre toto"
+      ],
+      "bonne": 3,
+      "explication": "Supprimer exige w et x sur le répertoire. -f supprime les confirmations, pas les contrôles de droits.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-007",
+      "notion": "masque-creation",
+      "type": "qcm",
+      "enonce": "Avec umask 022, quels droits ont un répertoire et un fichier créés ?",
+      "choix": [
+        "755 pour le répertoire, 644 pour le fichier",
+        "755 pour les deux : le x s'ajoute au fichier",
+        "644 pour le répertoire, 755 pour le fichier",
+        "644 pour les deux, un répertoire n'a pas de x"
+      ],
+      "bonne": 0,
+      "explication": "Répertoire : 777 moins 022 = 755. Fichier : 666 moins 022 = 644 (le x n'est jamais donné par défaut).",
+      "source": "TP3, partie 2 (masque)"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-008",
+      "notion": "masque-creation",
+      "type": "qcm",
+      "enonce": "Quel masque donne rw------- aux fichiers et rwx------ aux répertoires ?",
+      "choix": [
+        "700",
+        "600",
+        "077",
+        "022"
+      ],
+      "bonne": 2,
+      "explication": "Il faut retirer tout au groupe et aux autres : masque 077.",
+      "source": "TP3, partie 2 (masque)"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-009",
+      "notion": "masque-creation",
+      "type": "qcm",
+      "enonce": "Pourquoi remettre umask 0022 à la fin du TP ?",
+      "choix": [
+        "Parce que le masque 077 est supprimé à la fermeture du fichier",
+        "Parce que 077 empêcherait le compte root de travailler",
+        "Le masque reste actif pour tout ce que ce terminal crée ensuite",
+        "Parce que le shell refuse deux masques différents"
+      ],
+      "bonne": 2,
+      "explication": "Le sujet prévient qu'une erreur de masque peut affecter le compte : on remet la valeur par défaut.",
+      "source": "TP3, partie 2 (masque)"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-010",
+      "notion": "redirections-tubes",
+      "type": "qcm",
+      "enonce": "Quelle commande affiche les fichiers trouvés à l'écran et écrit les erreurs dans erreurs.txt ?",
+      "choix": [
+        "ls f1 f2 tata 2> erreurs.txt",
+        "ls f1 f2 tata > erreurs.txt",
+        "ls f1 f2 tata 2>&1 erreurs.txt",
+        "ls f1 f2 tata 1> erreurs.txt 2> /dev/null"
+      ],
+      "bonne": 0,
+      "explication": "2> redirige seulement la sortie d'erreur (descripteur 2) ; la sortie standard reste à l'écran.",
+      "source": "TP3, partie 3, question 5"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-011",
+      "notion": "redirections-tubes",
+      "type": "qcm",
+      "enonce": "Quelle commande compte les liens symboliques de /usr/bin ?",
+      "choix": [
+        "ls -l /usr/bin | wc -l",
+        "find /usr/bin -type s | wc -l",
+        "find /usr/bin -name l | wc -l",
+        "find /usr/bin -type l | wc -l"
+      ],
+      "bonne": 3,
+      "explication": "-type l sélectionne les liens symboliques ; wc -l compte les lignes obtenues.",
+      "source": "TP3, partie 3, question 9"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-012",
+      "notion": "redirections-tubes",
+      "type": "qcm",
+      "enonce": "Que fait wc -w * | sort -n ?",
+      "choix": [
+        "Il trie les fichiers par nom puis compte leurs mots",
+        "Il affiche le nombre de mots de chaque fichier, du plus petit au plus grand",
+        "Il trie les mots de chaque fichier par ordre alphabétique",
+        "Il compte le nombre total de fichiers du répertoire"
+      ],
+      "bonne": 1,
+      "explication": "wc -w * donne un nombre de mots par fichier ; sort -n trie ces lignes par ordre numérique croissant.",
+      "source": "TP3, partie 3, questions 10 et 11"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-013",
+      "notion": "executables-path",
+      "type": "qcm",
+      "enonce": "Pourquoi myls marche-t-il avec ./myls mais pas depuis un autre répertoire ?",
+      "choix": [
+        "Un exécutable ne peut être lancé que depuis son répertoire d'origine",
+        "Son répertoire n'est pas dans le PATH, qui dit où chercher les commandes",
+        "Il manque le droit x pour les autres répertoires",
+        "Le shell ne cherche jamais de commande hors du home"
+      ],
+      "bonne": 1,
+      "explication": "Le nom seul est cherché dans les répertoires du PATH ; ./ désigne explicitement le fichier du répertoire courant.",
+      "source": "TP3, partie 4"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-014",
+      "notion": "executables-path",
+      "type": "qcm",
+      "enonce": "Quelle première ligne permet de lancer print.py avec ./print.py en trouvant python3 ?",
+      "choix": [
+        "#!/usr/bin/python3.py",
+        "#!python3",
+        "#/usr/bin/env python3",
+        "#!/usr/bin/env python3"
+      ],
+      "bonne": 3,
+      "explication": "Le shebang commence par #! ; env retrouve python3 dans le PATH.",
+      "source": "TP3, partie 4"
+    },
+    {
+      "id": "q-tp2-permissions-redirections-et-path-015",
+      "notion": "executables-path",
+      "type": "qcm",
+      "enonce": "Comment ajouter le répertoire courant au PATH sans effacer l'ancien ?",
+      "choix": [
+        "export PATH=$PATH:$PWD",
+        "export PATH=$PWD",
+        "export PATH=$PATH,$PWD",
+        "export $PATH=$PWD"
+      ],
+      "bonne": 0,
+      "explication": "Les répertoires du PATH sont séparés par deux-points ; $PATH: garde l'ancienne valeur.",
+      "source": "TP3, partie 4, question 10"
+    }
+  ]
+}

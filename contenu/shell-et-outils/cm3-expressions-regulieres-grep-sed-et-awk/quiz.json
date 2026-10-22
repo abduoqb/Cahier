@@ -5,16 +5,16 @@
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-001",
       "notion": "expressions-regulieres",
       "type": "qcm",
-      "enonce": "Que sélectionne grep -E \"^p[^aeiu]*n$\" sur une liste de mots ?",
+      "enonce": "Que sélectionne grep -E '^p[^aeiu]*n$' ?",
       "choix": [
-        "Les mots qui commencent par p, finissent par n et ne contiennent aucune voyelle a, e, i ou u entre les deux",
-        "Les mots qui contiennent le mot pn",
-        "Les mots qui commencent par p et contiennent n'importe où les lettres a, e, i ou u",
-        "Les mots de exactement un caractère entre p et n"
+        "Les mots qui contiennent le mot pn en n'importe quelle position",
+        "Les mots de deux lettres exactement, p suivi de n",
+        "Les mots qui commencent par p, finissent par n, sans a, e, i, u au milieu",
+        "Les mots qui commencent par p et contiennent a, e, i ou u"
       ],
-      "bonne": 0,
-      "explication": "^ et $ encadrent le mot, [^aeiu] est le complément de la classe, et * autorise zéro ou plusieurs de ces caractères.",
-      "source": "TP Expressions régulières et grep, question 2"
+      "bonne": 2,
+      "explication": "^ et $ encadrent le mot, [^aeiu] est le complément de la classe et * autorise zéro caractère ou plus.",
+      "source": "TP regexp, question 2 et CM3, §1.1"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-002",
@@ -22,50 +22,80 @@
       "type": "qcm",
       "enonce": "Pourquoi utilise-t-on grep -E pour chercher un motif contenant a+ ?",
       "choix": [
-        "Parce que + fait partie des expressions régulières étendues, activées par -E",
+        "En expression de base + est un caractère littéral ; -E active les ERE",
         "Parce que -E rend la recherche insensible à la casse",
-        "Parce que -E compte les occurrences au lieu de les afficher",
-        "Parce que sans -E, grep refuse les motifs contenant des voyelles"
+        "Parce que -E affiche aussi le numéro de chaque ligne",
+        "Parce que sans -E grep ne cherche que dans le premier fichier"
       ],
       "bonne": 0,
-      "explication": "En expression de base, + est un caractère littéral ; -E passe aux ERE, où + signifie au moins une occurrence.",
-      "source": "CM3, §1.1 Expressions régulières et normes POSIX"
+      "explication": "+, ? et | font partie des expressions régulières étendues, activées par -E (ou -r pour sed).",
+      "source": "CM3, §1.1"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-003",
-      "notion": "groupes-captures",
+      "notion": "expressions-regulieres",
       "type": "qcm",
-      "enonce": "Parmi alarme, tata, toto et ara, quel mot vérifie entièrement le motif \\b([a-z]).{1}\\1\\b ?",
+      "enonce": "Quelle regexp décrit une date comme 4/12/2024 avec grep -E ?",
       "choix": [
-        "ara",
-        "alarme",
-        "tata",
-        "toto"
+        "^\\d{1,2}/\\d{1,2}/\\d{4}$ : \\d désigne un chiffre en POSIX",
+        "^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2}$ : l'année vient en premier",
+        "^[0-9]+/[a-z]+/[0-9]+$ : des lettres au milieu",
+        "^[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}$"
       ],
-      "bonne": 0,
-      "explication": "Le motif décrit un mot de trois caractères dont le premier et le dernier sont identiques : seul ara est un mot entier de cette forme.",
-      "source": "CM3, §1.1 Le référencement arrière ou groupes de captures"
+      "bonne": 3,
+      "explication": "\\d n'existe pas en POSIX : grep -E '\\d' cherche la lettre d. On écrit [0-9] ou [[:digit:]].",
+      "source": "CM3, §1.1 (exemples) et regexp.pdf"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-004",
       "notion": "groupes-captures",
       "type": "qcm",
-      "enonce": "Que signifie le motif \\b([a-z])([a-z]).{1}\\2\\1\\b ?",
+      "enonce": "Parmi alarme, tata, toto et ara, quel mot vérifie entièrement \\b([a-z]).{1}\\1\\b ?",
       "choix": [
-        "Un mot miroir de taille 5 : premier = dernier, deuxième = avant-dernier",
-        "Un mot de 5 lettres toutes différentes",
-        "Un mot de 3 lettres dont la première est répétée",
-        "Deux mots identiques séparés par un caractère"
+        "tata",
+        "ara",
+        "toto",
+        "alarme"
       ],
-      "bonne": 0,
-      "explication": "Deux groupes capturés puis rappelés en ordre inverse (\\2 puis \\1) donnent un palindrome : radar et abcba conviennent.",
+      "bonne": 1,
+      "explication": "Le motif décrit un mot de trois caractères dont le premier et le dernier sont identiques : seul ara convient entièrement.",
       "source": "CM3, §1.1 Groupes de captures"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-005",
+      "notion": "groupes-captures",
+      "type": "qcm",
+      "enonce": "Que signifie \\b([a-z])([a-z]).{1}\\2\\1\\b ?",
+      "choix": [
+        "Un mot de cinq lettres toutes différentes",
+        "Un mot miroir de cinq lettres, comme radar",
+        "Un mot de trois lettres dont la première est répétée",
+        "Deux mots identiques séparés par un caractère"
+      ],
+      "bonne": 1,
+      "explication": "Deux groupes capturés puis rappelés en ordre inverse (\\2 puis \\1) donnent un palindrome : radar, abcba.",
+      "source": "CM3, §1.1 Groupes de captures"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-006",
+      "notion": "groupes-captures",
+      "type": "qcm",
+      "enonce": "Avec sed, comment rappelle-t-on dans le remplacement le premier groupe capturé ?",
+      "choix": [
+        "Par $1, comme en awk",
+        "Par &1, où & désigne le premier groupe",
+        "Par #1, le dièse numérote les groupes",
+        "Par \\1, le groupe ayant été capturé avec \\( ... \\)"
+      ],
+      "bonne": 3,
+      "explication": "Sans -E, on capture avec \\( \\) et on rappelle avec \\1, \\2… ; & désigne tout le texte trouvé.",
+      "source": "CM3, §1.3.2 Script sed"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-007",
       "notion": "grep",
       "type": "qcm",
-      "enonce": "Quelle commande compte les lignes de athletes.csv contenant France, sans tenir compte de la casse ?",
+      "enonce": "Quelle commande compte les lignes de athletes.csv qui contiennent France, casse ignorée ?",
       "choix": [
         "grep -ic \"France\" athletes.csv",
         "grep -vc \"France\" athletes.csv",
@@ -73,143 +103,218 @@
         "grep -lc \"France\" athletes.csv"
       ],
       "bonne": 0,
-      "explication": "-i ignore la casse et -c affiche le nombre de lignes qui correspondent. -v inverserait la sélection et -l donnerait des noms de fichiers.",
-      "source": "CM3, §1.2 La commande grep (options classiques)"
-    },
-    {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-006",
-      "notion": "grep",
-      "type": "qcm",
-      "enonce": "Quelle commande liste les fichiers .csv qui contiennent le mot id, en ignorant la casse ?",
-      "choix": [
-        "grep -il \"id\" *.csv",
-        "grep -in \"id\" *.csv",
-        "grep -ic \"id\" *.csv",
-        "grep -iv \"id\" *.csv"
-      ],
-      "bonne": 0,
-      "explication": "-l n'affiche que le nom des fichiers concernés et -i ignore la casse : c'est la première question du TP awk pour trouver Athletes.csv.",
-      "source": "TP5, question 3"
-    },
-    {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-007",
-      "notion": "sed-substitution",
-      "type": "qcm",
-      "enonce": "Que produit echo \"aabac\" | sed 's/a/b/g;s/b/c/g' ?",
-      "choix": [
-        "ccccc : les a deviennent b, puis tous les b deviennent c",
-        "bbcbc : les deux commandes s'appliquent au texte d'origine",
-        "aabac : les commandes s'annulent",
-        "bbcbc puis ccccc, affichés sur deux lignes"
-      ],
-      "bonne": 0,
-      "explication": "Les commandes sed s'exécutent séquentiellement : aabac devient bbbbc, puis bbbbc devient ccccc. L'ordre inverse donnerait bbcbc.",
-      "source": "CM3, §1.3.1 Regrouper plusieurs commandes"
+      "explication": "-i ignore la casse et -c compte les lignes. -v inverserait la sélection, -l donnerait des noms de fichiers.",
+      "source": "CM3, §1.2 La commande grep"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-008",
-      "notion": "sed-substitution",
+      "notion": "grep",
       "type": "qcm",
-      "enonce": "Quelle commande remplace tous les a minuscules par @ directement dans le fichier ?",
+      "enonce": "Quelle commande affiche les lignes qui contiennent à la fois a, b et c ?",
       "choix": [
-        "sed -i 's/a/@/g' fichier",
-        "sed 's/a/@/g' fichier",
-        "sed -n 's/a/@/g' fichier",
-        "sed 's/a/@/' fichier > fichier"
+        "grep -E 'a|b|c' f",
+        "grep 'a b c' f",
+        "grep a f | grep b | grep c",
+        "grep -v a b c f"
       ],
-      "bonne": 0,
-      "explication": "-i édite le fichier ; sans -i sed affiche seulement le résultat, et sans g il ne remplace que la première occurrence de chaque ligne.",
-      "source": "CM3, §1.3 La commande sed (options classiques)"
+      "bonne": 2,
+      "explication": "Plusieurs motifs simultanés se font par filtrages successifs ; | dans une regexp veut dire « ou ».",
+      "source": "CM3, §1.2.1 Chercher plusieurs motifs"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-009",
-      "notion": "sed-effacement",
+      "notion": "grep",
       "type": "qcm",
-      "enonce": "Quelle commande supprime les lignes vides d'un fichier copie.txt ?",
+      "enonce": "Que renvoie grep -il id *.csv ?",
       "choix": [
-        "sed '/^$/d' copie.txt",
-        "sed '/^$/p' copie.txt",
-        "sed 's/^$//' copie.txt",
-        "sed '$d' copie.txt"
+        "Les lignes contenant id dans chaque fichier .csv",
+        "Le nombre de lignes contenant id dans chaque fichier",
+        "Les noms des fichiers .csv qui contiennent id, casse ignorée",
+        "Les noms des fichiers .csv qui ne contiennent pas id"
       ],
-      "bonne": 0,
-      "explication": "^$ désigne une ligne vide et d supprime les lignes qui correspondent : c'est la commande demandée pour nettoyer un fichier Python.",
-      "source": "TP Expressions régulières et grep, question 8"
+      "bonne": 2,
+      "explication": "-l n'affiche que les noms de fichiers et -i ignore la casse.",
+      "source": "CM3, §1.2 et TP5, question 3"
     },
     {
       "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-010",
+      "notion": "sed-substitution",
+      "type": "qcm",
+      "enonce": "Que produit echo aabac | sed 's/a/b/g;s/b/c/g' ?",
+      "choix": [
+        "ccccc",
+        "bbcbc",
+        "aabac",
+        "bbbbc"
+      ],
+      "bonne": 0,
+      "explication": "Les commandes sont séquentielles : aabac devient bbbbc, puis tous les b deviennent c. L'ordre inverse donne bbcbc.",
+      "source": "CM3, §1.3.1 Regrouper plusieurs commandes"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-011",
+      "notion": "sed-substitution",
+      "type": "qcm",
+      "enonce": "Quelle commande remplace tous les a par @ directement dans le fichier ?",
+      "choix": [
+        "sed 's/a/@/g' fichier",
+        "sed -n 's/a/@/g' fichier",
+        "sed 's/a/@/' fichier > fichier",
+        "sed -i 's/a/@/g' fichier"
+      ],
+      "bonne": 3,
+      "explication": "-i édite le fichier. Sans -i, sed affiche seulement le résultat ; sans g, il ne remplace que la première occurrence de chaque ligne.",
+      "source": "CM3, §1.3 sed (exemples)"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-012",
+      "notion": "sed-substitution",
+      "type": "qcm",
+      "enonce": "Que donne echo hello | sed 's/l/[&]/g' ?",
+      "choix": [
+        "he[&][&]o",
+        "he[l][l]o",
+        "he[ll]o",
+        "[hello]"
+      ],
+      "bonne": 1,
+      "explication": "& désigne le texte trouvé par le motif : chaque l devient [l].",
+      "source": "regexp.pdf (remplacement)"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-013",
+      "notion": "sed-effacement",
+      "type": "qcm",
+      "enonce": "Quelle commande supprime les lignes vides de copie.txt ?",
+      "choix": [
+        "sed '/^$/p' copie.txt",
+        "sed '/^$/d' copie.txt",
+        "sed 's/^$//' copie.txt",
+        "sed '$d' copie.txt"
+      ],
+      "bonne": 1,
+      "explication": "^$ décrit une ligne vide et d supprime les lignes qui correspondent. s/^$// laisserait la ligne vide en place.",
+      "source": "TP regexp, question 8"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-014",
       "notion": "sed-effacement",
       "type": "qcm",
       "enonce": "Que fait sed -n 5000p fichier ?",
       "choix": [
-        "Affiche uniquement la 5000e ligne du fichier",
-        "Supprime la 5000e ligne du fichier",
-        "Affiche les 5000 premières lignes",
-        "Affiche la ligne 5000 et toutes les suivantes"
+        "Il supprime la 5000e ligne",
+        "Il affiche les 5000 premières lignes",
+        "Il affiche la ligne 5000 et les suivantes",
+        "Il affiche uniquement la 5000e ligne"
       ],
-      "bonne": 0,
-      "explication": "-n met sed en mode silencieux et p affiche la ligne demandée : seule la 5000e ligne sort.",
-      "source": "CM3, §1.3 La commande sed (exemples)"
+      "bonne": 3,
+      "explication": "-n coupe l'affichage automatique et p affiche la ligne demandée.",
+      "source": "CM3, §1.3 sed (exemples)"
     },
     {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-011",
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-015",
+      "notion": "sed-effacement",
+      "type": "qcm",
+      "enonce": "Que fait sed '/^bin/!d' /etc/passwd ?",
+      "choix": [
+        "Il garde seulement les lignes qui commencent par bin",
+        "Il supprime les lignes qui commencent par bin",
+        "Il garde les lignes qui ne commencent pas par bin",
+        "Il remplace bin par une chaîne vide partout"
+      ],
+      "bonne": 0,
+      "explication": "/motif/!d supprime les lignes qui ne contiennent pas le motif.",
+      "source": "CM3, §1.3 et TP regexp, question 7"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-016",
       "notion": "awk-champs",
       "type": "qcm",
-      "enonce": "Que fait awk 'BEGIN{FS=\"[,;]\"} $2 == 0 { print $1 }' fichier ?",
+      "enonce": "Que fait awk 'BEGIN{FS=\",\"} NR>1{ print $2, $4, $NF }' athletes.csv ?",
       "choix": [
-        "Il affiche le premier champ des lignes dont le deuxième champ vaut 0, avec , ou ; comme séparateur",
-        "Il affiche le deuxième champ des lignes dont le premier vaut 0",
-        "Il remplace le deuxième champ par 0 dans le fichier",
-        "Il compte les lignes dont le premier champ vaut 0"
+        "Il affiche les champs 2, 4 et le nombre de champs de chaque ligne",
+        "Il affiche les lignes 2, 4 et la dernière du fichier",
+        "Il affiche les 2e, 4e et dernier champs, sauf pour l'en-tête",
+        "Il affiche tous les champs de la ligne 2 à la dernière"
       ],
-      "bonne": 0,
-      "explication": "FS fixe le séparateur de champs ; la condition porte sur $2 et l'action affiche $1. FS peut être une classe de caractères.",
-      "source": "TP5, question 1 (commandes awk sur svgnam_copie.def)"
+      "bonne": 2,
+      "explication": "FS fixe le séparateur, NR>1 saute la ligne d'en-tête, $NF est le dernier champ.",
+      "source": "CM3, §1.4.3 Exemples"
     },
     {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-012",
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-017",
       "notion": "awk-champs",
       "type": "qcm",
-      "enonce": "Dans athletes.csv (ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, City, Sport, Event, Medal), qu'affiche NR>1{ print $2, $4, $NF } ?",
+      "enonce": "Que vaut $NF pour la ligne a,b,c avec FS=',' ?",
       "choix": [
-        "Le nom, l'âge et la médaille de chaque athlète, sans la ligne d'en-tête",
-        "L'identifiant, le nom et le sexe de chaque athlète",
-        "Le nom, l'âge et l'année de chaque athlète",
-        "La ligne complète de chaque athlète, sauf la première"
+        "3, le nombre de champs",
+        "a,b,c, la ligne entière",
+        "c, le dernier champ",
+        "a, le premier champ"
       ],
-      "bonne": 0,
-      "explication": "$2 = Name, $4 = Age et $NF = dernier champ = Medal ; NR>1 évite de traiter la ligne d'en-tête.",
-      "source": "CM3, §1.4.3 Exemples ; TP5, exercice Athletes.csv"
+      "bonne": 2,
+      "explication": "NF vaut 3 (le nombre de champs) ; $NF est le champ numéro NF, donc le dernier. $0 est la ligne entière.",
+      "source": "CM3, §1.4 La commande awk"
     },
     {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-013",
-      "notion": "awk-sections",
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-018",
+      "notion": "awk-champs",
       "type": "qcm",
-      "enonce": "Quand les sections BEGIN et END d'un programme awk sont-elles exécutées ?",
+      "enonce": "Quelle commande affiche le nom ($2) des athlètes dont le 7e champ vaut France (guillemets déjà retirés) ?",
       "choix": [
-        "BEGIN une fois avant les données, END une fois après la dernière ligne",
-        "BEGIN à chaque ligne, END à la fin du fichier",
-        "BEGIN avant chaque fichier, END après chaque fichier",
-        "Les deux à la fin, dans l'ordre BEGIN puis END"
+        "awk -F, '$7 == \"France\" { print $2 }' f",
+        "awk -F, '$2 == \"France\" { print $7 }' f",
+        "awk '$7 == \"France\" { print $2 }' f",
+        "awk -F, '$7 = \"France\" { print $2 }' f"
       ],
       "bonne": 0,
-      "explication": "BEGIN sert à initialiser (FS, compteurs), la section principale traite chaque ligne, END finalise les calculs sur l'ensemble des entrées.",
-      "source": "CM3, §1.4.1 Section BEGIN et §1.4.3 Section END"
+      "explication": "-F, fixe le séparateur ; == compare (= affecterait) ; la condition précède l'accolade de l'action.",
+      "source": "TP5, exercice (question 7)"
     },
     {
-      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-014",
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-019",
       "notion": "awk-sections",
       "type": "qcm",
-      "enonce": "Pourquoi décrémenter ARGC dans BEGIN quand un script awk reçoit un paramètre en plus du fichier ?",
+      "enonce": "Quand s'exécutent les sections BEGIN et END d'un programme awk ?",
       "choix": [
-        "Parce que awk traite chaque argument comme un fichier de données et chercherait à ouvrir le paramètre",
-        "Parce que ARGC compte les lignes du fichier et doit être remis à zéro",
-        "Parce que ARGC est le séparateur de champs par défaut",
-        "Parce que awk refuse plus de deux arguments"
+        "BEGIN avant chaque ligne, END après chaque ligne",
+        "BEGIN au début de chaque fichier, END à la fin de chacun",
+        "BEGIN à la fin du programme, END au début",
+        "BEGIN une fois avant les données, END une fois après la dernière ligne"
       ],
-      "bonne": 0,
-      "explication": "Un argument supplémentaire serait considéré comme un fichier d'entrée ; ARGC-- l'exclut, et le paramètre reste lisible dans ARGV.",
+      "bonne": 3,
+      "explication": "BEGIN initialise (FS, compteurs), la section principale traite chaque ligne, END finalise les calculs.",
+      "source": "CM3, §1.4.1 et §1.4.3"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-020",
+      "notion": "awk-sections",
+      "type": "qcm",
+      "enonce": "Pourquoi décrémenter ARGC dans BEGIN quand le script reçoit un paramètre en plus du fichier ?",
+      "choix": [
+        "ARGC compte les lignes lues et doit repartir de zéro",
+        "awk prend chaque argument pour un fichier de données et tenterait d'ouvrir le paramètre",
+        "ARGC est le séparateur de champs, à réduire à une virgule",
+        "awk refuse tout programme qui reçoit plus de deux arguments"
+      ],
+      "bonne": 1,
+      "explication": "ARGC-- exclut le paramètre des fichiers à lire ; il reste lisible dans ARGV.",
       "source": "CM3, §1.4.4 Script awk"
+    },
+    {
+      "id": "q-cm3-expressions-regulieres-grep-sed-et-awk-021",
+      "notion": "awk-sections",
+      "type": "qcm",
+      "enonce": "Avec FS=',', que calcule NR>1 { s += $2; n++ } END { print s/n } sur Nom,Age / Ana,24 / Bob,30 ?",
+      "choix": [
+        "La somme des âges : 54",
+        "La moyenne des âges, en-tête ignoré : 27",
+        "La moyenne en comptant l'en-tête : 18",
+        "Le nombre de lignes de données : 2"
+      ],
+      "bonne": 1,
+      "explication": "NR>1 écarte l'en-tête : s = 24+30 = 54, n = 2, donc 54/2 = 27. Sans NR>1, n vaudrait 3 et s/n 18.",
+      "source": "CM3, §1.4.2 Section principale"
     }
   ]
 }

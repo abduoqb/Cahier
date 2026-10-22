@@ -5,181 +5,271 @@
       "id": "q-cm2-droits-d-acces-et-redirections-001",
       "notion": "droits-rwx",
       "type": "qcm",
-      "enonce": "Le répertoire test a les droits --x------. Que peut encore faire le propriétaire ?",
+      "enonce": "Quel est le sens du droit x sur un répertoire ?",
       "choix": [
-        "Traverser test et lire un fichier dont il connaît le nom (cat test/toto)",
-        "Lister le contenu de test avec ls",
-        "Créer un fichier dans test",
-        "Rien du tout, aucun accès n'est possible"
+        "L'exécuter comme un programme",
+        "Lister ses fichiers avec ls",
+        "Le traverser : accéder à ce qu'il contient",
+        "Y créer de nouveaux fichiers"
       ],
-      "bonne": 0,
-      "explication": "x sur un répertoire permet de le traverser : un fichier connu reste accessible. Sans r on ne peut pas lister, sans w on ne peut pas créer.",
-      "source": "TP3, partie 2 Permissions"
+      "bonne": 2,
+      "explication": "Sur un répertoire : r liste, w crée et supprime des fichiers, x permet de le traverser.",
+      "source": "CM2, §1.1 Cas particulier des répertoires"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-002",
       "notion": "droits-rwx",
       "type": "qcm",
-      "enonce": "Le répertoire test a les droits rw------- (pas de x) et contient toto. Que fait rm -f test/toto ?",
+      "enonce": "Pour supprimer le fichier f du répertoire d, de quoi a-t-on besoin ?",
       "choix": [
-        "Il échoue : sans le droit x sur test, le fichier n'est pas accessible",
-        "Il supprime toto : le droit w sur le répertoire suffit",
-        "Il supprime toto et le répertoire test",
-        "Il demande confirmation avant de supprimer"
+        "De w et x sur d, quels que soient les droits de f",
+        "De w sur f, quels que soient les droits de d",
+        "De w sur f et de r sur d",
+        "De r et w sur f uniquement"
       ],
       "bonne": 0,
-      "explication": "Le droit x est nécessaire pour traverser le répertoire et atteindre le fichier ; il faut donc remettre x (par exemple rwx------) avant de supprimer.",
-      "source": "TP3, partie 2 Permissions"
+      "explication": "Supprimer un fichier modifie le répertoire qui le contient : c'est son droit w (et x pour y accéder) qui compte.",
+      "source": "CM2, §1.1 et TP3, partie 2"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-003",
-      "notion": "chmod",
+      "notion": "droits-rwx",
       "type": "qcm",
-      "enonce": "Un fichier a les droits -rwx---r--. Que donne chmod ug=rw fichier ?",
+      "enonce": "Pour -rwxr--r-- 1 jml ens index.html, que peut faire un membre du groupe ens autre que jml ?",
       "choix": [
-        "-rw-rw-r--",
-        "-rwxrw-r--",
-        "-rwxrwxr--",
-        "-rw----r--"
+        "Le lire et l'exécuter",
+        "Le lire et le modifier",
+        "Rien : seul le propriétaire a des droits",
+        "Le lire seulement"
       ],
-      "bonne": 0,
-      "explication": "= initialise exactement les droits indiqués : rw pour le propriétaire et rw pour le groupe, les droits des autres (r) restent inchangés.",
-      "source": "CM2, §1.2.1 Format symbolique (exemples chmod)"
+      "bonne": 3,
+      "explication": "Les trois derniers blocs sont : propriétaire rwx, groupe r--, autres r--. Le groupe ne peut que lire.",
+      "source": "CM2, §1.1 Catégories d'utilisateurs"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-004",
       "notion": "chmod",
       "type": "qcm",
-      "enonce": "À quels droits correspond chmod 754 fichier ?",
+      "enonce": "Quel octal correspond à rwxr-x--- ?",
       "choix": [
-        "rwxr-xr--",
-        "rwxr-xr-x",
-        "rw-r-xr--",
-        "rwxrw-r--"
+        "755",
+        "750",
+        "740",
+        "570"
       ],
-      "bonne": 0,
-      "explication": "7 = rwx, 5 = r-x, 4 = r-- : le propriétaire a tout, le groupe lit et traverse, les autres lisent seulement.",
-      "source": "CM2, §1.2.2 Mode octal ; TP3, partie 2"
+      "bonne": 1,
+      "explication": "rwx = 4+2+1 = 7, r-x = 4+1 = 5, --- = 0 : 750.",
+      "source": "CM2, §1.2.2 Mode octal"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-005",
-      "notion": "droits-particuliers",
+      "notion": "chmod",
       "type": "qcm",
-      "enonce": "Que permet le bit set-uid sur /usr/bin/passwd, affiché -rwsr-xr-x root root ?",
+      "enonce": "Que donne chmod ug=rw,o=r sur un fichier ?",
       "choix": [
-        "Tout utilisateur exécute passwd avec les droits du propriétaire root",
-        "Tout utilisateur peut lire le fichier /etc/passwd en écriture directe",
-        "Le fichier ne peut être supprimé que par root",
-        "Le programme s'exécute avec les droits du groupe root uniquement"
+        "rw-r--r--, soit 644",
+        "rw-rw-r--, soit 664",
+        "rw-rw-rw-, soit 666",
+        "rwxrw-r--, soit 764"
       ],
-      "bonne": 0,
-      "explication": "set-uid fait exécuter le programme avec les droits de son propriétaire (ici root), ce qui permet à chacun de changer son mot de passe ; le x du propriétaire devient s.",
-      "source": "CM2, §1.2.3 Droits particuliers"
+      "bonne": 1,
+      "explication": "= initialise exactement les droits : u et g reçoivent rw, o reçoit r seulement.",
+      "source": "CM2, §1.2.1 Format symbolique"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-006",
-      "notion": "droits-particuliers",
+      "notion": "chmod",
       "type": "qcm",
-      "enonce": "À quoi sert le sticky bit, visible par un t final comme drwxrwxrwt sur /tmp ?",
+      "enonce": "Un fichier est en rw-rw-r--. Que devient-il après chmod go-w ?",
       "choix": [
-        "Dans un répertoire ouvert à tous, seul le propriétaire peut supprimer son fichier",
-        "Le répertoire ne peut plus être modifié par personne",
-        "Tous les fichiers créés héritent des droits du propriétaire du répertoire",
-        "Le répertoire est compressé automatiquement"
+        "rw-rw----",
+        "r--r--r--",
+        "rw-rw-r-x",
+        "rw-r--r--"
       ],
-      "bonne": 0,
-      "explication": "Le sticky bit protège les fichiers d'un répertoire partagé (/tmp) : chacun peut créer, mais seul le propriétaire d'un fichier peut le supprimer.",
-      "source": "CM2, §1.2.3 Droits particuliers"
+      "bonne": 3,
+      "explication": "go-w retire w au groupe et aux autres : le groupe passe de rw- à r--, les autres restaient r--.",
+      "source": "CM2, §1.2.1 Format symbolique"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-007",
-      "notion": "umask",
+      "notion": "droits-particuliers",
       "type": "qcm",
-      "enonce": "Avec umask 027, quels droits reçoivent un répertoire puis un fichier ordinaire créés ?",
+      "enonce": "Que signifie le s dans -rwsr-xr-x root root /usr/bin/passwd ?",
       "choix": [
-        "rwxr-x--- pour le répertoire, rw-r----- pour le fichier",
-        "rwxrwx--- pour le répertoire, rw-rw---- pour le fichier",
-        "r-xr-x--- pour le répertoire, r--r----- pour le fichier",
-        "rwxr-x--- pour le répertoire, rwxr-x--- pour le fichier"
+        "Set-uid : le programme s'exécute avec les droits de root, son propriétaire",
+        "Set-gid : le programme s'exécute avec les droits du groupe root",
+        "Fichier partagé : tous les utilisateurs peuvent le supprimer",
+        "Verrou : un seul utilisateur à la fois peut l'exécuter"
       ],
       "bonne": 0,
-      "explication": "777 – 027 = 750 pour un répertoire ; pour un fichier le x n'est jamais accordé par défaut, donc 750 devient 640.",
-      "source": "CM2, §1.3 Masque de création ; TP3, partie 2"
+      "explication": "Le s remplace le x du propriétaire. C'est ce qui permet à tout utilisateur de changer son mot de passe.",
+      "source": "CM2, §1.2.3 Droits particuliers"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-008",
-      "notion": "umask",
+      "notion": "droits-particuliers",
       "type": "qcm",
-      "enonce": "Que faut-il faire pour que les fichiers soient créés en rw------- et les répertoires en rwx------ ?",
+      "enonce": "À quoi sert le sticky bit sur /tmp (drwxrwxrwt) ?",
       "choix": [
-        "umask 077",
-        "umask 700",
-        "umask 022",
-        "chmod 600 *"
+        "Il interdit à tout le monde de créer des fichiers",
+        "Il fait exécuter les fichiers avec les droits de root",
+        "Seul le propriétaire d'un fichier peut le supprimer",
+        "Il cache les fichiers aux autres utilisateurs"
       ],
-      "bonne": 0,
-      "explication": "777 – 077 = 700 pour les répertoires, et 600 pour les fichiers car x n'est pas donné par défaut. chmod modifierait les fichiers existants, pas les suivants.",
-      "source": "TP3, partie 2 (masque de création)"
+      "bonne": 2,
+      "explication": "Dans un répertoire ouvert en écriture à tous, le sticky bit (t à la place du x des autres) protège les fichiers des autres.",
+      "source": "CM2, §1.2.3 Droits particuliers"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-009",
-      "notion": "redirections",
+      "notion": "droits-particuliers",
       "type": "qcm",
-      "enonce": "Quelle commande écrit la sortie standard et la sortie d'erreur de rm -v dans le même fichier sorties ?",
+      "enonce": "Quelle différence entre set-uid et set-gid ?",
       "choix": [
-        "rm -v liste truc > sorties 2>&1",
-        "rm -v liste truc 2>&1 > sorties",
-        "rm -v liste truc > sorties 2> sorties",
-        "rm -v liste truc < sorties 2> sorties"
+        "Set-uid vaut pour les répertoires, set-gid pour les fichiers",
+        "Set-uid s'affiche avec un t, set-gid avec un s",
+        "Set-uid donne les droits du propriétaire, set-gid ceux du groupe du fichier",
+        "Set-uid est temporaire, set-gid est permanent"
       ],
-      "bonne": 0,
-      "explication": "Il faut d'abord rediriger 1 vers sorties, puis dupliquer 1 sur 2. Dans l'autre ordre, les erreurs restent sur l'ancienne destination (l'écran).",
-      "source": "CM2, §2.4 Syntaxe générale et remarques"
+      "bonne": 2,
+      "explication": "Même mécanisme, mais le set-gid prend le groupe du fichier au lieu du propriétaire.",
+      "source": "CM2, §1.2.3 Droits particuliers"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-010",
-      "notion": "redirections",
+      "notion": "umask",
       "type": "qcm",
-      "enonce": "Le fichier liste contient déjà des lignes. Que fait la commande ls -l liste >> liste ?",
+      "enonce": "Avec umask 027, quels droits reçoit un répertoire créé ?",
       "choix": [
-        "Elle ajoute la sortie de ls à la fin du fichier existant",
-        "Elle écrase le fichier avec la sortie de ls",
-        "Elle affiche le fichier puis la liste du répertoire",
-        "Elle envoie la sortie sur la sortie d'erreur"
+        "750 : rwxr-x---",
+        "640 : rw-r-----",
+        "777 : rwxrwxrwx",
+        "027 : ---rw-rwx"
       ],
       "bonne": 0,
-      "explication": ">> ajoute à la fin, alors que > aurait détruit le contenu. Le fichier est ouvert avant l'exécution, d'où les tailles observées dans le cours.",
-      "source": "CM2, §2.2 Redirection des sorties standard et erreur"
+      "explication": "777 moins le masque 027 : rwx pour le propriétaire, r-x pour le groupe, rien pour les autres.",
+      "source": "CM2, §1.3 Masque de création"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-011",
-      "notion": "tubes-filtres",
+      "notion": "umask",
       "type": "qcm",
-      "enonce": "Quelle commande affiche le nombre d'éléments contenus dans /usr/bin ?",
+      "enonce": "Avec umask 022, quels droits reçoit un fichier créé avec touch ?",
       "choix": [
-        "ls /usr/bin | wc -l",
-        "wc -l > /usr/bin",
-        "cat /usr/bin | ls",
-        "ls /usr/bin < wc -l"
+        "755 : rwxr-xr-x",
+        "666 : rw-rw-rw-",
+        "622 : rw--w--w-",
+        "644 : rw-r--r--"
       ],
-      "bonne": 0,
-      "explication": "Le tube envoie la sortie de ls dans l'entrée de wc, qui compte les lignes ; aucun fichier intermédiaire n'est créé.",
-      "source": "TP3, partie 3 Redirections d'entrées sorties"
+      "bonne": 3,
+      "explication": "Un fichier part de 666 (le x n'est jamais donné) : 666 moins 022 donne 644.",
+      "source": "CM2, §1.3 Masque de création"
     },
     {
       "id": "q-cm2-droits-d-acces-et-redirections-012",
-      "notion": "tubes-filtres",
+      "notion": "umask",
       "type": "qcm",
-      "enonce": "Parmi ces commandes, lesquelles sont des filtres au sens du cours ?",
+      "enonce": "Quel masque donne 600 aux fichiers et 700 aux répertoires ?",
       "choix": [
-        "cat et wc",
-        "ls et cat",
-        "ls et wc",
-        "aucune, seules les commandes sans option le sont"
+        "022",
+        "077",
+        "600",
+        "177"
+      ],
+      "bonne": 1,
+      "explication": "On retire tout au groupe et aux autres : 077. Les fichiers (666) deviennent 600, les répertoires (777) 700.",
+      "source": "TP3, partie 2 (masque)"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-013",
+      "notion": "redirections",
+      "type": "qcm",
+      "enonce": "Que fait ls -l > liste quand le fichier liste existe déjà ?",
+      "choix": [
+        "Il ajoute la sortie à la fin du fichier",
+        "Il remplace son contenu par la sortie de ls",
+        "Il refuse et affiche une erreur",
+        "Il affiche à l'écran et ne touche pas liste"
+      ],
+      "bonne": 1,
+      "explication": "> écrase (ou crée), >> ajoute à la fin.",
+      "source": "CM2, §2.2 Redirection des sorties"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-014",
+      "notion": "redirections",
+      "type": "qcm",
+      "enonce": "Quelle commande envoie les erreurs dans err.txt, la sortie normale restant à l'écran ?",
+      "choix": [
+        "cmd > err.txt",
+        "cmd 2>&1 err.txt",
+        "cmd 2 > err.txt",
+        "cmd 2> err.txt"
+      ],
+      "bonne": 3,
+      "explication": "Le descripteur 2 est la sortie d'erreur ; il ne faut pas d'espace entre 2 et >.",
+      "source": "CM2, §2.2"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-015",
+      "notion": "redirections",
+      "type": "qcm",
+      "enonce": "Quelle différence entre cmd > f 2>&1 et cmd 2>&1 > f ?",
+      "choix": [
+        "Dans la première, erreurs et sortie vont dans f ; dans la seconde, les erreurs restent à l'écran",
+        "Aucune : l'ordre des redirections est sans effet",
+        "La première écrit dans f, la seconde ajoute à la fin de f",
+        "La seconde envoie tout dans f, la première seulement les erreurs"
       ],
       "bonne": 0,
-      "explication": "Un filtre lit son entrée standard et écrit sa sortie standard : cat et wc en sont. ls lit un répertoire, ce n'est pas un filtre.",
+      "explication": "2>&1 copie la destination actuelle du descripteur 1. Dans la seconde forme, elle est copiée avant que 1 ne parte dans f.",
+      "source": "CM2, §2.4 Syntaxe générale"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-016",
+      "notion": "tubes-filtres",
+      "type": "qcm",
+      "enonce": "Que fait ls | wc -w ?",
+      "choix": [
+        "Elle compte les lignes du fichier nommé wc",
+        "Elle écrit la sortie de ls dans un fichier wc",
+        "Elle compte les mots de la sortie de ls",
+        "Elle affiche d'abord ls, puis un nombre de lignes"
+      ],
+      "bonne": 2,
+      "explication": "Le tube branche la sortie standard de ls sur l'entrée standard de wc, sans fichier intermédiaire.",
       "source": "CM2, §2.5 Communication entre processus"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-017",
+      "notion": "tubes-filtres",
+      "type": "qcm",
+      "enonce": "Pourquoi ls n'est-il pas un filtre ?",
+      "choix": [
+        "Il n'écrit rien sur la sortie standard",
+        "C'est une commande interne du shell (builtin)",
+        "Il ne lit pas son entrée standard : il lit un répertoire",
+        "Il ne peut pas être placé avant un tube"
+      ],
+      "bonne": 2,
+      "explication": "Un filtre lit son entrée standard et écrit sa sortie standard (cat, wc, grep).",
+      "source": "CM2, §2.5"
+    },
+    {
+      "id": "q-cm2-droits-d-acces-et-redirections-018",
+      "notion": "tubes-filtres",
+      "type": "qcm",
+      "enonce": "Que se passe-t-il si le lecteur d'un tube est plus lent que l'écrivain ?",
+      "choix": [
+        "Quand le tube est plein, l'écrivain est bloqué jusqu'à ce que le lecteur lise",
+        "Les données en trop sont perdues pour ne pas ralentir l'écrivain",
+        "Le système écrit le surplus dans un fichier temporaire du disque",
+        "Le lecteur est tué et le tube est détruit par le système"
+      ],
+      "bonne": 0,
+      "explication": "Le système synchronise : lecteur bloqué si le tube est vide (avec un écrivain), écrivain bloqué si le tube est plein.",
+      "source": "CM2, §2.5"
     }
   ]
 }

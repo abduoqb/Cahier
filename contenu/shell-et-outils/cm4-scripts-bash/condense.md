@@ -17,7 +17,7 @@
 | structures-controle | `while test; do ... done` ; `case ... in motif) ... ;; esac` avec `*)` par défaut. |
 | structures-controle | `(( ))` et les doubles crochets s'utilisent directement comme condition d'un if. |
 | globbing-expansion | `*` et `?` sont interprétés par bash : `for f in *.sh` suffit. |
-| globbing-expansion | `{1..6}` et `{a-d}` énumèrent ; `seq` génère une séquence. |
+| globbing-expansion | `{1..6}` et `{a..d}` énumèrent (`{a-d}` avec un tiret ne marche pas) ; `seq` génère une séquence. |
 | arguments-shift | `$1` premier argument, `$0` script, `$#` nombre, `$@` tous les arguments. |
 | arguments-shift | `shift` décale les arguments : indispensable pour garder les espaces et les arguments vides. |
 | arguments-shift | Vérifier `$#` puis `echo usage 1>&2` et `exit 1` en cas d'erreur. |

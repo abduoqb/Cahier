@@ -7,12 +7,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « obsolescence programmée » ?",
       "choix": [
-        "planned obsolescence",
         "programmed obsolescence",
         "scheduled obsolescence",
+        "planned obsolescence",
         "planned obsolete"
       ],
-      "bonne": 0,
+      "bonne": 2,
       "explication": "L'expression du cours est planned obsolescence.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -37,12 +37,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « appareils électroménagers » ?",
       "choix": [
-        "household appliances",
         "housing appliances",
         "home electrical machines",
-        "electrohousehold devices"
+        "electrohousehold devices",
+        "household appliances"
       ],
-      "bonne": 0,
+      "bonne": 3,
       "explication": "Household appliances.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -52,12 +52,12 @@
       "type": "qcm",
       "enonce": "Quelle traduction convient pour « lutter contre l'obsolescence programmée » ?",
       "choix": [
-        "to fight planned obsolescence",
         "to fight for planned obsolescence",
+        "to fight planned obsolescence",
         "to fight to planned obsolescence",
         "to fight at planned obsolescence"
       ],
-      "bonne": 0,
+      "bonne": 1,
       "explication": "To fight / tackle / combat se construisent directement avec le nom. « Fight for » signifierait l'inverse.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -67,12 +67,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « Les consommateurs devraient essayer de réparer leurs appareils avant d'en acheter de nouveaux » ?",
       "choix": [
-        "Consumers should try to repair their devices before buying new ones.",
         "Consumers should to try to repair their devices before to buy new ones.",
+        "Consumers should try to repair their devices before buying new ones.",
         "Consumers should try repairing their devices before buy new.",
         "Consumers must tries to repair their devices before buying new ones."
       ],
-      "bonne": 0,
+      "bonne": 1,
       "explication": "should + base verbale ; before + -ing ; new ones remplace le nom.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -82,12 +82,12 @@
       "type": "qcm",
       "enonce": "Après « before », le verbe se met :",
       "choix": [
-        "en -ing (before buying)",
         "à l'infinitif avec to",
         "à la base verbale",
-        "au participe passé"
+        "au participe passé",
+        "en -ing (before buying)"
       ],
-      "bonne": 0,
+      "bonne": 3,
       "explication": "Après une préposition (before, without), le verbe prend -ing.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -112,12 +112,12 @@
       "type": "qcm",
       "enonce": "Passif au présent continu : quelle forme ?",
       "choix": [
-        "is/are being + participe passé",
         "is/are + participe passé",
         "has/have been + participe passé",
+        "is/are being + participe passé",
         "was/were being + base"
       ],
-      "bonne": 0,
+      "bonne": 2,
       "explication": "is/are being + participe passé.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -127,12 +127,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « Quelles mesures le gouvernement a-t-il prises ces dernières années ? »",
       "choix": [
-        "What measures has the government taken in recent years ?",
         "What measures did the government took in recent years ?",
         "What measures the government has taken in recent years ?",
+        "What measures has the government taken in recent years ?",
         "Which measures has taken the government in recent years ?"
       ],
-      "bonne": 0,
+      "bonne": 2,
       "explication": "In recent years appelle le present perfect, avec inversion has + sujet. Take, took, taken.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -157,12 +157,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « sans contribuer à » ?",
       "choix": [
-        "without contributing to",
         "without to contribute to",
         "without contribute to",
-        "without contributed to"
+        "without contributed to",
+        "without contributing to"
       ],
-      "bonne": 0,
+      "bonne": 3,
       "explication": "Après without, le verbe se met en -ing.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     },
@@ -172,12 +172,12 @@
       "type": "qcm",
       "enonce": "Comment traduit-on « Peut-on continuer à produire de nouveaux appareils ? »",
       "choix": [
-        "Can we keep producing new devices ?",
         "Can we keep produce new devices ?",
+        "Can we keep producing new devices ?",
         "Can we to keep producing new devices ?",
         "We can keep producing new devices ?"
       ],
-      "bonne": 0,
+      "bonne": 1,
       "explication": "Can we + base verbale ; keep/continue + -ing. Pas de to après can.",
       "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
     }

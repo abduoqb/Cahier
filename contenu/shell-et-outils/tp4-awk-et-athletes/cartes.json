@@ -1,0 +1,75 @@
+{
+  "seance": "tp4-awk-et-athletes",
+  "cartes": [
+    {
+      "id": "c-tp4-awk-et-athletes-001",
+      "notion": "awk-couleurs",
+      "recto": "Quel séparateur pour des lignes Nom,r,v,b; ?",
+      "verso": "FS=\"[,;]\" ; $1 nom, $2 rouge, $3 vert, $4 bleu.",
+      "source": "TP5, question 1"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-002",
+      "notion": "awk-couleurs",
+      "recto": "Quel opérateur awk exprime « ne correspond pas à » ?",
+      "verso": "!~ : $1 !~ /^Dark/",
+      "source": "TP5, question 2"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-003",
+      "notion": "awk-comptage",
+      "recto": "Comment compter les lignes qui vérifient une condition ?",
+      "verso": "{ nb++ } dans la règle, puis END{ print nb + 0 }.",
+      "source": "TP5, question 2"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-004",
+      "notion": "awk-comptage",
+      "recto": "Pourquoi écrire print nb + 0 ?",
+      "verso": "Pour afficher 0 et non une ligne vide si rien ne correspond.",
+      "source": "TP5, question 2"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-005",
+      "notion": "athletes-grep-sed",
+      "recto": "Comment lister les .csv contenant id, casse ignorée ?",
+      "verso": "grep -il \"id\" *.csv",
+      "source": "TP5, question 3"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-006",
+      "notion": "athletes-grep-sed",
+      "recto": "Comment retirer commentaires (%) et guillemets ?",
+      "verso": "sed '/^%/d; s/\"//g' Athletes.csv",
+      "source": "TP5, question 6"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-007",
+      "notion": "athletes-awk",
+      "recto": "Quelles colonnes pour Name, Team, Year, Season ?",
+      "verso": "$2, $7, $10, $11.",
+      "source": "TP5, question 7"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-008",
+      "notion": "athletes-awk",
+      "recto": "Pourquoi $7 == \"France\" échoue sur le fichier brut ?",
+      "verso": "Le champ contient les guillemets ; les retirer avec sed d'abord.",
+      "source": "TP5, question 7"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-009",
+      "notion": "athletes-script",
+      "recto": "Comment un script compte les participations d'un nom ?",
+      "verso": "awk -F, -v nom=\"$1\" '$2 ~ nom { n++ } END { print n + 0 }'",
+      "source": "TP5, question 8"
+    },
+    {
+      "id": "c-tp4-awk-et-athletes-010",
+      "notion": "athletes-script",
+      "recto": "Que faire si le script n'a pas son argument ?",
+      "verso": "Usage sur 1>&2, puis exit 1.",
+      "source": "TP5, question 10"
+    }
+  ]
+}

@@ -346,18 +346,73 @@
           ]
         },
         {
-          "id": "tp1-exercices-terminal-droits-filtres-et-scripts",
+          "id": "tp1-terminal-fichiers-archives-find",
           "type": "TP",
-          "titre": "Exercices : terminal, droits, filtres et scripts",
-          "dossier": "shell-et-outils/tp1-exercices-terminal-droits-filtres-et-scripts",
+          "titre": "Terminal, fichiers, archives et find",
+          "dossier": "shell-et-outils/tp1-terminal-fichiers-archives-find",
           "cartes": true,
           "notions": [
-            "exercices-terminal",
-            "exercices-permissions",
-            "exercices-redirections",
-            "exercices-filtres",
-            "exercices-awk",
-            "exercices-scripts"
+            "navigation-listage",
+            "fichiers-repertoires",
+            "chemins-casse-documents",
+            "variables-path-alias",
+            "archives-find"
+          ]
+        },
+        {
+          "id": "tp2-permissions-redirections-et-path",
+          "type": "TP",
+          "titre": "Permissions, redirections et PATH",
+          "dossier": "shell-et-outils/tp2-permissions-redirections-et-path",
+          "cartes": true,
+          "notions": [
+            "droits-fichiers",
+            "droits-repertoires",
+            "masque-creation",
+            "redirections-tubes",
+            "executables-path"
+          ]
+        },
+        {
+          "id": "tp3-expressions-regulieres-grep-et-sed",
+          "type": "TP",
+          "titre": "Expressions régulières, grep et sed",
+          "dossier": "shell-et-outils/tp3-expressions-regulieres-grep-et-sed",
+          "cartes": true,
+          "notions": [
+            "grep-passwd",
+            "grep-explications",
+            "grep-dictionnaire",
+            "sed-mise-en-forme",
+            "sed-effacement"
+          ]
+        },
+        {
+          "id": "tp4-awk-et-athletes",
+          "type": "TP",
+          "titre": "awk et le fichier Athletes.csv",
+          "dossier": "shell-et-outils/tp4-awk-et-athletes",
+          "cartes": true,
+          "notions": [
+            "awk-couleurs",
+            "awk-comptage",
+            "athletes-grep-sed",
+            "athletes-awk",
+            "athletes-script"
+          ]
+        },
+        {
+          "id": "tp5-scripts-creation-et-rangement",
+          "type": "TP",
+          "titre": "Scripts : création de fichiers et rangement",
+          "dossier": "shell-et-outils/tp5-scripts-creation-et-rangement",
+          "cartes": true,
+          "notions": [
+            "script-arguments",
+            "script-tests-sauvegarde",
+            "script-espaces",
+            "find-vrac",
+            "rangement-doublons"
           ]
         }
       ]

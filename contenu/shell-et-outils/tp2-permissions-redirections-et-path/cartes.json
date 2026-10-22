@@ -1,0 +1,75 @@
+{
+  "seance": "tp2-permissions-redirections-et-path",
+  "cartes": [
+    {
+      "id": "c-tp2-permissions-redirections-et-path-001",
+      "notion": "droits-fichiers",
+      "recto": "Comment donner rw à l'utilisateur seul en symbolique et en octal ?",
+      "verso": "chmod u=rw,go= f ; chmod 600 f",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-002",
+      "notion": "droits-fichiers",
+      "recto": "Quelle différence entre sh script.sh et ./script.sh ?",
+      "verso": "./script.sh exige le droit x, pas sh script.sh.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-003",
+      "notion": "droits-repertoires",
+      "recto": "Quels droits pour supprimer un fichier dans un répertoire ?",
+      "verso": "w et x sur le répertoire.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-004",
+      "notion": "droits-repertoires",
+      "recto": "Que permet un répertoire en --x------ ?",
+      "verso": "Traverser : lire un fichier connu, mais ni lister ni créer.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-005",
+      "notion": "masque-creation",
+      "recto": "Quels droits donnent umask 022 et umask 077 ?",
+      "verso": "022 : 755/644 ; 077 : 700/600 (répertoire/fichier).",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-006",
+      "notion": "masque-creation",
+      "recto": "Que faire à la fin d'un test de umask ?",
+      "verso": "Remettre la valeur par défaut : umask 0022.",
+      "source": "TP3, partie 2"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-007",
+      "notion": "redirections-tubes",
+      "recto": "Comment séparer trouvés et erreurs dans deux fichiers ?",
+      "verso": "cmd > liste.txt 2> erreurs.txt",
+      "source": "TP3, partie 3, question 6"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-008",
+      "notion": "redirections-tubes",
+      "recto": "Comment compter les éléments de /usr/bin ?",
+      "verso": "ls /usr/bin | wc -l",
+      "source": "TP3, partie 3, question 8"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-009",
+      "notion": "executables-path",
+      "recto": "Comment lancer un exécutable du répertoire courant ?",
+      "verso": "./myls, ou ajouter le dossier au PATH.",
+      "source": "TP3, partie 4"
+    },
+    {
+      "id": "c-tp2-permissions-redirections-et-path-010",
+      "notion": "executables-path",
+      "recto": "Quel shebang pour un script Python portable ?",
+      "verso": "#!/usr/bin/env python3",
+      "source": "TP3, partie 4"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "seance": "tp5-scripts-creation-et-rangement",
+  "cartes": [
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-001",
+      "notion": "script-arguments",
+      "recto": "Comment vérifier le nombre d'arguments d'un script ?",
+      "verso": "if (( $# < 2 )); then echo \"$usage\" 1>&2; exit 1; fi",
+      "source": "TP6, exercice 1, question 9"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-002",
+      "notion": "script-arguments",
+      "recto": "Que fait shift dans le script de création ?",
+      "verso": "Il retire $1 : le dossier d'abord, puis chaque nom de fichier.",
+      "source": "TP6, exercice 1, questions 8 et 13"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-003",
+      "notion": "script-tests-sauvegarde",
+      "recto": "Comment sauvegarder un fichier seulement s'il existe ?",
+      "verso": "[[ -e \"$f\" ]] && cp \"$f\" \"$f.old\"",
+      "source": "TP6, exercice 1, question 5"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-004",
+      "notion": "script-tests-sauvegarde",
+      "recto": "Comment éviter l'erreur de mkdir sur un dossier existant ?",
+      "verso": "Tester avant : if [[ -d \"$d\" ]]; then ... else mkdir \"$d\"; fi",
+      "source": "TP6, exercice 1, question 6"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-005",
+      "notion": "script-espaces",
+      "recto": "Pourquoi des guillemets autour de \"$1\" et \"$dossier\" ?",
+      "verso": "Sans eux, un nom avec espace devient plusieurs arguments.",
+      "source": "TP6, exercice 1, question 10"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-006",
+      "notion": "script-espaces",
+      "recto": "Quelles boucles gardent « ma ma » entier ?",
+      "verso": "while [[ -n \"$1\" ]] + shift, ou for x in \"$@\".",
+      "source": "TP6, exercice 1, question 13"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-007",
+      "notion": "find-vrac",
+      "recto": "Comment compter les fichiers Java, lister les images, les noms avec espace ?",
+      "verso": "-name \"*.java\" | wc -l ; \\( -name \"*.jpg\" -o -name \"*.png\" \\) ; -name \"* *\"",
+      "source": "TP6, exercice 2, question 3.1"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-008",
+      "notion": "find-vrac",
+      "recto": "Comment ignorer la casse avec find ?",
+      "verso": "-iname au lieu de -name.",
+      "source": "TP6, exercice 2, indication"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-009",
+      "notion": "rangement-doublons",
+      "recto": "Comment parcourir find en gardant les noms avec espaces ?",
+      "verso": "find ... | while IFS= read -r f; do ...; done",
+      "source": "TP6, exercice 2, question 3.2"
+    },
+    {
+      "id": "c-tp5-scripts-creation-et-rangement-010",
+      "notion": "rangement-doublons",
+      "recto": "Comment ne pas écraser et ne pas recopier un doublon ?",
+      "verso": "Test -e, puis diff -q pour un doublon, sinon $RANDOM dans le nom.",
+      "source": "TP6, exercice 2, questions 3.3 et 3.4"
+    }
+  ]
+}

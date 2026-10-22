@@ -1,0 +1,230 @@
+{
+  "seance": "tp1-terminal-fichiers-archives-find",
+  "questions": [
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-001",
+      "notion": "navigation-listage",
+      "type": "qcm",
+      "enonce": "Quelle commande affiche le contenu d'un répertoire en format long avec des tailles lisibles comme 140K ?",
+      "choix": [
+        "ls -lS",
+        "ls -lt",
+        "ls -lh",
+        "ls -lr"
+      ],
+      "bonne": 2,
+      "explication": "-l donne le format long, -h les tailles lisibles. -S trie par taille, -t par date, -r inverse l'ordre.",
+      "source": "TP1, partie 2"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-002",
+      "notion": "navigation-listage",
+      "type": "qcm",
+      "enonce": "Quelle option de tree limite l'affichage à deux niveaux de profondeur ?",
+      "choix": [
+        "tree -L 2",
+        "tree -d 2",
+        "tree -n 2",
+        "tree --max 2"
+      ],
+      "bonne": 0,
+      "explication": "-L suivi d'un nombre limite la profondeur ; -d n'affiche que les répertoires.",
+      "source": "TP1, partie 2"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-003",
+      "notion": "navigation-listage",
+      "type": "qcm",
+      "enonce": "Dans la sortie de ls -l, comment distingue-t-on un répertoire d'un fichier ordinaire ?",
+      "choix": [
+        "Un répertoire se termine toujours par un slash dans la liste",
+        "Un répertoire n'a pas de date de modification affichée",
+        "Le premier caractère est r pour un répertoire, w pour un fichier",
+        "Le premier caractère est d pour un répertoire, - pour un fichier"
+      ],
+      "bonne": 3,
+      "explication": "Le premier caractère est le type : - fichier, d répertoire, l lien.",
+      "source": "TP1, partie 2 et CM2, §1.1"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-004",
+      "notion": "fichiers-repertoires",
+      "type": "qcm",
+      "enonce": "Que fait echo a* dans un répertoire qui contient a1, a2 et le répertoire autres ?",
+      "choix": [
+        "Il affiche la lettre a suivie d'une étoile",
+        "Il affiche a1 a2 autres, répertoire compris",
+        "Il affiche seulement les fichiers ordinaires commençant par a",
+        "Il affiche le nombre de noms commençant par a"
+      ],
+      "bonne": 1,
+      "explication": "Le shell remplace a* par tous les noms qui commencent par a, y compris autres, avant de lancer echo.",
+      "source": "TP1, partie 3.2"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-005",
+      "notion": "fichiers-repertoires",
+      "type": "qcm",
+      "enonce": "Pourquoi cp a* A/ affiche-t-il omitting directory 'autres' ?",
+      "choix": [
+        "autres est protégé en écriture par le système",
+        "autres commence par a et cp refuse un répertoire sans -r",
+        "A/ est un sous-répertoire du répertoire autres",
+        "cp ne sait pas copier plus de quatre éléments"
+      ],
+      "bonne": 1,
+      "explication": "a* attrape aussi le répertoire autres ; sans -r, cp copie les fichiers et signale qu'il ignore les répertoires.",
+      "source": "TP1, partie 3.2"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-006",
+      "notion": "fichiers-repertoires",
+      "type": "qcm",
+      "enonce": "Quelle commande liste uniquement les noms cachés, sans . ni .. ?",
+      "choix": [
+        "ls -d .*",
+        "ls -d *.hidden",
+        "ls -d .?",
+        "ls -d .[!.]*"
+      ],
+      "bonne": 3,
+      "explication": ".[!.]* = un point suivi d'un caractère qui n'est pas un point. .* attrape aussi . et .. avec les bash avant la version 5.2.",
+      "source": "TP1, partie 3.1"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-007",
+      "notion": "chemins-casse-documents",
+      "type": "qcm",
+      "enonce": "Depuis ~/systeme/tp1, quel chemin relatif mène à ~/Documents ?",
+      "choix": [
+        "../../Documents",
+        "../Documents",
+        "../../../Documents",
+        "./Documents"
+      ],
+      "bonne": 0,
+      "explication": ".. remonte à ~/systeme, ../.. à ~ (le home) : ../../Documents.",
+      "source": "TP1, partie 3.3"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-008",
+      "notion": "chemins-casse-documents",
+      "type": "qcm",
+      "enonce": "Après touch toto puis touch Toto dans Documents, combien de fichiers existent ?",
+      "choix": [
+        "Deux : toto et Toto, comme dans tout répertoire Linux",
+        "Aucun : le second touch efface le premier fichier",
+        "Un seul : Documents ignore la casse, le second touch met à jour la date",
+        "Deux, mais Toto est caché par le système"
+      ],
+      "bonne": 2,
+      "explication": "Documents est partagé avec les machines Windows, qui ne distinguent pas la casse.",
+      "source": "TP1, partie 3.4"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-009",
+      "notion": "chemins-casse-documents",
+      "type": "qcm",
+      "enonce": "Pourquoi le dossier Documents ignore-t-il la casse ?",
+      "choix": [
+        "C'est un répertoire spécial protégé par le compte root",
+        "Les noms y sont limités à huit caractères en majuscules",
+        "Il est partagé avec des machines Windows, qui n'en tiennent pas compte",
+        "Le système de fichiers Linux ne distingue jamais la casse"
+      ],
+      "bonne": 2,
+      "explication": "Le dossier est stocké sur des serveurs utilisés par Windows et Linux : il doit être compatible avec les deux.",
+      "source": "TP1, partie 3.4"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-010",
+      "notion": "variables-path-alias",
+      "type": "qcm",
+      "enonce": "Après export PATH='', quelle commande marche encore ?",
+      "choix": [
+        "/bin/ls, car un chemin complet n'utilise pas le PATH",
+        "ls, car le shell se souvient des commandes déjà lancées",
+        "cd, car il cherche dans le répertoire courant",
+        "which, car c'est une commande interne du shell"
+      ],
+      "bonne": 0,
+      "explication": "Le PATH sert à retrouver une commande à partir de son nom. Avec un chemin complet, il n'est pas consulté.",
+      "source": "TP2, partie 1.1"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-011",
+      "notion": "variables-path-alias",
+      "type": "qcm",
+      "enonce": "Quelle ligne crée un alias ll pour lister en long avec des tailles lisibles ?",
+      "choix": [
+        "alias ll = 'ls -lh'",
+        "alias ll:'ls -lh'",
+        "ll=alias 'ls -lh'",
+        "alias ll='ls -lh'"
+      ],
+      "bonne": 3,
+      "explication": "La syntaxe est alias nom='commande', sans espace autour du =.",
+      "source": "TP2, partie 1.2"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-012",
+      "notion": "variables-path-alias",
+      "type": "qcm",
+      "enonce": "Comment recharger ~/.bashrc dans le terminal courant sans en ouvrir un autre ?",
+      "choix": [
+        "bash ~/.bashrc, qui relit le fichier dans le shell courant",
+        "source ~/.bashrc",
+        "export ~/.bashrc",
+        "reload ~/.bashrc"
+      ],
+      "bonne": 1,
+      "explication": "source (ou .) exécute le fichier dans le shell courant ; bash ~/.bashrc le lancerait dans un sous-shell, sans effet ensuite.",
+      "source": "TP2, partie 1.3"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-013",
+      "notion": "archives-find",
+      "type": "qcm",
+      "enonce": "Quelle commande trouve les fichiers de plus de 1 Mo ?",
+      "choix": [
+        "find . -type f -size 1M+",
+        "find . -type f -size +1M",
+        "find . -type f -more 1M",
+        "find . -size +1 -name M"
+      ],
+      "bonne": 1,
+      "explication": "-size +1M signifie plus de 1 Mo ; -size -50c moins de 50 octets.",
+      "source": "TP2, partie 3"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-014",
+      "notion": "archives-find",
+      "type": "qcm",
+      "enonce": "Quelle commande liste les images JPEG et PNG ?",
+      "choix": [
+        "find . -name \"*.jpg\" -name \"*.png\"",
+        "find . -name \"*.jpg|*.png\"",
+        "find . -name *.jpg *.png",
+        "find . \\( -name \"*.jpg\" -o -name \"*.png\" \\)"
+      ],
+      "bonne": 3,
+      "explication": "-o signifie « ou », les parenthèses sont échappées. Deux -name à la suite exigeraient les deux extensions à la fois.",
+      "source": "TP2, partie 3"
+    },
+    {
+      "id": "q-tp1-terminal-fichiers-archives-find-015",
+      "notion": "archives-find",
+      "type": "qcm",
+      "enonce": "unzip refuse une archive téléchargée. Que faire en premier ?",
+      "choix": [
+        "Lancer file pour connaître son vrai type, puis la commande adaptée",
+        "La renommer en .zip : l'extension décide du format",
+        "La télécharger de nouveau : elle est forcément corrompue",
+        "Faire chmod +x pour la rendre exécutable"
+      ],
+      "bonne": 0,
+      "explication": "file regarde le contenu : gzip, tar, etc. On utilise alors tar zxvf, gunzip… selon la réponse.",
+      "source": "TP2, partie 2 Archives"
+    }
+  ]
+}

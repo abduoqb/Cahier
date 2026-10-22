@@ -4,100 +4,114 @@
     {
       "id": "c-cm1-linux-terminal-et-fichiers-001",
       "notion": "terminal-shell-prompt",
-      "recto": "Quelles sont les six étapes de la boucle du shell ?",
-      "verso": "Prompt, saisie jusqu'à Entrée, analyse, demande d'exécution, affichage, retour au prompt.",
-      "source": "CM1, §2.1 Le terminal et le shell bash"
+      "recto": "Quelles sont les étapes de la boucle d'un interpréteur de commandes ?",
+      "verso": "Prompt, saisie, analyse, exécution, affichage, retour au prompt.",
+      "source": "CM1, §2.1"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-002",
       "notion": "terminal-shell-prompt",
-      "recto": "Dans le prompt utilisateur@hote:repertoire$, que signifie le $ final ?",
-      "verso": "Le shell est prêt et attend une commande.",
-      "source": "CM1, §2.4.2 Prompt"
+      "recto": "Quelle est la forme d'un prompt et que signifie le $ ?",
+      "verso": "utilisateur@hote:repertoire$ ; le $ veut dire « le shell est prêt ».",
+      "source": "CM1, §2.4.2"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-003",
-      "notion": "arborescence-chemins",
-      "recto": "Que désignent les notations ., .., ~ et / dans un chemin ?",
-      "verso": ". le répertoire courant, .. le parent, ~ le home, / la racine.",
-      "source": "CM1, §2.3 Chemin des fichiers et répertoires"
+      "notion": "terminal-shell-prompt",
+      "recto": "Quels raccourcis : interrompre, quitter le shell, geler l'affichage ?",
+      "verso": "Ctrl+C interrompt, Ctrl+D quitte, Ctrl+S gèle (Ctrl+Q dégèle).",
+      "source": "CM1, §2.4.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-004",
       "notion": "arborescence-chemins",
-      "recto": "Quelle différence entre un chemin absolu et un chemin relatif ?",
-      "verso": "L'absolu part de la racine / ; le relatif part du répertoire courant.",
-      "source": "CM1, §2.3 ; TP1, partie 3.3"
+      "recto": "Que désignent . , .. et ~ dans un chemin ?",
+      "verso": "Le répertoire courant, son parent, le home.",
+      "source": "CM1, §2.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-005",
-      "notion": "fichier-inode",
-      "recto": "De quoi un fichier est-il composé sous Linux ?",
-      "verso": "D'un i-node (métadonnées) et d'un contenu (suite d'octets).",
-      "source": "CM1, §2.2 Fichiers et répertoires"
+      "notion": "arborescence-chemins",
+      "recto": "Quelle différence entre chemin absolu et chemin relatif ?",
+      "verso": "Absolu : depuis la racine /. Relatif : depuis le répertoire courant.",
+      "source": "CM1, §2.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-006",
       "notion": "fichier-inode",
-      "recto": "Qu'est-ce qu'un répertoire pour le système Linux ?",
-      "verso": "Une table de liens (i-numéro, nom), que seul le système peut écrire.",
-      "source": "CM1, §2.3, remarque sur les répertoires"
+      "recto": "De quelles deux parties un fichier est-il composé ?",
+      "verso": "L'i-node (métadonnées) et le contenu (suite d'octets).",
+      "source": "CM1, §2.2"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-007",
-      "notion": "commande-options",
-      "recto": "Quelle est la syntaxe générale d'une commande et la différence argument / option ?",
-      "verso": "commande [options] [arguments] : l'argument dit sur quoi, l'option comment.",
-      "source": "CM1, §2.4 Terminal et interpréteur de commandes"
+      "notion": "fichier-inode",
+      "recto": "Qu'est-ce qu'un répertoire pour le système ?",
+      "verso": "Un fichier contenant une table de liens (i-numéro, nom).",
+      "source": "CM1, §2.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-008",
-      "notion": "commande-options",
-      "recto": "Comment obtenir le manuel d'une commande, et comment note-t-on une option en mot ?",
-      "verso": "man commande ; une option en mot s'écrit avec deux tirets (--force).",
-      "source": "CM1, §2.4 ; TP1, partie 2"
+      "notion": "fichier-inode",
+      "recto": "Comment voir un fichier dont le nom commence par un point ?",
+      "verso": "ls -a : ces noms sont cachés par défaut.",
+      "source": "CM1, §2.2"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-009",
-      "notion": "variables-environnement",
-      "recto": "À quoi sert export sur une variable ?",
-      "verso": "À la rendre visible du terminal et de ses sous-shells (variable d'environnement).",
-      "source": "CM1, §3.2 Variables d'environnement"
+      "notion": "commande-options",
+      "recto": "Quelle est la syntaxe générale d'une commande ?",
+      "verso": "commande [option...] [argument...], par exemple wc -l /etc/fstab.",
+      "source": "CM1, §2.4"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-010",
-      "notion": "variables-environnement",
-      "recto": "Que contient la variable PATH et à quoi sert-elle ?",
-      "verso": "La liste des répertoires où le shell cherche les commandes, séparés par :.",
-      "source": "CM1, §3.3 ; TP2, partie 1.1"
+      "notion": "commande-options",
+      "recto": "Quelle différence entre une option et un argument ?",
+      "verso": "L'option change la façon de travailler, l'argument dit sur quoi.",
+      "source": "CM1, §1.4"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-011",
       "notion": "variables-environnement",
-      "recto": "Où mettre un alias pour qu'il soit actif à chaque nouveau terminal ?",
-      "verso": "Dans ~/.bashrc, puis source ~/.bashrc pour le recharger.",
-      "source": "CM1, §3.3 et §3.4 ; TP2, parties 1.2 et 1.3"
+      "recto": "Comment rendre une variable visible des sous-shells ?",
+      "verso": "Avec export : export EDITOR=nano.",
+      "source": "CM1, §3.2"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-012",
-      "notion": "archivage-compression",
-      "recto": "Que signifient les options c, x, t, v, f de tar ?",
-      "verso": "créer, extraire, lister, détailler, nommer l'archive.",
-      "source": "CM1, §4 Archivage et compression"
+      "notion": "variables-environnement",
+      "recto": "À quoi sert la variable PATH ?",
+      "verso": "Elle liste les répertoires où le shell cherche les commandes.",
+      "source": "CM1, §3.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-013",
-      "notion": "archivage-compression",
-      "recto": "Quelles options de tar compressent l'archive, et avec quelles extensions ?",
-      "verso": "z avec gzip (.tar.gz ou .tgz), j avec bzip2 (.tar.bz2 ou .tbz).",
-      "source": "CM1, §4 Archivage et compression"
+      "notion": "variables-environnement",
+      "recto": "Quel fichier est lu à chaque nouveau terminal, et comment le recharger ?",
+      "verso": "~/.bashrc ; on le recharge avec source ~/.bashrc.",
+      "source": "CM1, §3.3"
     },
     {
       "id": "c-cm1-linux-terminal-et-fichiers-014",
+      "notion": "variables-environnement",
+      "recto": "Que fait eval echo $B si B vaut '$A' et A vaut toto ?",
+      "verso": "Il affiche toto : eval relit $A et le remplace.",
+      "source": "CM1, §3.1"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-015",
       "notion": "archivage-compression",
-      "recto": "L'extraction d'un tar écrase-t-elle les fichiers existants ? Comment l'éviter ?",
-      "verso": "Oui par défaut ; l'option k empêche l'écrasement.",
-      "source": "CM1, §4 Archivage et compression"
+      "recto": "Quelles options de tar créent, extraient et listent une archive ?",
+      "verso": "c crée, x extrait, t liste ; v détaille, f nomme l'archive.",
+      "source": "CM1, §4"
+    },
+    {
+      "id": "c-cm1-linux-terminal-et-fichiers-016",
+      "notion": "archivage-compression",
+      "recto": "Que font les options z et j de tar ?",
+      "verso": "z compresse avec gzip (.tar.gz), j avec bzip2 (.tar.bz2).",
+      "source": "CM1, §4"
     }
   ]
 }

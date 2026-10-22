@@ -1,0 +1,75 @@
+{
+  "seance": "tp3-expressions-regulieres-grep-et-sed",
+  "cartes": [
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-001",
+      "notion": "grep-passwd",
+      "recto": "Quel est le format d'une ligne de /etc/passwd ?",
+      "verso": "nom:mot_de_passe:uid:gid:commentaire:home:shell",
+      "source": "TP regexp, question 1"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-002",
+      "notion": "grep-passwd",
+      "recto": "Comment sélectionner l'utilisateur man sans manager ?",
+      "verso": "grep '^man:' /etc/passwd",
+      "source": "TP regexp, question 1"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-003",
+      "notion": "grep-explications",
+      "recto": "Que sélectionne (.)(.)(.)\\3\\2\\1$ ?",
+      "verso": "Les mots qui finissent par un palindrome de six lettres.",
+      "source": "TP regexp, question 2"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-004",
+      "notion": "grep-explications",
+      "recto": "Que veut dire ^p[^aeiu]*n$ ?",
+      "verso": "p au début, n à la fin, sans a, e, i, u entre les deux.",
+      "source": "TP regexp, question 2"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-005",
+      "notion": "grep-dictionnaire",
+      "recto": "Quelle regexp pour « même lettre au début et à la fin » ?",
+      "verso": "^(.)(.*\\1)?$ (les mots d'une lettre inclus).",
+      "source": "TP regexp, question 3"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-006",
+      "notion": "grep-dictionnaire",
+      "recto": "Quelle regexp pour « q non suivi de u » ?",
+      "verso": "q([^u]|$) : le |$ couvre un q final.",
+      "source": "TP regexp, question 3"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-007",
+      "notion": "sed-mise-en-forme",
+      "recto": "Comment réduire les espaces multiples avec sed ?",
+      "verso": "sed 's/  */ /g' (espace, espace, étoile).",
+      "source": "TP regexp, question 4"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-008",
+      "notion": "sed-mise-en-forme",
+      "recto": "Comment appliquer un script sed ?",
+      "verso": "sed -f forme.sed texte.txt",
+      "source": "TP regexp, question 6"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-009",
+      "notion": "sed-effacement",
+      "recto": "Comment extraire les noms de classe et de méthodes d'un fichier Python ?",
+      "verso": "sed -n -E avec s/^class +(...).*/\\1/p et s/^ +def +(...).*/\\1/p",
+      "source": "TP regexp, question 8"
+    },
+    {
+      "id": "c-tp3-expressions-regulieres-grep-et-sed-010",
+      "notion": "sed-effacement",
+      "recto": "Que fait sed '/^bin/!d' fichier ?",
+      "verso": "Il garde seulement les lignes qui commencent par bin.",
+      "source": "TP regexp, question 7"
+    }
+  ]
+}

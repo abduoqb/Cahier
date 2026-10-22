@@ -79,14 +79,43 @@ done
 
 Attention : `test` est une **commande**. Son résultat se lit dans `$?` : **0 = succès (test vrai)**, 1 = échec (test faux). C'est l'inverse de l'intuition.
 
-Bash ajoute des formes plus pratiques :
-- `(( $a < $b ))` : comparaison numérique avec les symboles mathématiques ;
-- une commande composée à **doubles crochets** (deux crochets ouvrants, deux fermants) : comparaison de chaînes et tests de fichiers, plus permissive que `test` car elle ne découpe pas les mots. On peut aussi rester sur `test "$chaine" = "toto"` ou `test -e "$fichier"`.
+Bash ajoute des formes plus pratiques (à écrire dans un script `#!/bin/bash`) :
+- `(( a < b ))` : comparaison numérique avec les symboles mathématiques (`<`, `==`, `!=`…) ; les `$` sont facultatifs ;
+- `[[ ... ]]` (**doubles crochets**) : tests de chaînes et de fichiers. Plus pratique que `test` : on peut écrire `==` et `!=` pour les chaînes, et les variables ne sont pas découpées en mots.
+
+```bash
+[[ $chaine == "toto" ]]   # chaînes égales
+[[ $ch1 != $ch2 ]]        # chaînes différentes
+[[ -n $ch1 ]]             # chaîne non vide (-z : vide)
+[[ -e $fichier ]]         # le fichier existe ; -d répertoire, -x exécutable, -w modifiable
+(( a < b ))               # entiers : a est plus petit que b
+```
+On peut aussi rester sur `test "$chaine" = "toto"` ou `test -e "$fichier"`.
 
 ```bash
 a=5; b=7
 test $a -lt $b ; echo "a < b ? $?"    # 0
 (( a < b ))    ; echo "a < b ? $?"    # 0
+```
+
+```pas-a-pas
+{
+  "titre": "$? : le code de retour de la commande précédente",
+  "code": [
+    "a=5; b=7; ch1=blabla",
+    "test $a -lt $b ; echo $?",
+    "(( a == b )) ; echo $?",
+    "[[ -z $ch1 ]] ; echo $?",
+    "[[ -e /bin/ls ]] ; echo $?"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"a":5,"b":7,"ch1":"blabla"},"note":"On prépare deux entiers et une chaîne."},
+    {"ligne":1,"vars":{"test":"5 < 7 : vrai","$?":0},"note":"Le test est vrai : la commande test a réussi, donc $? vaut 0. 0 veut dire succès."},
+    {"ligne":2,"vars":{"test":"5 == 7 : faux","$?":1},"note":"Le test est faux : la commande a échoué, $? vaut 1. C'est l'inverse de l'intuition habituelle."},
+    {"ligne":3,"vars":{"test":"ch1 est vide ? non","$?":1},"note":"[[ -z ... ]] teste « la chaîne est vide » : ce n'est pas le cas, le test est faux, $? vaut 1."},
+    {"ligne":4,"vars":{"test":"/bin/ls existe","$?":0},"note":"[[ -e ... ]] teste l'existence du fichier : il existe, le test est vrai, $? vaut 0."}
+  ]
+}
 ```
 
 ### 5. Structures de contrôle
@@ -119,7 +148,7 @@ case $nom in
     *)    echo "on ne sait pas qui c'est" ;;
 esac
 ```
-Les formes composées `(( ))` et les doubles crochets s'utilisent aussi dans un `if` : `if (( i == 5 ))` ou `if test "$texte" = "toto"`.
+Les formes composées s'utilisent aussi dans un `if` : `if (( i == 5 ))` ou `elif [[ $texte == "toto" ]]`.
 
 ### 6. Globbing et expansion
 Le **globbing** interprète les jokers sur les noms de fichiers : `*.txt` liste tous les fichiers en `.txt`, `?` remplace un caractère.
@@ -127,7 +156,7 @@ Le **globbing** interprète les jokers sur les noms de fichiers : `*.txt` liste 
 L'**expansion d'accolades** itère sur des nombres ou des lettres :
 ```bash
 echo {1..6}    # 1 2 3 4 5 6
-echo {a-d}     # a b c d
+echo {a..d}    # a b c d   (avec un tiret, {a-d} n'est PAS développé : la chaîne reste telle quelle)
 echo {1..P}    # {1..P} : expansion non reconnue, chaîne affichée telle quelle
 seq 1 6        # autre moyen de générer une séquence
 ```
@@ -142,14 +171,14 @@ Dans `for fichier in *.sh`, le `*` est interprété par bash : inutile d'écrire
 | `$@` | la chaîne de tous les arguments |
 | `$?` | le code de retour de la commande précédente |
 
-`for chaine in $@` pose problème : les espaces à l'intérieur d'un argument sont perdus (`"bli bli"` est vu comme deux mots). La solution est `shift n`, qui décale les arguments de n (1 par défaut) : `$2` devient `$1`, et ainsi de suite jusqu'à `$1` vide.
+`for chaine in $@` pose problème : les espaces à l'intérieur d'un argument sont perdus (`"bli bli"` est vu comme deux mots). La solution est `shift n`, qui décale les arguments de n (1 par défaut) : `$2` devient `$1`, et ainsi de suite jusqu'à `$1` vide. Autre solution, testée : `for chaine in "$@"` (avec guillemets) garde chaque argument entier ; le cours retient `while` + `shift`, qui montre en plus comment dépiler les arguments.
 
 ```pas-a-pas
 {
   "titre": "Parcourir les arguments avec shift",
   "code": [
     "i=0",
-    "while [ -n \"$1\" ]; do",
+    "while [[ -n \"$1\" ]]; do",
     "    echo \"$1\";",
     "    (( i = i + 1 ))",
     "    shift",
@@ -253,7 +282,7 @@ fi
 - Croire que `i=$i+4` fait un calcul : il faut `(( ))`, `$(( ))` ou `expr`.
 - Interpréter `$?` à l'envers : 0 = succès, 1 = échec.
 - Oublier `then`, `do`…`done`, `fi`, `esac` : le script ne se termine jamais ou signale une erreur de syntaxe.
-- Boucler avec `for x in $@` : les arguments contenant des espaces sont découpés ; utiliser `while [ -n "$1" ]` avec `shift`.
+- Boucler avec `for x in $@` (sans guillemets) : les arguments contenant des espaces sont découpés. Utiliser `while [[ -n "$1" ]]` avec `shift`, ou `for x in "$@"` avec les guillemets.
 - Oublier les guillemets autour de `"$1"` : un argument vide ou avec espace casse le test.
 - Afficher le message d'usage sur la sortie standard au lieu de la sortie d'erreur (`1>&2`).
 - Écrire `$(ls *.sh)` alors que le globbing suffit : `for f in *.sh`.

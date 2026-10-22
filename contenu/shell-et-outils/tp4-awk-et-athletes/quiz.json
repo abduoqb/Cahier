@@ -1,0 +1,230 @@
+{
+  "seance": "tp4-awk-et-athletes",
+  "questions": [
+    {
+      "id": "q-tp4-awk-et-athletes-001",
+      "notion": "awk-couleurs",
+      "type": "qcm",
+      "enonce": "Pourquoi FS=\"[,;]\" pour des lignes comme Blue,0,0,1; ?",
+      "choix": [
+        "Pour ignorer les lignes qui contiennent , ou ;",
+        "Pour remplacer la virgule par un point-virgule dans chaque ligne affichée",
+        "Pour que la virgule et le point-virgule séparent les champs",
+        "Pour que awk lise seulement le texte entre crochets"
+      ],
+      "bonne": 2,
+      "explication": "FS est une expression régulière : [,;] = une virgule ou un point-virgule.",
+      "source": "TP5, question 1"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-002",
+      "notion": "awk-couleurs",
+      "type": "qcm",
+      "enonce": "Que fait awk 'BEGIN{FS=\"[,;]\"} $2 == 0 { print $1 }' f ?",
+      "choix": [
+        "Il affiche le nom des couleurs dont la composante rouge est nulle",
+        "Il affiche la valeur du 2e champ des lignes dont le nom vaut 0",
+        "Il affiche le nom des couleurs dont la composante bleue est nulle, pas le rouge",
+        "Il compte les lignes dont le 2e champ vaut 0"
+      ],
+      "bonne": 0,
+      "explication": "$1 est le nom, $2 le rouge, $3 le vert, $4 le bleu.",
+      "source": "TP5, question 1"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-003",
+      "notion": "awk-couleurs",
+      "type": "qcm",
+      "enonce": "Quel opérateur awk signifie « ne correspond pas à la regexp » ?",
+      "choix": [
+        "!=, qui compare aussi à une regexp",
+        "~!, placé avant la regexp",
+        "-v, comme avec grep",
+        "!~, comme dans $1 !~ /^Dark/"
+      ],
+      "bonne": 3,
+      "explication": "~ teste la correspondance à une regexp, !~ son contraire.",
+      "source": "TP5, question 2"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-004",
+      "notion": "awk-comptage",
+      "type": "qcm",
+      "enonce": "Quelle commande compte les couleurs sans bleu ?",
+      "choix": [
+        "awk 'BEGIN{FS=\"[,;]\"} /^[A-Z]/ && $2 == 0 { nb++ } END{ print nb }' f",
+        "awk 'BEGIN{FS=\"[,;]\"} /^[A-Z]/ && $4 == 0 { nb++ } END{ print nb }' f",
+        "awk 'BEGIN{FS=\"[,;]\"} /^[A-Z]/ && $4 == 0 { print nb++ }' f",
+        "awk 'BEGIN{FS=\"[,;]\"} /^[A-Z]/ && $4 == 0 { nb = 1 } END{ print nb }' f"
+      ],
+      "bonne": 1,
+      "explication": "Le bleu est le champ $4 ; nb++ compte ; END affiche une seule fois à la fin.",
+      "source": "TP5, question 2"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-005",
+      "notion": "awk-comptage",
+      "type": "qcm",
+      "enonce": "Que fait print nb + 0 dans END quand aucune ligne n'a incrémenté nb ?",
+      "choix": [
+        "Il affiche une erreur : nb n'est pas défini",
+        "Il affiche 0 au lieu d'une ligne vide",
+        "Il affiche 1 : le compteur démarre à 1",
+        "Il n'affiche rien, car nb n'existe pas"
+      ],
+      "bonne": 1,
+      "explication": "Une variable non initialisée vaut vide, ou 0 dans un calcul.",
+      "source": "TP5, question 1 (compteur)"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-006",
+      "notion": "awk-comptage",
+      "type": "qcm",
+      "enonce": "Quand awk '/^[A-Z]/ { nb++ } END{ print nb }' affiche-t-il son résultat ?",
+      "choix": [
+        "À chaque ligne qui commence par une majuscule",
+        "Une seule fois, avant la lecture de la première ligne",
+        "À la fin de chaque fichier si plusieurs sont donnés",
+        "Une seule fois, après la lecture de la dernière ligne"
+      ],
+      "bonne": 3,
+      "explication": "END s'exécute une fois toutes les entrées lues.",
+      "source": "TP5, question 1"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-007",
+      "notion": "athletes-grep-sed",
+      "type": "qcm",
+      "enonce": "Comment restreindre une liste de fichiers aux .csv qui contiennent aussi name ?",
+      "choix": [
+        "grep -il name $(grep -il id *.csv)",
+        "grep -il name id *.csv",
+        "grep -il id *.csv name",
+        "grep -il id | name *.csv"
+      ],
+      "bonne": 0,
+      "explication": "$( ) remplace le premier grep par la liste de noms de fichiers, que le second grep examine.",
+      "source": "TP5, questions 3 et 4"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-008",
+      "notion": "athletes-grep-sed",
+      "type": "qcm",
+      "enonce": "Quelle commande retire les lignes commençant par % et tous les guillemets ?",
+      "choix": [
+        "sed 's/^%//; s/\"/g' Athletes.csv",
+        "sed '%d; s/\"//' Athletes.csv",
+        "sed '/^%/d; s/\"//g' Athletes.csv",
+        "sed -n '/^%/p; s/\"//g' Athletes.csv"
+      ],
+      "bonne": 2,
+      "explication": "/^%/d supprime les lignes de commentaire ; s/\"//g retire tous les guillemets.",
+      "source": "TP5, question 6"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-009",
+      "notion": "athletes-grep-sed",
+      "type": "qcm",
+      "enonce": "Comment afficher puis enregistrer les lignes 3 à 17 dans index.txt ?",
+      "choix": [
+        "sed '3,17d' Athletes.csv > index.txt",
+        "sed -n '3,17' Athletes.csv > index.txt",
+        "sed -n '3,17p' Athletes.csv > index.txt",
+        "sed '3,17p' Athletes.csv > index.txt"
+      ],
+      "bonne": 2,
+      "explication": "-n et p n'affichent que les lignes choisies ; sans -n chaque ligne serait aussi affichée.",
+      "source": "TP5, question 5"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-010",
+      "notion": "athletes-awk",
+      "type": "qcm",
+      "enonce": "Quelle commande affiche nom, saison et année des athlètes français ?",
+      "choix": [
+        "awk -F, '$7 == \"France\" { print $2, $11, $10 }' propre.csv",
+        "awk -F, '$7 == \"France\" { print $2, $10, $11 }' propre.csv",
+        "awk -F, '$2 == \"France\" { print $7, $11, $10 }' propre.csv",
+        "awk '$7 == \"France\" { print $2, $11, $10 }' propre.csv"
+      ],
+      "bonne": 0,
+      "explication": "Name = $2, Team = $7, Year = $10, Season = $11 ; l'ordre demandé est nom, saison, année.",
+      "source": "TP5, question 7"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-011",
+      "notion": "athletes-awk",
+      "type": "qcm",
+      "enonce": "Pourquoi $7 == \"France\" ne trouve-t-il rien sur le fichier d'origine ?",
+      "choix": [
+        "Team est le 6e champ et non le 7e",
+        "awk compare toujours en ignorant le texte",
+        "France s'écrit en minuscules dans le fichier",
+        "Le champ vaut \"France\" avec ses guillemets, à retirer d'abord"
+      ],
+      "bonne": 3,
+      "explication": "Les champs texte sont entourés de guillemets ; testé : 0 résultat avant sed 's/\"//g', plus de 11 000 lignes après.",
+      "source": "TP5, questions 6 et 7"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-012",
+      "notion": "athletes-awk",
+      "type": "qcm",
+      "enonce": "À quelles colonnes de Athletes.csv correspondent Name, Team et Year ?",
+      "choix": [
+        "$1, $6 et $9",
+        "$2, $7 et $10",
+        "$2, $8 et $10",
+        "$3, $7 et $11"
+      ],
+      "bonne": 1,
+      "explication": "ID, Name, Sex, Age, Height, Weight, Team, NOC, Games, Year, Season, ... : Name est la 2e, Team la 7e, Year la 10e.",
+      "source": "TP5, exercice (colonnes)"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-013",
+      "notion": "athletes-script",
+      "type": "qcm",
+      "enonce": "Que doit faire le script de participations lancé sans argument ?",
+      "choix": [
+        "Afficher l'usage sur la sortie standard puis continuer sans rien vérifier",
+        "Afficher l'usage sur la sortie d'erreur et quitter avec exit 1",
+        "Compter toutes les lignes du fichier Athletes.csv",
+        "Attendre qu'un nom soit saisi au clavier"
+      ],
+      "bonne": 1,
+      "explication": "Le script vérifie $# avant tout ; le message d'erreur va sur 1>&2.",
+      "source": "TP5, question 10"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-014",
+      "notion": "athletes-script",
+      "type": "qcm",
+      "enonce": "Pourquoi chercher Usain.*Bolt plutôt que Usain Bolt ?",
+      "choix": [
+        "Parce que l'espace est interdit dans une regexp awk",
+        "Parce que Bolt est le champ 1 et Usain le champ 2",
+        "Parce qu'awk ne sait pas chercher deux mots",
+        "Le nom complet a d'autres prénoms entre Usain et Bolt"
+      ],
+      "bonne": 3,
+      "explication": "Le nom est du type « Usain St. Leo Bolt » : .* accepte ce qui se trouve entre les deux.",
+      "source": "TP5, question 9"
+    },
+    {
+      "id": "q-tp4-awk-et-athletes-015",
+      "notion": "athletes-script",
+      "type": "qcm",
+      "enonce": "Comment passer l'argument du script shell à awk ?",
+      "choix": [
+        "awk -F, -v nom=\"$1\" '$2 ~ nom { n++ } ...' Athletes.csv",
+        "awk -F, '$2 ~ $1 { n++ } ...' Athletes.csv",
+        "awk -F, '$2 ~ \"$1\" { n++ } ...' Athletes.csv",
+        "awk -F, 'nom=$1 { n++ } ...' Athletes.csv"
+      ],
+      "bonne": 0,
+      "explication": "Entre apostrophes, $1 est le champ 1 d'awk et non l'argument du script. -v nom=\"$1\" transmet la valeur du shell.",
+      "source": "TP5, questions 8 et 9"
+    }
+  ]
+}

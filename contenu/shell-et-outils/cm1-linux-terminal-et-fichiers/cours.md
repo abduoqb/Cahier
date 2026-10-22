@@ -1,6 +1,6 @@
 # CM 1 — Linux, terminal et fichiers
 
-> **Info :** Sources : CM1 « Shell et outils » (chapitres 1 à 4), TP1 (premières commandes, fichiers et répertoires) et TP2 (archives, `find`).
+> **Info :** Sources : CM1 « Shell et outils » (chapitres 1 à 4), TP1 (premières commandes, fichiers et répertoires), TP2 (archives, `find`) et le fichier `.bashrc` d'exemple.
 
 ## À savoir faire
 - Ouvrir un terminal, lire le prompt et dire dans quel répertoire on se trouve.
@@ -48,6 +48,8 @@ Le prompt a la forme `utilisateur@hote:repertoire$`. Le `$` signifie « le shell
 
 `!!` rappelle la dernière commande, `!c` la dernière commande commençant par `c`, `history` liste les dernières commandes (taille réglée par `HISTSIZE` et `HISTFILESIZE`).
 
+Autres détails du cours : `Ctrl+S` gèle l'affichage et `Ctrl+Q` le dégèle (utile quand un terminal semble bloqué) ; `Ctrl+Alt+F1` à `F6` ouvrent six consoles texte et `Ctrl+Alt+F7` revient au terminal graphique ; sélectionner un texte à la souris le copie, et le bouton du milieu le colle.
+
 ### 3. Fichiers, répertoires et i-node
 - Un fichier a deux parties : son **i-node** (métadonnées : dates, taille, propriétaire, droits…) et son **contenu** (suite d'octets).
 - Un **répertoire** est un fichier particulier : une table de liens `(i-numéro, nom)`. Seul le système peut y écrire.
@@ -73,6 +75,7 @@ Syntaxe générale : `commande [option...] [argument...]`, par exemple `wc -l /e
 - Un **argument** dit sur quoi travailler ; une **option** (ou paramètre) change la façon de travailler.
 - Une option d'une lettre est précédée d'un tiret (`-R`), une option en mot de deux tirets (`--set=...`).
 - Options courantes : `-i` (interactif, demande confirmation), `-f` / `--force`, `-h` / `--help`, `-v` / `--verbose`.
+- Exemple du cours avec `date` : sans rien, la date au format français ; avec l'option `-R`, au format standard Linux ; avec un argument (`date --set='...'`), elle fixe la date du système. L'option change la façon de travailler, l'argument dit sur quoi.
 - `man commande` affiche le manuel. Les caractères spéciaux (`*`, `$`, `|`, espace) ont un sens pour le shell : on les échappe avec `\`.
 
 ### 6. Les commandes de tous les jours
@@ -87,7 +90,7 @@ Syntaxe générale : `commande [option...] [argument...]`, par exemple `wc -l /e
 | `cat f`, `cat > f` | afficher ; écrire dans `f` (terminer par `Ctrl+D`) |
 | `cp f1 f2`, `cp -r d1 d2` | copier un fichier, copier un répertoire récursivement |
 | `mv a b` | déplacer ou renommer |
-| `rm`, `rm -r`, `rm -f` | supprimer un fichier, un répertoire et son contenu, sans confirmation |
+| `rm`, `rm -r`, `rm -f`, `rm -i` | supprimer un fichier ; un répertoire et son contenu ; sans jamais demander ; en confirmant chaque suppression |
 | `find . -name "*.py"` | chercher par nom ; `-iname` ignore la casse ; `-type f` / `-type d` |
 | `file f` | dire le type réel d'un fichier (indépendamment de l'extension) |
 
@@ -102,7 +105,32 @@ set                    # liste les variables du shell courant
 export EDITOR=emacs    # rend la variable visible des sous-shells
 env                    # liste les variables d'environnement
 ```
+
+La commande `eval` évalue un texte comme une commande, ce qui permet de lire le contenu d'une variable qui contient elle-même un nom de variable :
+```bash
+A=toto; B='$A'
+echo $B          # $A    : B contient le texte « $A »
+eval echo $B     # toto  : eval relit ce texte et l'exécute
+```
 Une variable créée dans le terminal est **locale** : un sous-shell ne la connaît pas. `export` en fait une **variable d'environnement**, connue du terminal et de ses sous-shells. Par convention leurs noms sont en majuscules.
+
+```pas-a-pas
+{
+  "titre": "Variable locale ou variable d'environnement",
+  "code": [
+    "A=toto",
+    "bash -c 'echo \"[$A]\"'",
+    "export A",
+    "bash -c 'echo \"[$A]\"'"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"A dans le shell":"toto","A dans un sous-shell":"(inconnue)"},"note":"A est créée dans le shell courant : elle est locale."},
+    {"ligne":1,"vars":{"affichage":"[]"},"note":"bash -c lance un sous-shell, qui ne connaît pas A : il affiche des crochets vides."},
+    {"ligne":2,"vars":{"A dans un sous-shell":"toto (hérité)"},"note":"export transforme A en variable d'environnement : les sous-shells en héritent."},
+    {"ligne":3,"vars":{"affichage":"[toto]"},"note":"Cette fois le sous-shell connaît A."}
+  ]
+}
+```
 
 | Variable | Contenu |
 |---|---|
@@ -117,11 +145,47 @@ Une variable créée dans le terminal est **locale** : un sous-shell ne la conna
 
 `PATH` est une liste de répertoires séparés par `:`. Le shell y cherche la commande tapée. Avec `export PATH=''`, plus aucune commande n'est trouvée : `/bin/ls` fonctionne encore, `ls` non. On ajoute un répertoire avec `export PATH=$PATH:/chemin/du/dossier`.
 
+```pas-a-pas
+{
+  "titre": "Le shell cherche une commande dans le PATH",
+  "code": [
+    "sauve=$PATH",
+    "export PATH=''",
+    "/bin/ls",
+    "ls",
+    "export PATH=$sauve",
+    "ls"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"PATH":"/usr/local/bin:/usr/bin:/bin","sauve":"/usr/local/bin:/usr/bin:/bin"},"note":"On garde une copie du PATH : sans elle, on ne pourrait pas le remettre."},
+    {"ligne":1,"vars":{"PATH":"(vide)"},"note":"Le PATH est maintenant vide : le shell ne sait plus où chercher les commandes."},
+    {"ligne":2,"vars":{"résultat":"la liste des fichiers"},"note":"Avec un chemin complet, le shell lance directement /bin/ls : il n'a pas besoin du PATH. Ça marche."},
+    {"ligne":3,"vars":{"résultat":"ls : command not found"},"note":"Avec le nom seul, bash cherche ls dans chaque répertoire du PATH. La liste est vide : commande introuvable."},
+    {"ligne":4,"vars":{"PATH":"/usr/local/bin:/usr/bin:/bin"},"note":"On remet l'ancienne valeur."},
+    {"ligne":5,"vars":{"résultat":"la liste des fichiers"},"note":"bash retrouve ls dans /bin (ou /usr/bin) : à quoi sert le PATH est clair, il dit où chercher les commandes."}
+  ]
+}
+```
+
 ### 8. Configuration : .bashrc et alias
 - `~/.bashrc` est lu **à chaque lancement de terminal** : c'est là qu'on met variables, alias et réglages.
 - `~/.bash_profile` n'est lu qu'au démarrage de la session (une seule fois).
 - Après modification : `source ~/.bashrc` (ou `. ~/.bashrc`) pour recharger sans rouvrir de terminal.
 - Un **alias** raccourcit une commande : `alias ll='ls -l'`, `alias la='ls -a'`, `alias rm='rm -i'`. Créé dans le terminal, il disparaît à la fermeture ; mis dans `.bashrc`, il est permanent.
+- L'éditeur par défaut (git, `crontab`…) se choisit avec la variable `EDITOR` : `export EDITOR=nano`. Les éditeurs en console du cours sont `nano`, `jed` (celui des machines de TP), `emacs` et `vim` : il faut en tester plusieurs, en choisir un et connaître ses raccourcis (enregistrer, quitter).
+
+Extrait commenté d'un `.bashrc` typique (celui d'Ubuntu, complété d'un alias et de `EDITOR`) :
+```bash
+case $- in *i*) ;; *) return;; esac   # shell non interactif : on ne fait rien
+HISTCONTROL=ignoreboth                # pas de doublons ni de lignes commençant par un espace
+shopt -s histappend                   # ajouter à l'historique au lieu de l'écraser
+HISTSIZE=1000                         # lignes gardées en mémoire
+HISTFILESIZE=2000                     # lignes gardées dans ~/.bash_history
+PS1='\u@\h:\w\$ '                     # prompt : utilisateur@hôte:répertoire$
+alias ll='ls -alF'                    # raccourcis de commandes
+alias grep='grep --color=auto'
+export EDITOR=nano                    # éditeur par défaut
+```
 
 ### 9. Archives et compression
 | Outil | Usage |
@@ -147,7 +211,7 @@ Par défaut l'extraction **écrase** les fichiers de même nom déjà présents.
 - Croire qu'une variable locale passe au sous-shell : il faut `export`.
 - Oublier `-a` et ne pas voir les fichiers cachés ; oublier `-h` pour des tailles lisibles.
 - Confondre `ls` (qui lit un répertoire) et `cat` (qui lit un fichier) ; `cat repertoire` échoue.
-- `rm` ne demande pas de confirmation par défaut : sans `-i` (ou l'alias `rm='rm -i'`), la suppression est immédiate.
+- `rm` ne demande normalement rien (sauf si l'alias `rm='rm -i'` est actif, ce qui est fréquent sur les machines de TP : alors `-f` supprime sans confirmer). Il n'y a pas de corbeille : la suppression est définitive.
 - `cd ..` remonte d'un niveau ; `cd ../..` de deux.
 - Croire que le prompt affiche le chemin complet : il n'affiche souvent que le répertoire courant.
 - Extraire un `.tar` ou un `.zip` sans vérifier le type avec `file` : l'extension peut mentir.
