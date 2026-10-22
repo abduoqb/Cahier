@@ -92,9 +92,10 @@ export const Store = {
         return load().subjects.find(s => s.id === id) || null;
     },
 
-    addSubject(name) {
+    // id facultatif : un import d'agenda donne un id déterminé, pour que deux appareils créent la même matière (même id) et non deux copies.
+    addSubject(name, id) {
         const data = load();
-        const subject = { id: uuid(), name, categories: [] };
+        const subject = { id: id || uuid(), name, categories: [] };
         data.subjects.push(subject);
         save(data);
         return subject;
@@ -135,12 +136,12 @@ export const Store = {
 
     // ===== Multi-Exam API =====
 
-    addExam(subjectId, name, dateStr) {
+    addExam(subjectId, name, dateStr, id) {
         const data = load();
         const subject = data.subjects.find(s => s.id === subjectId);
         if (subject) {
             if (!subject.exams) subject.exams = [];
-            const exam = { id: uuid(), name, date: dateStr, checklist: [] };
+            const exam = { id: id || uuid(), name, date: dateStr, checklist: [] };
             subject.exams.push(exam);
             save(data);
             return exam;

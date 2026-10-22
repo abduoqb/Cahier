@@ -362,13 +362,16 @@ function subjectFor(title, { names, byCode }) {
     return match || p.name;
 }
 
+// Identifiant stable dérivé d'un texte : importer le même agenda sur deux appareils produit les mêmes ids, que la synchro fusionne.
+const idStable = (...parties) => 'ics-' + parties.join('-').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 // Crée les matières manquantes à partir d'un .ics ; renvoie le nombre de matières créées.
 function createSubjectsFromIcs(text) {
     const known = new Set(Store.getSubjects().map(s => s.name.toLowerCase()));
     let created = 0;
     for (const name of subjectNamesFromIcs(text).names) {
         if (known.has(name.toLowerCase())) continue;
-        Store.addSubject(name);
+        Store.addSubject(name, idStable('matiere', name));
         known.add(name.toLowerCase());
         created++;
     }
@@ -396,7 +399,7 @@ function importExamsFromIcs(text) {
         const examName = m ? `${m[1].toUpperCase()}${m[2] || ''}${/^not/i.test(m[3] || '') ? ' noté' : ''}`.trim() : 'Examen';
         const date = `${ev.start.getFullYear()}-${pad(ev.start.getMonth() + 1)}-${pad(ev.start.getDate())}`;
         if ((subject.exams || []).some(x => x.date === date && x.name === examName)) continue;
-        Store.addExam(subject.id, examName, date);
+        Store.addExam(subject.id, examName, date, idStable('examen', subject.id, date, examName));
         added++;
     }
     return added;
