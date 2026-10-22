@@ -154,7 +154,7 @@ export function renderDashboard() {
                         <span class="subject-total">${subjects.length} matière${subjects.length > 1 ? 's' : ''}</span>
                     </div>
                     <div class="subjects-grid">
-                        ${subjects.map((s, i) => renderCard(s, i)).join('')}
+                        ${ordreParRecence(subjects).map(i => renderCard(subjects[i], i)).join('')}
                         <button class="add-card" id="add-subject-card" type="button">
                             <span class="add-card-icon" aria-hidden="true">+</span>
                             <span>Ajouter une matière</span>
@@ -403,6 +403,43 @@ function importExamsFromIcs(text) {
         added++;
     }
     return added;
+}
+
+// Date du dernier cours déjà passé de chaque matière (nom en minuscules), d'après l'agenda. Fenêtre : 15 jours avant maintenant.
+let memoRecence = { cle: '', valeur: new Map() };
+function dernierCoursParMatiere(text) {
+    const maintenant = new Date();
+    const cle = `${text.length}|${maintenant.toDateString()}`;
+    if (memoRecence.cle === cle) return memoRecence.valeur;
+    const derniers = new Map();
+    try {
+        const names = subjectNamesFromIcs(text);
+        const debut = new Date(maintenant.getTime() - 15 * 24 * 3600 * 1000);
+        for (const ev of icsToEvents(text, debut, maintenant)) {
+            const nom = subjectFor(ev.title, names);
+            if (!nom) continue;
+            const t = ev.start.getTime();
+            if (t <= maintenant.getTime() && t > (derniers.get(nom.toLowerCase()) ?? -Infinity)) derniers.set(nom.toLowerCase(), t);
+        }
+    } catch (err) { console.error('Tri par agenda impossible', err); }
+    memoRecence = { cle, valeur: derniers };
+    return derniers;
+}
+
+// Indices des matières, de la vue le plus récemment à la plus anciennement ; sans cours passé à l'agenda : à la suite, dans l'ordre d'origine.
+function ordreParRecence(subjects) {
+    const indices = subjects.map((_, i) => i);
+    const ics = getIcs();
+    if (!ics) return indices;
+    const derniers = dernierCoursParMatiere(ics);
+    const t = i => derniers.get(subjects[i].name.toLowerCase());
+    return indices.sort((a, b) => {
+        const ta = t(a), tb = t(b);
+        if (ta === undefined && tb === undefined) return a - b;
+        if (ta === undefined) return 1;
+        if (tb === undefined) return -1;
+        return tb - ta || a - b;
+    });
 }
 
 const ICS_KEY = 'cahier_ics';

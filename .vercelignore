@@ -9,3 +9,8 @@ tests
 README.md
 assets/*.pdf
 **/support.pdf
+
+contenu/_modele
+AGENTS.md
+CLAUDE.md
+.claude

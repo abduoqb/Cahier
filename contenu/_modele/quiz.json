@@ -1,0 +1,20 @@
+{
+  "seance": "{{ID}}",
+  "questions": [
+    {
+      "id": "q-{{ID}}-001",
+      "notion": "notion-exemple",
+      "type": "qcm",
+      "enonce": "(Énoncé court, 400 caractères maximum.)",
+      "choix": [
+        "(Bonne réponse)",
+        "(Distracteur plausible)",
+        "(Distracteur plausible)",
+        "(Distracteur plausible)"
+      ],
+      "bonne": 0,
+      "explication": "(Pourquoi c'est la bonne réponse, en une ou deux phrases.)",
+      "source": "(Annale ou TD d'où vient la question)"
+    }
+  ]
+}

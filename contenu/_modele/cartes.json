@@ -1,0 +1,12 @@
+{
+  "seance": "{{ID}}",
+  "cartes": [
+    {
+      "id": "c-{{ID}}-001",
+      "notion": "notion-exemple",
+      "recto": "(Question courte, 200 caractères maximum.)",
+      "verso": "(Réponse courte sur une seule ligne, 120 caractères maximum.)",
+      "source": "(Annale ou TD d'où vient la carte)"
+    }
+  ]
+}
