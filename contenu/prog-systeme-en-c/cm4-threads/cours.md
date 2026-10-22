@@ -135,6 +135,48 @@ void *travail(void *arg) {
 }
 // main : pthread_mutex_init(&lock, NULL); ... join ... pthread_mutex_destroy(&lock);
 ```
+
+**À toi de jouer — pourquoi il faut un mutex** : deux threads font `compteur += 1` sur la même variable (au départ `compteur = 0`)
+```pas-a-pas
+{
+  "titre": "compteur += 1 sans mutex : un incrément est perdu",
+  "code": [
+    "compteur += 1;     // en réalité, trois étapes :",
+    "  tmp = compteur;  // 1. lire",
+    "  tmp = tmp + 1;   // 2. ajouter",
+    "  compteur = tmp;  // 3. écrire"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"compteur":0},"note":"Les deux threads (T1 et T2) vont exécuter cette ligne. Elle semble s'exécuter d'un bloc, mais en réalité elle comporte trois étapes qu'on peut interrompre."},
+    {"ligne":1,"vars":{"tmp de T1":0},"note":"T1 lit compteur : il vaut 0."},
+    {"ligne":1,"vars":{"tmp de T2":0},"note":"L'ordonnanceur interrompt T1 au milieu de l'opération et donne la main à T2, qui lit à son tour : 0 aussi."},
+    {"ligne":2,"vars":{"tmp de T2":1},"note":"T2 ajoute 1 dans son tmp."},
+    {"ligne":3,"vars":{"compteur":1},"note":"T2 écrit : compteur vaut 1."},
+    {"ligne":2,"vars":{"tmp de T1":1},"note":"T1 reprend là où il s'était arrêté, avec son ancien tmp (0) : il ajoute 1."},
+    {"ligne":3,"vars":{"compteur":1},"note":"T1 écrit : compteur vaut 1. Deux incréments, résultat 1 au lieu de 2 : c'est une condition de concurrence. Le résultat change d'une exécution à l'autre."}
+  ]
+}
+```
+
+**La même chose avec un mutex** : la section critique est exécutée par un seul thread à la fois
+```pas-a-pas
+{
+  "titre": "compteur += 1 protégé par un mutex",
+  "code": [
+    "pthread_mutex_lock(&lock);",
+    "compteur += 1;     // section critique",
+    "pthread_mutex_unlock(&lock);"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"compteur":0,"verrou":"pris par T1"},"note":"T1 prend le verrou et entre dans la section critique."},
+    {"ligne":0,"vars":{"verrou":"pris par T1, T2 attend"},"note":"T2 arrive au lock : le verrou est pris, T2 est bloqué ici. Même si l'ordonnanceur lui donne la main, il ne passe pas."},
+    {"ligne":1,"vars":{"compteur":1},"note":"T1 fait son incrément en entier, sans que T2 puisse s'intercaler : compteur vaut 1."},
+    {"ligne":2,"vars":{"verrou":"pris par T2"},"note":"T1 libère le verrou : T2 peut entrer."},
+    {"ligne":1,"vars":{"compteur":2},"note":"T2 fait son incrément : compteur vaut 2, le résultat attendu."},
+    {"ligne":2,"vars":{"verrou":"libre"},"note":"T2 libère à son tour. Le mutex rend le code correct mais plus lent : la section critique doit être la plus courte possible."}
+  ]
+}
+```
 - Le mutex rend le code **correct mais plus lent** : section critique la plus courte possible.
 - Il protège aussi contre l'accès concurrent à des fonctions **non réentrantes** (`malloc`, `printf`).
 - Un mutex local à chaque thread est inutile : il doit être **partagé**.

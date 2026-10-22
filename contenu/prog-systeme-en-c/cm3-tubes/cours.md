@@ -113,6 +113,56 @@ close(fd[0]);
 wait(NULL);                        // évite le zombie
 ```
 
+**À toi de jouer — le fils écrit, le père lit** : l'état des descripteurs à chaque étape (✗ = bout fermé)
+```pas-a-pas
+{
+  "titre": "pipe + fork : le fils écrit « bonjour », le père le lit",
+  "code": [
+    "int fd[2];",
+    "pipe(fd);",
+    "if (fork() == 0) {",
+    "    close(fd[0]);",
+    "    write(fd[1], \"bonjour\", 7);",
+    "    close(fd[1]);",
+    "    return 0;",
+    "}",
+    "close(fd[1]);",
+    "char buf[32];",
+    "int n = read(fd[0], buf, sizeof buf - 1);"
+  ],
+  "etapes": [
+    {"ligne":1,"note":"pipe crée le tube et remplit fd : fd[0] pour lire, fd[1] pour écrire. On le crée avant le fork, sinon le fils n'y aurait pas accès.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"tampon":""}},
+    {"ligne":2,"note":"fork : le fils hérite des deux descripteurs. Les deux processus ont les deux bouts ouverts.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ouvert","ecriture":"ouvert"},"tampon":""}},
+    {"ligne":3,"note":"Le fils est l'écrivain : il ferme le bout dont il ne se sert pas, la lecture.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ouvert"},"tampon":""}},
+    {"ligne":4,"note":"Le fils écrit 7 octets dans le tampon du tube. (L'ordre exact père/fils dépend de l'ordonnanceur ; le read du père bloque tant que rien n'est écrit.)","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ouvert"},"tampon":"bonjour"}},
+    {"ligne":5,"note":"Le fils ferme son bout d'écriture : il a fini, et c'est ce qui permettra au père de voir la fin de fichier.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":"bonjour"}},
+    {"ligne":8,"note":"Le père est le lecteur : il ferme le bout d'écriture. Il ne reste plus aucun descripteur d'écriture ouvert.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ferme"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":"bonjour"}},
+    {"ligne":10,"vars":{"n":7},"note":"read récupère « bonjour » : il rend 7. La lecture est destructive, le tube est de nouveau vide. read n'ajoute pas de '\\0'.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ferme"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":""}}
+  ]
+}
+```
+
+**Pourquoi fermer les bouts inutiles ?** La cause numéro 1 des programmes qui restent figés
+```pas-a-pas
+{
+  "titre": "Le père oublie close(fd[1])",
+  "code": [
+    "pipe(fd) ; fork()",
+    "// fils : close(fd[0]) ; write(fd[1], \"bonjour\", 7) ; return 0",
+    "// père : close(fd[1]) oublié !",
+    "n = read(fd[0], buf, 7)",
+    "n = read(fd[0], buf, 7)"
+  ],
+  "etapes": [
+    {"ligne":0,"note":"Le tube est créé avant le fork : les deux processus ont les deux bouts ouverts.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ouvert","ecriture":"ouvert"},"tampon":""}},
+    {"ligne":1,"note":"Le fils écrit « bonjour » puis termine, en fermant ses deux bouts.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":"bonjour"}},
+    {"ligne":3,"vars":{"n":7},"note":"Premier read : il rend 7 (bonjour). Le tube est maintenant vide.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":""}},
+    {"ligne":4,"note":"Second read : tube vide. Reste-t-il un descripteur d'écriture ouvert ? Oui, celui du père lui-même (fd[1]). read BLOQUE donc pour toujours : il attend un écrivain qui ne viendra jamais.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ouvert"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":""}},
+    {"ligne":2,"vars":{"n":0},"note":"Correction : le père ferme fd[1] avant de lire. Plus aucun écrivain : le read sur tube vide rend 0 (fin de fichier) au lieu de bloquer.","schema":{"type":"tube","gauche":{"nom":"Père","lecture":"ouvert","ecriture":"ferme"},"droite":{"nom":"Fils","lecture":"ferme","ecriture":"ferme"},"tampon":""}}
+  ]
+}
+```
+
 ## Exemple minimal : `ls -l | wc -l`
 ```c
 int p[2];
@@ -126,6 +176,29 @@ if (fork() == 0) {                 // fils : ls -l (producteur)
 dup2(p[0], STDIN_FILENO);          // père : son entrée devient le tube
 close(p[0]); close(p[1]);
 execlp("wc", "wc", "-l", NULL);    // le père devient wc
+```
+
+**À toi de jouer — `dup2` et la table des descripteurs** du fils qui lance `ls` (`tty` = terminal, `lec` et `écr` = les deux bouts du tube)
+```pas-a-pas
+{
+  "titre": "ls -l | wc -l : la table des descripteurs du fils",
+  "code": [
+    "int p[2];",
+    "pipe(p);",
+    "if (fork() == 0) {",
+    "    dup2(p[1], STDOUT_FILENO);",
+    "    close(p[0]); close(p[1]);",
+    "    execlp(\"ls\", \"ls\", \"-l\", NULL);",
+    "}"
+  ],
+  "etapes": [
+    {"ligne":1,"vars":{"p[0]":3,"p[1]":4},"note":"La table des descripteurs : les cases 0, 1, 2 sont le terminal. pipe prend les deux plus petits numéros libres : 3 pour lire, 4 pour écrire.","schema":{"type":"tableau","cases":["tty","tty","tty","lec","écr"],"marques":{"p[0]":3,"p[1]":4},"surligne":[3,4]}},
+    {"ligne":2,"note":"fork : le fils a une copie de la table. On suit maintenant la table du fils.","schema":{"type":"tableau","cases":["tty","tty","tty","lec","écr"],"marques":{"p[0]":3,"p[1]":4}}},
+    {"ligne":3,"note":"dup2(p[1], 1) ferme d'abord le descripteur 1 (le terminal) puis en fait une copie du bout d'écriture : la sortie standard du fils est maintenant le tube.","schema":{"type":"tableau","cases":["tty","écr","tty","lec","écr"],"marques":{"p[0]":3,"p[1]":4},"surligne":[1]}},
+    {"ligne":4,"note":"Les deux bouts d'origine ne servent plus : on les ferme, sinon la fin de fichier n'arriverait jamais chez le lecteur.","schema":{"type":"tableau","cases":["tty","écr","tty","–","–"],"marques":{"p[0]":3,"p[1]":4}}},
+    {"ligne":5,"note":"execlp conserve les descripteurs : ls écrit sur sa sortie standard (1) sans savoir que c'est un tube. Tout ce qu'il affiche arrive chez wc.","schema":{"type":"tableau","cases":["tty","écr","tty","–","–"],"marques":{"p[0]":3,"p[1]":4},"fixes":[1]}}
+  ]
+}
 ```
 
 ## Erreurs classiques

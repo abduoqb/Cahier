@@ -1715,3 +1715,15 @@ body:not(.connecte) > .header, body:not(.connecte) > main, body:not(.connecte) >
 .pap-noeud-arbre { fill: #dde9ec; stroke: #3f6f7a; stroke-width: 2.2; }
 .pap-noeud-arbre.is-visite { fill: #e8ecd0; stroke: #6b7a3d; }
 .pap-noeud-arbre.is-courant { fill: #f1ead0; stroke: #96712c; stroke-width: 3.2; }
+.pap-boite { fill: #eef4f5; stroke: #3f6f7a; stroke-width: 2; }
+.pap-boite-titre { font-size: 19px; font-weight: 700; fill: #1f4a55; }
+.pap-fd { fill: #dde9ec; stroke: #3f6f7a; stroke-width: 2; }
+.pap-fd.is-ferme { fill: #f1ece1; stroke: #b0a695; stroke-dasharray: 5 4; }
+.pap-fd-txt { font-size: 16px; font-weight: 600; fill: #1f4a55; }
+.pap-fd-txt.is-ferme { fill: #877c6d; }
+.pap-tube { fill: #f1ead0; stroke: #96712c; stroke-width: 2.4; }
+.pap-tube-titre { font-size: 16px; font-weight: 700; fill: #96712c; }
+.pap-tampon { font-size: 24px; font-weight: 700; fill: #6b4f12; }
+.pap-tampon-vide { font-size: 17px; font-style: italic; fill: #96712c; }
+.pap-droite.sans-schema .pap-vars { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; border: 1px solid #cfdfe3; border-radius: var(--radius); background: #fbfaf4; min-height: 90px; }
+.pap-droite.sans-schema .pap-var { font-size: 15px; padding: 6px 14px; }

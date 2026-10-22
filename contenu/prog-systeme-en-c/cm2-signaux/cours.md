@@ -122,6 +122,56 @@ int main(void) {
 }
 ```
 
+**À toi de jouer — le Ctrl-C qui ne marche qu'une fois** : on suit le programme de l'exemple minimal pendant deux Ctrl-C
+```pas-a-pas
+{
+  "titre": "Handler installé avec SA_RESETHAND",
+  "code": [
+    "void ouille(int sig) {",
+    "    write(1, \"OUILLE !\\n\", 9);",
+    "}",
+    "int main(void) {",
+    "    act.sa_handler = ouille;",
+    "    sigemptyset(&act.sa_mask);",
+    "    act.sa_flags = SA_RESETHAND;",
+    "    sigaction(SIGINT, &act, NULL);",
+    "    while (1) { printf(\"Hello\\n\"); sleep(1); }",
+    "}"
+  ],
+  "etapes": [
+    {"ligne":3,"vars":{"réaction à SIGINT":"défaut (mourir)"},"note":"Le programme démarre : sans rien faire, Ctrl-C (SIGINT) tuerait le processus."},
+    {"ligne":4,"note":"On prépare la structure : le handler sera la fonction ouille."},
+    {"ligne":5,"note":"Aucun signal supplémentaire n'est bloqué pendant le handler (le signal qui le déclenche, lui, l'est automatiquement)."},
+    {"ligne":6,"note":"SA_RESETHAND : le handler ne servira qu'une fois, ensuite retour à l'action par défaut."},
+    {"ligne":7,"vars":{"réaction à SIGINT":"handler ouille"},"note":"sigaction installe le handler : désormais Ctrl-C appelle ouille au lieu de tuer le processus."},
+    {"ligne":8,"note":"La boucle affiche Hello, dort une seconde, recommence."},
+    {"ligne":1,"vars":{"réaction à SIGINT":"défaut (mourir)"},"note":"Premier Ctrl-C : le noyau envoie SIGINT. Le handler s'exécute entre deux instructions : OUILLE ! s'affiche. Dès qu'il a servi, SA_RESETHAND remet l'action par défaut."},
+    {"ligne":8,"note":"Le handler est fini : le programme reprend là où il était. Hello recommence, le processus n'est pas mort."},
+    {"ligne":null,"vars":{"réaction à SIGINT":"défaut : processus terminé"},"note":"Second Ctrl-C : la réaction est maintenant l'action par défaut, sans handler ni OUILLE. Le processus meurt."}
+  ]
+}
+```
+
+**Et si on bloque le signal ?** Un signal masqué n'est pas perdu : il attend, mais il n'en attend qu'un exemplaire
+```pas-a-pas
+{
+  "titre": "sigprocmask : bloquer SIGINT puis le débloquer",
+  "code": [
+    "sigemptyset(&s); sigaddset(&s, SIGINT);",
+    "sigprocmask(SIG_BLOCK, &s, NULL);",
+    "/* section critique */",
+    "sigprocmask(SIG_UNBLOCK, &s, NULL);"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"masque":"{ }","signaux pendants":"aucun"},"note":"s contient SIGINT. Le masque du processus est encore vide : rien n'est bloqué."},
+    {"ligne":1,"vars":{"masque":"{ SIGINT }"},"note":"SIGINT est maintenant bloqué : il ne sera pas délivré tant qu'on ne le débloque pas."},
+    {"ligne":2,"vars":{"signaux pendants":"SIGINT"},"note":"Ctrl-C pendant la section critique : SIGINT arrive mais il est bloqué, donc il reste pendant. Le programme n'est pas interrompu."},
+    {"ligne":2,"note":"Un deuxième Ctrl-C : un SIGINT est déjà pendant, il n'y a qu'un seul exemplaire par type de signal, donc celui-ci est perdu."},
+    {"ligne":3,"vars":{"masque":"{ }","signaux pendants":"aucun"},"note":"On débloque : le SIGINT pendant est délivré maintenant, une seule fois (handler ou action par défaut)."}
+  ]
+}
+```
+
 ### Attendre proprement un signal (père attend son fils)
 ```c
 sigset_t bloque, vide;

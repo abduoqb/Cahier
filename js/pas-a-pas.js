@@ -67,6 +67,7 @@ function validerSchema(s) {
             for (const k of ['g', 'd']) {
                 if (nd[k] !== null && nd[k] !== undefined && (!dansBornes(nd[k], n) || nd[k] === i)) e.push(`noeud ${i} : "${k}" doit être null ou l'indice d'un autre noeud`);
             }
+            if (nd.fils !== undefined && (!Array.isArray(nd.fils) || nd.fils.length > 6 || nd.fils.some(k => !dansBornes(k, n) || k === i))) e.push(`noeud ${i} : "fils" doit être une liste de 6 indices de noeuds au plus`);
         });
         for (const [nom, cible] of Object.entries(s.pointeurs || {})) if (!dansBornes(cible, n)) e.push(`pointeur ${nom} : indice de noeud attendu`);
         if (s.visites !== undefined && (!Array.isArray(s.visites) || s.visites.some(k => !dansBornes(k, n)))) e.push("visites : liste d'indices de noeuds attendue");
@@ -78,14 +79,21 @@ function validerSchema(s) {
                 if (i === null || i === undefined) return;
                 if (vus.has(i)) { partage = true; return; }
                 vus.add(i);
-                parcourir(s.noeuds[i].g);
-                parcourir(s.noeuds[i].d);
+                for (const k of s.noeuds[i].fils ?? [s.noeuds[i].g, s.noeuds[i].d]) parcourir(k);
             };
             parcourir(racine);
             if (partage) e.push('arbre : un noeud a deux parents ou forme un cycle');
         }
+    } else if (s.type === 'tube') {
+        const proc = (p, ou) => {
+            if (!estObjet(p) || typeof p.nom !== 'string' || !p.nom) { e.push(`${ou} : processus avec un "nom" attendu`); return; }
+            for (const k of ['lecture', 'ecriture']) if (p[k] !== 'ouvert' && p[k] !== 'ferme') e.push(`${ou} : "${k}" vaut "ouvert" ou "ferme"`);
+        };
+        proc(s.gauche, 'gauche');
+        if (s.droite !== undefined) proc(s.droite, 'droite');
+        if (s.tampon !== undefined && (typeof s.tampon !== 'string' || s.tampon.length > 24)) e.push('tampon : texte de 24 caractères maximum');
     } else {
-        e.push('schema : type "liste", "tableau" ou "arbre" attendu');
+        e.push('schema : type "liste", "tableau", "arbre" ou "tube" attendu');
     }
     return e;
 }
@@ -180,43 +188,84 @@ function svgTableau(s) {
     return o + '</svg>';
 }
 
-// Arbre binaire : abscisse = rang du noeud en ordre infixe, ordonnée = profondeur. Les pointeurs sont des pastilles à droite du noeud.
+// Arbre : binaire (g, d ; abscisse = rang infixe) ou à plusieurs enfants (fils : [...] ; parent centré sur ses enfants).
+// Les pointeurs sont des pastilles à droite du noeud.
+const enfantsDe = nd => nd.fils ?? [nd.g, nd.d].filter(k => k !== null && k !== undefined);
+
 function svgArbre(s) {
     const R = 20, XPAS = 54, YPAS = 64, X0 = 24, Y0 = 18;
     const racine = s.racine ?? 0;
+    const nAire = s.noeuds.some(nd => nd.fils);
     const pos = new Map();
-    let rang = 0, profMax = 0;
+    let rang = 0, profMax = 0, xMax = 0;
     const placer = (i, p) => {
-        if (i === null || i === undefined) return;
-        placer(s.noeuds[i].g, p + 1);
-        pos.set(i, { x: X0 + R + rang++ * XPAS, y: Y0 + R + p * YPAS });
+        const nd = s.noeuds[i];
+        let x;
+        if (nAire) {
+            const f = enfantsDe(nd);
+            if (!f.length) x = rang++;
+            else { f.forEach(k => placer(k, p + 1)); x = (pos.get(f[0]).x + pos.get(f[f.length - 1]).x) / 2; }
+        } else {
+            if (nd.g !== null && nd.g !== undefined) placer(nd.g, p + 1);
+            x = rang++;
+            if (nd.d !== null && nd.d !== undefined) placer(nd.d, p + 1);
+        }
+        pos.set(i, { x, p });
         profMax = Math.max(profMax, p);
-        placer(s.noeuds[i].d, p + 1);
+        xMax = Math.max(xMax, x);
     };
     placer(racine, 0);
+    const px = c => X0 + R + c.x * XPAS, py = c => Y0 + R + c.p * YPAS;
     const ptr = parCible(s.pointeurs);
-    const largeur = X0 * 2 + R * 2 + (rang - 1) * XPAS + 56;
+    const largeur = X0 * 2 + R * 2 + xMax * XPAS + 56;
     const bas = Y0 * 2 + R * 2 + profMax * YPAS;
     const visites = new Set(s.visites || []);
-    let o = `<svg class="pap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${largeur} ${bas}" width="${Math.round(largeur * ECHELLE)}" height="${Math.round(bas * ECHELLE)}" role="img" aria-label="Schéma d'un arbre binaire">`;
+    let o = `<svg class="pap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${largeur} ${bas}" width="${Math.round(largeur * ECHELLE)}" height="${Math.round(bas * ECHELLE)}" role="img" aria-label="Schéma d'un arbre">`;
     for (const [i, c] of pos) {
-        for (const k of ['g', 'd']) {
-            const f = s.noeuds[i][k];
-            if (f !== null && f !== undefined) o += `<line class="pap-trait" x1="${c.x}" y1="${c.y}" x2="${pos.get(f).x}" y2="${pos.get(f).y}"/>`;
-        }
+        for (const k of enfantsDe(s.noeuds[i])) o += `<line class="pap-trait" x1="${px(c)}" y1="${py(c)}" x2="${px(pos.get(k))}" y2="${py(pos.get(k))}"/>`;
     }
     for (const [i, c] of pos) {
         const etat = s.courant === i ? ' is-courant' : visites.has(i) ? ' is-visite' : '';
-        o += `<circle class="pap-noeud-arbre${etat}" cx="${c.x}" cy="${c.y}" r="${R}"/><text class="pap-valeur" x="${c.x}" y="${c.y + 6}" text-anchor="middle">${esc(s.noeuds[i].v)}</text>`;
+        o += `<circle class="pap-noeud-arbre${etat}" cx="${px(c)}" cy="${py(c)}" r="${R}"/><text class="pap-valeur" x="${px(c)}" y="${py(c) + 6}" text-anchor="middle">${esc(s.noeuds[i].v)}</text>`;
         (ptr.get(i) || []).forEach((nom, j) => {
-            const y = c.y - R + j * PILL_H;
-            o += `<rect class="pap-pastille" x="${c.x + R + 2}" y="${y}" width="${pillW(nom)}" height="${PILL_H - 4}" rx="9"/><text class="pap-pastille-txt" x="${c.x + R + 2 + pillW(nom) / 2}" y="${y + 13}" text-anchor="middle">${esc(nom)}</text>`;
+            const y = py(c) - R + j * PILL_H;
+            o += `<rect class="pap-pastille" x="${px(c) + R + 2}" y="${y}" width="${pillW(nom)}" height="${PILL_H - 4}" rx="9"/><text class="pap-pastille-txt" x="${px(c) + R + 2 + pillW(nom) / 2}" y="${y + 13}" text-anchor="middle">${esc(nom)}</text>`;
         });
     }
     return o + '</svg>';
 }
 
-const dessiner = s => (s.type === 'liste' ? svgListe(s) : s.type === 'tableau' ? svgTableau(s) : svgArbre(s));
+// Tube : un ou deux processus avec leurs descripteurs de lecture et d'écriture (ouvert ou fermé) autour du tampon du tube.
+function svgTube(s) {
+    const id = `pap-fleche-${++compteurSvg}`;
+    const deux = !!s.droite;
+    const W = deux ? 600 : 400, H = 200;
+    let o = `<svg class="pap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${Math.round(W * ECHELLE)}" height="${Math.round(H * ECHELLE)}" role="img" aria-label="Schéma d'un tube entre processus">`;
+    o += `<defs><marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="pap-tete" d="M0,0 L10,5 L0,10 z"/></marker></defs>`;
+    o += `<rect class="pap-tube" x="240" y="40" width="120" height="120" rx="14"/><text class="pap-tube-titre" x="300" y="66" text-anchor="middle">tube</text>`;
+    o += s.tampon ? `<text class="pap-tampon" x="300" y="112" text-anchor="middle">${esc(s.tampon)}</text>` : `<text class="pap-tampon-vide" x="300" y="112" text-anchor="middle">vide</text>`;
+    const processus = (p, x0, versDroite) => {
+        let r = `<rect class="pap-boite" x="${x0}" y="20" width="170" height="160" rx="10"/><text class="pap-boite-titre" x="${x0 + 85}" y="46" text-anchor="middle">${esc(p.nom)}</text>`;
+        [['lecture', 'fd[0] lecture', 62], ['ecriture', 'fd[1] écriture', 112]].forEach(([cle, libelle, y]) => {
+            const ouvert = p[cle] === 'ouvert';
+            r += `<rect class="pap-fd${ouvert ? '' : ' is-ferme'}" x="${x0 + 14}" y="${y}" width="142" height="38" rx="6"/>`;
+            r += `<text class="pap-fd-txt${ouvert ? '' : ' is-ferme'}" x="${x0 + 85}" y="${y + 25}" text-anchor="middle">${ouvert ? libelle : '✗ ' + libelle}</text>`;
+            if (!ouvert) return;
+            const yc = y + 19;
+            const bord = versDroite ? x0 + 156 : x0 + 14;   // côté du descripteur tourné vers le tube
+            const tube = versDroite ? 240 : 360;            // côté du tube tourné vers le processus
+            r += cle === 'ecriture'
+                ? `<line class="pap-trait" x1="${bord}" y1="${yc}" x2="${tube}" y2="${yc}" marker-end="url(#${id})"/>`
+                : `<line class="pap-trait" x1="${tube}" y1="${yc}" x2="${bord}" y2="${yc}" marker-end="url(#${id})"/>`;
+        });
+        return r;
+    };
+    o += processus(s.gauche, 10, true);
+    if (deux) o += processus(s.droite, 420, false);
+    return o + '</svg>';
+}
+
+const dessiner = s => (s.type === 'liste' ? svgListe(s) : s.type === 'tableau' ? svgTableau(s) : s.type === 'arbre' ? svgArbre(s) : svgTube(s));
 
 // ===== Composant =====
 
@@ -289,6 +338,7 @@ function construire(def) {
         const e = etats[i];
         lignes.forEach((l, k) => l.classList.toggle('is-courante', k === e.ligne));
         schemaEl.hidden = !e.schema;
+        droite.classList.toggle('sans-schema', !e.schema);
         schemaEl.innerHTML = e.schema ? dessiner(e.schema) : '';
         const noms = Object.keys(e.vars);
         varsEl.hidden = noms.length === 0;

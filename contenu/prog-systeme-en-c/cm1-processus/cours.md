@@ -58,6 +58,26 @@ Chaque `fork` fait se dédoubler **tous** les processus existants (fils compris)
 
 > **Astuce :** On ne devine pas l'ordre d'affichage père/fils. Seul `wait` impose un ordre ; `sleep` n'est qu'un hack d'expérimentation.
 
+**À toi de jouer — combien de processus ?** Trois `fork` de suite (les nœuds verts sont les processus qui viennent d'être créés)
+```pas-a-pas
+{
+  "titre": "fork(); fork(); fork(); : l'arbre des processus",
+  "code": [
+    "fork();",
+    "fork();",
+    "fork();",
+    "printf(\"Salut\\n\");"
+  ],
+  "etapes": [
+    {"ligne":null,"vars":{"processus":1},"note":"Au départ, un seul processus : A, le père.","schema":{"type":"arbre","noeuds":[{"v":"A"}],"visites":[]}},
+    {"ligne":0,"vars":{"processus":2},"note":"Premier fork : A se duplique, B naît. Le fils reprend juste après le fork.","schema":{"type":"arbre","noeuds":[{"v":"A","fils":[1]},{"v":"B"}],"visites":[1]}},
+    {"ligne":1,"vars":{"processus":4},"note":"Deuxième fork : il est exécuté par TOUS les processus existants, fils compris. A crée C, B crée D. On passe à 4, pas à 3.","schema":{"type":"arbre","noeuds":[{"v":"A","fils":[1,2]},{"v":"B","fils":[3]},{"v":"C"},{"v":"D"}],"visites":[2,3]}},
+    {"ligne":2,"vars":{"processus":8},"note":"Troisième fork : les 4 processus se dédoublent. A crée E, B crée F, C crée G, D crée H. On passe à 8.","schema":{"type":"arbre","noeuds":[{"v":"A","fils":[1,2,4]},{"v":"B","fils":[3,5]},{"v":"C","fils":[6]},{"v":"D","fils":[7]},{"v":"E"},{"v":"F"},{"v":"G"},{"v":"H"}],"visites":[4,5,6,7]}},
+    {"ligne":3,"vars":{"Salut affichés":8},"note":"Les 8 processus exécutent le printf : « Salut » s'affiche 8 fois, dans un ordre imprévisible. n fork consécutifs donnent 2^n processus, père inclus.","schema":{"type":"arbre","noeuds":[{"v":"A","fils":[1,2,4]},{"v":"B","fils":[3,5]},{"v":"C","fils":[6]},{"v":"D","fils":[7]},{"v":"E"},{"v":"F"},{"v":"G"},{"v":"H"}],"visites":[0,1,2,3,4,5,6,7]}}
+  ]
+}
+```
+
 ### 5. Fin de vie : `exit`, `wait`, zombie, orphelin
 - `exit(n)` termine le processus avec un code (0 = succès) ; `return n` dans `main` équivaut à `exit(n)`. `_exit(n)` est l'appel système brut : il ne vide pas les tampons.
 - `wait(&status)` **bloque le père jusqu'à la mort d'un fils** et récupère son code ; `waitpid(pid, &status, 0)` attend le fils `pid`. Un appel = un fils : pour N fils, N appels.

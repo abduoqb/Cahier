@@ -99,6 +99,33 @@ while (1) {
     close(svc);                              // PÈRE : n'a pas besoin de la socket de service
 }
 ```
+
+**À toi de jouer — les deux sockets d'un serveur parallèle** : la table des descripteurs du père, puis du fils (`tty` = terminal, `éco` = socket d'écoute, `svc` = socket de service)
+```pas-a-pas
+{
+  "titre": "accept puis fork : qui garde quelle socket ?",
+  "code": [
+    "while (1) {",
+    "    int svc = accept(sock, NULL, NULL);",
+    "    if (fork() == 0) {",
+    "        close(sock);",
+    "        /* service */",
+    "        close(svc); exit(0);",
+    "    }",
+    "    close(svc);",
+    "}"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"table de":"père"},"note":"Le serveur a déjà fait socket, bind et listen : sock (descripteur 3) est la socket d'écoute. Elle ne sert qu'à accepter de nouvelles connexions.","schema":{"type":"tableau","cases":["tty","tty","tty","éco","–"],"marques":{"sock":3,"svc":4}}},
+    {"ligne":1,"note":"accept bloque jusqu'à l'arrivée d'un client, puis renvoie une NOUVELLE socket, svc : la socket de service, dédiée à ce client. Le client n'a pas besoin de bind.","schema":{"type":"tableau","cases":["tty","tty","tty","éco","svc"],"marques":{"sock":3,"svc":4},"surligne":[4]}},
+    {"ligne":2,"note":"fork : le fils reçoit une copie de la table, donc il a les deux sockets. Père et fils ont maintenant chacun les deux.","schema":{"type":"tableau","cases":["tty","tty","tty","éco","svc"],"marques":{"sock":3,"svc":4}}},
+    {"ligne":3,"vars":{"table de":"fils"},"note":"Le fils ferme la socket d'écoute : il ne sert que son client.","schema":{"type":"tableau","cases":["tty","tty","tty","–","svc"],"marques":{"sock":3,"svc":4}}},
+    {"ligne":5,"note":"Il dialogue avec le client, puis ferme sa socket de service et termine.","schema":{"type":"tableau","cases":["tty","tty","tty","–","–"],"marques":{"sock":3,"svc":4},"fixes":[]}},
+    {"ligne":7,"vars":{"table de":"père"},"note":"Le père ferme la socket de service : elle ne le concerne plus. Il garde seulement la socket d'écoute.","schema":{"type":"tableau","cases":["tty","tty","tty","éco","–"],"marques":{"sock":3,"svc":4}}},
+    {"ligne":0,"note":"Le père revient aussitôt à accept pour le client suivant : pendant ce temps le fils sert le premier. C'est ce qui rend le serveur parallèle, alors qu'un serveur itératif ferait attendre les autres clients.","schema":{"type":"tableau","cases":["tty","tty","tty","éco","–"],"marques":{"sock":3,"svc":4},"surligne":[3]}}
+  ]
+}
+```
 - Le père ferme la socket de service, le fils ferme la socket d'écoute. Le père récolte les fils (`wait` ou `SIGCHLD`) pour éviter les zombies.
 - Variantes : un thread par client (`pthread_create`), ou `select` (multiplexage de plusieurs descripteurs).
 - Pourquoi « en même temps » : plusieurs cœurs, et sinon l'ordonnanceur du noyau partage le temps (quantum de quelques millisecondes).

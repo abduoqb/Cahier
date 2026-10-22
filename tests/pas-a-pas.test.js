@@ -81,3 +81,35 @@ test('arbre : fils hors bornes, cycle, noeud à deux parents, courant invalide',
         assert.ok(validerPasAPas(avecSchema(s)).length > 0);
     }
 });
+
+test('arbre à plusieurs enfants (fils) : valide, puis erreurs', () => {
+    const ok = { type: 'arbre', noeuds: [{ v: 'A', fils: [1, 2, 3] }, { v: 'B' }, { v: 'C' }, { v: 'D' }] };
+    assert.deepEqual(validerPasAPas(avecSchema(ok)), []);
+    for (const modif of [
+        s => { s.noeuds[0].fils = [9]; },
+        s => { s.noeuds[0].fils = [0]; },
+        s => { s.noeuds[0].fils = 'x'; },
+        s => { s.noeuds[1].fils = [0]; },
+        s => { s.noeuds[1].fils = [2]; },
+    ]) {
+        const s = JSON.parse(JSON.stringify(ok));
+        modif(s);
+        assert.ok(validerPasAPas(avecSchema(s)).length > 0);
+    }
+});
+
+test('tube : valide, puis erreurs', () => {
+    const ok = { type: 'tube', gauche: { nom: 'Père', lecture: 'ouvert', ecriture: 'ferme' }, droite: { nom: 'Fils', lecture: 'ferme', ecriture: 'ouvert' }, tampon: 'bonjour' };
+    assert.deepEqual(validerPasAPas(avecSchema(ok)), []);
+    assert.deepEqual(validerPasAPas(avecSchema({ type: 'tube', gauche: ok.gauche })), []);
+    for (const modif of [
+        s => { delete s.gauche; },
+        s => { s.gauche.lecture = 'peut-être'; },
+        s => { s.droite.nom = ''; },
+        s => { s.tampon = 'x'.repeat(30); },
+    ]) {
+        const s = JSON.parse(JSON.stringify(ok));
+        modif(s);
+        assert.ok(validerPasAPas(avecSchema(s)).length > 0);
+    }
+});

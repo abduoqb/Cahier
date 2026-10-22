@@ -4,7 +4,7 @@ import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, existe, message
 import { construireSession, melanger } from './quiz-session.js';
 import { lancerQuiz } from './quiz.js';
 import { lancerCartes } from './cartes.js';
-import { activerPasAPas } from './pas-a-pas.js?v=3';
+import { activerPasAPas } from './pas-a-pas.js?v=4';
 
 function md(texte, dossier) {
     return window.marked.parse(texte).replaceAll('src="img/', `src="contenu/${dossier}/img/`);
