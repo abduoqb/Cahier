@@ -9,6 +9,7 @@ export async function renderSeancesSection(sujet, element) {
     if (!element) return;
     let matiere = null;
     try { matiere = await trouverMatiere(sujet.name); } catch { return; }
+    if (!element.isConnected) return;
     if (!matiere || !matiere.seances.length) return;
     element.innerHTML = `
         <h2 class="seances-titre">Séances</h2>

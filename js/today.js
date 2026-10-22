@@ -37,6 +37,7 @@ async function cartesDuJour() {
 export async function renderTodayCard(element) {
     if (!element) return;
     try { await chargerIndex(); } catch { return; }
+    if (!element.isConnected) return;
     const dues = progress.notionsDues();
     const texte = dues.length
         ? `${pluriel(dues.length, 'notion')} à revoir ou à consolider aujourd'hui.`
@@ -53,6 +54,7 @@ export async function renderTodayCard(element) {
             if (n) boutonCartes = '<a class="btn btn-secondary" href="#/cartes-du-jour">Cartes</a>';
         }
     } catch { /* cartes indisponibles : la carte d'accueil reste utilisable */ }
+    if (!element.isConnected) return; // la page a changé pendant le chargement
     element.innerHTML = `
         <section class="today-card">
             <div><h2 class="today-titre">Aujourd'hui</h2><p>${escapeHtml(texte)}</p>${ligneCartes ? `<p>${escapeHtml(ligneCartes)}</p>` : ''}</div>
@@ -68,6 +70,7 @@ export async function renderAujourdhui() {
     try {
         const dues = progress.notionsDues();
         const { quizzes, erreurs } = await quizzesDe();
+        if (!zone.isConnected) return;
         const { mode, questions } = choisirDuJour(dues, quizzes, { max: 8 });
         if (mode === 'vide') {
             zone.innerHTML = `${avertissement(erreurs)}<p class="quiz-vide">Rien à réviser pour l'instant. Ouvre une séance et lance un premier quiz.</p>`;
@@ -88,6 +91,7 @@ export async function renderCartesDuJour() {
     const zone = app.querySelector('#today-cartes');
     try {
         const { dues, nouvelles, erreurs } = await cartesDuJour();
+        if (!zone.isConnected) return;
         const serie = [...dues, ...nouvelles];
         if (!serie.length) {
             zone.innerHTML = `${avertissement(erreurs)}<p class="quiz-vide">Aucune carte à revoir aujourd'hui. Reviens demain.</p>`;

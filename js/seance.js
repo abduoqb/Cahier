@@ -12,6 +12,7 @@ function md(texte, dossier) {
 export async function renderSeance(matiereId, seanceId) {
     const app = document.getElementById('app');
     app.innerHTML = '<p class="seance-chargement">Chargement de la séance…</p>';
+    const hashDepart = location.hash;
     try {
         const idx = await chargerIndex();
         const matiere = idx.matieres.find(m => m.id === matiereId);
@@ -31,6 +32,7 @@ export async function renderSeance(matiereId, seanceId) {
             aFiche && ['Fiche de révision (PDF)', 'fiche.pdf', 'Fiche de révision'],
         ].filter(Boolean).map(([titre, fichier, t]) => `<details class="seance-pdf"><summary>${titre}</summary>
                             <iframe src="contenu/${seance.dossier}/${fichier}" title="${t}"></iframe></details>`).join('');
+        if (location.hash !== hashDepart) return; // l'utilisateur a changé de page pendant le chargement
         const sujet = Store.getSubjects().find(s => slug(s.name) === matiereId);
         const retour = sujet ? `#/subject/${sujet.id}` : '#/';
 

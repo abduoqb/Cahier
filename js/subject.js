@@ -324,13 +324,16 @@ function bindEvents(subjectId) {
         btn.addEventListener('click', async () => {
             const tab = window.open('about:blank', '_blank');
             const fileData = await Store.getFile(btn.dataset.fileId);
-            if (fileData) {
-                const blob = new Blob([fileData.blob], { type: fileData.type });
-                const url = URL.createObjectURL(blob);
-                tab.location.href = url;
-            } else {
-                tab.close();
+            if (!fileData) {
+                if (tab) tab.close();
+                toast('Fichier introuvable sur cet appareil.', 'error');
+                return;
             }
+            const blob = new Blob([fileData.blob], { type: fileData.type });
+            const url = URL.createObjectURL(blob);
+            if (tab) tab.location.href = url;
+            else window.location.href = url; // fenêtre bloquée par le navigateur
+            setTimeout(() => URL.revokeObjectURL(url), 60000);
         });
     });
 }

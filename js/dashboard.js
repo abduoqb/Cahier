@@ -1,5 +1,5 @@
 import { Store } from './store.js';
-import { renderTodayCard } from './today.js?v=2';
+import { renderTodayCard } from './today.js?v=4';
 import { calcProgress, progressClass, escapeHtml, examInfo } from './utils.js?v=6';
 
 // Palette de tons terre pour distinguer les matières sans sortir de la palette générale.
@@ -447,6 +447,7 @@ function setupCalendarControls() {
         const file = e.target.files[0];
         if (!file) return;
         const text = await file.text();
+        e.target.value = ''; // permet de réimporter le même fichier
         if (!text.includes('BEGIN:VCALENDAR')) {
             alert("Ce fichier ne ressemble pas à un calendrier .ics.");
             return;
