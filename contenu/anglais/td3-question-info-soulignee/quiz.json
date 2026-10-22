@@ -1,0 +1,170 @@
+{
+  "seance": "td3-question-info-soulignee",
+  "questions": [
+    {
+      "id": "q-td3-question-info-soulignee-001",
+      "notion": "auxiliaire-selon-temps",
+      "type": "qcm",
+      "enonce": "« The recycling campaign started last Monday. » (last Monday est souligné.) Quelle est la question ?",
+      "choix": [
+        "When did the recycling campaign start ?",
+        "When did the recycling campaign started ?",
+        "When the recycling campaign started ?",
+        "How long did the recycling campaign start ?"
+      ],
+      "bonne": 0,
+      "explication": "Moment : When. Prétérit : did + base verbale (start, pas started).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-002",
+      "notion": "methode-info-soulignee",
+      "type": "qcm",
+      "enonce": "« Fairphone has been producing repairable smartphones since 2013. » (since 2013 est souligné.) Quelle est la question ?",
+      "choix": [
+        "When has Fairphone been producing repairable smartphones ?",
+        "How long has Fairphone been producing repairable smartphones ?",
+        "How often has Fairphone been producing repairable smartphones ?",
+        "How long Fairphone has been producing repairable smartphones ?"
+      ],
+      "bonne": 1,
+      "explication": "Since donne une durée jusqu'à maintenant : How long. Present perfect : has + sujet + been producing.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-003",
+      "notion": "methode-info-soulignee",
+      "type": "qcm",
+      "enonce": "« Consumers can reduce e-waste by repairing and recycling their devices. » (by repairing… est souligné.) Quelle est la question ?",
+      "choix": [
+        "Why can consumers reduce e-waste ?",
+        "How can consumers reduce e-waste ?",
+        "What can consumers reduce e-waste ?",
+        "How do consumers can reduce e-waste ?"
+      ],
+      "bonne": 1,
+      "explication": "Un moyen : How. Avec un modal (can), on inverse can et le sujet, sans do.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-004",
+      "notion": "auxiliaire-selon-temps",
+      "type": "qcm",
+      "enonce": "« The old television was taken to a recycling centre. » (to a recycling centre est souligné.) Quelle est la question ?",
+      "choix": [
+        "Where did the old television take ?",
+        "Where was the old television taken ?",
+        "Where the old television was taken ?",
+        "Where was taken the old television ?"
+      ],
+      "bonne": 1,
+      "explication": "Lieu : Where. Passif : was + sujet + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-005",
+      "notion": "methode-info-soulignee",
+      "type": "qcm",
+      "enonce": "« Electronic waste is increasing because people buy new devices more frequently. » (because… est souligné.) Quelle est la question ?",
+      "choix": [
+        "Why is electronic waste increasing ?",
+        "How is electronic waste increasing ?",
+        "When is electronic waste increasing ?",
+        "Why electronic waste is increasing ?"
+      ],
+      "bonne": 0,
+      "explication": "Cause : Why. Présent continu : is + sujet + increasing.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-006",
+      "notion": "question-sur-le-sujet",
+      "type": "qcm",
+      "enonce": "« Engineers are developing a new battery. » (Engineers est souligné.) Quelle est la question ?",
+      "choix": [
+        "Who is developing a new battery ?",
+        "Who does develop a new battery ?",
+        "What is developing a new battery ?",
+        "Who is he developing a new battery ?"
+      ],
+      "bonne": 0,
+      "explication": "Le sujet est souligné : on le remplace par Who et on garde le reste, sans auxiliaire supplémentaire.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-007",
+      "notion": "auxiliaire-selon-temps",
+      "type": "qcm",
+      "enonce": "« The government has banned plastic bags. » (plastic bags est souligné.) Quelle est la question ?",
+      "choix": [
+        "What has banned the government ?",
+        "What has the government banned ?",
+        "What did the government banned ?",
+        "Who has the government banned ?"
+      ],
+      "bonne": 1,
+      "explication": "Une chose : What. Present perfect : has + sujet + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-008",
+      "notion": "erreurs-classiques",
+      "type": "qcm",
+      "enonce": "Quelle est l'erreur dans « When did the campaign started ? » ?",
+      "choix": [
+        "Il faut did + base verbale (start), pas started",
+        "Il faut remplacer When par How long",
+        "Il faut supprimer le sujet",
+        "Il n'y a pas d'erreur"
+      ],
+      "bonne": 0,
+      "explication": "Après do/does/did, le verbe reste à la base : le -s ou le -ed disparaît.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-009",
+      "notion": "erreurs-classiques",
+      "type": "qcm",
+      "enonce": "Que devient la partie soulignée dans la question ?",
+      "choix": [
+        "On la recopie à la fin",
+        "Elle disparaît : le mot interrogatif la remplace",
+        "On la met au début",
+        "On la traduit en français"
+      ],
+      "bonne": 1,
+      "explication": "La question porte sur l'information soulignée : elle ne doit plus apparaître.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-010",
+      "notion": "question-sur-le-sujet",
+      "type": "qcm",
+      "enonce": "Quand la partie soulignée est le sujet, que fait-on de l'auxiliaire ?",
+      "choix": [
+        "On ajoute do/does",
+        "On n'ajoute rien : Who/What remplace le sujet",
+        "On met le verbe à l'infinitif avec to",
+        "On inverse le sujet et le verbe"
+      ],
+      "bonne": 1,
+      "explication": "Il n'y a pas d'inversion ni de do/does : Who is developing a new battery ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "q-td3-question-info-soulignee-011",
+      "notion": "auxiliaire-selon-temps",
+      "type": "qcm",
+      "enonce": "« Consumers replace their phones every two years. » (every two years est souligné.) Quelle est la question ?",
+      "choix": [
+        "How often do consumers replace their phones ?",
+        "How often consumers replace their phones ?",
+        "How long do consumers replace their phones ?",
+        "How often does consumers replace their phones ?"
+      ],
+      "bonne": 0,
+      "explication": "Fréquence : How often. Présent simple, sujet pluriel : do + sujet + base.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    }
+  ]
+}

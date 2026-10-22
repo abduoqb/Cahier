@@ -1,0 +1,82 @@
+{
+  "seance": "td2-mots-interrogatifs",
+  "cartes": [
+    {
+      "id": "c-td2-mots-interrogatifs-001",
+      "notion": "mots-interrogatifs-base",
+      "recto": "Réponse « Because… » : quel mot interrogatif ?",
+      "verso": "Why.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-002",
+      "notion": "mots-interrogatifs-base",
+      "recto": "Réponse « In 2001 » : quel mot interrogatif ?",
+      "verso": "When.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-003",
+      "notion": "mots-interrogatifs-base",
+      "recto": "Réponse « In specialised recycling facilities » : quel mot ?",
+      "verso": "Where (un lieu).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-004",
+      "notion": "mots-interrogatifs-base",
+      "recto": "Réponse « It encourages people to replace products » : quel mot ?",
+      "verso": "What (une action, une chose).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-005",
+      "notion": "which-et-who",
+      "recto": "Which + nom : quand l'utiliser ?",
+      "verso": "Choix dans un ensemble précis : Which organization publishes… ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-006",
+      "notion": "which-et-who",
+      "recto": "Who interroge quoi ?",
+      "verso": "Une personne ou une entreprise (sujet) : Who has become a leader… ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-007",
+      "notion": "how-many-much",
+      "recto": "How many : pour quoi ?",
+      "verso": "Ce qui se compte : countries, phones, people.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-008",
+      "notion": "how-many-much",
+      "recto": "How much : pour quoi ?",
+      "verso": "Ce qui se mesure ou un prix : waste, water, money.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-009",
+      "notion": "how-often-long",
+      "recto": "How often vs How long ?",
+      "verso": "How often : fréquence (every year). How long : durée (for 3 years).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-010",
+      "notion": "question-sujet-objet",
+      "recto": "Mot interrogatif sujet : y a-t-il do/does ?",
+      "verso": "Non : Which organization publishes the report ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "c-td2-mots-interrogatifs-011",
+      "notion": "question-sujet-objet",
+      "recto": "Mot interrogatif non sujet : quel ordre ?",
+      "verso": "Mot + auxiliaire + sujet + base : How often do consumers replace… ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    }
+  ]
+}

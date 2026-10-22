@@ -1,0 +1,185 @@
+{
+  "seance": "td2-mots-interrogatifs",
+  "questions": [
+    {
+      "id": "q-td2-mots-interrogatifs-001",
+      "notion": "mots-interrogatifs-base",
+      "type": "qcm",
+      "enonce": "........ can old phones be recycled ? — In specialised recycling facilities.",
+      "choix": [
+        "Where",
+        "When",
+        "Why",
+        "Who"
+      ],
+      "bonne": 0,
+      "explication": "La réponse est un lieu : Where.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-002",
+      "notion": "mots-interrogatifs-base",
+      "type": "qcm",
+      "enonce": "........ do people repair their devices ? — Because it is cheaper and better for the environment.",
+      "choix": [
+        "How",
+        "What",
+        "Why",
+        "Which"
+      ],
+      "bonne": 2,
+      "explication": "« Because » annonce une cause : Why.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-003",
+      "notion": "mots-interrogatifs-base",
+      "type": "qcm",
+      "enonce": "........ was the first major e-waste law introduced in Japan ? — In 2001.",
+      "choix": [
+        "How long",
+        "When",
+        "Where",
+        "How often"
+      ],
+      "bonne": 1,
+      "explication": "Une date est un moment précis : When.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-004",
+      "notion": "mots-interrogatifs-base",
+      "type": "qcm",
+      "enonce": "........ does planned obsolescence encourage people to do ? — To replace products quickly.",
+      "choix": [
+        "Who",
+        "What",
+        "Which",
+        "Why"
+      ],
+      "bonne": 1,
+      "explication": "La réponse est une action, une chose : What.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-005",
+      "notion": "which-et-who",
+      "type": "qcm",
+      "enonce": "........ organization publishes the Global E-waste Monitor ?",
+      "choix": [
+        "Which",
+        "How",
+        "Why",
+        "When"
+      ],
+      "bonne": 0,
+      "explication": "Which + nom : choix dans un ensemble précis (ici les organisations).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-006",
+      "notion": "which-et-who",
+      "type": "qcm",
+      "enonce": "........ has become a leader in repairable smartphones ? — Fairphone has.",
+      "choix": [
+        "Where",
+        "Who",
+        "How many",
+        "How often"
+      ],
+      "bonne": 1,
+      "explication": "Une entreprise ou une personne sujet : Who (ou Which company).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-007",
+      "notion": "how-many-much",
+      "type": "qcm",
+      "enonce": "........ countries have adopted laws on e-waste ? — More than 80.",
+      "choix": [
+        "How much",
+        "How many",
+        "How often",
+        "How long"
+      ],
+      "bonne": 1,
+      "explication": "Des pays se comptent : How many.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-008",
+      "notion": "how-many-much",
+      "type": "qcm",
+      "enonce": "........ e-waste is produced worldwide each year ?",
+      "choix": [
+        "How many",
+        "How much",
+        "How often",
+        "Which"
+      ],
+      "bonne": 1,
+      "explication": "Waste est indénombrable : How much.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-009",
+      "notion": "how-often-long",
+      "type": "qcm",
+      "enonce": "........ do consumers replace their smartphones ? — Every two or three years.",
+      "choix": [
+        "How long",
+        "How often",
+        "How many",
+        "When"
+      ],
+      "bonne": 1,
+      "explication": "« Every two or three years » est une fréquence : How often.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-010",
+      "notion": "how-often-long",
+      "type": "qcm",
+      "enonce": "........ has the campaign been running ? — For three years.",
+      "choix": [
+        "When",
+        "How often",
+        "How long",
+        "How many"
+      ],
+      "bonne": 2,
+      "explication": "« For three years » est une durée : How long.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-011",
+      "notion": "question-sujet-objet",
+      "type": "qcm",
+      "enonce": "Quelle question est correcte ?",
+      "choix": [
+        "Which organization does publish the report ?",
+        "Which organization publishes the report ?",
+        "Which organization publish the report ?",
+        "Does which organization publish the report ?"
+      ],
+      "bonne": 1,
+      "explication": "Quand le mot interrogatif est le sujet, pas de do/does et le verbe garde son -s.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    },
+    {
+      "id": "q-td2-mots-interrogatifs-012",
+      "notion": "question-sujet-objet",
+      "type": "qcm",
+      "enonce": "Quelle question est correcte ?",
+      "choix": [
+        "How often consumers replace their phones ?",
+        "How often do consumers replace their phones ?",
+        "How often do consumers replaces their phones ?",
+        "How often replace consumers their phones ?"
+      ],
+      "bonne": 1,
+      "explication": "Mot interrogatif + do + sujet + base verbale.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 2 (mots interrogatifs)"
+    }
+  ]
+}

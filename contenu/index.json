@@ -219,6 +219,66 @@
           ]
         }
       ]
+    },
+    {
+      "id": "anglais",
+      "nom": "Anglais",
+      "seances": [
+        {
+          "id": "td1-verbes-actif-passif",
+          "type": "TD",
+          "titre": "Verbes : actif ou passif",
+          "dossier": "anglais/td1-verbes-actif-passif",
+          "cartes": true,
+          "notions": [
+            "temps-mots-cles",
+            "passif-forme",
+            "present-perfect",
+            "modaux-passif"
+          ]
+        },
+        {
+          "id": "td2-mots-interrogatifs",
+          "type": "TD",
+          "titre": "Les mots interrogatifs",
+          "dossier": "anglais/td2-mots-interrogatifs",
+          "cartes": true,
+          "notions": [
+            "mots-interrogatifs-base",
+            "which-et-who",
+            "how-many-much",
+            "how-often-long",
+            "question-sujet-objet"
+          ]
+        },
+        {
+          "id": "td3-question-info-soulignee",
+          "type": "TD",
+          "titre": "Question sur l'info soulignée",
+          "dossier": "anglais/td3-question-info-soulignee",
+          "cartes": true,
+          "notions": [
+            "methode-info-soulignee",
+            "auxiliaire-selon-temps",
+            "question-sur-le-sujet",
+            "erreurs-classiques"
+          ]
+        },
+        {
+          "id": "td4-traduction",
+          "type": "TD",
+          "titre": "Traduction français vers anglais",
+          "dossier": "anglais/td4-traduction",
+          "cartes": true,
+          "notions": [
+            "vocabulaire-dechets",
+            "should-before-ing",
+            "passif-en-cours",
+            "present-perfect-recent-years",
+            "without-ing"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,103 @@
+{
+  "seance": "td4-traduction",
+  "cartes": [
+    {
+      "id": "c-td4-traduction-001",
+      "notion": "vocabulaire-dechets",
+      "recto": "Déchets électroniques",
+      "verso": "e-waste / electronic waste (indénombrable : e-waste is).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-002",
+      "notion": "vocabulaire-dechets",
+      "recto": "Obsolescence programmée",
+      "verso": "planned obsolescence.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-003",
+      "notion": "vocabulaire-dechets",
+      "recto": "Appareil électroménager",
+      "verso": "household appliance.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-004",
+      "notion": "vocabulaire-dechets",
+      "recto": "Épuisement des ressources",
+      "verso": "depletion of resources.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-005",
+      "notion": "vocabulaire-dechets",
+      "recto": "Lutter contre",
+      "verso": "to fight, to tackle, to combat (+ nom, sans préposition).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-006",
+      "notion": "vocabulaire-dechets",
+      "recto": "Mettre en place (un programme)",
+      "verso": "to introduce, to set up.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-007",
+      "notion": "vocabulaire-dechets",
+      "recto": "Entreprise technologique",
+      "verso": "tech company / technology company.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-008",
+      "notion": "vocabulaire-dechets",
+      "recto": "Gestion des déchets",
+      "verso": "waste management.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-009",
+      "notion": "should-before-ing",
+      "recto": "Traduire : « devraient essayer de réparer… avant d'en acheter de nouveaux »",
+      "verso": "should try to repair… before buying new ones.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-010",
+      "notion": "should-before-ing",
+      "recto": "« Afin de » devant un verbe : traduction ?",
+      "verso": "to ou in order to + base verbale.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-011",
+      "notion": "passif-en-cours",
+      "recto": "Traduire : « sont progressivement mis en place par »",
+      "verso": "are gradually being introduced by.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-012",
+      "notion": "present-perfect-recent-years",
+      "recto": "Traduire : « ces dernières années »",
+      "verso": "in recent years + present perfect.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-013",
+      "notion": "present-perfect-recent-years",
+      "recto": "Traduire : « Pourquoi… représentent-ils un problème ? »",
+      "verso": "Why is e-waste a problem ? Pas d'inversion à la française.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "c-td4-traduction-014",
+      "notion": "without-ing",
+      "recto": "Traduire : « sans contribuer à »",
+      "verso": "without contributing to (without + -ing).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    }
+  ]
+}

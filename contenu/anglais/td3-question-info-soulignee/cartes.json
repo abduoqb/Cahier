@@ -1,0 +1,89 @@
+{
+  "seance": "td3-question-info-soulignee",
+  "cartes": [
+    {
+      "id": "c-td3-question-info-soulignee-001",
+      "notion": "methode-info-soulignee",
+      "recto": "Les 4 étapes pour poser la question sur l'info soulignée ?",
+      "verso": "Fonction, mot interrogatif, auxiliaire selon le temps, phrase sans la partie soulignée.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-002",
+      "notion": "methode-info-soulignee",
+      "recto": "Que devient la partie soulignée dans la question ?",
+      "verso": "Elle disparaît, remplacée par le mot interrogatif.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-003",
+      "notion": "methode-info-soulignee",
+      "recto": "Question sur « since 2013 » (present perfect) ?",
+      "verso": "How long has Fairphone been producing phones ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-004",
+      "notion": "methode-info-soulignee",
+      "recto": "Question sur « by repairing… » avec can ?",
+      "verso": "How can consumers reduce e-waste ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-005",
+      "notion": "auxiliaire-selon-temps",
+      "recto": "Prétérit : auxiliaire et verbe dans la question ?",
+      "verso": "did + base : When did the campaign start ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-006",
+      "notion": "auxiliaire-selon-temps",
+      "recto": "Question au passif : quelle forme ?",
+      "verso": "Mot + was + sujet + participe : Where was the television taken ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-007",
+      "notion": "auxiliaire-selon-temps",
+      "recto": "Question sur une fréquence au présent simple ?",
+      "verso": "How often do consumers replace their phones ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-008",
+      "notion": "auxiliaire-selon-temps",
+      "recto": "Réponse « because… » : question au présent continu ?",
+      "verso": "Why is electronic waste increasing ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-009",
+      "notion": "question-sur-le-sujet",
+      "recto": "Sujet souligné : quel auxiliaire ?",
+      "verso": "Aucun : Engineers are developing… devient Who is developing… ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-010",
+      "notion": "erreurs-classiques",
+      "recto": "Corrige : « When did the campaign started ? »",
+      "verso": "When did the campaign start ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-011",
+      "notion": "erreurs-classiques",
+      "recto": "Corrige : « Where the television was taken ? »",
+      "verso": "Where was the television taken ?",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    },
+    {
+      "id": "c-td3-question-info-soulignee-012",
+      "notion": "erreurs-classiques",
+      "recto": "Après do/does/did, le verbe prend-il -s ou -ed ?",
+      "verso": "Jamais : does make, did start.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 3 (question sur l'info soulignée)"
+    }
+  ]
+}

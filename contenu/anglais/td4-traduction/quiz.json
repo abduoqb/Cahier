@@ -1,0 +1,185 @@
+{
+  "seance": "td4-traduction",
+  "questions": [
+    {
+      "id": "q-td4-traduction-001",
+      "notion": "vocabulaire-dechets",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « obsolescence programmée » ?",
+      "choix": [
+        "planned obsolescence",
+        "programmed obsolescence",
+        "scheduled obsolescence",
+        "planned obsolete"
+      ],
+      "bonne": 0,
+      "explication": "L'expression du cours est planned obsolescence.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-002",
+      "notion": "vocabulaire-dechets",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « épuisement des ressources » ?",
+      "choix": [
+        "depletion of resources",
+        "deplete of resources",
+        "depleted of resources",
+        "resources depletion of"
+      ],
+      "bonne": 0,
+      "explication": "Depletion est le nom : the depletion of the planet's resources.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-003",
+      "notion": "vocabulaire-dechets",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « appareils électroménagers » ?",
+      "choix": [
+        "household appliances",
+        "housing appliances",
+        "home electrical machines",
+        "electrohousehold devices"
+      ],
+      "bonne": 0,
+      "explication": "Household appliances.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-004",
+      "notion": "vocabulaire-dechets",
+      "type": "qcm",
+      "enonce": "Quelle traduction convient pour « lutter contre l'obsolescence programmée » ?",
+      "choix": [
+        "to fight planned obsolescence",
+        "to fight for planned obsolescence",
+        "to fight to planned obsolescence",
+        "to fight at planned obsolescence"
+      ],
+      "bonne": 0,
+      "explication": "To fight / tackle / combat se construisent directement avec le nom. « Fight for » signifierait l'inverse.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-005",
+      "notion": "should-before-ing",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « Les consommateurs devraient essayer de réparer leurs appareils avant d'en acheter de nouveaux » ?",
+      "choix": [
+        "Consumers should try to repair their devices before buying new ones.",
+        "Consumers should to try to repair their devices before to buy new ones.",
+        "Consumers should try repairing their devices before buy new.",
+        "Consumers must tries to repair their devices before buying new ones."
+      ],
+      "bonne": 0,
+      "explication": "should + base verbale ; before + -ing ; new ones remplace le nom.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-006",
+      "notion": "should-before-ing",
+      "type": "qcm",
+      "enonce": "Après « before », le verbe se met :",
+      "choix": [
+        "en -ing (before buying)",
+        "à l'infinitif avec to",
+        "à la base verbale",
+        "au participe passé"
+      ],
+      "bonne": 0,
+      "explication": "Après une préposition (before, without), le verbe prend -ing.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-007",
+      "notion": "passif-en-cours",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « Des programmes sont progressivement mis en place » ?",
+      "choix": [
+        "Programs are gradually being introduced",
+        "Programs are gradually introduced being",
+        "Programs are gradually introducing",
+        "Programs gradually introduced are"
+      ],
+      "bonne": 0,
+      "explication": "Passif en cours : are being + participe passé, avec gradually avant being.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-008",
+      "notion": "passif-en-cours",
+      "type": "qcm",
+      "enonce": "Passif au présent continu : quelle forme ?",
+      "choix": [
+        "is/are being + participe passé",
+        "is/are + participe passé",
+        "has/have been + participe passé",
+        "was/were being + base"
+      ],
+      "bonne": 0,
+      "explication": "is/are being + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-009",
+      "notion": "present-perfect-recent-years",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « Quelles mesures le gouvernement a-t-il prises ces dernières années ? »",
+      "choix": [
+        "What measures has the government taken in recent years ?",
+        "What measures did the government took in recent years ?",
+        "What measures the government has taken in recent years ?",
+        "Which measures has taken the government in recent years ?"
+      ],
+      "bonne": 0,
+      "explication": "In recent years appelle le present perfect, avec inversion has + sujet. Take, took, taken.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-010",
+      "notion": "present-perfect-recent-years",
+      "type": "qcm",
+      "enonce": "Quel est le participe passé de « take » ?",
+      "choix": [
+        "taken",
+        "took",
+        "taked",
+        "tooken"
+      ],
+      "bonne": 0,
+      "explication": "Take / took / taken.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-011",
+      "notion": "without-ing",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « sans contribuer à » ?",
+      "choix": [
+        "without contributing to",
+        "without to contribute to",
+        "without contribute to",
+        "without contributed to"
+      ],
+      "bonne": 0,
+      "explication": "Après without, le verbe se met en -ing.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    },
+    {
+      "id": "q-td4-traduction-012",
+      "notion": "without-ing",
+      "type": "qcm",
+      "enonce": "Comment traduit-on « Peut-on continuer à produire de nouveaux appareils ? »",
+      "choix": [
+        "Can we keep producing new devices ?",
+        "Can we keep produce new devices ?",
+        "Can we to keep producing new devices ?",
+        "We can keep producing new devices ?"
+      ],
+      "bonne": 0,
+      "explication": "Can we + base verbale ; keep/continue + -ing. Pas de to après can.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 4 (traduction)"
+    }
+  ]
+}

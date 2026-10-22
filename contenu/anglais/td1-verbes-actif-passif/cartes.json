@@ -1,0 +1,89 @@
+{
+  "seance": "td1-verbes-actif-passif",
+  "cartes": [
+    {
+      "id": "c-td1-verbes-actif-passif-001",
+      "notion": "temps-mots-cles",
+      "recto": "Quel temps après « last year » ou « five years ago » ?",
+      "verso": "Prétérit : was/were + participe passé au passif.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-002",
+      "notion": "temps-mots-cles",
+      "recto": "Quel temps après « since », « for several years now » ou « over the past few years » ?",
+      "verso": "Present perfect : have/has + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-003",
+      "notion": "temps-mots-cles",
+      "recto": "Quel temps après « right now » ou « at the moment » ?",
+      "verso": "Présent continu : be + -ing.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-004",
+      "notion": "temps-mots-cles",
+      "recto": "Quel temps après « by the end of 2025 » (date passée) ?",
+      "verso": "Past perfect : had + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-005",
+      "notion": "passif-forme",
+      "recto": "Quelle est la formule du passif ?",
+      "verso": "be (au bon temps) + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-006",
+      "notion": "passif-forme",
+      "recto": "Comment savoir si c'est actif ou passif ?",
+      "verso": "Le sujet fait l'action : actif. Il la subit : passif.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-007",
+      "notion": "passif-forme",
+      "recto": "Passif au présent continu : quelle forme ?",
+      "verso": "is/are being + participe passé (are being collected).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-008",
+      "notion": "passif-forme",
+      "recto": "Participes passés de throw, build, take, write ?",
+      "verso": "thrown, built, taken, written.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-009",
+      "notion": "present-perfect",
+      "recto": "Present perfect de « build » à l'actif et au passif (pluriel) ?",
+      "verso": "have built (actif) / have been built (passif).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-010",
+      "notion": "present-perfect",
+      "recto": "Pourquoi « awareness has increased » et pas « have » ?",
+      "verso": "Awareness est singulier et indénombrable : has.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-011",
+      "notion": "modaux-passif",
+      "recto": "Passif avec un modal : quelle forme ?",
+      "verso": "modal + be + participe passé (should be created).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "c-td1-verbes-actif-passif-012",
+      "notion": "modaux-passif",
+      "recto": "Après must / should / can, le verbe est à quelle forme ?",
+      "verso": "À la base verbale, sans « to » (must dispose of).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    }
+  ]
+}

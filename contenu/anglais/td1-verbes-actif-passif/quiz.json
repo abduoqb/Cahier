@@ -1,0 +1,155 @@
+{
+  "seance": "td1-verbes-actif-passif",
+  "questions": [
+    {
+      "id": "q-td1-verbes-actif-passif-001",
+      "notion": "temps-mots-cles",
+      "type": "qcm",
+      "enonce": "Quel temps le mot-clé « last year » impose-t-il ?",
+      "choix": [
+        "Prétérit (past simple)",
+        "Present perfect",
+        "Past perfect",
+        "Présent simple"
+      ],
+      "bonne": 0,
+      "explication": "Un moment fini du passé (last year, five years ago, yesterday) demande le prétérit.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-002",
+      "notion": "temps-mots-cles",
+      "type": "qcm",
+      "enonce": "Right now, engineers ........ (develop) more sustainable batteries.",
+      "choix": [
+        "develop",
+        "are developing",
+        "have developed",
+        "developed"
+      ],
+      "bonne": 1,
+      "explication": "« Right now » appelle le présent continu (be + -ing). Les ingénieurs font l'action : actif.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-003",
+      "notion": "temps-mots-cles",
+      "type": "qcm",
+      "enonce": "By the end of 2025, many companies ........ (launch) repair programs.",
+      "choix": [
+        "launched",
+        "have launched",
+        "had launched",
+        "were launching"
+      ],
+      "bonne": 2,
+      "explication": "« By + date passée » : une action terminée avant ce repère, donc past perfect (had + participe passé).",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-004",
+      "notion": "passif-forme",
+      "type": "qcm",
+      "enonce": "A large amount of e-waste ........ (export) illegally every year.",
+      "choix": [
+        "exports",
+        "is exported",
+        "are exported",
+        "was exported"
+      ],
+      "bonne": 1,
+      "explication": "Le déchet subit l'action (passif). « Every year » : présent simple. « A large amount » est singulier : is.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-005",
+      "notion": "passif-forme",
+      "type": "qcm",
+      "enonce": "At the moment, old computers ........ (collect) by volunteers.",
+      "choix": [
+        "are collected",
+        "are being collected",
+        "have been collected",
+        "were collected"
+      ],
+      "bonne": 1,
+      "explication": "« At the moment » + passif : are being + participe passé.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-006",
+      "notion": "passif-forme",
+      "type": "qcm",
+      "enonce": "Last year, several recycling centres ........ (build) in the country.",
+      "choix": [
+        "built",
+        "were building",
+        "were built",
+        "have been built"
+      ],
+      "bonne": 2,
+      "explication": "Prétérit passif : were + participe passé. « Build » est irrégulier : built.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-007",
+      "notion": "present-perfect",
+      "type": "qcm",
+      "enonce": "Over the past few years, awareness of e-waste ........ (increase) significantly.",
+      "choix": [
+        "increased",
+        "has increased",
+        "have increased",
+        "is increasing"
+      ],
+      "bonne": 1,
+      "explication": "« Over the past few years » : present perfect. « Awareness » est singulier : has.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-008",
+      "notion": "present-perfect",
+      "type": "qcm",
+      "enonce": "For several years now, environmental groups ........ (campaign) for better e-waste management.",
+      "choix": [
+        "campaign",
+        "are campaigning",
+        "have been campaigning",
+        "were campaigned"
+      ],
+      "bonne": 2,
+      "explication": "« For several years now » : action qui dure jusqu'à maintenant, present perfect continu. Actif.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-009",
+      "notion": "modaux-passif",
+      "type": "qcm",
+      "enonce": "More information campaigns should ........ (create) to raise awareness.",
+      "choix": [
+        "create",
+        "be created",
+        "been created",
+        "being created"
+      ],
+      "bonne": 1,
+      "explication": "Modal + be + participe passé : le sujet (campaigns) subit l'action.",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    },
+    {
+      "id": "q-td1-verbes-actif-passif-010",
+      "notion": "modaux-passif",
+      "type": "qcm",
+      "enonce": "Consumers must ........ (dispose of) e-waste responsibly.",
+      "choix": [
+        "dispose of",
+        "be disposed of",
+        "to dispose of",
+        "disposing of"
+      ],
+      "bonne": 0,
+      "explication": "Les consommateurs agissent : actif. Après un modal, la base verbale sans « to ».",
+      "source": "Mock exam L2 MIM/PCI CC1, partie 1 (verbes)"
+    }
+  ]
+}
