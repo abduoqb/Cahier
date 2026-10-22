@@ -102,6 +102,28 @@ SELECT D.RefP, COUNT(*) AS NB FROM DETAIL D GROUP BY D.RefP ORDER BY NB DESC, D.
 Ordre d'écriture : `SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY`. Ordre **logique** : **FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY**.
 Conséquences : pas d'agrégat dans `WHERE` (les groupes n'existent pas encore) ; `ORDER BY` peut utiliser un alias du `SELECT`.
 
+```pas-a-pas
+{
+  "titre": "Ordre logique d'exécution d'un SELECT sur DETAIL",
+  "code": [
+    "SELECT RefP, COUNT(*) AS NB",
+    "FROM DETAIL",
+    "WHERE Quantite > 25",
+    "GROUP BY RefP",
+    "HAVING COUNT(*) > 1",
+    "ORDER BY NB DESC, RefP"
+  ],
+  "etapes": [
+    {"ligne":1,"vars":{"lignes de DETAIL":14},"note":"Le SGBD commence par FROM : il prend les 14 lignes de DETAIL."},
+    {"ligne":2,"vars":{"après WHERE":"8 lignes (Quantite > 25)"},"note":"WHERE filtre les lignes une à une, avant tout regroupement. Il reste 8 lignes : un agrégat n'aurait rien à y faire, les groupes n'existent pas encore."},
+    {"ligne":3,"vars":{"après GROUP BY":"CH262:1  CL60:2  CH464:2  PL224:2  CH264:1"},"note":"GROUP BY forme un groupe par produit parmi les 8 lignes restantes : 5 groupes, avec le nombre de lignes de chacun."},
+    {"ligne":4,"vars":{"après HAVING":"CL60  CH464  PL224 (2 lignes chacun)"},"note":"HAVING filtre les groupes : on garde ceux qui ont plus d'une ligne. CH262 et CH264 disparaissent."},
+    {"ligne":0,"vars":{"après SELECT":"(CL60, 2)  (CH464, 2)  (PL224, 2)"},"note":"SELECT calcule seulement maintenant les colonnes du résultat, dont l'alias NB."},
+    {"ligne":5,"vars":{"résultat":"(CH464, 2)  (CL60, 2)  (PL224, 2)"},"note":"ORDER BY passe en dernier : c'est pourquoi il peut utiliser l'alias NB. Les trois groupes ont NB = 2, RefP les départage."}
+  ]
+}
+```
+
 ## Données utiles pour les calculs
 15 clients (villes : Namur ×3, Poitiers ×3, Geneve, Toulouse ×5, Bruxelles, Lille, Paris ; `CAT` nul pour les clients 7 et 12) ; 7 produits (CH262 75, CH264 120, CH464 220, CL45 105, CL60 95, PL222 230, PL224 185) ; 7 commandes ; 14 lignes de détail.
 

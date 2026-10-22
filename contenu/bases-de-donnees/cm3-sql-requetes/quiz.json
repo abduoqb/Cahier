@@ -210,6 +210,81 @@
       "bonne": 3,
       "explication": "CREATE TABLE … AS SELECT crée la table et la remplit en une fois ; INSERT INTO … SELECT suppose la table déjà créée.",
       "source": "CM3 chapitre, section « Créer et remplir »"
+    },
+    {
+      "id": "q-cm3-sql-requetes-015",
+      "notion": "distinct-order-by",
+      "type": "qcm",
+      "enonce": "SELECT TypeP FROM PRODUIT ORDER BY Prix DESC. Quel type apparaît en premier ?",
+      "choix": [
+        "Cheville : CH264 est le premier dans l'ordre alphabétique",
+        "Clou : CL45 est le premier produit de la table",
+        "Planche : PL222 est le produit le plus cher (230)",
+        "On ne sait pas : ORDER BY ne trie pas toujours"
+      ],
+      "bonne": 2,
+      "explication": "ORDER BY trie sur la colonne indiquée, même si elle n'est pas affichée : le plus cher d'abord avec DESC.",
+      "source": "CM3, §5 Sélections et affichage"
+    },
+    {
+      "id": "q-cm3-sql-requetes-016",
+      "notion": "like-regexp",
+      "type": "qcm",
+      "enonce": "Quel motif LIKE sélectionne les villes dont la 2e lettre est a ?",
+      "choix": [
+        "LIKE '_a%'",
+        "LIKE 'a%'",
+        "LIKE '%a_'",
+        "LIKE '_a'"
+      ],
+      "bonne": 0,
+      "explication": "_ remplace exactement un caractère et % zéro ou plus ; LIKE '_a' ne conviendrait qu'aux chaînes de deux lettres.",
+      "source": "CM3, §5 Sélections et affichage"
+    },
+    {
+      "id": "q-cm3-sql-requetes-017",
+      "notion": "valeur-null",
+      "type": "qcm",
+      "enonce": "Que renvoie SELECT COUNT(*), COUNT(CAT) sur 3 lignes dont CAT vaut 1, NULL et 2 ?",
+      "choix": [
+        "3 et 3",
+        "3 et 2",
+        "2 et 2",
+        "2 et 3"
+      ],
+      "bonne": 1,
+      "explication": "COUNT(*) compte les lignes, COUNT(CAT) seulement les valeurs non nulles.",
+      "source": "CM3, §6 Valeur NULL"
+    },
+    {
+      "id": "q-cm3-sql-requetes-018",
+      "notion": "ordre-execution",
+      "type": "qcm",
+      "enonce": "Dans quel ordre le SGBD évalue-t-il WHERE, GROUP BY et SELECT ?",
+      "choix": [
+        "SELECT, puis WHERE, puis GROUP BY",
+        "GROUP BY, puis WHERE, puis SELECT",
+        "WHERE, puis SELECT, puis GROUP BY",
+        "WHERE, puis GROUP BY, puis SELECT"
+      ],
+      "bonne": 3,
+      "explication": "Ordre logique : FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.",
+      "source": "CM3, §8 Ordre d'exécution"
+    },
+    {
+      "id": "q-cm3-sql-requetes-019",
+      "notion": "ldd-ldm",
+      "type": "qcm",
+      "enonce": "Quelle commande ajoute une colonne à une table existante ?",
+      "choix": [
+        "ALTER TABLE, du langage de définition",
+        "UPDATE, du langage de manipulation",
+        "INSERT, du langage de manipulation",
+        "GRANT, du langage de contrôle"
+      ],
+      "bonne": 0,
+      "explication": "ALTER TABLE modifie la structure (schéma) : c'est le LDD. UPDATE et INSERT modifient le contenu.",
+      "source": "CM3, §1 SQL en bref"
     }
   ]
 }

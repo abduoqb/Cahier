@@ -210,6 +210,81 @@
       "bonne": 2,
       "explication": "Le WHERE sélectionne les lignes à modifier : ici la seule ligne de MERCIER, dont CAT passe à C1.",
       "source": "CM4 chapitre, section Divers (dernière diapo)"
+    },
+    {
+      "id": "q-cm4-sql-suite-015",
+      "notion": "agregats-group-by-having",
+      "type": "qcm",
+      "enonce": "Combien de lignes renvoie SELECT D.RefCom, SUM(P.Prix*D.Quantite) FROM DETAIL D, PRODUIT P WHERE D.RefP = P.RefP GROUP BY D.RefCom HAVING SUM(P.Prix*D.Quantite) > 10000 ?",
+      "choix": [
+        "7 : une par commande",
+        "1 : seule la commande 5 dépasse 10000",
+        "3 : les commandes 4, 5 et 7",
+        "14 : une par ligne de DETAIL"
+      ],
+      "bonne": 2,
+      "explication": "Les montants sont 5500, 6400, 2850, 28500, 169625, 315 et 47580 : trois dépassent 10000.",
+      "source": "CM4, §1 Agrégats, GROUP BY, HAVING"
+    },
+    {
+      "id": "q-cm4-sql-suite-016",
+      "notion": "agregats-group-by-having",
+      "type": "qcm",
+      "enonce": "Que donne SELECT COUNT(*), COUNT(DISTINCT RefP) FROM DETAIL, avec 14 lignes concernant 6 produits différents ?",
+      "choix": [
+        "14 et 6",
+        "14 et 7",
+        "6 et 14",
+        "7 et 6"
+      ],
+      "bonne": 0,
+      "explication": "COUNT(*) compte les lignes ; COUNT(DISTINCT RefP) les produits distincts (PL222 n'est jamais commandé).",
+      "source": "CM4, §1 Agrégats, GROUP BY, HAVING"
+    },
+    {
+      "id": "q-cm4-sql-suite-017",
+      "notion": "in-exists",
+      "type": "qcm",
+      "enonce": "Quelle requête liste les produits jamais commandés et reste correcte même si DETAIL contenait un RefP à NULL ?",
+      "choix": [
+        "SELECT RefP FROM PRODUIT WHERE RefP NOT IN (SELECT RefP FROM DETAIL)",
+        "SELECT RefP FROM PRODUIT P WHERE NOT EXISTS (SELECT * FROM DETAIL D WHERE D.RefP = P.RefP)",
+        "SELECT RefP FROM PRODUIT WHERE RefP <> ALL (SELECT RefP FROM DETAIL)",
+        "SELECT RefP FROM DETAIL WHERE RefP NOT IN (SELECT RefP FROM PRODUIT)"
+      ],
+      "bonne": 1,
+      "explication": "NOT IN et <> ALL deviennent inconnus dès qu'un NULL est présent ; NOT EXISTS n'est pas affecté.",
+      "source": "CM4, §3 IN / NOT IN et EXISTS / NOT EXISTS"
+    },
+    {
+      "id": "q-cm4-sql-suite-018",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "Quelle requête donne les commandes qui contiennent les trois types de produits (Cheville, Clou, Planche) ?",
+      "choix": [
+        "Même requête avec HAVING COUNT(P.TypeP) = 3, sans DISTINCT, qui donne le même résultat",
+        "Même requête avec HAVING COUNT(*) > 1 : toutes les commandes de deux lignes ou plus",
+        "Un WHERE TypeP IN ('Cheville', 'Clou', 'Planche') sans GROUP BY",
+        "Jointure DETAIL-PRODUIT, GROUP BY RefCom, HAVING COUNT(DISTINCT TypeP) = 3 : commandes 5 et 7"
+      ],
+      "bonne": 3,
+      "explication": "Sans DISTINCT, on compterait des lignes et non des types (la commande 7 a 4 lignes pour 3 types). Testé sur les 14 lignes de DETAIL.",
+      "source": "CM4, §7 Division"
+    },
+    {
+      "id": "q-cm4-sql-suite-019",
+      "notion": "modification-donnees",
+      "type": "qcm",
+      "enonce": "Que fait DROP TABLE CLIENT ?",
+      "choix": [
+        "Il supprime la table elle-même, structure et lignes comprises",
+        "Il supprime toutes les lignes mais garde la structure de la table",
+        "Il supprime seulement les lignes sans clé primaire",
+        "Il vide la table puis la recrée avec les mêmes lignes"
+      ],
+      "bonne": 0,
+      "explication": "DELETE sans WHERE vide la table ; DROP TABLE la fait disparaître.",
+      "source": "CM4, §9 Divers"
     }
   ]
 }

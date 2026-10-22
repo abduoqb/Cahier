@@ -180,6 +180,96 @@
       "bonne": 1,
       "explication": "Le mot « toutes » signale une division : on garde les valeurs associées à toutes les valeurs de S.",
       "source": "CM2 diapos 18 (division), notion « Division relationnelle »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-013",
+      "notion": "cles",
+      "type": "qcm",
+      "enonce": "Quelle clé minimale identifie une ligne de DETAIL(RefCom, RefP, Quantité) ?",
+      "choix": [
+        "RefCom seul : une commande ne comporte qu'une ligne",
+        "RefP seul : un produit n'est commandé qu'une fois",
+        "Quantité : chaque ligne a une quantité différente",
+        "(RefCom, RefP) : une commande ne contient qu'une fois un produit donné"
+      ],
+      "bonne": 3,
+      "explication": "Ni RefCom ni RefP ne suffisent : la clé est composée des deux.",
+      "source": "CM2, §3 Clés et base relationnelle"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-014",
+      "notion": "projection-selection",
+      "type": "qcm",
+      "enonce": "Pour R(A, B, C) = {(b,c,a), (b,a,b), (a,b,c)}, combien de n-uplets contient (R : (A = 'b'))[C] ?",
+      "choix": [
+        "3 : la sélection garde toutes les lignes",
+        "2 : les valeurs a et b de C",
+        "1 : la projection ne garde qu'une valeur",
+        "0 : A n'est pas une clé"
+      ],
+      "bonne": 1,
+      "explication": "La sélection garde (b,c,a) et (b,a,b) ; la projection sur C donne a et b, sans doublon.",
+      "source": "CM2, §4 Algèbre relationnelle"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-015",
+      "notion": "produit-cartesien-jointure",
+      "type": "qcm",
+      "enonce": "R a 3 attributs et 2 n-uplets, S a 2 attributs et 4 n-uplets. Quels sont le degré et la cardinalité de R × S ?",
+      "choix": [
+        "Degré 6 et cardinalité 8",
+        "Degré 5 et cardinalité 6",
+        "Degré 5 et cardinalité 8",
+        "Degré 3 et cardinalité 8"
+      ],
+      "bonne": 2,
+      "explication": "Le produit juxtapose les attributs (3 + 2 = 5) et combine tous les n-uplets (2 × 4 = 8).",
+      "source": "CM2, §5 Produit cartésien et jointures"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-016",
+      "notion": "difference-negation",
+      "type": "qcm",
+      "enonce": "Comment obtenir les produits commandés au moins une fois, en algèbre relationnelle ?",
+      "choix": [
+        "Une jointure PRODUIT ⋈ DETAIL, puis une projection sur RefP",
+        "La différence PRODUIT[RefP] − DETAIL[RefP]",
+        "Le produit cartésien PRODUIT × DETAIL, sans autre opérateur",
+        "La division PRODUIT / DETAIL"
+      ],
+      "bonne": 0,
+      "explication": "« Au moins un » se traduit par une jointure puis une projection ; la différence donne au contraire ceux qui n'ont jamais été commandés.",
+      "source": "CM2, §6 Négation et « au moins un »"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-017",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "Quels mots d'un énoncé annoncent une division ?",
+      "choix": [
+        "« aucun » ou « jamais »",
+        "« tous », « chaque » ou « pour toutes »",
+        "« au moins un » ou « qui ont »",
+        "« plus de » ou « moins de »"
+      ],
+      "bonne": 1,
+      "explication": "« aucun / jamais » appelle une différence ; « au moins un » une jointure ; « tous / chaque » une division.",
+      "source": "CM2, §7 Division"
+    },
+    {
+      "id": "q-cm2-modele-relationnel-018",
+      "notion": "division",
+      "type": "qcm",
+      "enonce": "Que contient (Voyage ⋈ Pays)[nompers, capitale] / Pays[capitale] ?",
+      "choix": [
+        "Les capitales visitées par au moins une personne",
+        "Les personnes qui n'ont visité aucune capitale",
+        "Les pays dont toutes les personnes sont connues",
+        "Les personnes associées à toutes les capitales de Pays"
+      ],
+      "bonne": 3,
+      "explication": "La division garde les valeurs de nompers liées à chaque valeur du diviseur.",
+      "source": "CM2, §7 Division"
     }
   ]
 }

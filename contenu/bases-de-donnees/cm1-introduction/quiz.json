@@ -180,6 +180,51 @@
       "bonne": 0,
       "explication": "Les infos de la personne sont répétées à chaque voyage : c'est de la redondance, qui menace la cohérence en cas de déménagement.",
       "source": "CM1 chapitre, « Exemple minimal : pourquoi un tableur n'est pas une BD » ; notion Redondance des données"
+    },
+    {
+      "id": "q-cm1-introduction-013",
+      "notion": "gestion-par-fichiers",
+      "type": "qcm",
+      "enonce": "Pourquoi la redondance des données entre plusieurs fichiers menace-t-elle la cohérence ?",
+      "choix": [
+        "Les fichiers répétés ralentissent seulement l'affichage des données",
+        "Le système refuse d'ouvrir deux fichiers qui contiennent les mêmes valeurs",
+        "Les copies se fusionnent d'elles-mêmes, ce qui efface des lignes",
+        "Une modification faite dans un fichier peut ne pas être reportée dans les autres copies"
+      ],
+      "bonne": 3,
+      "explication": "Avec un fichier par application, la même donnée existe en plusieurs exemplaires : rien n'oblige à les mettre à jour ensemble.",
+      "source": "CM1, §2 Limites de la gestion par fichiers"
+    },
+    {
+      "id": "q-cm1-introduction-014",
+      "notion": "architecture-3-niveaux",
+      "type": "qcm",
+      "enonce": "Un utilisateur ne voit que quelques tables, avec des colonnes adaptées à son travail. À quel niveau appartient ce qu'il voit ?",
+      "choix": [
+        "Au niveau conceptuel : le schéma complet de la base",
+        "Au niveau externe : une vue adaptée à ses besoins",
+        "Au niveau interne : l'organisation physique des tables",
+        "À aucun niveau : une vue n'est pas un objet de la base"
+      ],
+      "bonne": 1,
+      "explication": "Chaque utilisateur a une vue externe ; toutes reposent sur un seul schéma conceptuel, lui-même indépendant du stockage.",
+      "source": "CM1, §5 Architecture à trois niveaux"
+    },
+    {
+      "id": "q-cm1-introduction-015",
+      "notion": "anomalies-tableur",
+      "type": "qcm",
+      "enonce": "Dans le tableau unique personnes-pays, on supprime la dernière ligne qui mentionne une personne. Que perd-on ?",
+      "choix": [
+        "Rien : les autres lignes gardent toute l'information",
+        "Seulement le pays visité, la personne étant rangée à part",
+        "Les informations sur la personne elle-même (ville, date de naissance) : une perte d'information",
+        "Le nom de la table, qui devient vide"
+      ],
+      "bonne": 2,
+      "explication": "Un seul tableau mélange personnes et voyages : supprimer un voyage peut effacer la dernière trace d'une personne.",
+      "source": "CM1, §6 Limites d'un tableur"
     }
   ]
 }
