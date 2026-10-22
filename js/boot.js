@@ -28,7 +28,7 @@ async function demarrer() {
     document.body.classList.add('connecte');
     document.getElementById('btn-logout').addEventListener('click', seDeconnecter);
     await demarrerSync(session);
-    await import('./app.js?v=13');
+    await import('./app.js?v=16');
 }
 
 demarrer();

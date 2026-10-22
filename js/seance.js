@@ -4,6 +4,7 @@ import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, existe, message
 import { construireSession, melanger } from './quiz-session.js';
 import { lancerQuiz } from './quiz.js';
 import { lancerCartes } from './cartes.js';
+import { activerPasAPas } from './pas-a-pas.js?v=3';
 
 function md(texte, dossier) {
     return window.marked.parse(texte).replaceAll('src="img/', `src="contenu/${dossier}/img/`);
@@ -63,6 +64,7 @@ export async function renderSeance(matiereId, seanceId) {
                 </div>
             </div>`;
 
+        activerPasAPas(app);
         app.querySelector('#seance-ouvrir').addEventListener('click', () => {
             app.querySelector('#seance-rappel').hidden = true;
             app.querySelector('#seance-corps').hidden = false;

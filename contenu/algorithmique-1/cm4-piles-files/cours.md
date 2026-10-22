@@ -68,6 +68,25 @@ depiler(P : tableau d'entiers) : tableau d'entiers
   retourner P
 ```
 
+**À toi de jouer — `empiler` dans une pile en tableau** (`P[0]` = nombre d'éléments, `maxPile = 5`)
+```pas-a-pas
+{
+  "titre": "empiler(P, 4) avec maxPile = 5, P = [2, 7, 9, –, –]",
+  "code": [
+    "empiler(P : tableau d'entiers, x : entier) : tableau d'entiers",
+    "  si P[0] < maxPile - 1 alors",
+    "    P[0] = P[0] + 1 ; P[P[0]] = x",
+    "  retourner P"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"x":4,"maxPile":5},"note":"P[0] vaut 2 : la pile contient 7 et 9, le sommet est la case P[2].","schema":{"type":"tableau","cases":["2","7","9","–","–"],"marques":{"P[0]":0},"surligne":[0]}},
+    {"ligne":1,"note":"P[0] = 2 est inférieur à maxPile - 1 = 4 : il reste de la place. La case 0 ne stocke pas d'élément, d'où le « - 1 ».","schema":{"type":"tableau","cases":["2","7","9","–","–"],"marques":{"P[0]":0},"surligne":[0]}},
+    {"ligne":2,"vars":{"P[0]":3},"note":"On incrémente P[0], puis on range x dans la case P[0].","schema":{"type":"tableau","cases":["3","7","9","4","–"],"marques":{"P[0]":0},"surligne":[0,3]}},
+    {"ligne":3,"note":"On retourne P : le sommet est maintenant 4, en O(1).","schema":{"type":"tableau","cases":["3","7","9","4","–"],"marques":{"P[0]":0},"fixes":[3]}}
+  ]
+}
+```
+
 ## Deux applications de cours
 **Bon parenthésage** — voir Bon parenthésage :
 ```text
@@ -79,6 +98,35 @@ bienParenthese(C : chaîne de caractères) : booléen
       si pileVide(P) alors retourner Faux     // trop de fermantes
       P = depiler(P)
   retourner pileVide(P)                       // sinon trop d'ouvrantes
+```
+
+**À toi de jouer — `bienParenthese` pas à pas** sur la chaîne `(()`
+```pas-a-pas
+{
+  "titre": "bienParenthese(\"(()\")",
+  "code": [
+    "bienParenthese(C : chaîne de caractères) : booléen",
+    "  P : pile ; P = initPile()",
+    "  pour i de 0 à longueur(C) - 1 faire",
+    "    si C[i] = '(' alors P = empiler(P, '(')",
+    "    si C[i] = ')' alors",
+    "      si pileVide(P) alors retourner Faux",
+    "      P = depiler(P)",
+    "  retourner pileVide(P)"
+  ],
+  "etapes": [
+    {"ligne":1,"vars":{"P":"vide"},"note":"On part d'une pile vide.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{}}},
+    {"ligne":2,"vars":{"i":0},"schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":0}}},
+    {"ligne":3,"vars":{"P":"("},"note":"C[0] est une ouvrante : on l'empile.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":0},"surligne":[0]}},
+    {"ligne":2,"vars":{"i":1},"schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":1}}},
+    {"ligne":3,"vars":{"P":"( ("},"note":"C[1] est une ouvrante : on l'empile aussi.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":1},"surligne":[0,1]}},
+    {"ligne":2,"vars":{"i":2},"schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":2}}},
+    {"ligne":4,"note":"C[2] est une fermante.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":2},"surligne":[2]}},
+    {"ligne":5,"note":"La pile n'est pas vide : il y a bien une ouvrante à fermer, on continue."},
+    {"ligne":6,"vars":{"P":"("},"note":"On dépile : une ouvrante est fermée.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{"i":2},"surligne":[1,2]}},
+    {"ligne":7,"note":"La boucle est finie mais la pile n'est pas vide : il reste une ouvrante jamais fermée. pileVide(P) vaut Faux, la chaîne est mal parenthésée.","schema":{"type":"tableau","cases":["(","(",")"],"marques":{},"surligne":[0]}}
+  ]
+}
 ```
 **Tours de Hanoï** — 3 piles, on ne pose jamais un disque sur un plus petit ; solution optimale : **2ⁿ − 1** déplacements (15 pour n = 4).
 

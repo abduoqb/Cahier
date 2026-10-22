@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validerPasAPas } from '../js/pas-a-pas.js';
 
 const RESERVEES = [/2023-2024/];
 const MAX_ENONCE = 400;
@@ -62,6 +63,10 @@ export function verifierContenu(racine, avertissements = []) {
                 if (RESERVEES.some(r => r.test(txt))) erreurs.push(`${ou}/${f} : mention d'une annale réservée`);
                 if (/\[\[[^\]]+\]\]/.test(txt)) erreurs.push(`${ou}/${f} : wikilink [[…]] interdit`);
                 if (/^>\s*\[!/m.test(txt)) erreurs.push(`${ou}/${f} : callout Obsidian interdit`);
+                for (const bloc of txt.matchAll(/```pas-a-pas\r?\n([\s\S]*?)\r?\n```/g)) {
+                    try { for (const m of validerPasAPas(JSON.parse(bloc[1]))) erreurs.push(`${ou}/${f} : pas-a-pas : ${m}`); }
+                    catch (e) { erreurs.push(`${ou}/${f} : pas-a-pas : JSON illisible (${e.message})`); }
+                }
                 for (const mm of txt.matchAll(/\]\((img\/[^)\s]+)\)/g)) {
                     if (!fs.existsSync(path.join(dossier, mm[1]))) erreurs.push(`${ou}/${f} : image absente ${mm[1]}`);
                 }

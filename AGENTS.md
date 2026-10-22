@@ -28,6 +28,18 @@ Site de révision (HTML/CSS/JS sans framework, hébergé sur Vercel, synchro Sup
 - Interdits dans les `.md` : liens `[[wikilink]]` et callouts Obsidian (`> [!note]`). Le markdown est rendu par `marked`.
 - Français, ton direct et simple.
 
+## Exécution pas à pas (dans `cours.md`)
+
+Pour tracer un algorithme (listes chaînées, tableaux, tris, parcours), mettre dans `cours.md` un bloc de code de langage `pas-a-pas` contenant du JSON. Le site l'affiche avec le code, la ligne courante, les variables et un schéma, et des boutons Précédent / Suivant. Exemples réels : `contenu/algorithmique-1/cm2-listes-chainees/cours.md` (liste) et `cm1-tableaux/cours.md` (tableau). Ne jamais écrire de HTML ni de JavaScript : seulement des données.
+
+- `titre` (texte), `code` (tableau de lignes, indentation comprise, 30 max), `etapes` (60 max).
+- Chaque étape : `ligne` (indice dans `code`, à partir de 0, ou `null`), `note` (240 caractères max), `vars` (variables qui changent à cette étape ; elles s'ajoutent aux précédentes), `schema` (facultatif : s'il manque, le schéma précédent reste).
+- Schéma `liste` : `{"type":"liste","noeuds":[{"v":"7","suivant":1},{"v":"9","suivant":null}],"pointeurs":{"L":0,"p":null}}`. Les nœuds sont dessinés dans l'ordre du tableau (de gauche à droite) ; `suivant` est l'indice du nœud suivant ou `null` ; chaque pointeur désigne un indice, ou `null` pour None. Un nœud non relié reste affiché (utile pour `Nouveau`).
+- Schéma `tableau` : `{"type":"tableau","cases":[4,9,2,7],"marques":{"i":1},"surligne":[0,1],"fixes":[1]}`. `marques` place un nom sous une case, `surligne` colore les cases comparées, `fixes` colore celles qui sont définitives.
+- Schéma `arbre` (arbre binaire) : `{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":null,"d":null},{"v":"2","g":null,"d":null}],"racine":0,"pointeurs":{"A":0},"visites":[1],"courant":0}`. `g` et `d` sont les indices des fils gauche et droit (ou `null`) ; la disposition est calculée toute seule. `visites` colore en vert les nœuds déjà traités, `courant` en ocre le nœud en cours, `pointeurs` ajoute une pastille à côté d'un nœud.
+- Une pile ou une file se dessine avec un schéma `tableau` ou `liste`. Une liste circulaire ou une copie de liste utilise `liste` : le tableau `noeuds` est affiché de gauche à droite, un `suivant` qui revient en arrière est tracé en arc.
+- Reprendre le code exact du cours et décrire chaque étape fidèlement : un pas à pas faux est pire que pas de pas à pas. `node tools/check_contenu.js` valide le format ; relire aussi l'exécution à la main.
+
 ## Fichiers à ne pas versionner
 
 - `support.pdf` des profs (droits d'auteur) : ignoré par git, les mettre à côté de la séance pour qu'ils s'affichent en local. `fiche.pdf` (fiche de révision de l'utilisateur) est versionnable.

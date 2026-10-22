@@ -64,6 +64,60 @@ affichagePrefixe(A : arbreBinaire)            // infixe / suffixe : déplacer le
     affichagePrefixe(A->droit)
 ```
 
+**À toi de jouer — parcours préfixe pas à pas** sur l'arbre exemple du cours
+```pas-a-pas
+{
+  "titre": "affichagePrefixe sur l'arbre du cours",
+  "code": [
+    "affichagePrefixe(A : arbreBinaire)",
+    "  si A <> None alors",
+    "    afficher A->valeur",
+    "    affichagePrefixe(A->gauche)",
+    "    affichagePrefixe(A->droit)"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"sortie":"(vide)"},"note":"On appelle affichagePrefixe sur la racine (7). Le nœud rouge est celui qu'on affiche, les verts sont déjà affichés.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":0},"visites":[],"courant":null}},
+    {"ligne":2,"vars":{"sortie":"7"},"note":"Préfixe : on affiche le nœud avant de visiter ses enfants. La racine d'abord : 7.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":0},"visites":[],"courant":0}},
+    {"ligne":2,"vars":{"sortie":"7 4"},"note":"On descend à gauche : 4 est affiché avant ses propres enfants.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":1},"visites":[0],"courant":1}},
+    {"ligne":2,"vars":{"sortie":"7 4 12"},"note":"Encore à gauche : 12, une feuille. Ses deux sous-arbres sont vides, la récursion remonte.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":3},"visites":[0,1],"courant":3}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9"},"note":"De retour en 4, on part à droite : 9.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":4},"visites":[0,1,3],"courant":4}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9 1"},"note":"À gauche de 9 : 1, une feuille. Le sous-arbre droit de 9 est vide.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":6},"visites":[0,1,3,4],"courant":6}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9 1 2"},"note":"Tout le côté gauche de 7 est fini : on passe à droite, 2.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":2},"visites":[0,1,3,4,6],"courant":2}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9 1 2 20"},"note":"À gauche de 2 : 20.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":5},"visites":[0,1,3,4,6,2],"courant":5}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9 1 2 20 5"},"note":"À gauche de 20 : 5, une feuille.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":7},"visites":[0,1,3,4,6,2,5],"courant":7}},
+    {"ligne":2,"vars":{"sortie":"7 4 12 9 1 2 20 5 11"},"note":"À droite de 20 : 11, la dernière feuille.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":8},"visites":[0,1,3,4,6,2,5,7],"courant":8}},
+    {"ligne":null,"note":"Fin : tous les nœuds sont visités, la sortie est 7 4 12 9 1 2 20 5 11.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{},"visites":[0,1,3,4,6,2,5,7,8],"courant":null}}
+  ]
+}
+```
+
+**Et en infixe** : on déplace seulement la ligne `afficher`, et l'ordre change
+```pas-a-pas
+{
+  "titre": "affichageInfixe sur l'arbre du cours",
+  "code": [
+    "affichageInfixe(A : arbreBinaire)",
+    "  si A <> None alors",
+    "    affichageInfixe(A->gauche)",
+    "    afficher A->valeur",
+    "    affichageInfixe(A->droit)"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"sortie":"(vide)"},"note":"Même arbre, même récursion : seule la position de « afficher » change. On appelle affichageInfixe sur la racine (7).","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":0},"visites":[],"courant":null}},
+    {"ligne":3,"vars":{"sortie":"12"},"note":"Infixe : on affiche un nœud après son sous-arbre gauche. On descend tout à gauche jusqu'à 12, qui est affiché en premier.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":3},"visites":[],"courant":3}},
+    {"ligne":3,"vars":{"sortie":"12 4"},"note":"On remonte en 4 : son sous-arbre gauche est terminé, on l'affiche.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":1},"visites":[3],"courant":1}},
+    {"ligne":3,"vars":{"sortie":"12 4 1"},"note":"Sous-arbre droit de 4 : on descend à gauche de 9, jusqu'à 1, qui est affiché.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":6},"visites":[3,1],"courant":6}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9"},"note":"On remonte en 9 : on l'affiche (son sous-arbre droit est vide).","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":4},"visites":[3,1,6],"courant":4}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9 7"},"note":"Tout le sous-arbre gauche de 7 est terminé : la racine est affichée au milieu.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":0},"visites":[3,1,6,4],"courant":0}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9 7 5"},"note":"Sous-arbre droit de 7 : on descend à gauche de 2 puis de 20, jusqu'à 5.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":7},"visites":[3,1,6,4,0],"courant":7}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9 7 5 20"},"note":"On remonte en 20 : on l'affiche.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":5},"visites":[3,1,6,4,0,7],"courant":5}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9 7 5 20 11"},"note":"Sous-arbre droit de 20 : 11.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":8},"visites":[3,1,6,4,0,7,5],"courant":8}},
+    {"ligne":3,"vars":{"sortie":"12 4 1 9 7 5 20 11 2"},"note":"Le sous-arbre gauche de 2 est terminé : on affiche 2, le dernier.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{"A":2},"visites":[3,1,6,4,0,7,5,8],"courant":2}},
+    {"ligne":null,"note":"Fin : tous les nœuds sont visités, la sortie est 12 4 1 9 7 5 20 11 2.","schema":{"type":"arbre","noeuds":[{"v":"7","g":1,"d":2},{"v":"4","g":3,"d":4},{"v":"2","g":5,"d":null},{"v":"12","g":null,"d":null},{"v":"9","g":6,"d":null},{"v":"20","g":7,"d":8},{"v":"1","g":null,"d":null},{"v":"5","g":null,"d":null},{"v":"11","g":null,"d":null}],"pointeurs":{},"visites":[3,1,6,4,0,7,5,8,2],"courant":null}}
+  ]
+}
+```
+
 ### 3. Coût : n ou h ?
 - On visite **tous** les nœuds (compter, afficher, chercher sans pouvoir s'arrêter) → coût **n** (nombre de nœuds).
 - On ne suit **qu'une branche** (on choisit gauche OU droite) → coût ≤ **h + 1** nœuds (hauteur).

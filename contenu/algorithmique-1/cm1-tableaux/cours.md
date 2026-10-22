@@ -51,7 +51,67 @@ maxTableau(tab, n) : entier            premierZero(tab, n) : entier
 - Parcours **complet** (`pour`) : coût = n, **toujours**.
 - Parcours **avec arrêt** (`tant que` + condition) : coût entre 1 et n → il y a un meilleur et un pire cas.
 
+**À toi de jouer — `maxTableau` pas à pas** sur `tab = [4, 9, 2, 7]` avec `n = 4`
+```pas-a-pas
+{
+  "titre": "maxTableau(tab, 4) sur [4, 9, 2, 7]",
+  "code": [
+    "indice_maxi = 0 ; maxi = tab[0]",
+    "pour i de 1 à n-1 faire",
+    "  si tab[i] > maxi alors",
+    "    maxi = tab[i] ; indice_maxi = i",
+    "retourner indice_maxi"
+  ],
+  "etapes": [
+    { "ligne": 0, "vars": { "n": 4, "indice_maxi": 0, "maxi": 4 }, "note": "On part du principe que la case 0 contient le maximum : maxi = 4.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": {}, "surligne": [0] } },
+    { "ligne": 1, "vars": { "i": 1 }, "note": "La boucle commence à i = 1 : la case 0 est déjà prise en compte.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 1 }, "surligne": [0] } },
+    { "ligne": 2, "note": "tab[1] = 9 est-il plus grand que maxi = 4 ? Oui.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 1 }, "surligne": [0, 1] } },
+    { "ligne": 3, "vars": { "maxi": 9, "indice_maxi": 1 }, "note": "On retient la valeur 9 et sa position 1.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 1 }, "surligne": [1] } },
+    { "ligne": 1, "vars": { "i": 2 },
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 2 }, "surligne": [1] } },
+    { "ligne": 2, "note": "tab[2] = 2 est-il plus grand que maxi = 9 ? Non : rien ne change.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 2 }, "surligne": [1, 2] } },
+    { "ligne": 1, "vars": { "i": 3 },
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 3 }, "surligne": [1] } },
+    { "ligne": 2, "note": "tab[3] = 7 est-il plus grand que maxi = 9 ? Non : rien ne change.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": { "i": 3 }, "surligne": [1, 3] } },
+    { "ligne": 4, "note": "La boucle est finie : on retourne l'indice 1. Le parcours est complet, il coûte toujours n accès.",
+      "schema": { "type": "tableau", "cases": [4, 9, 2, 7], "marques": {}, "fixes": [1] } }
+  ]
+}
+```
+
 > **Attention :** Ordre des conditions : `i < n et tab[i] <> 0` — on teste l'indice **avant** d'accéder à la case (évaluation paresseuse du `et`).
+
+**À toi de jouer — `premierZero` pas à pas** sur `tab = [3, 5, 0, 8]` avec `n = 4` (parcours avec arrêt)
+```pas-a-pas
+{
+  "titre": "premierZero(tab, 4) sur [3, 5, 0, 8]",
+  "code": [
+    "premierZero(tab, n) : entier",
+    "  i : entier ; i = 0",
+    "  tant que i < n et tab[i] <> 0 faire",
+    "    i = i + 1",
+    "  si i = n alors retourner -1",
+    "  retourner i"
+  ],
+  "etapes": [
+    {"ligne":0,"vars":{"n":4},"note":"On cherche la position du premier 0 dans le tableau.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{}}},
+    {"ligne":1,"vars":{"i":0},"note":"On part de la case 0.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":0}}},
+    {"ligne":2,"note":"i < n et tab[0] = 3 est différent de 0 : on continue.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":0},"surligne":[0]}},
+    {"ligne":3,"vars":{"i":1},"schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":1}}},
+    {"ligne":2,"note":"i < n et tab[1] = 5 est différent de 0 : on continue.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":1},"surligne":[1]}},
+    {"ligne":3,"vars":{"i":2},"schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":2}}},
+    {"ligne":2,"note":"tab[2] = 0 : la condition devient fausse, la boucle s'arrête. La case 3 n'est jamais lue.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":2},"surligne":[2]}},
+    {"ligne":4,"note":"i vaut 2, pas n : le 0 a été trouvé.","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{"i":2}}},
+    {"ligne":5,"note":"On retourne 2. Parcours avec arrêt : ici 3 cases lues sur 4, le coût dépend des données (meilleur et pire cas).","schema":{"type":"tableau","cases":[3,5,0,8],"marques":{},"fixes":[2]}}
+  ]
+}
+```
 
 ### 4. Tableau contigu : insertion / suppression
 Voir Tableau contigu (schéma des décalages). Insertion en position k = décaler **à droite de la fin vers k** ; suppression = décaler **à gauche de k+1 vers la fin**. Coût = nombre de décalages = `taille − k` au pire ≈ n.
