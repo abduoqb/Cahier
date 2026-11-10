@@ -4,6 +4,7 @@
 // on le relance à chaque changement local, à chaque événement temps réel, au retour sur l'onglet et toutes les minutes.
 import { Store } from './store.js';
 import { canon, hash, aplatir, reconstruire } from './sync-merge.js';
+import { fusionnerPartiels } from './partiel.js?v=1';
 
 const URL = 'https://vjetheoocmmofwxlflzl.supabase.co';
 const CLE = 'sb_publishable_LFh9DU4-8Nxpb80VDwZgXw_QKx0j1a5';
@@ -11,12 +12,14 @@ const CLE = 'sb_publishable_LFh9DU4-8Nxpb80VDwZgXw_QKx0j1a5';
 const K_PROGRESS = 'cahier.progress.v1';
 const K_CARTES = 'cahier.cartes.v1';
 const K_STORE = 'suivit_cours_data';
+const K_PARTIELS = 'cahier.partiels.v1'; // historique des partiels blancs
+const K_ENCOURS = 'cahier.partiel.encours'; // brouillon d'un partiel en cours : propre à l'appareil, jamais synchronisé
 const K_ICS = 'cahier_ics';
 const K_BASE = 'cahier.sync.base'; // état du store à la dernière synchro : { id: { u, d, h, k, p } }
 const K_META = 'cahier.sync.meta'; // dates de modification locales (agenda)
 const K_FICHIERS = 'cahier.sync.files'; // ids de fichiers déjà envoyés
-const SURVEILLES = [K_PROGRESS, K_CARTES, K_STORE, K_ICS];
-const CLES_LOCALES = [...SURVEILLES, K_BASE, K_META, K_FICHIERS];
+const SURVEILLES = [K_PROGRESS, K_CARTES, K_STORE, K_ICS, K_PARTIELS];
+const CLES_LOCALES = [...SURVEILLES, K_BASE, K_META, K_FICHIERS, K_ENCOURS];
 
 // supabase-js 2.45.4, hébergé dans js/vendor (chargé par index.html) : aucun CDN externe.
 export const supabase = globalThis.supabase.createClient(URL, CLE);
@@ -163,6 +166,22 @@ async function cycleProgression() {
     }
 }
 
+// --- Partiels blancs (une ligne par partiel, la plus récente gagne, suppressions comprises) ---
+
+async function cyclePartiels() {
+    const distants = {};
+    for (const r of await toutLire('partiels')) {
+        distants[r.id] = { id: r.id, matiere: r.matiere, date: Number(r.date), note: Number(r.note), duree_s: r.duree_s, detail: r.detail, u: Number(r.updated_at), d: r.deleted };
+    }
+    const locaux = (lire(K_PARTIELS) || {}).partiels || {};
+    const { fusion, aEnvoyer } = fusionnerPartiels(locaux, distants);
+    if (canon(fusion) !== canon(locaux)) { ecrire(K_PARTIELS, { partiels: fusion }); modifie = true; }
+    await envoyer('partiels', aEnvoyer.map(id => {
+        const r = fusion[id];
+        return { user_id: userId, id, matiere: r.matiere, date: r.date, note: r.note, duree_s: r.duree_s, detail: r.detail, updated_at: r.u, deleted: r.d };
+    }), 'user_id,id');
+}
+
 // --- Agenda .ics (une valeur, la plus récente gagne) ---
 
 async function cycleAgenda() {
@@ -235,6 +254,7 @@ async function cycle() {
             relancer = false;
             await cycleStore();
             await cycleProgression();
+            await cyclePartiels();
             await cycleAgenda();
             await cycleFichiers();
         } while (relancer);

@@ -19,7 +19,7 @@ Site de révision (HTML/CSS/JS sans framework, hébergé sur Vercel, synchro Sup
 ## Règles de contenu
 
 - **Annales d'abord** : prendre le maximum de questions, énoncés et exercices dans les annales et le support du prof. N'inventer que si rien ne couvre la notion. Chaque question et carte cite sa `source` (ex. « Annale 2022-2023, exercice 2 »).
-- **Annales 2023-2024 réservées** aux tests blancs : jamais dans le contenu (le vérificateur refuse toute mention).
+- **Annales 2023-2024 réservées** au partiel blanc : jamais dans les séances (le vérificateur refuse toute mention), uniquement dans `contenu/<matière>/partiel-blanc.json` (voir « Partiel blanc »).
 - **Réponses courtes** : une idée par carte. Recto 200 caractères max, verso 120 max et sur une seule ligne. Énoncé de question 400 max, choix 120 max, 2 à 5 choix.
 - **Code sur les cartes** : pas de code multi-lignes. Pour les matières shell et programmation, une commande ou une expression courte sur une seule ligne est autorisée (c'est la notion à retenir) ; sinon une carte décrit en mots.
 - **Tester avant d'écrire** : toute commande, regex ou script du contenu est exécuté dans un vrai shell sur des fichiers d'essai (Git Bash suffit, `athlete_events.csv` et les autres fichiers de données fournis servent à ça). Une commande non testée ne va pas dans le cours.
@@ -28,11 +28,39 @@ Site de révision (HTML/CSS/JS sans framework, hébergé sur Vercel, synchro Sup
 - **Identifiants** : questions `q-<id-séance>-001`, cartes `c-<id-séance>-001`, uniques dans tout le projet. `quiz.seance` et `cartes.seance` valent l'id de la séance.
 - `bonne` est l'index (à partir de 0) de la bonne réponse dans `choix` ; le site mélange l'ordre à l'affichage, mais on varie quand même `bonne` d'une question à l'autre.
 - **QCM qui ne se devinent pas** : la bonne réponse n'est pas systématiquement la plus longue (le vérificateur avertit au-delà de 50 %) ; les distracteurs ont la même forme et la même longueur que la bonne réponse, et sont des erreurs réelles d'étudiants, jamais des phrases absurdes. Pas de question dont un distracteur est en fait correct (vérifier avec une exécution réelle).
+- **Types de question** : `qcm` (par défaut) et quatre autres, décrits dans « Types de question ». Varier les types : un QCM ne remplace pas un exercice de trace ou une commande à écrire quand le partiel est écrit.
 - **Au moins 3 questions par notion**, dont une question « que produit cette commande ? » ou « que se passe-t-il ? » sur un cas concret, pas seulement des définitions.
 - **Syntaxe shell** : les doubles crochets de bash (`[[ -n $x ]]`) sont autorisés dans les blocs et extraits de code ; le vérificateur ne refuse les wikilinks que dans le texte. Un cours doit utiliser la même syntaxe dans le cours, les cartes et les QCM.
 - **TP** : un TP (ou un groupe cohérent de TP) = une séance. Traiter chaque question numérotée du sujet, ou dire dans la note d'en-tête lesquelles sont omises. Un sujet sans corrigé officiel donne des « propositions de correction », testées, présentées comme telles.
 - Interdits dans les `.md` : liens `[[wikilink]]` et callouts Obsidian (`> [!note]`). Le markdown est rendu par `marked`.
 - Français, ton direct et simple.
+
+## Types de question (`quiz.json`)
+
+Tous les types portent `id`, `notion`, `type`, `enonce` (400 max), `explication`, `source`. Un exemple de chacun : `contenu/_modele/types-de-question.json`. Une question compte comme réussie pour la progression si son score vaut au moins 0,5.
+
+| `type` | Champs propres | Correction |
+|---|---|---|
+| `qcm` | `choix` (2 à 5), `bonne` | tout ou rien |
+| `courte` | `reponses` (1 à 8, 120 caractères max), `mode` : `"texte"` (défaut) ou `"commande"` | `texte` : casse, accents, espaces multiples et ponctuation finale ignorés ; `commande` : égalité exacte après `trim` (pour les commandes shell) |
+| `trace` | `code` (tableau de 1 à 30 lignes), `attendu` (1 à 6 variables → valeur finale, en texte), `pasAPas` facultatif | une case par variable, espaces ignorés ; score = variables justes / total. `pasAPas` a le format d'un bloc `pas-a-pas` **sans `code`** (repris de la question) et s'affiche à la correction |
+| `ordre` | `elements` (3 à 10, sans doublon) **dans le bon ordre** | le site les mélange ; score = éléments bien placés / total |
+| `redaction` | `bareme` (1 à 8 `{critere, points}`), `corrige` (markdown, 1500 max) | auto-évaluation : l'élève coche les critères obtenus ; score = points cochés / total |
+
+- `courte` : lister **toutes** les formulations acceptables ; tester chaque commande en vrai shell avant de l'écrire. Une réponse qui dépend d'un espace ou d'une majuscule est en mode `commande`, jamais en `texte`.
+- `trace` : le code est affiché tel quel, sans l'exécuter ; vérifier `attendu` en exécutant vraiment le code. Valeurs courtes (`[2, 5]`, `3`, `"ab"`).
+- `redaction` : un critère = une idée vérifiable ; `points` positifs. Un correcteur IA pourra pré-cocher le barème (point d'accroche `correcteur` dans `js/correction.js` et `partiel-vue.js`) ; le format du fichier ne change pas.
+- Les avertissements de longueur et de place de la bonne réponse ne concernent que les QCM.
+
+## Partiel blanc (`contenu/<matière>/partiel-blanc.json`)
+
+Route `#/partiel/<matière>`. Modèle : `contenu/_modele/partiel-blanc.json`. Pour l'activer : créer le fichier **et** ajouter `"partielBlanc": true` sur la matière dans `contenu/index.json` (le vérificateur contrôle les deux).
+
+- Champs du fichier : `matiere` (id de la matière), `duree` (minutes par défaut, 10 à 360), `questions`.
+- Chaque question : tous les champs de son type, plus `"partielBlanc": true`, `seance` et `notion` (existants dans l'index : c'est ainsi que les notions ratées passent « à revoir »), `points` (nombre positif, 1 par défaut ; pour une `redaction`, égal à la somme du barème s'il est donné), `sujet` facultatif (« Annale 2023-2024, session 1 » : l'élève choisit un sujet ou « tous mélangés »).
+- Ids `p-<id-matière>-001`, uniques dans tout le projet. `source` obligatoire.
+- C'est le **seul** endroit où « 2023-2024 » est permis ; `partielBlanc` est refusé dans un `quiz.json`.
+- Barème : fixer les `points` d'après le barème de l'annale. La note finale est sur 20 (arrondie au quart de point) ; une notion sous 50 % des points passe « à revoir ».
 
 ## Choisir le visuel
 

@@ -8,7 +8,19 @@ export function melanger(tableau, rng = Math.random) {
     return a;
 }
 
+// Mélange qui ne rend jamais l'ordre d'origine (sinon la question « ordre » serait déjà résolue).
+export function melangerDifferent(tableau, rng = Math.random) {
+    for (let k = 0; k < 10; k++) {
+        const a = melanger(tableau, rng);
+        if (a.some((x, i) => x !== tableau[i])) return a;
+    }
+    return [...tableau.slice(1), tableau[0]];
+}
+
+// qcm : mélange des choix. ordre : « depart » est l'ordre proposé (« elements » reste le bon ordre). Autres types : inchangés.
 export function preparerQuestion(q, rng = Math.random) {
+    if (q.type === 'ordre') return { ...q, depart: melangerDifferent(q.elements, rng) };
+    if (!Array.isArray(q.choix)) return q;
     const ordre = melanger(q.choix.map((_, i) => i), rng);
     return { ...q, choix: ordre.map(i => q.choix[i]), bonne: ordre.indexOf(q.bonne) };
 }

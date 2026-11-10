@@ -1,6 +1,6 @@
 import { Store } from './store.js';
 import { calcProgress, progressClass, uuid, toast, escapeHtml, examInfo } from './utils.js?v=6';
-import { renderSeancesSection } from './seances-list.js';
+import { renderSeancesSection } from './seances-list.js?v=2';
 
 export function renderSubject(subjectId) {
     const app = document.getElementById('app');

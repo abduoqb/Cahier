@@ -120,3 +120,39 @@ test('stockage JSON sans objet notions (null, tableau, chaîne) : état vide', (
         assert.deepEqual(p.notionsDues(T0), []);
     }
 });
+
+test('marquerARevoir : notion jamais vue, puis bonne réponse', () => {
+    const p = createProgress(mem());
+    p.marquerARevoir('cm2', 'listes-parcours', T0);
+    assert.equal(p.getNotion('cm2', 'listes-parcours', T0).etat, 'a-revoir');
+    assert.deepEqual(p.notionsDues(T0).map(d => d.notion), ['listes-parcours']);
+    p.recordAnswer('cm2', q, true, T0 + 1000);
+    assert.equal(p.getNotion('cm2', 'listes-parcours', T0 + 2000).etat, 'en-cours');
+});
+
+test('marquerARevoir : notion en cours, un échec ne bloque pas la reprise', () => {
+    const p = createProgress(mem());
+    p.recordAnswer('cm2', q, true, T0);
+    p.marquerARevoir('cm2', 'listes-parcours', T0 + 1000);
+    assert.equal(p.getNotion('cm2', 'listes-parcours', T0 + 1000).etat, 'a-revoir');
+    p.recordAnswer('cm2', q, true, T0 + 2000);
+    assert.equal(p.getNotion('cm2', 'listes-parcours', T0 + 2000).etat, 'en-cours');
+});
+
+test('marquerARevoir : notion acquise repasse à revoir, une réussite la remet acquise', () => {
+    const p = createProgress(mem());
+    p.recordAnswer('cm2', q, true, T0);
+    p.recordAnswer('cm2', q, true, T0 + DAY);
+    p.marquerARevoir('cm2', 'listes-parcours', T0 + DAY + 1000);
+    const apres = p.getNotion('cm2', 'listes-parcours', T0 + DAY + 1000);
+    assert.equal(apres.etat, 'a-revoir');
+    assert.ok(apres.acquiseLe);
+    p.recordAnswer('cm2', q, true, T0 + DAY + 2000);
+    assert.equal(p.getNotion('cm2', 'listes-parcours', T0 + DAY + 2000).etat, 'acquise');
+});
+
+test('etatSeance : une notion marquée à revoir rend la séance à revoir', () => {
+    const p = createProgress(mem());
+    p.marquerARevoir('cm2', 'a', T0);
+    assert.equal(p.etatSeance('cm2', ['a', 'b'], T0), 'a-revoir');
+});

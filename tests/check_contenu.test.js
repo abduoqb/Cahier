@@ -149,3 +149,89 @@ test('cartes : source manquante ou annale réservée', () => {
     assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ source: 'annale 2023-2024 ex. 1' })])), 'annale réservée'));
     assert.ok(contient(verifierContenu(avecCartes(fixture(), [carte({ verso: 'Vu en 2023-2024.' })])), 'annale réservée'));
 });
+
+// ===== Types de question et partiel blanc =====
+
+const qBase = { notion: 'tableaux', enonce: 'Énoncé ?', explication: 'Parce que.', source: 'TD1 ex. 1' };
+const avecQuestions = (...qs) => fixture(quiz => ({ ...quiz, questions: [...quiz.questions, ...qs] }));
+const erreursDe = q => verifierContenu(avecQuestions({ ...qBase, id: 'q-cm1-010', ...q })).join('\n');
+
+test('courte valide, mode commande valide', () => {
+    assert.equal(erreursDe({ type: 'courte', reponses: ['pile'] }), '');
+    assert.equal(erreursDe({ type: 'courte', mode: 'commande', reponses: ['ls -l'] }), '');
+});
+
+test('courte invalide : sans réponses, mode inconnu', () => {
+    assert.match(erreursDe({ type: 'courte', reponses: [] }), /reponses/);
+    assert.match(erreursDe({ type: 'courte', mode: 'x', reponses: ['a'] }), /mode/);
+});
+
+test('trace valide et pas-à-pas contrôlé', () => {
+    const t = { type: 'trace', code: ['x = 1', 'x = x + 2'], attendu: { x: '3' } };
+    assert.equal(erreursDe(t), '');
+    const pap = { etapes: [{ ligne: 1, vars: { x: 3 } }] };
+    assert.equal(erreursDe({ ...t, pasAPas: pap }), '');
+    assert.match(erreursDe({ ...t, pasAPas: { etapes: [{ ligne: 9 }] } }), /pasAPas : étape 1 : ligne hors du code/);
+});
+
+test('trace invalide : sans code, sans variable attendue', () => {
+    assert.match(erreursDe({ type: 'trace', attendu: { x: '3' } }), /"code"/);
+    assert.match(erreursDe({ type: 'trace', code: ['x = 1'], attendu: {} }), /"attendu"/);
+});
+
+test('ordre valide ; trop court, doublon', () => {
+    assert.equal(erreursDe({ type: 'ordre', elements: ['a', 'b', 'c'] }), '');
+    assert.match(erreursDe({ type: 'ordre', elements: ['a', 'b'] }), /elements/);
+    assert.match(erreursDe({ type: 'ordre', elements: ['a', 'b', 'a'] }), /doublon/);
+});
+
+test('redaction valide ; barème absent, points incohérents, corrigé absent', () => {
+    const r = { type: 'redaction', bareme: [{ critere: 'a', points: 2 }, { critere: 'b', points: 1 }], corrige: 'Réponse type.' };
+    assert.equal(erreursDe(r), '');
+    assert.match(erreursDe({ ...r, bareme: [] }), /bareme/);
+    assert.match(erreursDe({ ...r, points: 5 }), /somme du barème/);
+    assert.match(erreursDe({ ...r, corrige: '' }), /corrige/);
+});
+
+test('type inconnu, partielBlanc interdit dans un quiz normal', () => {
+    assert.match(erreursDe({ type: 'dessin' }), /type "dessin" inconnu/);
+    assert.match(erreursDe({ type: 'qcm', choix: ['a', 'b'], bonne: 0, partielBlanc: true }), /partielBlanc/);
+});
+
+test('annale 2023-2024 refusée dans un quiz normal', () => {
+    assert.match(erreursDe({ type: 'courte', reponses: ['a'], source: 'Annale 2023-2024 ex. 1' }), /annale réservée/);
+});
+
+function avecPartiel(questions, { flag = true, duree = 120, ecrire = true } = {}) {
+    const racine = fixture();
+    const idx = JSON.parse(fs.readFileSync(path.join(racine, 'index.json'), 'utf8'));
+    if (flag) idx.matieres[0].partielBlanc = true;
+    fs.writeFileSync(path.join(racine, 'index.json'), JSON.stringify(idx));
+    if (ecrire) fs.writeFileSync(path.join(racine, 'algo', 'partiel-blanc.json'), JSON.stringify({ matiere: 'algo', duree, questions }));
+    return racine;
+}
+const qp = (o = {}) => ({ id: 'p-algo-001', partielBlanc: true, seance: 'cm1', notion: 'tableaux', type: 'courte', reponses: ['a'],
+    enonce: 'Q ?', explication: 'Oui.', source: 'Annale 2023-2024, exercice 1', points: 2, ...o });
+
+test('partiel blanc valide : annale 2023-2024 permise', () => {
+    assert.deepEqual(verifierContenu(avecPartiel([qp()])), []);
+});
+
+test('partiel blanc : partielBlanc obligatoire, seance et notion connues, id p-', () => {
+    const e = verifierContenu(avecPartiel([qp({ partielBlanc: undefined, seance: 'zz', id: 'q-algo-001' })])).join('\n');
+    assert.match(e, /partielBlanc": true obligatoire/);
+    assert.match(e, /seance "zz" absente/);
+    assert.match(e, /id invalide/);
+    assert.match(verifierContenu(avecPartiel([qp({ notion: 'autre' })])).join('\n'), /notion "autre" absente de la séance/);
+});
+
+test('partiel blanc : durée, drapeau d\'index, fichier manquant', () => {
+    assert.match(verifierContenu(avecPartiel([qp()], { duree: 5 })).join('\n'), /duree/);
+    assert.match(verifierContenu(avecPartiel([qp()], { flag: false })).join('\n'), /sans "partielBlanc": true/);
+    assert.match(verifierContenu(avecPartiel([], { ecrire: false })).join('\n'), /partiel-blanc.json absent/);
+});
+
+test('partiel blanc : id partagé avec un autre fichier refusé', () => {
+    const e = verifierContenu(avecPartiel([qp(), qp()])).join('\n');
+    assert.match(e, /id en double/);
+});

@@ -1,10 +1,10 @@
 import { Store } from './store.js';
 import { escapeHtml } from './utils.js?v=6';
-import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, existe, messageErreur, slug } from './contenu.js?v=3';
-import { construireSession, melanger } from './quiz-session.js';
-import { lancerQuiz } from './quiz.js';
+import { chargerIndex, chargerQuiz, chargerTexte, chargerCartes, existe, messageErreur, slug } from './contenu.js?v=4';
+import { construireSession, melanger } from './quiz-session.js?v=2';
+import { lancerQuiz } from './quiz.js?v=2';
 import { lancerCartes } from './cartes.js';
-import { activerPasAPas } from './pas-a-pas.js?v=4';
+import { activerPasAPas } from './pas-a-pas.js?v=5';
 
 function md(texte, dossier) {
     return window.marked.parse(texte).replaceAll('src="img/', `src="contenu/${dossier}/img/`);

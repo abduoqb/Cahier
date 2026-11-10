@@ -1,6 +1,6 @@
 import { escapeHtml } from './utils.js?v=6';
-import { trouverMatiere } from './contenu.js';
-import { progress } from './progress.js';
+import { trouverMatiere } from './contenu.js?v=4';
+import { progress } from './progress.js?v=2';
 
 const LIBELLES = { 'pas-commencee': 'Pas commencée', 'en-cours': 'En cours', 'acquise': 'Acquise', 'a-revoir': 'À revoir' };
 
@@ -11,8 +11,10 @@ export async function renderSeancesSection(sujet, element) {
     try { matiere = await trouverMatiere(sujet.name); } catch { return; }
     if (!element.isConnected) return;
     if (!matiere || !matiere.seances.length) return;
+    const partiel = matiere.partielBlanc
+        ? `<a class="btn btn-secondary partiel-lien" href="#/partiel/${encodeURIComponent(matiere.id)}">Partiel blanc</a>` : '';
     element.innerHTML = `
-        <h2 class="seances-titre">Séances</h2>
+        <h2 class="seances-titre">Séances</h2>${partiel}
         <ul class="seances-liste">${matiere.seances.map(s => {
             const etat = progress.etatSeance(s.id, s.notions || []);
             return `<li><a class="seance-ligne" href="#/seance/${encodeURIComponent(matiere.id)}/${encodeURIComponent(s.id)}">

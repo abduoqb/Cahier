@@ -1,9 +1,10 @@
 import { Store } from './store.js';
-import { renderDashboard } from './dashboard.js?v=20';
-import { renderSubject } from './subject.js?v=8';
+import { renderDashboard } from './dashboard.js?v=21';
+import { renderSubject } from './subject.js?v=9';
 import { toast } from './utils.js?v=6';
-import { renderSeance } from './seance.js?v=8';
-import { renderAujourdhui, renderCartesDuJour } from './today.js?v=4';
+import { renderSeance } from './seance.js?v=9';
+import { renderAujourdhui, renderCartesDuJour } from './today.js?v=5';
+import { renderPartiel } from './partiel-vue.js?v=1';
 
 // ===== UI Helpers =====
 
@@ -42,6 +43,10 @@ function route() {
     } else if (hash.startsWith('#/seance/')) {
         const [, , matiere, seance] = hash.split('/');
         if (matiere && seance) renderSeance(decodeURIComponent(matiere), decodeURIComponent(seance));
+        else renderDashboard();
+    } else if (hash.startsWith('#/partiel/')) {
+        const id = decodeURIComponent(hash.split('/')[2] || '');
+        if (id) renderPartiel(id);
         else renderDashboard();
     } else if (hash === '#/aujourdhui') {
         renderAujourdhui();

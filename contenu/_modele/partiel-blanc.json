@@ -1,0 +1,20 @@
+{
+  "matiere": "{{MATIERE_ID}}",
+  "duree": 120,
+  "questions": [
+    {
+      "id": "p-{{MATIERE_ID}}-001",
+      "partielBlanc": true,
+      "seance": "(id de la séance)",
+      "notion": "(notion de cette séance, déclarée dans contenu/index.json)",
+      "sujet": "Annale 2023-2024, session 1",
+      "points": 2,
+      "type": "qcm",
+      "enonce": "(Énoncé.)",
+      "choix": ["(Bonne réponse)", "(Distracteur)", "(Distracteur)"],
+      "bonne": 0,
+      "explication": "(Pourquoi.)",
+      "source": "Annale 2023-2024, exercice 1"
+    }
+  ]
+}
