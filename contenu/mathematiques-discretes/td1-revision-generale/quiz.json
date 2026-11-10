@@ -1,0 +1,340 @@
+{
+  "seance": "td1-revision-generale",
+  "questions": [
+    {
+      "id": "q-td1-revision-generale-001",
+      "notion": "induction-arbres-binaires",
+      "type": "qcm",
+      "enonce": "Pour un arbre localement complet, que valent N (nombre de nœuds) et h (hauteur) de l'arbre réduit à une racine ?",
+      "choix": [
+        "N = 1 et h = 0",
+        "N = 1 et h = 1",
+        "N = 0 et h = 0",
+        "N = 2 et h = 1"
+      ],
+      "bonne": 0,
+      "explication": "Une racine seule a 1 nœud et aucune arête : sa hauteur, comptée en arêtes, vaut 0.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 1"
+    },
+    {
+      "id": "q-td1-revision-generale-002",
+      "notion": "induction-arbres-binaires",
+      "type": "courte",
+      "enonce": "Un arbre binaire localement complet a 9 nœuds. Quelle est sa hauteur maximale ? (On utilise N(A) ≥ 2h(A) + 1.)",
+      "reponses": [
+        "4"
+      ],
+      "explication": "N ≥ 2h + 1 donne h ≤ (N − 1)/2 = 4, et un arbre en peigne à 9 nœuds a bien h = 4.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 1, question 2"
+    },
+    {
+      "id": "q-td1-revision-generale-003",
+      "notion": "induction-arbres-binaires",
+      "type": "qcm",
+      "enonce": "On démontre une propriété P par induction sur les arbres localement complets. Que faut-il établir à l'étape de construction (A est formé de B et C) ?",
+      "choix": [
+        "P(B) et P(C) entraînent P(A)",
+        "P(A) entraîne P(B) et P(C)",
+        "P est vraie pour tous les arbres de même hauteur que A",
+        "P(B) seul entraîne P(A), C étant quelconque"
+      ],
+      "bonne": 0,
+      "explication": "L'hérédité suit la règle de construction : on suppose P(B) et P(C) pour les deux sous-arbres et on en déduit P(A).",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 1, question 3"
+    },
+    {
+      "id": "q-td1-revision-generale-004",
+      "notion": "induction-arbres-binaires",
+      "type": "courte",
+      "enonce": "Un arbre localement complet a pour sous-arbre gauche une feuille et pour sous-arbre droit un arbre à 3 nœuds. Combien de nœuds a-t-il ?",
+      "reponses": [
+        "5"
+      ],
+      "explication": "N(A) = N(B) + N(C) + 1 = 1 + 3 + 1 = 5.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 1"
+    },
+    {
+      "id": "q-td1-revision-generale-005",
+      "notion": "ensembles",
+      "type": "qcm",
+      "enonce": "Que désigne A \\ B ?",
+      "choix": [
+        "Les éléments de B qui ne sont pas dans A",
+        "Les éléments de A qui ne sont pas dans B",
+        "Les éléments à la fois dans A et dans B",
+        "Les éléments de A ou de B, sans distinction"
+      ],
+      "bonne": 1,
+      "explication": "A \\ B est l'ensemble des éléments de A qui ne sont pas dans B.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 2, question 1"
+    },
+    {
+      "id": "q-td1-revision-generale-006",
+      "notion": "ensembles",
+      "type": "courte",
+      "enonce": "Soient A = {1, 2, 3, 4} et B = {3, 4, 5}. Combien d'éléments a A Δ B ?",
+      "reponses": [
+        "3",
+        "trois"
+      ],
+      "explication": "A Δ B = (A \\ B) ∪ (B \\ A) = {1, 2} ∪ {5} = {1, 2, 5}, soit 3 éléments.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 2"
+    },
+    {
+      "id": "q-td1-revision-generale-007",
+      "notion": "ensembles",
+      "type": "qcm",
+      "enonce": "Sous quelle condition a-t-on (A \\ B) ∪ (B \\ A) = A ∪ B ?",
+      "choix": [
+        "A = B",
+        "A ⊂ B",
+        "A ∩ B = ∅",
+        "A ∪ B = E"
+      ],
+      "bonne": 2,
+      "explication": "Un élément de A ∩ B n'est ni dans A \\ B ni dans B \\ A : il faut donc A ∩ B = ∅, et cette condition suffit.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 2, question 3"
+    },
+    {
+      "id": "q-td1-revision-generale-008",
+      "notion": "ensembles",
+      "type": "qcm",
+      "enonce": "Pour X et A deux parties de E, que vaut (X \\ A) ∪ A ?",
+      "choix": [
+        "X",
+        "A",
+        "X ∩ A",
+        "X ∪ A"
+      ],
+      "bonne": 3,
+      "explication": "On récupère les éléments de X hors de A, puis tous ceux de A : le résultat est X ∪ A, pas X (A n'est pas inclus dans X).",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 2, question 4"
+    },
+    {
+      "id": "q-td1-revision-generale-009",
+      "notion": "injection-surjection-bijection",
+      "type": "qcm",
+      "enonce": "On considère h : Z → Z, h(x) = x². Quelle affirmation est vraie ?",
+      "choix": [
+        "h est bijective",
+        "h est injective mais pas surjective",
+        "h n'est ni injective ni surjective",
+        "h est surjective mais pas injective"
+      ],
+      "bonne": 2,
+      "explication": "h(−1) = h(1) : pas injective. Aucun entier n'a pour carré 2 : pas surjective.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 3"
+    },
+    {
+      "id": "q-td1-revision-generale-010",
+      "notion": "injection-surjection-bijection",
+      "type": "courte",
+      "enonce": "Soient A = {1, 2, 3} et B = {a, b}. Combien d'applications injectives de A dans B existe-t-il ?",
+      "reponses": [
+        "0",
+        "zéro",
+        "zero",
+        "aucune"
+      ],
+      "explication": "Une injection exige Card(A) ≤ Card(B). Ici 3 > 2 : deux éléments de A auraient la même image, donc il n'y en a aucune.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 3, question 2"
+    },
+    {
+      "id": "q-td1-revision-generale-011",
+      "notion": "injection-surjection-bijection",
+      "type": "qcm",
+      "enonce": "Soit g : Z × Z → Z × Z définie par g(x, y) = (x + 2, x + y). Quelle est sa bijection réciproque ?",
+      "choix": [
+        "g⁻¹(z, t) = (z − 2, t − z + 2)",
+        "g⁻¹(z, t) = (z − 2, t − z − 2)",
+        "g⁻¹(z, t) = (z − 2, t − 2z + 2)",
+        "g⁻¹(z, t) = (z + 2, t − z + 2)"
+      ],
+      "bonne": 0,
+      "explication": "On résout z = x + 2 et t = x + y : x = z − 2 puis y = t − x = t − z + 2.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 3, question 4"
+    },
+    {
+      "id": "q-td1-revision-generale-012",
+      "notion": "injection-surjection-bijection",
+      "type": "courte",
+      "enonce": "Soit g : Z → N définie par g(x) = 2x si x ≥ 0 et g(x) = −2x − 1 si x < 0. Quel est l'antécédent de 7 ?",
+      "reponses": [
+        "-4",
+        "−4"
+      ],
+      "explication": "7 est impair, donc il vient du morceau x < 0 : −2x − 1 = 7 donne x = −4.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 3, question 2 (variante)"
+    },
+    {
+      "id": "q-td1-revision-generale-013",
+      "notion": "relations-equivalence",
+      "type": "qcm",
+      "enonce": "Quelles propriétés une relation d'équivalence doit-elle vérifier ?",
+      "choix": [
+        "Réflexive, antisymétrique et transitive",
+        "Symétrique, antisymétrique et transitive",
+        "Réflexive, symétrique et antisymétrique",
+        "Réflexive, symétrique et transitive"
+      ],
+      "bonne": 3,
+      "explication": "Équivalence = réflexive, symétrique, transitive. L'antisymétrie caractérise les relations d'ordre.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 4, question 1"
+    },
+    {
+      "id": "q-td1-revision-generale-014",
+      "notion": "relations-equivalence",
+      "type": "courte",
+      "enonce": "Sur Z, on pose x R y lorsque x − y est un multiple de 3. Combien y a-t-il de classes d'équivalence ?",
+      "reponses": [
+        "3",
+        "trois"
+      ],
+      "explication": "Les classes sont celles des restes 0, 1 et 2 dans la division par 3 : il y en a 3.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 4"
+    },
+    {
+      "id": "q-td1-revision-generale-015",
+      "notion": "relations-equivalence",
+      "type": "qcm",
+      "enonce": "Pour f : E → F, on pose x R y lorsque f(x) = f(y). Quelle condition sur f rend chaque classe d'équivalence réduite à un seul élément ?",
+      "choix": [
+        "f est surjective",
+        "f est injective",
+        "f est constante",
+        "f est croissante"
+      ],
+      "bonne": 1,
+      "explication": "[x] = {y | f(y) = f(x)} est un singleton exactement quand f(x) = f(y) entraîne x = y, c'est-à-dire quand f est injective.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 4, question 2"
+    },
+    {
+      "id": "q-td1-revision-generale-016",
+      "notion": "relations-equivalence",
+      "type": "courte",
+      "enonce": "Sur R, on pose x R y lorsque x² = y². Donnez la classe de 3 sous forme d'ensemble.",
+      "reponses": [
+        "{-3,3}",
+        "{-3, 3}",
+        "{3,-3}",
+        "{3, -3}",
+        "{−3,3}",
+        "{−3, 3}",
+        "{3,−3}",
+        "{3, −3}"
+      ],
+      "explication": "[3] = {y | y² = 9} = {−3, 3}.",
+      "source": "Variante de l'annale 2025-2026, CC1, exercice 4, question 3 (variante)"
+    },
+    {
+      "id": "q-td1-revision-generale-017",
+      "notion": "denombrement",
+      "type": "courte",
+      "enonce": "On forme des codes de 3 chiffres choisis parmi 1, 2, 3, 4 (un chiffre peut se répéter). Combien de codes ?",
+      "reponses": [
+        "64",
+        "4^3",
+        "4³"
+      ],
+      "explication": "Trois choix successifs de 4 possibilités : 4³ = 64.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 4, question 1"
+    },
+    {
+      "id": "q-td1-revision-generale-018",
+      "notion": "denombrement",
+      "type": "courte",
+      "enonce": "On forme des codes de 3 chiffres choisis parmi 1 à 6 (répétitions permises). Combien commencent par un chiffre impair ?",
+      "reponses": [
+        "108"
+      ],
+      "explication": "On choisit d'abord le premier chiffre (3 impairs), puis les deux autres librement : 3 × 6² = 108.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 4, question 2"
+    },
+    {
+      "id": "q-td1-revision-generale-019",
+      "notion": "denombrement",
+      "type": "courte",
+      "enonce": "Combien de groupes de 4 personnes peut-on former parmi 10, l'ordre ne comptant pas ?",
+      "reponses": [
+        "210",
+        "C(10,4)",
+        "C(10, 4)"
+      ],
+      "explication": "Choix sans ordre ni répétition : C(10, 4) = 210.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 5, question 1"
+    },
+    {
+      "id": "q-td1-revision-generale-020",
+      "notion": "denombrement",
+      "type": "courte",
+      "enonce": "Parmi les groupes de 4 personnes choisies parmi 10, combien contiennent une personne donnée P ?",
+      "reponses": [
+        "84",
+        "C(9,3)",
+        "C(9, 3)"
+      ],
+      "explication": "P est fixée : il reste à choisir 3 personnes parmi les 9 autres, soit C(9, 3) = 84.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 5, question 3"
+    },
+    {
+      "id": "q-td1-revision-generale-021",
+      "notion": "denombrement",
+      "type": "courte",
+      "enonce": "Parmi les 64 codes de 3 chiffres choisis dans {1, 2, 3, 4}, combien ont une somme paire ?",
+      "reponses": [
+        "32"
+      ],
+      "explication": "Somme paire : zéro ou deux chiffres impairs. 0 impair : 2³ = 8 ; 2 impairs : 3 × 2² × 2 = 24 ; au total 8 + 24 = 32.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 4, question 3"
+    },
+    {
+      "id": "q-td1-revision-generale-022",
+      "notion": "probabilites",
+      "type": "courte",
+      "enonce": "Roulette française (37 numéros de 0 à 36, équiprobables). Quelle est la probabilité d'obtenir un nombre strictement supérieur à 30 ?",
+      "reponses": [
+        "6/37"
+      ],
+      "explication": "Les numéros 31 à 36 sont au nombre de 6 : P = 6/37.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 6, question 3"
+    },
+    {
+      "id": "q-td1-revision-generale-023",
+      "notion": "probabilites",
+      "type": "qcm",
+      "enonce": "Avec 25 issues équiprobables, pourquoi n'existe-t-il aucun événement de probabilité 1/2 ?",
+      "choix": [
+        "La somme des probabilités des issues vaut 25",
+        "Chaque issue a une probabilité trop petite",
+        "Card(A) devrait valoir 25/2, ce qui n'est pas un entier",
+        "Un événement a toujours une probabilité inférieure à 1/3"
+      ],
+      "bonne": 2,
+      "explication": "P(A) = Card(A)/25 = 1/2 exigerait Card(A) = 25/2, qui n'est pas un entier : il faut un nombre pair d'issues.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 6, question 2"
+    },
+    {
+      "id": "q-td1-revision-generale-024",
+      "notion": "probabilites",
+      "type": "courte",
+      "enonce": "Un dé équilibré à 6 faces : on gagne 3 € sur un 6, 1 € sur un 4 ou un 5, et 0 € sinon. Quelle est l'espérance du gain ? (fraction)",
+      "reponses": [
+        "5/6"
+      ],
+      "explication": "E[X] = 3 × 1/6 + 1 × 2/6 = 5/6.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 6, question 4"
+    },
+    {
+      "id": "q-td1-revision-generale-025",
+      "notion": "probabilites",
+      "type": "courte",
+      "enonce": "On joue 10 fois de suite au jeu du dé précédent (espérance 5/6 par partie). Quelle est l'espérance du gain total ? (fraction)",
+      "reponses": [
+        "25/3",
+        "50/6"
+      ],
+      "explication": "Par linéarité, E[Y] = 10 × 5/6 = 50/6 = 25/3.",
+      "source": "Variante de l'annale 2025-2026, examen terminal, exercice 6, question 5"
+    }
+  ]
+}

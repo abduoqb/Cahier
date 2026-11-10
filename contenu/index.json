@@ -416,6 +416,27 @@
           ]
         }
       ]
+    },
+    {
+      "id": "mathematiques-discretes",
+      "nom": "Mathématiques discrètes",
+      "seances": [
+        {
+          "id": "td1-revision-generale",
+          "type": "TD",
+          "titre": "Révision générale",
+          "dossier": "mathematiques-discretes/td1-revision-generale",
+          "notions": [
+            "induction-arbres-binaires",
+            "ensembles",
+            "injection-surjection-bijection",
+            "relations-equivalence",
+            "denombrement",
+            "probabilites"
+          ]
+        }
+      ],
+      "partielBlanc": true
     }
   ]
 }

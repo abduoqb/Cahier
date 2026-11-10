@@ -46,3 +46,13 @@ test('choisirDuJour : rien du tout → vide', () => {
     assert.deepEqual(r, { mode: 'vide', questions: [] });
     assert.deepEqual(choisirDuJour([], {}), { mode: 'vide', questions: [] });
 });
+
+test('preparerQuestion : ordre garde elements et propose un autre ordre ; courte et trace inchangées', async () => {
+    const { preparerQuestion } = await import('../js/quiz-session.js');
+    const o = { type: 'ordre', elements: ['a', 'b', 'c'] };
+    const p = preparerQuestion(o, () => 0.99);
+    assert.deepEqual(p.elements, ['a', 'b', 'c']);
+    assert.notDeepEqual(p.depart, p.elements);
+    const c = { type: 'courte', reponses: ['x'] };
+    assert.equal(preparerQuestion(c), c);
+});

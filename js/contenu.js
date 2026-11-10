@@ -19,6 +19,7 @@ export function chargerIndex() {
     return indexPromise;
 }
 export const chargerQuiz = (dossier) => lire(`${dossier}/quiz.json`, 'json');
+export const chargerPartiel = (matiereId) => lire(`${matiereId}/partiel-blanc.json`, 'json');
 export const chargerCartes = (dossier) => lire(`${dossier}/cartes.json`, 'json');
 export async function existe(chemin) {
     try { return (await fetch(BASE + chemin, { method: 'HEAD' })).ok; } catch { return false; }

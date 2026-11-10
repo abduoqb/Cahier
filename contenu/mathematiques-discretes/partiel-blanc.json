@@ -1,0 +1,800 @@
+{
+  "matiere": "mathematiques-discretes",
+  "duree": 120,
+  "questions": [
+    {
+      "id": "p-mathematiques-discretes-001",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "induction-arbres-binaires",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Redonnez le schéma d'induction de l'ensemble des arbres binaires.",
+      "bareme": [
+        {
+          "critere": "Cas de base : l'arbre vide ∅ appartient à Bin",
+          "points": 0.25
+        },
+        {
+          "critere": "Règle : si B et C sont dans Bin, alors (·, B, C) est dans Bin",
+          "points": 0.25
+        }
+      ],
+      "corrige": "1. L'arbre vide ∅ appartient à Bin.\n\n2. Si B et C appartiennent à Bin, alors A = (·, B, C) appartient à Bin (racine, fils gauche B, fils droit C).",
+      "explication": "Le schéma donne un cas de base et une règle de construction ; une preuve par induction vérifie les deux.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 1, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-002",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "induction-arbres-binaires",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "On définit f sur les arbres binaires : f(∅) = 0 ; pour A = (·, Ag, Ad) non vide, f(A) = 1 si f(Ag) = f(Ad) et 0 sinon. Montrez par induction que f(A) = 0 si et seulement si A a un nombre pair de nœuds.",
+      "bareme": [
+        {
+          "critere": "Propriété P(A) : f(A) = 0 si N(A) est pair, f(A) = 1 si N(A) est impair",
+          "points": 0.25
+        },
+        {
+          "critere": "Base : N(∅) = 0 est pair et f(∅) = 0",
+          "points": 0.25
+        },
+        {
+          "critere": "Hérédité : N(A) = 1 + N(B) + N(C), avec P(B) et P(C) pour hypothèses",
+          "points": 0.25
+        },
+        {
+          "critere": "N(A) pair : N(B) et N(C) de parités différentes, donc f(B) ≠ f(C) et f(A) = 0",
+          "points": 0.5
+        },
+        {
+          "critere": "N(A) impair : même parité, donc f(B) = f(C) et f(A) = 1",
+          "points": 0.5
+        },
+        {
+          "critere": "Conclusion par le principe d'induction",
+          "points": 0.25
+        }
+      ],
+      "corrige": "**Propriété.** P(A) : f(A) = 0 si N(A) est pair, f(A) = 1 si N(A) est impair.\n\n**Base.** A = ∅ : N(A) = 0 est pair et f(A) = 0, donc P(∅).\n\n**Hérédité.** Soit A = (·, B, C) avec P(B) et P(C). On a N(A) = 1 + N(B) + N(C).\n\n- Si N(A) est pair, N(B) + N(C) est impair : N(B) et N(C) n'ont pas la même parité. Par P(B) et P(C), f(B) ≠ f(C), donc f(A) = 0.\n- Si N(A) est impair, N(B) + N(C) est pair : même parité. Par P(B) et P(C), f(B) = f(C) (tous deux à 0 s'ils sont pairs, tous deux à 1 s'ils sont impairs), donc f(A) = 1.\n\n**Conclusion.** P(A) est vraie pour tout arbre binaire, donc f(A) = 0 si et seulement si N(A) est pair.",
+      "explication": "f compare les valeurs des deux sous-arbres, qui codent chacune la parité de leur nombre de nœuds.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 1, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-003",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Soit A une partie de E. On définit sur P(E) la relation X R Y lorsque X ∪ A = Y ∪ A. Montrez que R est une relation d'équivalence.",
+      "bareme": [
+        {
+          "critere": "Réflexivité : X ∪ A = X ∪ A, donc X R X",
+          "points": 0.25
+        },
+        {
+          "critere": "Symétrie : X ∪ A = Y ∪ A entraîne Y ∪ A = X ∪ A",
+          "points": 0.25
+        },
+        {
+          "critere": "Transitivité : X ∪ A = Y ∪ A et Y ∪ A = Z ∪ A donnent X ∪ A = Z ∪ A, donc X R Z",
+          "points": 0.5
+        }
+      ],
+      "corrige": "**Réflexivité.** Pour X ∈ P(E), X ∪ A = X ∪ A, donc X R X.\n\n**Symétrie.** Si X R Y, alors X ∪ A = Y ∪ A, donc Y ∪ A = X ∪ A et Y R X.\n\n**Transitivité.** Si X R Y et Y R Z, alors X ∪ A = Y ∪ A et Y ∪ A = Z ∪ A, donc X ∪ A = Z ∪ A, c'est-à-dire X R Z.\n\nR est réflexive, symétrique et transitive : c'est une relation d'équivalence.",
+      "explication": "Chaque propriété de R se ramène à la propriété correspondante de l'égalité d'ensembles.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 2, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-004",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Soit X ∈ P(E). Rappelez la définition de la classe d'équivalence de X pour la relation X R Y ⟺ X ∪ A = Y ∪ A, notée [X].",
+      "bareme": [
+        {
+          "critere": "[X] est l'ensemble des éléments B de P(E)",
+          "points": 0.25
+        },
+        {
+          "critere": "tels que B R X",
+          "points": 0.25
+        }
+      ],
+      "corrige": "[X] = {B ∈ P(E) | B R X} = {B ∈ P(E) | B ∪ A = X ∪ A}.",
+      "explication": "La classe de X regroupe tous les éléments en relation avec X.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 2, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-005",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Pour la relation X R Y ⟺ X ∪ A = Y ∪ A sur P(E), montrez que [∅] = P(A).",
+      "bareme": [
+        {
+          "critere": "Traduire B R ∅ : B ∪ A = ∅ ∪ A = A",
+          "points": 0.5
+        },
+        {
+          "critere": "B ∪ A = A équivaut à B ⊂ A, donc [∅] = P(A)",
+          "points": 0.5
+        }
+      ],
+      "corrige": "[∅] = {B ∈ P(E) | B R ∅}\n\n= {B ∈ P(E) | B ∪ A = A}\n\n= {B ⊂ E | B ⊂ A}\n\n= P(A).",
+      "explication": "B ∪ A = A signifie que B n'ajoute rien à A, donc B ⊂ A.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 2, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-006",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "ensembles",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Même relation. On pose M = {(X \\ A) ∪ B | B ∈ P(A)}. Démontrez l'inclusion M ⊆ [X].",
+      "bareme": [
+        {
+          "critere": "Prendre D ∈ M : D = (X \\ A) ∪ B avec B ⊂ A",
+          "points": 0.25
+        },
+        {
+          "critere": "D ∪ A = (X \\ A) ∪ B ∪ A = (X \\ A) ∪ A, car B ⊂ A",
+          "points": 0.25
+        },
+        {
+          "critere": "(X \\ A) ∪ A = X ∪ A (X \\ A = X ∩ Ā puis distributivité), donc D R X",
+          "points": 0.5
+        }
+      ],
+      "corrige": "Soit D ∈ M. Il existe B ∈ P(A) tel que D = (X \\ A) ∪ B. Alors\n\nD ∪ A = ((X \\ A) ∪ B) ∪ A\n\n= (X \\ A) ∪ A, car B ⊂ A\n\n= (X ∩ Ā) ∪ A\n\n= (X ∪ A) ∩ (Ā ∪ A)\n\n= X ∪ A, car Ā ∪ A = E.\n\nDonc D ∪ A = X ∪ A, c'est-à-dire D ∈ [X].",
+      "explication": "On utilise B ⊂ A pour absorber B dans A, puis la distributivité de l'union sur l'intersection.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 2, question 4"
+    },
+    {
+      "id": "p-mathematiques-discretes-007",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "ensembles",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "On rappelle M = {(X \\ A) ∪ B | B ∈ P(A)}. On admet Y = (Y \\ A) ∪ (Y ∩ A) pour tout Y ∈ P(E), et X \\ A = Y \\ A pour tout Y ∈ [X]. Déduisez [X] ⊆ M.",
+      "bareme": [
+        {
+          "critere": "Prendre Y ∈ [X]",
+          "points": 0.25
+        },
+        {
+          "critere": "Écrire Y = (Y \\ A) ∪ (Y ∩ A)",
+          "points": 0.25
+        },
+        {
+          "critere": "Remplacer Y \\ A par X \\ A : Y = (X \\ A) ∪ (Y ∩ A)",
+          "points": 0.25
+        },
+        {
+          "critere": "Y ∩ A ∈ P(A), donc Y ∈ M",
+          "points": 0.25
+        }
+      ],
+      "corrige": "Soit Y ∈ [X]. Par la première assertion, Y = (Y \\ A) ∪ (Y ∩ A). Par la seconde, Y \\ A = X \\ A, donc\n\nY = (X \\ A) ∪ (Y ∩ A).\n\nOr Y ∩ A ⊂ A, donc B = Y ∩ A est un élément de P(A) et Y = (X \\ A) ∪ B appartient à M. D'où [X] ⊆ M.\n\nAvec l'inclusion précédente, [X] = M.",
+      "explication": "Le sous-ensemble Y ∩ A joue le rôle du B de la définition de M.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 2, question 5"
+    },
+    {
+      "id": "p-mathematiques-discretes-008",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Soit f : N × N → N définie par f(x, y) = |x − y|. f est-elle injective ? surjective ? bijective ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "Non injective : contre-exemple f(0, 0) = f(1, 1) = 0",
+          "points": 0.5
+        },
+        {
+          "critere": "Surjective : pour tout a ∈ N, f(a, 0) = a",
+          "points": 0.5
+        },
+        {
+          "critere": "Non bijective, car non injective",
+          "points": 0.5
+        }
+      ],
+      "corrige": "**Injectivité.** f(0, 0) = 0 = f(1, 1) avec (0, 0) ≠ (1, 1) : f n'est pas injective.\n\n**Surjectivité.** Pour a ∈ N, f(a, 0) = |a − 0| = a : tout entier a un antécédent, donc f est surjective.\n\n**Bijectivité.** f n'est pas injective, donc elle n'est pas bijective.",
+      "explication": "Un contre-exemple suffit pour réfuter l'injectivité ; pour la surjectivité on exhibe un antécédent général.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 3, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-009",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Soit g : Z → N définie par g(x) = 2x si x ≥ 0 et g(x) = −2x + 1 si x < 0. g est-elle injective ? surjective ? bijective ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "Injective, deux entiers de même signe : g(x₁) = g(x₂) donne x₁ = x₂",
+          "points": 0.5
+        },
+        {
+          "critere": "Injective, signes opposés : une image paire et une image impaire ne sont jamais égales",
+          "points": 0.25
+        },
+        {
+          "critere": "Non surjective : 1 n'a pas d'antécédent (x ≥ 0 donne un pair, x < 0 donne au moins 3)",
+          "points": 0.5
+        },
+        {
+          "critere": "Donc g n'est pas bijective",
+          "points": 0.25
+        }
+      ],
+      "corrige": "**Injectivité.** Soient x₁, x₂ tels que g(x₁) = g(x₂).\n\n- x₁, x₂ ≥ 0 : 2x₁ = 2x₂ donc x₁ = x₂.\n- x₁, x₂ < 0 : −2x₁ + 1 = −2x₂ + 1 donc x₁ = x₂.\n- x₁ ≥ 0 et x₂ < 0 : g(x₁) est pair, g(x₂) est impair, l'égalité est impossible (même chose en échangeant les rôles).\n\ng est injective.\n\n**Surjectivité.** Cherchons un antécédent de 1. Si x ≥ 0, g(x) = 2x est pair, donc différent de 1. Si x < 0, x ≤ −1 donc g(x) = −2x + 1 ≥ 3. L'entier 1 n'a pas d'antécédent : g n'est pas surjective.\n\n**Bijectivité.** g n'est pas surjective, donc elle n'est pas bijective.",
+      "explication": "Sur les négatifs, les images sont 3, 5, 7… : le nombre 1 est le seul impair oublié. Avec −2x − 1 au lieu de −2x + 1, g serait bijective.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 3, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-010",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "On forme des codes de 3 chiffres choisis parmi 1, 2, 3, 4, 5 (un chiffre peut se répéter). Combien de codes différents ?",
+      "reponses": [
+        "125",
+        "5^3",
+        "5³"
+      ],
+      "points": 1,
+      "explication": "Trois choix successifs de 5 possibilités chacun : 5³ = 125.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 4, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-011",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "Codes de 3 chiffres choisis parmi 1, 2, 3, 4, 5 (répétitions permises) : combien commencent par un chiffre pair ?",
+      "reponses": [
+        "50",
+        "2*5^2",
+        "2 * 5^2",
+        "2×5²",
+        "2 × 5²",
+        "2*25",
+        "2 × 25"
+      ],
+      "points": 1,
+      "explication": "On choisit d'abord le premier chiffre (2 pairs : 2 ou 4), puis les deux autres librement : 2 × 5² = 50.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 4, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-012",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Codes de 3 chiffres choisis parmi 1, 2, 3, 4, 5 (répétitions permises) : combien ont une somme des trois chiffres paire ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "Somme impaire, trois chiffres impairs : 3³ = 27 codes",
+          "points": 0.25
+        },
+        {
+          "critere": "Somme impaire, un seul chiffre impair : 3 × 3 × 2² = 36 codes",
+          "points": 0.25
+        },
+        {
+          "critere": "Par complémentaire : 125 − (27 + 36) = 62 codes de somme paire",
+          "points": 0.5
+        }
+      ],
+      "corrige": "Passons par le complémentaire : les codes de somme **impaire**. La somme est impaire s'il y a trois chiffres impairs ou un seul chiffre impair.\n\n- Trois impairs (1, 3, 5) : 3³ = 27 codes.\n- Un seul impair : 3 positions pour le chiffre impair, 3 choix pour sa valeur, puis 2 choix (2 ou 4) pour chacun des deux autres chiffres : 3 × 3 × 2² = 36 codes.\n\nIl y a 27 + 36 = 63 codes de somme impaire, donc 125 − 63 = **62** codes de somme paire.\n\nVérification directe : un seul chiffre pair, 3 × 2 × 3² = 54 codes, ou trois chiffres pairs, 2³ = 8 codes : 54 + 8 = 62.",
+      "explication": "La parité d'une somme dépend du nombre de termes impairs : paire s'il y en a 0 ou 2, impaire s'il y en a 1 ou 3.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 4, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-013",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "Un groupe dispose de 15 instruments distincts (6 trompettes, 5 saxophones, 3 flûtes, 1 batterie). Combien de groupes de 8 instruments peut-on choisir ? (valeur numérique)",
+      "reponses": [
+        "6435",
+        "C(15,8)",
+        "C(15, 8)"
+      ],
+      "points": 1,
+      "explication": "Choix de 8 instruments parmi 15 sans ordre : C(15, 8) = 6435.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 5, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-014",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "Mêmes 15 instruments distincts (6 trompettes, 5 saxophones, 3 flûtes, 1 batterie). Combien de groupes de 8 instruments ne contiennent aucune flûte ? (valeur numérique)",
+      "reponses": [
+        "495",
+        "C(12,8)",
+        "C(12, 8)"
+      ],
+      "points": 1,
+      "explication": "Sans les 3 flûtes, il reste 12 instruments : C(12, 8) = 495.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 5, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-015",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "denombrement",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Mêmes 15 instruments distincts (6 trompettes, 5 saxophones, 3 flûtes, 1 batterie). Combien de groupes de 8 instruments contiennent au moins une flûte et la batterie ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "La batterie est imposée : choisir 7 instruments parmi les 14 autres, C(14, 7)",
+          "points": 0.5
+        },
+        {
+          "critere": "Retrancher ceux sans flûte : C(11, 7)",
+          "points": 0.5
+        },
+        {
+          "critere": "Résultat : 3432 − 330 = 3102",
+          "points": 0.5
+        }
+      ],
+      "corrige": "**Première méthode.** Il n'y a qu'une batterie : elle est dans le groupe, il reste à choisir 7 instruments parmi les 14 autres : C(14, 7) = 3432. Parmi eux, ceux sans flûte se choisissent parmi 14 − 3 = 11 instruments : C(11, 7) = 330. Résultat : 3432 − 330 = **3102**.\n\n**Deuxième méthode (inclusion-exclusion).** Soit A les groupes sans flûte, B les groupes sans batterie. Le nombre de groupes avec au moins une flûte et la batterie vaut\n\nC(15, 8) − C(12, 8) − C(14, 8) + C(11, 8) = 6435 − 495 − 3003 + 165 = 3102.",
+      "explication": "Les deux méthodes donnent 3102 ; la première est plus courte quand un élément est imposé.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 5, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-016",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "probabilites",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Roulette française : 37 numéros de 0 à 36, non truquée. Donnez l'espace de probabilité et la distribution de probabilité.",
+      "bareme": [
+        {
+          "critere": "Espace de probabilité E = {0, 1, …, 36}",
+          "points": 0.5
+        },
+        {
+          "critere": "Distribution uniforme : P(e) = 1/37 pour tout e de E",
+          "points": 0.5
+        }
+      ],
+      "corrige": "L'espace de probabilité est E = {0, 1, 2, …, 36} (37 issues).\n\nLa roulette n'est pas truquée : la distribution est uniforme, P(e) = 1/37 pour tout e ∈ E.",
+      "explication": "Non truquée signifie équiprobable : toutes les issues ont la même probabilité, 1/Card(E).",
+      "source": "Examen terminal 2025-2026, session 1, exercice 6, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-017",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "probabilites",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "qcm",
+      "enonce": "Roulette française : 37 numéros équiprobables. Pourquoi n'existe-t-il aucun événement de probabilité 1/2 ?",
+      "choix": [
+        "La somme des probabilités des issues vaudrait 37",
+        "Chaque numéro a une probabilité inférieure à 1/37",
+        "Card(A) vaudrait 37/2, ce qui n'est pas un entier",
+        "Un événement ne peut pas dépasser 1/3 en probabilité"
+      ],
+      "bonne": 2,
+      "points": 1,
+      "explication": "P(A) = Card(A)/37, donc P(A) = 1/2 exigerait Card(A) = 37/2, qui n'est pas un entier.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 6, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-018",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "probabilites",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "redaction",
+      "enonce": "Roulette à 37 numéros (0 à 36). A : « le résultat est strictement supérieur à 30 », B : « le résultat est pair » (0 est pair). Montrez que A et B ne sont pas indépendants. Le seraient-ils avec 36 numéros, de 1 à 36 ?",
+      "bareme": [
+        {
+          "critere": "A = {31, …, 36}, B = pairs de 0 à 36, A ∩ B = {32, 34, 36}",
+          "points": 0.25
+        },
+        {
+          "critere": "P(A) = 6/37, P(B) = 19/37, P(A ∩ B) = 3/37",
+          "points": 0.25
+        },
+        {
+          "critere": "P(A)P(B) = 114/1369 ≠ 111/1369 = P(A ∩ B) : A et B ne sont pas indépendants",
+          "points": 0.25
+        },
+        {
+          "critere": "Avec 36 numéros : 1/6 × 1/2 = 1/12 = P(A ∩ B), ils sont indépendants",
+          "points": 0.25
+        }
+      ],
+      "corrige": "**Avec 37 numéros.** A = {31, 32, 33, 34, 35, 36}, B = {0, 2, 4, …, 36} (19 nombres) et A ∩ B = {32, 34, 36}. Donc P(A) = 6/37, P(B) = 19/37 et P(A ∩ B) = 3/37.\n\nOr P(A)P(B) = 114/1369 et P(A ∩ B) = 3/37 = 111/1369. Ils sont différents : A et B ne sont **pas** indépendants.\n\n**Avec 36 numéros (1 à 36).** P(A) = 6/36 = 1/6, P(B) = 18/36 = 1/2, P(A ∩ B) = 3/36 = 1/12 = P(A)P(B) : A et B sont indépendants.",
+      "explication": "L'indépendance se teste en comparant P(A ∩ B) au produit P(A)P(B) : la présence du 0 rompt l'égalité.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 6, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-019",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "probabilites",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "Roulette à 37 numéros (0 à 36). A : « résultat > 30 », B : « résultat pair ». Un jeu rapporte 14 € si le résultat est dans A ∩ B, 2 € s'il est dans A ∩ (non B), 0 € sinon. Espérance du gain X ? (fraction)",
+      "reponses": [
+        "48/37"
+      ],
+      "points": 1,
+      "explication": "A ∩ B = {32, 34, 36} et A ∩ (non B) = {31, 33, 35} : P(X = 14) = P(X = 2) = 3/37, P(X = 0) = 31/37. E[X] = 14 × 3/37 + 2 × 3/37 = 48/37.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 6, question 4"
+    },
+    {
+      "id": "p-mathematiques-discretes-020",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "probabilites",
+      "sujet": "Examen terminal 2025-2026, session 1",
+      "type": "courte",
+      "enonce": "Un jeu de roulette (37 numéros) rapporte 14 € si le résultat est > 30 et pair, 2 € s'il est > 30 et impair, 0 € sinon ; son gain X a pour espérance 48/37. Sur 10 parties indépendantes, quelle est l'espérance du gain total Y ? (fraction)",
+      "reponses": [
+        "480/37"
+      ],
+      "points": 1,
+      "explication": "Y = X₁ + … + X₁₀ et, par linéarité de l'espérance, E[Y] = 10 × 48/37 = 480/37.",
+      "source": "Examen terminal 2025-2026, session 1, exercice 6, question 5"
+    },
+    {
+      "id": "p-mathematiques-discretes-021",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "induction-arbres-binaires",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Rappelez le schéma d'induction de LC, l'ensemble des arbres binaires localement complets (chaque nœud a 0 ou 2 fils).",
+      "bareme": [
+        {
+          "critere": "(i) L'arbre réduit à une racine appartient à LC",
+          "points": 0.5
+        },
+        {
+          "critere": "(ii) Si B et C sont dans LC, l'arbre de racine · et de fils B et C est dans LC",
+          "points": 0.5
+        }
+      ],
+      "corrige": "(i) L'arbre réduit à une racine · appartient à LC.\n\n(ii) Si B et C sont deux arbres de LC, alors l'arbre A dont la racine a pour fils gauche B et fils droit C appartient à LC.",
+      "explication": "Un seul cas de base (la racine) et une seule règle de construction (deux sous-arbres de LC).",
+      "source": "CC1 2025-2026, exercice 1, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-022",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "induction-arbres-binaires",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "On pose P(A) : N(A) ≥ 2h(A) + 1 (N : nombre de nœuds, h : hauteur ; la racine seule a h = 0). Donnez deux arbres localement complets A₁ et A₂, de hauteurs 3 et 4, qui vérifient P.",
+      "bareme": [
+        {
+          "critere": "A₁ localement complet de hauteur 3 (par exemple un peigne à 7 nœuds)",
+          "points": 0.5
+        },
+        {
+          "critere": "A₂ localement complet de hauteur 4 (par exemple un peigne à 9 nœuds)",
+          "points": 0.5
+        }
+      ],
+      "corrige": "On construit un **peigne** : on part d'une racine seule, puis on répète h fois « nouvelle racine dont un fils est l'arbre précédent et l'autre fils est une feuille ».\n\n- A₁ (h = 3) : 7 nœuds. N(A₁) = 7 = 2 × 3 + 1, donc P(A₁) est vraie (avec égalité).\n- A₂ (h = 4) : 9 nœuds. N(A₂) = 9 = 2 × 4 + 1, donc P(A₂) est vraie (avec égalité).\n\nChaque étape ajoute 2 nœuds et 1 de hauteur : le peigne atteint le minimum 2h + 1.",
+      "explication": "Chaque nouvelle racine d'un peigne ajoute deux nœuds (elle-même et une feuille) pour une hauteur de plus.",
+      "source": "CC1 2025-2026, exercice 1, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-023",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "induction-arbres-binaires",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Montrez par induction que P(A) : N(A) ≥ 2h(A) + 1 est vraie pour tout arbre A de LC.",
+      "bareme": [
+        {
+          "critere": "Base : racine seule, N = 1, h = 0, donc 1 ≥ 1",
+          "points": 0.5
+        },
+        {
+          "critere": "Hérédité : A formé de B et C, on suppose P(B) et P(C)",
+          "points": 0.5
+        },
+        {
+          "critere": "Sans perte de généralité h(B) ≥ h(C), donc h(A) = h(B) + 1",
+          "points": 0.5
+        },
+        {
+          "critere": "N(A) = N(B) + N(C) + 1 et N(C) ≥ 1, donc N(A) ≥ N(B) + 2",
+          "points": 0.5
+        },
+        {
+          "critere": "Avec P(B) : N(A) ≥ 2h(B) + 1 + 2 = 2h(B) + 3 = 2h(A) + 1",
+          "points": 0.75
+        },
+        {
+          "critere": "Conclusion par le principe d'induction",
+          "points": 0.25
+        }
+      ],
+      "corrige": "**Base.** Pour l'arbre réduit à une racine, N = 1 et h = 0, donc N ≥ 2h + 1 s'écrit 1 ≥ 1 : P est vraie.\n\n**Hérédité.** Soit A formé de B et C dans LC, avec P(B) et P(C). Sans perte de généralité, h(B) ≥ h(C), donc h(A) = h(B) + 1. De plus :\n\nN(A) = N(B) + N(C) + 1\n\nN(A) ≥ N(B) + 2, car C a au moins un nœud\n\nN(A) ≥ (2h(B) + 1) + 2, par P(B)\n\nN(A) ≥ 2h(B) + 3 = 2(h(B) + 1) + 1 = 2h(A) + 1.\n\nDonc P(A) est vraie.\n\n**Conclusion.** Par le principe d'induction, P(A) est vraie pour tout arbre A de LC.",
+      "explication": "On ne garde que le plus grand des deux sous-arbres pour la hauteur, et on minore le plus petit par 1 nœud.",
+      "source": "CC1 2025-2026, exercice 1, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-024",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "ensembles",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Soient A et B deux parties de E. Rappelez les définitions de A \\ B et de A Δ B.",
+      "bareme": [
+        {
+          "critere": "A \\ B = {x ∈ E | x ∈ A et x ∉ B}",
+          "points": 0.5
+        },
+        {
+          "critere": "A Δ B = (A \\ B) ∪ (B \\ A)",
+          "points": 0.5
+        }
+      ],
+      "corrige": "A \\ B = {x ∈ E | x ∈ A et x ∉ B}\n\nA Δ B = (A \\ B) ∪ (B \\ A)",
+      "explication": "A Δ B regroupe les éléments qui sont dans exactement un des deux ensembles.",
+      "source": "CC1 2025-2026, exercice 2, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-025",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "ensembles",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Montrez que (A \\ B) ∪ (B \\ A) ⊂ A ∪ B.",
+      "bareme": [
+        {
+          "critere": "Prendre x dans l'union : x ∈ A \\ B ou x ∈ B \\ A",
+          "points": 0.5
+        },
+        {
+          "critere": "Cas 1 : x ∈ A et x ∉ B, donc x ∈ A, donc x ∈ A ∪ B",
+          "points": 0.75
+        },
+        {
+          "critere": "Cas 2 : x ∈ B et x ∉ A, donc x ∈ B, donc x ∈ A ∪ B",
+          "points": 0.75
+        }
+      ],
+      "corrige": "Soit x ∈ (A \\ B) ∪ (B \\ A). Alors x ∈ A \\ B ou x ∈ B \\ A.\n\n- **Cas 1** : x ∈ A et x ∉ B. En particulier x ∈ A, donc x ∈ A ∪ B.\n- **Cas 2** : x ∈ B et x ∉ A. En particulier x ∈ B, donc x ∈ A ∪ B.\n\nDans les deux cas x ∈ A ∪ B, d'où (A \\ B) ∪ (B \\ A) ⊂ A ∪ B.",
+      "explication": "Un « ou » dans l'hypothèse se traite par deux cas, qu'il faut conclure tous les deux.",
+      "source": "CC1 2025-2026, exercice 2, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-026",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "ensembles",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "À quelle condition a-t-on l'égalité (A \\ B) ∪ (B \\ A) = A ∪ B ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "Si x ∈ A ∩ B, alors x ∉ A \\ B et x ∉ B \\ A : l'égalité impose A ∩ B = ∅",
+          "points": 1
+        },
+        {
+          "critere": "Réciproque : si A ∩ B = ∅, alors A \\ B = A et B \\ A = B, d'où l'égalité",
+          "points": 1
+        }
+      ],
+      "corrige": "**Condition : A ∩ B = ∅.**\n\n*Nécessaire.* Supposons qu'il existe x ∈ A ∩ B. Comme x ∈ B, x ∉ A \\ B ; comme x ∈ A, x ∉ B \\ A. Donc x ∉ (A \\ B) ∪ (B \\ A) alors que x ∈ A ∪ B : l'égalité est fausse. Il faut donc A ∩ B = ∅.\n\n*Suffisante.* Si A ∩ B = ∅, alors A \\ B = A et B \\ A = B, donc (A \\ B) ∪ (B \\ A) = A ∪ B.",
+      "explication": "Un élément commun est le seul à échapper à A \\ B et à B \\ A : l'égalité équivaut à l'absence d'élément commun.",
+      "source": "CC1 2025-2026, exercice 2, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-027",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Rappelez les définitions d'une application, d'une application injective, surjective et bijective.",
+      "bareme": [
+        {
+          "critere": "Application : chaque élément de départ a exactement une image",
+          "points": 0.25
+        },
+        {
+          "critere": "Injective : tout élément d'arrivée a au plus un antécédent",
+          "points": 0.25
+        },
+        {
+          "critere": "Surjective : tout élément d'arrivée a au moins un antécédent",
+          "points": 0.25
+        },
+        {
+          "critere": "Bijective : à la fois injective et surjective",
+          "points": 0.25
+        }
+      ],
+      "corrige": "- **Application** de E dans F : chaque élément de E a exactement une image dans F.\n- **Injective** : tout élément de l'ensemble d'arrivée a **au plus** un antécédent.\n- **Surjective** : tout élément de l'ensemble d'arrivée a **au moins** un antécédent.\n- **Bijective** : à la fois injective et surjective (exactement un antécédent par élément d'arrivée).",
+      "explication": "Au plus un pour l'injection, au moins un pour la surjection, exactement un pour la bijection.",
+      "source": "CC1 2025-2026, exercice 3, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-028",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Soient A = {1, 2, 3, 4} et B = {a, b, c, d, e}. Peut-il exister une application injective de A dans B ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "Oui, il en existe une",
+          "points": 0.25
+        },
+        {
+          "critere": "Exhiber une application, par exemple 1 ↦ a, 2 ↦ b, 3 ↦ c, 4 ↦ d",
+          "points": 0.5
+        },
+        {
+          "critere": "Elle est injective : les quatre images sont deux à deux distinctes",
+          "points": 0.25
+        }
+      ],
+      "corrige": "Oui. L'application 1 ↦ a, 2 ↦ b, 3 ↦ c, 4 ↦ d est injective : les images a, b, c, d sont deux à deux distinctes, donc chaque élément de B a au plus un antécédent. (C'est possible car Card(A) = 4 ≤ Card(B) = 5.)",
+      "explication": "Une injection existe dès que l'ensemble de départ n'est pas plus grand que celui d'arrivée.",
+      "source": "CC1 2025-2026, exercice 3, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-029",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "CC1 2025-2026",
+      "type": "qcm",
+      "enonce": "Soient A = {1, 2, 3, 4} et B = {a, b, c, d, e}. Peut-il exister une application bijective de A dans B ?",
+      "choix": [
+        "Non : une application de A dans B ne peut jamais être injective",
+        "Oui : toute application injective de A dans B est aussi surjective",
+        "Non : A a 4 éléments, il atteint au plus 4 éléments de B",
+        "Oui : il suffit que les deux ensembles soient finis"
+      ],
+      "bonne": 2,
+      "points": 1,
+      "explication": "Une bijection serait surjective : les 5 éléments de B auraient chacun un antécédent, alors que A n'a que 4 éléments.",
+      "source": "CC1 2025-2026, exercice 3, question 3"
+    },
+    {
+      "id": "p-mathematiques-discretes-030",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "injection-surjection-bijection",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Soit g : Z × Z → Z × Z définie par g(x, y) = (x + 1, 2x + y). Montrez que g est bijective et donnez sa bijection réciproque g⁻¹.",
+      "bareme": [
+        {
+          "critere": "Pour (z, t) donné, poser z = x + 1 et t = 2x + y",
+          "points": 0.5
+        },
+        {
+          "critere": "Résoudre : x = z − 1 et y = t − 2(z − 1)",
+          "points": 0.5
+        },
+        {
+          "critere": "Solution unique pour tout (z, t) : g est bijective",
+          "points": 0.5
+        },
+        {
+          "critere": "g⁻¹(z, t) = (z − 1, t − 2(z − 1))",
+          "points": 0.5
+        }
+      ],
+      "corrige": "Soit (z, t) ∈ Z × Z. On cherche (x, y) avec g(x, y) = (z, t) :\n\nz = x + 1 et t = 2x + y ⟺ x = z − 1 et y = t − 2(z − 1).\n\nLe système a une **unique** solution (entière) pour tout (z, t) : tout élément d'arrivée a exactement un antécédent, donc g est bijective, de réciproque\n\ng⁻¹(z, t) = (z − 1, t − 2(z − 1)).",
+      "explication": "Résoudre « g(x, y) = (z, t) » prouve en une fois l'existence (surjectivité) et l'unicité (injectivité) de l'antécédent.",
+      "source": "CC1 2025-2026, exercice 3, question 4"
+    },
+    {
+      "id": "p-mathematiques-discretes-031",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Soit f : E → F et R la relation sur E définie par x R y lorsque f(x) = f(y). Montrez que R est une relation d'équivalence.",
+      "bareme": [
+        {
+          "critere": "Réflexivité : f(x) = f(x), donc x R x",
+          "points": 0.5
+        },
+        {
+          "critere": "Symétrie : f(x) = f(y) entraîne f(y) = f(x)",
+          "points": 0.5
+        },
+        {
+          "critere": "Transitivité : f(x) = f(y) et f(y) = f(z) donnent f(x) = f(z)",
+          "points": 1
+        }
+      ],
+      "corrige": "**Réflexivité.** Pour x ∈ E, f(x) = f(x), donc x R x.\n\n**Symétrie.** Si x R y, alors f(x) = f(y), donc f(y) = f(x) et y R x.\n\n**Transitivité.** Si x R y et y R z, alors f(x) = f(y) et f(y) = f(z), donc f(x) = f(z) et x R z.\n\nR est une relation d'équivalence sur E.",
+      "explication": "Chaque propriété de R découle de celle de l'égalité des images.",
+      "source": "CC1 2025-2026, exercice 4, question 1"
+    },
+    {
+      "id": "p-mathematiques-discretes-032",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "CC1 2025-2026",
+      "type": "redaction",
+      "enonce": "Même relation (x R y lorsque f(x) = f(y)). Quelle propriété f doit-elle vérifier pour que chaque classe d'équivalence ait un seul élément ? Justifiez.",
+      "bareme": [
+        {
+          "critere": "x ∈ [x] toujours : [x] a un seul élément si et seulement si [x] ⊂ {x}",
+          "points": 0.5
+        },
+        {
+          "critere": "Cela s'écrit : pour tout y, f(x) = f(y) entraîne y = x",
+          "points": 0.5
+        },
+        {
+          "critere": "C'est exactement l'injectivité de f",
+          "points": 0.5
+        }
+      ],
+      "corrige": "On a toujours x ∈ [x], donc {x} ⊂ [x]. La classe [x] a un seul élément si et seulement si [x] ⊂ {x}, c'est-à-dire : pour tout y ∈ E, f(x) = f(y) entraîne y = x.\n\nC'est exactement la définition de l'injectivité : **f doit être injective**.",
+      "explication": "Une classe est l'ensemble des éléments de même image que x ; elle est réduite à {x} si aucun autre élément n'a cette image.",
+      "source": "CC1 2025-2026, exercice 4, question 2"
+    },
+    {
+      "id": "p-mathematiques-discretes-033",
+      "partielBlanc": true,
+      "seance": "td1-revision-generale",
+      "notion": "relations-equivalence",
+      "sujet": "CC1 2025-2026",
+      "type": "courte",
+      "enonce": "Soit f : R → R, f(x) = x² − x, et x R y lorsque f(x) = f(y). Donnez la classe d'équivalence de 0 sous forme d'ensemble.",
+      "reponses": [
+        "{0,1}",
+        "{0, 1}",
+        "{1,0}",
+        "{1, 0}"
+      ],
+      "points": 1.5,
+      "explication": "[0] = {x | x² − x = 0} = {x | x(x − 1) = 0} = {0, 1}.",
+      "source": "CC1 2025-2026, exercice 4, question 3"
+    }
+  ]
+}

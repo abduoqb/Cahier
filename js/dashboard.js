@@ -1,5 +1,5 @@
 import { Store } from './store.js';
-import { renderTodayCard } from './today.js?v=4';
+import { renderTodayCard } from './today.js?v=5';
 import { calcProgress, progressClass, escapeHtml, examInfo } from './utils.js?v=6';
 
 // Palette de tons terre pour distinguer les matières sans sortir de la palette générale.

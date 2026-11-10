@@ -388,3 +388,8 @@ export function activerPasAPas(racine) {
         pre.replaceWith(construire(def));
     });
 }
+
+// Monte un pas-à-pas à partir d'un objet déjà validé (correction d'une question « trace »).
+export function monterPasAPas(def) {
+    return construire(def);
+}

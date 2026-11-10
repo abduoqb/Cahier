@@ -1,0 +1,45 @@
+{
+  "_note": "Un exemple de chaque type de question, à copier dans quiz.json (ou partiel-blanc.json). Ce fichier n'est pas lu par le site.",
+  "questions": [
+    {
+      "id": "q-{{ID}}-101", "notion": "notion-exemple", "type": "courte",
+      "enonce": "(Question à réponse courte.)",
+      "reponses": ["(réponse acceptée)", "(autre formulation acceptée)"],
+      "explication": "(Pourquoi.)", "source": "(Annale ou TD)"
+    },
+    {
+      "id": "q-{{ID}}-102", "notion": "notion-exemple", "type": "courte", "mode": "commande",
+      "enonce": "(Quelle commande affiche les fichiers en détail ?)",
+      "reponses": ["ls -l"],
+      "explication": "(Comparaison exacte après trim : espaces et casse comptent. Commande testée dans un vrai shell.)", "source": "(Annale ou TD)"
+    },
+    {
+      "id": "q-{{ID}}-103", "notion": "notion-exemple", "type": "trace",
+      "enonce": "(Que valent x et L à la fin de l'exécution ?)",
+      "code": ["x = 1", "L = [2]", "x = x + 2", "L.append(5)"],
+      "attendu": { "x": "3", "L": "[2, 5]" },
+      "pasAPas": { "etapes": [
+        { "ligne": 0, "vars": { "x": 1 }, "note": "x vaut 1." },
+        { "ligne": 2, "vars": { "x": 3 }, "note": "x vaut maintenant 3." },
+        { "ligne": 3, "vars": { "L": "[2, 5]" }, "schema": { "type": "tableau", "cases": [2, 5], "surligne": [1] } }
+      ] },
+      "explication": "(Pourquoi.)", "source": "(Annale ou TD)"
+    },
+    {
+      "id": "q-{{ID}}-104", "notion": "notion-exemple", "type": "ordre",
+      "enonce": "(Remets les étapes dans l'ordre.)",
+      "elements": ["(1re étape)", "(2e étape)", "(3e étape)", "(4e étape)"],
+      "explication": "(Pourquoi cet ordre.)", "source": "(Annale ou TD)"
+    },
+    {
+      "id": "q-{{ID}}-105", "notion": "notion-exemple", "type": "redaction",
+      "enonce": "(Question à réponse rédigée.)",
+      "bareme": [
+        { "critere": "(Critère 1)", "points": 2 },
+        { "critere": "(Critère 2)", "points": 1 }
+      ],
+      "corrige": "(Corrigé en markdown, 1500 caractères max.)",
+      "explication": "(Ce qu'il faut retenir.)", "source": "(Annale ou TD)"
+    }
+  ]
+}

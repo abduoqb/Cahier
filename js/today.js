@@ -1,8 +1,8 @@
 import { escapeHtml } from './utils.js?v=6';
-import { chargerIndex, chargerQuiz, chargerCartes, messageErreur } from './contenu.js?v=3';
-import { progress } from './progress.js';
-import { choisirDuJour } from './quiz-session.js';
-import { lancerQuiz } from './quiz.js';
+import { chargerIndex, chargerQuiz, chargerCartes, messageErreur } from './contenu.js?v=4';
+import { progress } from './progress.js?v=2';
+import { choisirDuJour } from './quiz-session.js?v=2';
+import { lancerQuiz } from './quiz.js?v=2';
 import { cartesEtat, rassemblerCartes } from './cartes-etat.js';
 import { lancerCartes } from './cartes.js';
 

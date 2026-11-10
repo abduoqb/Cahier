@@ -39,8 +39,8 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
 
     function etatDe(rec, now) {
         if (!rec) return 'pas-commencee';
+        if (rec.revoir) return 'a-revoir';
         if (rec.acquiseLe) {
-            if (rec.revoir) return 'a-revoir';
             return now >= rec.lastSuccess + INTERVALLES[rec.palier] ? 'a-revoir' : 'acquise';
         }
         return 'en-cours';
@@ -63,7 +63,7 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
                     rec.palier = Math.min(rec.palier + 1, INTERVALLES.length - 1);
                     rec.lastSuccess = now;
                 }
-            } else if (rec.lastSuccess === null) { rec.n = 1; rec.lastSuccess = now; }
+            } else if (rec.lastSuccess === null) { rec.n = 1; rec.lastSuccess = now; rec.revoir = false; }
             else if (now - rec.lastSuccess >= DAY) { rec.n += 1; rec.lastSuccess = now; }
             if (!rec.acquiseLe && rec.n >= 2) { rec.acquiseLe = now; rec.palier = 0; }
         } else {
@@ -77,6 +77,18 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
         if (typeof dispatchEvent === 'function' && typeof CustomEvent === 'function') {
             dispatchEvent(new CustomEvent('cahier:reponse', { detail: { seanceId, notion: question.notion, questionId: question.id, ok } }));
         }
+    }
+
+    // Notion ratée à un partiel blanc : « à revoir » jusqu'à la prochaine bonne réponse, acquise ou non.
+    function marquerARevoir(seanceId, notion, now = Date.now()) {
+        const d = load();
+        const id = cle(seanceId, notion);
+        const rec = d.notions[id] || { n: 0, lastSuccess: null, last: now, acquiseLe: null, palier: 0, revoir: false };
+        rec.last = now;
+        rec.revoir = true;
+        if (!rec.acquiseLe) { rec.n = 0; rec.lastSuccess = null; }
+        d.notions[id] = rec;
+        save(d);
     }
 
     function notionsDues(now = Date.now()) {
@@ -101,7 +113,7 @@ export function createProgress(storage = defaultStorage(), key = KEY) {
         return 'en-cours';
     }
 
-    return { getNotion, recordAnswer, notionsDues, etatSeance };
+    return { getNotion, recordAnswer, marquerARevoir, notionsDues, etatSeance };
 }
 
 export const progress = createProgress();
